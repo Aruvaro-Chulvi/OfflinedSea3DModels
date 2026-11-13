@@ -10,6 +10,10 @@ fondo marino de todo el planeta. En el *Wiki Submarino* de Offlined sobrevuelas 
 sitio y lees su artículo; con estos modelos además **verás el pecio ahí tendido**: el Titanic partido en dos a
 3.800 m, el Thistlegorm con su carga a 30 m, un U-Boot en el fondo del mar del Norte.
 
+**[▶ Explora el catálogo en 3D](https://aruvaro-chulvi.github.io/OfflinedSea3DModels/)**: busca cualquier pecio, míralo junto a un
+buzo para hacerte una idea del tamaño, abre su artículo de Wikipedia y descarga su modelo genérico como punto de partida
+para hacer uno mejor.
+
 ## Qué hay aquí
 
 | | |
@@ -17,6 +21,8 @@ sitio y lees su artículo; con estos modelos además **verás el pecio ahí tend
 | [`catalog/catalog.json`](catalog/catalog.json) | **4.537 cosas bajo el mar con artículo en Wikipedia** (en al menos uno de 10 idiomas), con su id de Wikidata, posición, profundidad de GEBCO, tamaño, fechas y familia. Se genera solo a partir de Wikidata + GEBCO. |
 | [`models/`](models/) | Los modelos 3D, una carpeta por id de Wikidata. |
 | [`docs/MODEL_SPEC.es.md`](docs/MODEL_SPEC.es.md) | Las reglas que sigue cada modelo (glTF `.glb`, metros, ejes, origen, límites, `meta.json`). |
+| [`generator/`](generator/) | El generador de pecios genéricos (JavaScript, three.js): cualquier elemento del catálogo → un modelo a tamaño real, con pintura, óxido y sedimento. Offlined usa el mismo archivo. |
+| [`site/`](site/) | La página del catálogo que se publica en GitHub Pages. |
 | [`tools/`](tools/) | El generador del catálogo, el lector de profundidades de GEBCO y el comprobador de modelos que se ejecuta en cada *pull request*. |
 
 ### El catálogo en cifras
@@ -54,7 +60,9 @@ Nadie puede modelar a mano 4.537 objetos, así que cada pecio recibe el mejor mo
    U-Boot tipo VII, todos los Liberty…).
 3. **El de su modelo de avión** — `models/vehicle/<id>/` — para los aviones hundidos.
 4. **Un modelo genérico** dibujado por código según su familia y su eslora y manga reales (transatlántico,
-   buque de guerra, submarino, carguero, petrolero, velero, avión…). *Es lo siguiente.*
+   buque de guerra, submarino, carguero, petrolero, velero, avión…), tendido en el fondo, escorado, medio
+   enterrado y oxidado; siempre el mismo para el mismo pecio. Los arrecifes, fuentes hidrotermales, yacimientos
+   y museos submarinos reciben una parcela representativa.
 
 Así el fondo está lleno desde el primer día y mejora con cada aportación.
 

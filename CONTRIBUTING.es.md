@@ -24,6 +24,9 @@
    Programas gratuitos que exportan `.glb`: [Blender](https://www.blender.org) (Archivo › Exportar › glTF 2.0,
    formato *glTF Binary*, con «+Y Up» marcado) y [gltf.report](https://gltf.report) para revisarlo y
    comprimirlo (meshopt).
+   Truco: en la [página del catálogo](https://aruvaro-chulvi.github.io/OfflinedSea3DModels/) cada pecio tiene un
+   botón *Descargar .glb* con su modelo genérico, ya con el tamaño, los ejes y el origen correctos: impórtalo en
+   Blender y trabaja sobre él.
 3. Añade `models/<item|class|vehicle>/<Q…>/model.glb`, `meta.json` y, si puedes, `preview.jpg`.
 4. Ejecuta `python tools/validate.py models/item/Q…` (Python 3.10+, no hay que instalar nada) y arregla lo que
    te diga.

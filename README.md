@@ -10,6 +10,9 @@ of the whole planet. In Offlined's *Wiki Submarine* you fly over the GEBCO seabe
 its article; with these models you will also **see the wreck lying there**: the Titanic broken in two at
 3,800 m, the Thistlegorm with its cargo at 30 m, a U-boat on the North Sea bed.
 
+**[▶ Browse the catalog in 3D](https://aruvaro-chulvi.github.io/OfflinedSea3DModels/)** — search any wreck, look at it next to a diver
+for scale, open its Wikipedia article, and download its generic model as a starting point for a better one.
+
 ## What is here
 
 | | |
@@ -17,6 +20,8 @@ its article; with these models you will also **see the wreck lying there**: the 
 | [`catalog/catalog.json`](catalog/catalog.json) | **4,537 things under the sea that have a Wikipedia article** (in at least one of 10 languages), with their Wikidata id, position, GEBCO depth, size, dates and family. Built automatically from Wikidata + GEBCO. |
 | [`models/`](models/) | The 3D models, one folder per Wikidata id. |
 | [`docs/MODEL_SPEC.md`](docs/MODEL_SPEC.md) | The rules every model follows (glTF `.glb`, metres, axes, origin, limits, `meta.json`). |
+| [`generator/`](generator/) | The generic wreck generator (JavaScript, three.js): any catalog item → a model at real size, with paint, rust and sediment. Offlined uses the same file. |
+| [`site/`](site/) | The catalog page published on GitHub Pages. |
 | [`tools/`](tools/) | Catalog builder, GEBCO depth reader and the model checker that runs on every pull request. |
 
 ### The catalog in numbers
@@ -54,7 +59,9 @@ Nobody can model 4,537 objects by hand, so every wreck gets the best model avail
    U-boats, all the Liberty ships…).
 3. **Its aircraft type** — `models/vehicle/<id>/` — for sunken aircraft.
 4. **A generic model** drawn by code from its family and its real length and beam (liner, warship, submarine,
-   cargo ship, tanker, sailing ship, aircraft…). *Coming next.*
+   cargo ship, tanker, sailing ship, aircraft…), lying on the seabed with a list, half buried and rusted —
+   always the same for the same wreck. Reefs, vents, archaeological sites and underwater museums get a
+   representative patch.
 
 So the seabed is full from day one, and gets better with every contribution.
 

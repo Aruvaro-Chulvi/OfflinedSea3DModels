@@ -23,6 +23,9 @@ Thank you! There are many ways to help, and most of them need no 3D skills.
    origin where it touches the seabed, under the size limits.
    Free tools that export `.glb`: [Blender](https://www.blender.org) (File › Export › glTF 2.0, format
    *glTF Binary*, "+Y Up" ticked), [gltf.report](https://gltf.report) to inspect and compress (meshopt).
+   Tip: on the [catalog page](https://aruvaro-chulvi.github.io/OfflinedSea3DModels/) every wreck has a
+   *Download .glb* button with its generic model, already at the right size, axes and origin — import it in
+   Blender and build on it.
 3. Add `models/<item|class|vehicle>/<Q…>/model.glb`, `meta.json` and, if you can, `preview.jpg`.
 4. Run `python tools/validate.py models/item/Q…` (Python 3.10+, nothing to install) and fix what it says.
 5. Open a pull request. The same check runs automatically; a maintainer then looks at the model in a viewer.
