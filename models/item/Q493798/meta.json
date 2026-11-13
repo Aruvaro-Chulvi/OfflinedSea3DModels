@@ -1,0 +1,64 @@
+{
+  "id": "Q493798",
+  "kind": "item",
+  "name": "SS Andrea Doria",
+  "state": "broken",
+  "heading": 0,
+  "position": {
+    "lat": 40.49013,
+    "lon": -69.85077,
+    "source": "https://en.wikipedia.org/wiki/SS_Andrea_Doria"
+  },
+  "depth": -73,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "SS Andrea Doria — length 213.8 m, beam 27.5 m, draught 9.1 m, 29,083 GRT, twin screws, three outdoor pools (one per class), lifeboats on the boat deck; the Stockholm struck the starboard side about a third of the length from the bow, nearly 12 m deep; wreck at 40°29.408′N 69°51.046′W, top at 49 m in 1956 and 58 m now, upper decks slid off to the seabed, bow broken off (2016), fishing nets (1995)",
+      "url": "https://en.wikipedia.org/wiki/SS_Andrea_Doria"
+    },
+    {
+      "title": "Kenneth MacLeish, Life (1956), Divers explore the sunken Andrea Doria — 240 ft down, the wreck lies generally north and south, bow to the north, decks at about 85°",
+      "url": "http://www.andreadoria.org/TheDeep/LifeDivers/Life%20Divers.htm"
+    },
+    {
+      "title": "NUMA (2018), Part II: What next? Grand dame Andrea Doria in hospice — on her starboard side; bridge and funnel fallen into a heap by 1974; surveys of 2014 and 2016: most of the superstructure collapsing, bow broken off forward of the fallen bridge, a large crack at the stern, the pool encased in debris",
+      "url": "https://numa.net/2018/07/part-ii-what-next-grand-dame-andrea-doria-in-hospice/"
+    },
+    {
+      "title": "Martha's Vineyard Magazine (2016), Oceanography: deep water — OceanGate survey: 240 ft, on her starboard side, most of the superstructure collapsed onto the sea floor",
+      "url": "https://mvmagazine.com/news/2016/08/01/oceanography-deep-water"
+    },
+    {
+      "title": "Fox News — John Moyer: the steel hull is collapsing onto itself, in its final stage of flattening; nets, wires and fishing line on the wreck",
+      "url": "https://www.foxnews.com/travel/divers-brave-deadly-mount-everest-shipwrecks-famed-wreck-breaks-apart"
+    },
+    {
+      "title": "The Noble Maritime Collection — side-scan sonar by Ben Roberts (Eastern Search & Survey) with Moyer Expeditions, July 2021: lying on her starboard side, about 250 ft down",
+      "url": "https://noblemaritime.org/andrea-doria-home"
+    },
+    {
+      "title": "The Great Ocean Liners — Andrea Doria: long black hull, white funnel with a red top, twin screws; on the wreck the bridge has gone and fishing nets drape the hull",
+      "url": "https://thegreatoceanliners.com/articles/andrea-doria/"
+    },
+    {
+      "title": "Italian Liners — Andrea Doria: the three swimming pools on terraced lido decks at the stern",
+      "url": "https://www.italianliners.com/andrea-doria-en"
+    },
+    {
+      "title": "Hunting New England Shipwrecks — Andrea Doria: 40-29-30N 69-50-36W, 235 ft, lying on her starboard side",
+      "url": "https://www.wreckhunter.net/DataPages/andreadoria-dat.htm"
+    },
+    {
+      "title": "D/V Tenacious — S.S. Andrea Doria: 77 m (255 ft), the 45-foot wound of the collision",
+      "url": "https://dvtenacious.com/s-s-andrea-doria/"
+    }
+  ],
+  "triangles": 35673,
+  "notes": "Built by code (model_sources/Q493798_andrea_doria.py, tools/meshkit.py) with AI assistance. The hull (~164 m, node 'hull') lies on her starboard side in about 73 m of water, bow to the north, her decks facing east, flattening as she collapses (the port side, now on top, about 18 m above the sand, sagging in amidships). The superstructure has sheared off: ragged stumps of the promenade deck walls, holes and beams on the exposed upper deck, and beside her on the sand (node 'debris_field') the fallen decks of the three tiers, walls with their windows, the funnel and the bridge in crushed heaps, the masts and kingposts, twisted davits and two of the pools. The bow (~48 m, node 'bow_section') has broken off forward of the bridge, slewed a little and a few metres away; there is a crack across the stern; fishing nets and lines (node 'nets') over the hull and the debris; sand banked against both sides ('sediment'); the hole torn by the Stockholm is modelled on the starboard side, now below the sand line. Paint faded under growth (hydroids, white anemones). model_built.glb: the liner as she sailed (black hull, white superstructure in tiers, funnel, masts, 16 lifeboats, the three terraced pools aft). Approximate: the heading (from the 1956 Life account; no recent compass bearing found), the depth to the sand (235–255 ft in the sources), the hull depth and the heights of decks, funnel and masts, the extent of each superstructure tier, the positions of pools, hatches and kingposts, the length of the bow section, the layout of the debris field and of the nets, and how far the hull has flattened."
+}

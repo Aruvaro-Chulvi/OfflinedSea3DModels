@@ -1,0 +1,60 @@
+{
+  "id": "Q150857",
+  "kind": "item",
+  "name": "Bismarck",
+  "state": "broken",
+  "heading": 0,
+  "position": {
+    "lat": 48.16667,
+    "lon": -16.2,
+    "source": "https://en.wikipedia.org/wiki/German_battleship_Bismarck"
+  },
+  "depth": -4791,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "German battleship Bismarck — dimensions and armament; the wreck: found by Ballard on 8 June 1989 at ~4,791 m, upright on an extinct volcano after a ~2 km landslide, stern missing, the 2001 and 2002 expeditions, shell holes and hull damage",
+      "url": "https://en.wikipedia.org/wiki/German_battleship_Bismarck"
+    },
+    {
+      "title": "Bismarck-class battleship — clipper bow, three propellers, hangars beside the funnel and under the mainmast, cranes, SL-8 directors, fire-control cupolas with FuMO 23 radar",
+      "url": "https://en.wikipedia.org/wiki/Bismarck-class_battleship"
+    },
+    {
+      "title": "Battleship Bismarck website — general data: length 250.50 m overall, 241.55 m waterline, beam 36 m, depth 15.00 m, draught 9.33 m",
+      "url": "https://kbismarck.com/genedata.html"
+    },
+    {
+      "title": "Battleship Bismarck website — armament: turrets Anton, Bruno, Cæsar, Dora at frames 192.55, 174.35, 64.35, 46.15; 38 cm barrels 19.63 m; three 15 cm twin turrets and four 10.5 cm twin mounts a side",
+      "url": "https://kbismarck.com/armament.html"
+    },
+    {
+      "title": "Battleship Bismarck website — weights: armoured bulkheads at frames 10.5, 32 and 202.7",
+      "url": "https://kbismarck.com/bsweights.html"
+    },
+    {
+      "title": "Battleship Bismarck website — the wreck: upright at 4,790 m, mud up to about the waterline, stern broken away at frame 10.5, main turrets upside down on the bottom, secondary turrets and most flak in place, conning towers and bridge damaged, foremast, mainmast, funnel and rangefinders in the debris field, teak and paint surviving; list of expeditions",
+      "url": "https://kbismarck.com/wreck.html"
+    },
+    {
+      "title": "War History Online — the wreck slid two-thirds of the way down the seamount, the last ~35 ft of the stern broke away, propellers visible, eight shell holes",
+      "url": "https://warhistoryonline.com/instant-articles/bismarck.html"
+    },
+    {
+      "title": "NavWeaps — Do turrets really fall out if a battleship capsizes? (Bismarck's turrets scattered in the debris field)",
+      "url": "https://navweaps.com/index_tech/tech-118.php"
+    },
+    {
+      "title": "Deseret News (1989) — the wreck found upright against a ledge, sediment up to the waterline, twin mounts near the bridge pointing towards each other",
+      "url": "https://www.deseret.com/1989/6/22/18812348/utahn-utah-equipment-helped-find-bismarck/"
+    }
+  ],
+  "triangles": 36687,
+  "notes": "Built by code (model_sources/Q150857_bismarck.py, tools/meshkit.py) with AI assistance. The hull (~236 m) upright, deep in the sediment, its bow nearly buried in the avalanche debris; the stern broken away at frame 10.5 (the after armoured bulkhead, ~14 m missing, not found), with the three propellers just clear of the mud; the four barbettes empty; the upper bridge, the top of the tower mast, the funnel and the mainmast gone, the conning tower and the after control post still there, shell holes in the superstructure, the hangars and the deck, holes above the waterline (seven to port, one to starboard), gashes along the lower edge of the armour belt, the starboard anchor chain fallen through a hole in the bow deck; the 15 cm turrets and the flak still in place; teak decks and grey paint mostly kept at that depth. The four 38 cm turrets (separate nodes) lie upside down with their torn trunks and machinery sticking up; Caesar lost a barrel, which lies beside it. The debris field holds the foretop with its rangefinder cupola, the funnel, the mainmast, the after cupola, a crane jib, searchlights, boats, plates, beams and pipes. Behind the stern runs the lower ~550 m of the slide track up the slope (the landslide was about 2 km long; the impact crater is not modelled). model_built.glb: the battleship as she sailed in May 1941 (grey, no camouflage stripes or recognition markings), with an Arado Ar 196 on the catapult. Approximate: the heading (no published value was found; left at 0), the direction of the slope, the places and attitudes of the turrets and of the debris, the extent of the damage, the superstructure layout and heights, and the hull lines."
+}

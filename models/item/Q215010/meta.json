@@ -1,0 +1,55 @@
+{
+  "id": "Q215010",
+  "kind": "item",
+  "name": "Yamato",
+  "state": "broken",
+  "heading": 310,
+  "depth": -345,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Japanese battleship Yamato — length 263 m, beam 38.9 m, draught 11 m; three triple 46 cm turrets, 15.5 cm and 12.7 cm guns, 25 mm AA (1945); the wreck at 340 m in two main pieces",
+      "url": "https://en.wikipedia.org/wiki/Japanese_battleship_Yamato"
+    },
+    {
+      "title": "大和 (戦艦) — waterline 256 m; the wreck: bow (~90 m) listing to starboard heading 310°, stern part capsized heading east, midships wreckage ~70 m south, turrets No. 2, 3, 1 from north to south, three propellers on and one stuck in the seabed, hole in the port bottom, bridge under the bow, 1985/1999/2016 surveys",
+      "url": "https://ja.wikipedia.org/wiki/%E5%A4%A7%E5%92%8C_(%E6%88%A6%E8%89%A6)"
+    },
+    {
+      "title": "Combined Fleet (A. Tully), IJN Mysteries — bow half 90 m, broken abaft No. 1 barbette, heading ~310°, less than 50 m from the stern part; rear part keel up running west–east, rudders to the east",
+      "url": "https://www.combinedfleet.com/atully08.htm"
+    },
+    {
+      "title": "Pacific Wrecks — Yamato: forward section on its starboard side, stern upside down with turrets nearby, large debris field; 1985 and 2016 surveys",
+      "url": "https://pacificwrecks.com/ship/ijn/yamato.html"
+    },
+    {
+      "title": "Diamond Online (2017) — the 2016 Kure survey: the bow, upright in 1999, now lies on its side",
+      "url": "https://diamond.jp/articles/-/137942"
+    },
+    {
+      "title": "Chugoku Shimbun, 14 June 2016 — Kure survey: main turret upside down at ~350 m with its 15 m rangefinder, the other two turrets apart, midships and stern 'arched', joined by a little structure, explosion hole, powder cans everywhere, survey area 400 × 450 m",
+      "url": "https://www.chugoku-np.co.jp/articles/-/61074"
+    },
+    {
+      "title": "Hiroshima Peace Media — 大和船体 三つに分裂 (the hull in three pieces; top of turret No. 2 about 170 m from the bow section)",
+      "url": "https://www.hiroshimapeacemedia.jp/?p=70676"
+    },
+    {
+      "title": "Toretabi / Yamato Museum (2017) — the stern propeller about 5 m across; the wreck at about 350 m",
+      "url": "https://www.toretabi.jp/pr/yamato_museum2017/01.html"
+    },
+    {
+      "title": "40 cm/45 Type 94 naval gun (the 46 cm main gun) — barrel 20.7 m",
+      "url": "https://en.wikipedia.org/wiki/40_cm/45_Type_94_naval_gun"
+    }
+  ],
+  "triangles": 41763,
+  "notes": "Built by code (model_sources/Q215010_yamato.py, tools/meshkit.py) with AI assistance. The file is laid out with +Z to 310° (the bow section's heading) and the origin under the middle of the capsized after part, the biggest piece. Bow section (~88 m, broken between the barbettes of turrets No. 1 and No. 2) fallen over on its starboard side and pointing north-west: barbette No. 1 open and empty, breakwater, the chrysanthemum crest on the stem without its gold, one anchor missing, the bulbous bow cracked and crumbling, a gap between the upper and lower parts of the bow, the tower bridge crushed under it. After part (midships and stern, ~168 m) capsized, keel up and almost level, the broken end to the west and the rudders to the east, less than 50 m from the bow: the shattered midships bent away from the stern and joined to it by a strip of bottom plating, a hole in the port bottom showing boilers and shafts, three propellers and both rudders in place. Debris field: the three main turrets upside down with their barrels in the mud (No. 2, No. 3, No. 1 from north to south; No. 1 standing, No. 2 broken with its handling room tilted, No. 3 half buried), two 15.5 cm turrets (one with its middle muzzle burst), three mounds of midships wreckage about 70 m south (superstructure, armour, boilers, a piece of the funnel, the mainmast), the after fire-control tower and the starboard outer propeller by the stern, a catapult, gun mounts, plates and main-gun powder cans. model_built.glb: the battleship as she sailed on her last sortie (April 1945: two 15.5 cm turrets, twelve twin 12.7 cm and many triple 25 mm mounts). Approximate: hull lines and superstructure (from photos and general plans, not drawings), the length of each section (sources give 90 + 170 to 186 m, more than the ship), the roll of the bow (~70°), the exact spots and headings of the turrets, mounds and debris (only their order and rough distances are published), the side of the bottom hole (port per the 2016 survey, starboard in older accounts) and the height of the turret trunks."
+}

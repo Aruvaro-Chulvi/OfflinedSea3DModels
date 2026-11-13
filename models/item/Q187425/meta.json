@@ -1,0 +1,52 @@
+{
+  "id": "Q187425",
+  "kind": "item",
+  "name": "RMS Lusitania",
+  "state": "broken",
+  "heading": 45,
+  "position": {
+    "lat": 51.4124,
+    "lon": -8.5479,
+    "source": "https://www.shipwreckworld.com/maps/rms-lusitania"
+  },
+  "depth": -93,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "RMS Lusitania — dimensions (length 239.9 m, beam 26.8 m, depth 17.3 m, draught 10.2 m, 43.9 m keel to funnel tops), four propellers, lifeboats in 1915; the wreck on her starboard side at about 30°, in 93 m, collapsed, covered in fishing nets, three of the four propellers removed by Oceaneering in 1982",
+      "url": "https://en.wikipedia.org/wiki/RMS_Lusitania"
+    },
+    {
+      "title": "Marine Institute — New sonar imagery of the wreck of the RMS Lusitania (R.V. Celtic Voyager): lying on her starboard side, over 14 m high above the seabed, bow pointing NE",
+      "url": "https://marine.ie/site-area/news-events/news/new-sonar-imagery-wreck-rms-lusitania"
+    },
+    {
+      "title": "INFOMAR — RMS Lusitania: 93 m deep, 11.5 nautical miles off the Old Head of Kinsale, slowly collapsing, the bow still proud of the seabed; surveyed repeatedly since 2002",
+      "url": "https://infomar.ie/node/460"
+    },
+    {
+      "title": "Irish Examiner (2024) — The Lusitania wreck is facing collapse: two parts at a 30-40° slant on her starboard side, the upper port side fallen onto the starboard decks, funnels gone, boilers lying horizontal and visible from outside, the last propeller trapped on the starboard side",
+      "url": "https://www.irishexaminer.com/news/arid-41480002.html"
+    },
+    {
+      "title": "Leigh Bishop, Advanced Diver Magazine — Lusitania: bow intact, beam reduced to about half, hull folded in on itself, counter stern no longer visible, docking bridge on the starboard seabed in a debris field, three propellers blasted off in 1982",
+      "url": "https://advanceddivermagazine.com/articles/lusitania/lusitania.html"
+    },
+    {
+      "title": "ShipwreckWorld — RMS Lusitania: wreck position 51°24'44.6\"N 8°32'52.3\"W, 93 m; break amidships, stern split wide open, hull nearly flattened save the bow, superstructure and funnels gone, fishing nets",
+      "url": "https://www.shipwreckworld.com/maps/rms-lusitania"
+    },
+    {
+      "title": "Irish Wrecks Online — Lusitania: bow points north-north-east, lists to starboard, badly broken up",
+      "url": "https://irishwrecksonline.net/details/Lusitania608.htm"
+    }
+  ],
+  "triangles": 44052,
+  "notes": "Built by code (model_sources/Q187425_lusitania.py, tools/meshkit.py) with AI assistance. The wreck as it lies today in 93 m off the Old Head of Kinsale: rolled onto her starboard side, the superstructure and the four funnels gone, the upper port side slumped onto the starboard decks so the hull stands about 14 m high (highest at the bow, the best-preserved part, and almost flat at the stern, split open, with the counter stern crushed into the mud); a break amidships with torn plates; plates rotted away on the port side, showing the dark inside and some boilers lying on their sides; collapsed decks heaped on the starboard (deck) side; fishing nets draped over the forecastle and the hull, some held up like curtains by their floats; sediment heaped along the hull; the port shafts cut where three propellers were removed in 1982 and the last starboard propeller trapped under the hull; a debris field on the starboard seabed with the fallen docking bridge, davits, pieces of funnel, ventilators, plates, beams and two boilers. Nodes: hull, nets, mud, debris_field. model_built.glb: the liner as she sailed in 1915 (four funnels, two masts and the aerial, 22 lifeboats in davits, four four-bladed propellers). Approximate: the roll angle (about 58-64° here, read from 'starboard side at a 30-40° angle'), the height of the collapse along the hull, the place of the break (put just aft of the third funnel), the heading (45°, NE from the multibeam image; an older list says NNE), deck heights, funnel positions, the nets and the debris layout."
+}

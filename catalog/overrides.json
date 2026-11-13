@@ -43,6 +43,12 @@
       "depth": -3830,
       "note": "Bow section of the wreck (stern ~4 km to the NNE, 3,565 m). The Wikidata point is off Cape Finisterre, where the ship got into trouble.",
       "source": "https://bibrepo.uca.es/articuloscientificos/32481810.pdf"
+    },
+    "Q187425": { "lat": 51.4124,
+      "lon": -8.5479,
+      "depth": -93,
+      "note": "Wreck site from the multibeam survey (the Wikidata point is ~470 m away); she lies on her starboard side, bow to the north-east.",
+      "source": "https://marine.ie/site-area/news-events/news/new-sonar-imagery-wreck-rms-lusitania"
     }
   }
 }
