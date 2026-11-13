@@ -150,8 +150,8 @@ function dispose(o) { o.traverse(x => { if (x.geometry) x.geometry.dispose(); if
 async function build(it) {
   if (model) { scene.remove(model); dispose(model); model = null; }
   const own = ownOf(it);
-  if (own && !clean) {
-    const g = await gltf.loadAsync(`models/${own[0]}/${own[1].id}/model.glb`);
+  if (own && (!clean || own[1].built)) {                   // own model: the wreck, or the ship as built if there is one
+    const g = await gltf.loadAsync(`models/${own[0]}/${own[1].id}/${clean ? "model_built.glb" : "model.glb"}`);
     model = g.scene;
   } else {
     model = buildWreck(THREE, it, { clean }).mesh;
@@ -199,7 +199,7 @@ function card(it) {
     <div class="links"><a href="${wp}" target="_blank" rel="noopener">${t("wp")} (${wpL})</a>
       <a href="https://www.wikidata.org/wiki/${it.q}" target="_blank" rel="noopener">${t("wd")}</a></div>
     <div class="model${own ? " own" : ""}">${mtxt}</div>
-    <div class="btns">${own ? "" : `<button id="b-wreck" class="${clean ? "" : "on"}">${t("asWreck")}</button><button id="b-built" class="${clean ? "on" : ""}">${t("asBuilt")}</button><button id="b-glb">${t("glb")}</button>`}</div>
+    <div class="btns">${own && !own[1].built ? "" : `<button id="b-wreck" class="${clean ? "" : "on"}">${t("asWreck")}</button><button id="b-built" class="${clean ? "on" : ""}">${t("asBuilt")}</button>`}${own ? "" : `<button id="b-glb">${t("glb")}</button>`}</div>
     <div class="fam" style="margin-top:8px;font-size:12px">${t("approx")}</div>`;
   $("card").hidden = false; resize();
   $("b-min").onclick = () => { $("card").classList.toggle("min"); card(it); };
