@@ -15,6 +15,6 @@
     { "title": "National Geographic — complete mosaic of the wreck (2023)", "url": "https://www.nationalgeographic.com/magazine/article/titanic-shipwreck-revealed-complete-mosaic-images-b" },
     { "title": "Live Science — Titanic wreck site mapped for the first time (2012)", "url": "https://livescience.com/18975-titanic-shipwreck-map.html" }
   ],
-  "triangles": 31466,
+  "triangles": 26088,
   "notes": "Built by code (model_sources/Q25173_titanic.py, tools/meshkit.py) with AI assistance. Bow section (~143 m) upright, ploughed into a mud ridge, funnels gone, foremast fallen over the bridge; stern section (~109 m) collapsed about 600 m to the south, facing the opposite way; debris field with five boilers near the stern. Headings are approximate (bow roughly north)."
 }

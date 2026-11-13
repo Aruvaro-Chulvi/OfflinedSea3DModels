@@ -265,6 +265,7 @@ def mud_h(X, Z):
 
 mud = grid(-42, 42, ztip - 110, ztip + 26, 42, 68, mud_h, (0.52, 0.49, 0.43))
 mud.paint(lambda p: (0.62, 0.58, 0.5) + (fbm(p, 0.12, 9)[:, None] - 0.5) * 0.1)
+mud.f = mud.f[mud.v[mud.f][:, :, 1].max(axis=1) > 0.15]   # only the ridges: no flat sheet that could show above another seabed
 
 # ── Stern section ────────────────────────────────────────────────────────────
 STERN_START = 160.0
