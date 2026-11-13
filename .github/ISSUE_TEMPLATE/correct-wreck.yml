@@ -1,0 +1,44 @@
+name: "📍 Correct a wreck / Corregir un pecio"
+description: "Wrong position, depth or heading, or something that is not under the sea. / Posición, profundidad o rumbo equivocados, o algo que no está bajo el mar."
+title: "[Correct] "
+labels: ["catalog"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks! One wreck per report, please, and always a source we can check.
+        ¡Gracias! Un pecio por aviso, por favor, y siempre una fuente que se pueda comprobar.
+  - type: input
+    id: qid
+    attributes:
+      label: "Wikidata id or name / Id de Wikidata o nombre"
+      placeholder: "Q25173 — RMS Titanic"
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: "Problem / Problema"
+      options:
+        - "Wrong position / Posición equivocada"
+        - "Wrong depth / Profundidad equivocada"
+        - "Heading of the wreck / Rumbo del pecio"
+        - "Not under the sea (museum, raised, on land) / No está bajo el mar (museo, reflotado, en tierra)"
+        - "Wrong family (liner, warship, submarine…) / Familia equivocada (transatlántico, buque de guerra, submarino…)"
+        - "Other / Otro"
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: "Correct value / Valor correcto"
+      description: "e.g. 41.7325, -49.9469 · −3,800 m · bow to 33° / p. ej. 41,7325, -49,9469 · −3.800 m · proa a 33°"
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: "Source / Fuente"
+      description: "A link to a survey, a paper, a dive guide, an official register… / Un enlace a un estudio, un artículo, una guía de buceo, un registro oficial…"
+    validations:
+      required: true

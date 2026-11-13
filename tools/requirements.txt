@@ -1,0 +1,3 @@
+# Only build_catalog.py / gebco_depth.py need it (to read the GEBCO WebP tiles).
+# validate.py uses the standard library only.
+Pillow>=10

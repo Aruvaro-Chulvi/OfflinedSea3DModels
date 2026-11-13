@@ -1,0 +1,38 @@
+name: "🚢 Model request / Pedir un modelo"
+description: "A wreck, aircraft or underwater place you would like to see in 3D. / Un pecio, avión o lugar submarino que te gustaría ver en 3D."
+title: "[Model] "
+labels: ["model request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Plans, photos and survey images help whoever makes the model. Please check there is no request for it yet.
+        Los planos, fotos e imágenes de estudios ayudan a quien haga el modelo. Comprueba que no lo ha pedido nadie ya.
+  - type: input
+    id: qid
+    attributes:
+      label: "Wikidata id or name / Id de Wikidata o nombre"
+      placeholder: "Q25173 — RMS Titanic"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: "Kind / Tipo"
+      options:
+        - "One wreck or site (item) / Un pecio o lugar (item)"
+        - "A whole vessel class (class) / Toda una clase de barcos (class)"
+        - "An aircraft type (vehicle) / Un modelo de avión (vehicle)"
+    validations:
+      required: true
+  - type: textarea
+    id: refs
+    attributes:
+      label: "References / Referencias"
+      description: "Plans, photos, videos, surveys (links). Say their licence if you know it. / Planos, fotos, vídeos, estudios (enlaces). Indica su licencia si la sabes."
+  - type: checkboxes
+    id: me
+    attributes:
+      label: "I'd like to make it myself / Me gustaría hacerlo yo"
+      options:
+        - label: "Yes / Sí"

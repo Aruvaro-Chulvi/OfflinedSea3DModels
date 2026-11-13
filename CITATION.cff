@@ -1,0 +1,37 @@
+cff-version: 1.2.0
+message: "If you use Offlined Sea 3D Models, credit the authors of each model (see its meta.json) together with this project."
+type: dataset
+title: "Offlined Sea 3D Models"
+abstract: >-
+  Open 3D models of shipwrecks, sunken aircraft and other underwater places that have a Wikipedia article,
+  at real size and placed on the seabed by their Wikidata id, plus a catalog of everything under the sea with
+  an article. Made by the community, for Offlined and for anyone. Models CC BY 4.0 or CC0 1.0, catalog CC0 1.0,
+  code MIT.
+authors:
+  - given-names: "Álvaro"
+    family-names: "C. Chulvi"
+    affiliation: "Offlined"
+    website: "https://www.offlined.org"
+repository-code: "https://github.com/Aruvaro-Chulvi/OfflinedSea3DModels"
+url: "https://www.offlined.org"
+license: CC-BY-4.0
+keywords:
+  - shipwrecks
+  - 3D models
+  - glTF
+  - underwater
+  - Wikidata
+  - Wikipedia
+  - offline
+  - Offlined
+references:
+  - type: database
+    title: "Wikidata"
+    authors:
+      - name: "Wikidata contributors"
+    url: "https://www.wikidata.org"
+  - type: database
+    title: "GEBCO Grid"
+    authors:
+      - name: "GEBCO Compilation Group"
+    url: "https://www.gebco.net"

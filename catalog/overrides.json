@@ -1,0 +1,13 @@
+{
+  "_help": "Hand corrections, by Wikidata id. Keys: exclude (true) or include (true: add an item Wikidata classes otherwise), lat/lon (real wreck site), depth (m, negative), heading (bow, degrees clockwise from north), fam (generic model family), note. Always give the reason and a source.",
+  "items": {
+    "Q3018259":   { "exclude": true, "note": "Same wreck as Q25173 (RMS Titanic).", "source": "https://www.wikidata.org/wiki/Q3018259" },
+    "Q2004262":   { "exclude": true, "note": "Memorial built over the wreck of Q506022 (USS Arizona).", "source": "https://en.wikipedia.org/wiki/USS_Arizona_Memorial" },
+    "Q544894":    { "exclude": true, "note": "Raised in 1982; now in the Mary Rose Museum, Portsmouth.", "source": "https://en.wikipedia.org/wiki/Mary_Rose" },
+    "Q190542":    { "exclude": true, "note": "Refloated in 2014 and scrapped in Genoa.", "source": "https://en.wikipedia.org/wiki/Costa_Concordia" },
+    "Q215010":    { "fam": "warship", "note": "Battleship.", "source": "https://en.wikipedia.org/wiki/Japanese_battleship_Yamato" },
+    "Q521459":    { "include": true, "fam": "vent", "note": "Hydrothermal field (Wikidata class not under 'hydrothermal vent').", "source": "https://en.wikipedia.org/wiki/Lost_City_Hydrothermal_Field" },
+    "Q105992189": { "include": true, "fam": "museum", "depth": -14, "note": "Underwater sculpture museum at 12–15 m, off Playa Blanca.", "source": "https://es.wikipedia.org/wiki/Museo_Atl%C3%A1ntico_de_Lanzarote" },
+    "Q869818":    { "include": true, "fam": "site", "depth": -17, "note": "Submerged bronze statue at about 17 m, San Fruttuoso bay.", "source": "https://en.wikipedia.org/wiki/Christ_of_the_Abyss" }
+  }
+}
