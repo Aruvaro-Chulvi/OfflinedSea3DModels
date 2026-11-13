@@ -49,6 +49,12 @@
       "depth": -93,
       "note": "Wreck site from the multibeam survey (the Wikidata point is ~470 m away); she lies on her starboard side, bow to the north-east.",
       "source": "https://marine.ie/site-area/news-events/news/new-sonar-imagery-wreck-rms-lusitania"
+    },
+    "Q1291512": { "lat": 11.583,
+      "lon": 165.508,
+      "depth": -52,
+      "note": "Wikidata copies the Yamato's position. Nagato capsized in the north-east of the Bikini lagoon after test Baker (11°35'N 165°31'E) and lies upside down on the bottom at about 52 m; the exact wreck position is approximate.",
+      "source": "https://en.wikipedia.org/wiki/Operation_Crossroads"
     }
   }
 }
