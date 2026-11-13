@@ -1,0 +1,57 @@
+{
+  "id": "Q1977186",
+  "kind": "item",
+  "name": "MV Prestige",
+  "state": "broken",
+  "heading": 0,
+  "position": {
+    "lat": 42.1667,
+    "lon": -12.05,
+    "source": "https://bibrepo.uca.es/articuloscientificos/32481810.pdf"
+  },
+  "depth": -3830,
+  "pieces": {
+    "stern_section": {
+      "lat": 42.2,
+      "lon": -12.0333,
+      "heading": 40,
+      "depth": -3565,
+      "source": "https://bibrepo.uca.es/articuloscientificos/32481810.pdf"
+    }
+  },
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "MV Prestige — single-hull tanker of 1976: length 243 m, beam 34.4 m, depth 18.7 m, draught 14 m",
+      "url": "https://en.wikipedia.org/wiki/MV_Prestige"
+    },
+    {
+      "title": "Ercilla et al. (2006), Geological characterization of the Prestige sinking area, Marine Pollution Bulletin — stern at 3,565 m, bow at 3,830 m",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16769414/"
+    },
+    {
+      "title": "EGU 2005 abstract — the wreck on the south-western edge of the Galicia Bank",
+      "url": "https://www.meetings.copernicus.org/www.cosis.net/abstracts/EGU05/03622/EGU05-J-03622.pdf"
+    },
+    {
+      "title": "Positions of the bow and stern sections (approx. 42°10'N 12°03'W and 42°12'N 12°02'W)",
+      "url": "https://bibrepo.uca.es/articuloscientificos/32481810.pdf"
+    },
+    {
+      "title": "Cedre — Prestige accident report (broke in two at 42°15'N 12°08'W, 19 November 2002)",
+      "url": "https://cedre.fr/en/resources/accident-reports/prestige"
+    },
+    {
+      "title": "Majorca Daily Bulletin (2002) — the Nautile finds cracks in the bow and the stern",
+      "url": "https://majorcadailybulletin.com/news/local/2002/12/10/6430/sub-finds-more-cracks-stern-sunken-tanker.html"
+    }
+  ],
+  "triangles": 35146,
+  "notes": "Built by code (model_sources/Q1977186_prestige.py, tools/meshkit.py) with AI assistance. Two pieces a few kilometres apart on the slope of the Galicia Bank: the bow section (~112 m, 3,830 m) and the stern section (~127 m, 3,565 m, node 'stern_section', placed with 'pieces'). Torn ends with the inside of the tanks black with fuel, buckled deck, cracks with the patches fitted in 2003, the fittings used in 2004 to pump out the fuel, fuel residue on the hull and the sediment, debris near each break. model_built.glb: the tanker as she sailed. Headings, the length of each section and the layout of cracks, patches and fittings are approximate."
+}

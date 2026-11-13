@@ -250,9 +250,11 @@ def _srgb_to_linear(c):
 
 # ── glTF binary ─────────────────────────────────────────────────────────────
 def write_glb(path, parts, generator="Offlined Sea 3D Models meshkit"):
-    """parts: [(name, Mesh)] -> one node per part, one shared vertex-colour material."""
+    """parts: [(name, Mesh)] or [(name, Mesh, {"translation": [x, y, z], "rotation": [qx, qy, qz, qw]})]
+    -> one node per part, one shared vertex-colour material."""
     binbuf = bytearray()
     views, accs, meshes, nodes = [], [], [], []
+    parts = [(p[0], p[1], p[2] if len(p) > 2 else {}) for p in parts]
 
     def view(data, target):
         while len(binbuf) % 4:
@@ -261,7 +263,7 @@ def write_glb(path, parts, generator="Offlined Sea 3D Models meshkit"):
         views.append({"buffer": 0, "byteOffset": off, "byteLength": len(data), "target": target})
         return len(views) - 1
 
-    for name, m in parts:
+    for name, m, trs in parts:
         if not len(m.f):
             continue
         n = normals(m)
@@ -281,7 +283,9 @@ def write_glb(path, parts, generator="Offlined Sea 3D Models meshkit"):
         ]
         meshes.append({"name": name, "primitives": [{"attributes": {"POSITION": a0, "NORMAL": a0 + 1, "COLOR_0": a0 + 2},
                                                      "indices": a0 + 3, "material": 0}]})
-        nodes.append({"name": name, "mesh": len(meshes) - 1})
+        node = {"name": name, "mesh": len(meshes) - 1}
+        node.update({k: [float(x) for x in trs[k]] for k in ("translation", "rotation") if k in trs})
+        nodes.append(node)
     g = {
         "asset": {"version": "2.0", "generator": generator},
         "scene": 0, "scenes": [{"nodes": list(range(len(nodes)))}], "nodes": nodes, "meshes": meshes,
@@ -298,4 +302,11 @@ def write_glb(path, parts, generator="Offlined Sea 3D Models meshkit"):
         fh.write(b"glTF" + struct.pack("<II", 2, total))
         fh.write(struct.pack("<II", len(js), 0x4E4F534A) + js)
         fh.write(struct.pack("<II", len(binbuf), 0x004E4942) + bytes(binbuf))
-    return sum(len(m.f) for _, m in parts), total
+    return sum(len(p[1].f) for p in parts), total
+
+
+def yaw_quat(heading_deg):
+    """Node rotation so that a piece built bow-to-+Z points to heading_deg (clockwise from north) in a model whose
+    own heading is 0 (+Z = north, +X = west)."""
+    a = -math.radians(heading_deg)
+    return [0.0, math.sin(a / 2), 0.0, math.cos(a / 2)]

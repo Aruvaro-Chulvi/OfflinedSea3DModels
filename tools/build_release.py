@@ -18,7 +18,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 REPO = "https://github.com/Aruvaro-Chulvi/OfflinedSea3DModels"
-META_KEYS = ("name", "state", "heading", "position", "depth", "authors", "license", "triangles", "based_on")
+META_KEYS = ("name", "state", "heading", "position", "depth", "pieces", "authors", "license", "triangles", "based_on")
 
 
 def main():

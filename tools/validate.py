@@ -106,7 +106,7 @@ def check_glb(p: Path, kind: str, err, warn):
             if "min" in a and "max" in a:
                 lo = [min(x, y) for x, y in zip(lo, a["min"])]; hi = [max(x, y) for x, y in zip(hi, a["max"])]
     ext = [h - l for l, h in zip(lo, hi)] if hi[0] > -1e17 else None
-    return {"triangles": tris, "extent": ext}
+    return {"triangles": tris, "extent": ext, "nodes": {n.get("name") for n in g.get("nodes", [])}}
 
 
 def check_folder(d: Path, catalog: dict, errors: list, warnings: list):
@@ -161,6 +161,16 @@ def check_folder(d: Path, catalog: dict, errors: list, warnings: list):
             err("position needs lat, lon and source")
     if "depth" in m and not (isinstance(m["depth"], (int, float)) and m["depth"] < 0):
         err("depth is in metres below sea level, negative")
+    if "pieces" in m:
+        pcs = m["pieces"]
+        if not isinstance(pcs, dict) or not pcs:
+            err("pieces: an object {node name: {lat, lon, heading?, depth?, source}}")
+        else:
+            for nm, pc in pcs.items():
+                if not (isinstance(pc, dict) and -90 <= pc.get("lat", 999) <= 90 and -180 <= pc.get("lon", 999) <= 180 and pc.get("source")):
+                    err(f"pieces.{nm} needs lat, lon and source")
+                if "heading" in pc and not (isinstance(pc["heading"], (int, float)) and 0 <= pc["heading"] < 360):
+                    err(f"pieces.{nm}.heading must be 0-359")
     for f in ("model.glb", "model_built.glb"):
         if (d / f).exists():
             info = check_glb(d / f, kind, err, warn)
@@ -172,6 +182,9 @@ def check_folder(d: Path, catalog: dict, errors: list, warnings: list):
                         warn(f"model is about {L:.0f} m long, Wikidata says {c['length']:.0f} m: is it in metres?")
                 if "triangles" not in m:
                     warn(f"{info['triangles']:,} triangles (you can add \"triangles\" to meta.json)")
+                for nm in (m.get("pieces") or {}):
+                    if nm not in info["nodes"]:
+                        err(f"pieces.{nm}: there is no node with that name in model.glb")
     pv = d / "preview.jpg"
     if pv.exists():
         sz = image_size(pv.read_bytes()[:65536])

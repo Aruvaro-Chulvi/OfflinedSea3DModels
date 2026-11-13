@@ -78,6 +78,7 @@ Cada carpeta lleva:
 | `heading` | sí (item) | Hacia dónde apunta la **proa**, en grados desde el norte en el sentido de las agujas del reloj (0–359). |
 | `position` | no | Solo si el pecio no está donde dice el catálogo: `lat`, `lon` y una `source`. |
 | `depth` | no | Profundidad real del pecio en metros (negativa), si se sabe mejor que con la malla de ~1 km de GEBCO. |
+| `pieces` | no | Para un pecio partido en trozos muy separados (más de 1 km, o a distintas profundidades): `{ "nombre del nodo": { lat, lon, heading, depth, source } }`. Cada uno de esos nodos se modela alrededor de su propio origen (en el archivo puede estar a su distancia de la pieza principal, con +Z al norte y +X al oeste); los programas que conocen el fondo lo colocan en su sitio. |
 | `authors` | sí | Todas las personas que lo han hecho. `url` es opcional. |
 | `license` | sí | `CC-BY-4.0` o `CC0-1.0`. No se acepta otra (ver [NOTICE](../NOTICE.md)). |
 | `sources` | sí | Los planos, fotos, estudios o artículos que has usado. Al menos uno. |

@@ -78,6 +78,7 @@ Each folder holds:
 | `heading` | yes (item) | Where the **bow** points, in degrees clockwise from north (0–359). |
 | `position` | no | Only if the wreck site differs from the catalog's: `lat`, `lon` and a `source`. |
 | `depth` | no | Real depth of the wreck in metres (negative), if known better than GEBCO's ~1 km grid. |
+| `pieces` | no | For a wreck broken into pieces lying far apart (more than 1 km, or at different depths): `{ "node name": { lat, lon, heading, depth, source } }`. Each of those nodes is modelled around its own origin (in the file it can sit at its offset from the main piece, with +Z north and +X west); programs that know the seabed place it on its own spot. |
 | `authors` | yes | Everyone who made it. `url` is optional. |
 | `license` | yes | `CC-BY-4.0` or `CC0-1.0`. Nothing else is accepted (see [NOTICE](../NOTICE.md)). |
 | `sources` | yes | The plans, photos, surveys or papers you used. At least one. |
