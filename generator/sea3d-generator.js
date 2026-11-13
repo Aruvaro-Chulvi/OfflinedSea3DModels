@@ -255,7 +255,8 @@ function vessel(K, fam, L, B, built) {
       const z = ms[i] * L, mh = B * 2.4 * (0.12 + 0.45 * r());                          // broken masts
       K.cyl(B * 0.045, B * 0.04, mh, C.woodDark, 0, D(z), z, 7, (r() - 0.5) * 0.3, 0, (r() - 0.5) * 0.3);
     }
-    K.rod(B * 0.035, L * 0.18, C.woodDark, 0, D(0.5 * L) - 0.3, 0.45 * L, 0, -0.35);        // bowsprit  }
+    K.rod(B * 0.035, L * 0.18, C.woodDark, 0, D(0.5 * L) - 0.3, 0.45 * L, 0, -0.35);        // bowsprit
+  }
   return { H };
 }
 
