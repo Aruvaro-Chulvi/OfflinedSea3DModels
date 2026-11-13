@@ -2,13 +2,16 @@
 
 *[Leer en español](README.es.md)*
 
+![Offlined Sea 3D Models: shipwrecks, reefs and vents at real scale — the Titanic, Bismarck, Prestige, Lusitania, Andrea Doria and Yamato](docs/social-preview.png)
+
 **Open 3D models of what lies on the seabed — shipwrecks, sunken aircraft, reefs, underwater sites — each one
 linked to its Wikipedia article and placed where it really is, at real size.**
 
 A project of [Offlined](https://www.offlined.org), the offline library with Wikipedia, maps and the seafloor
 of the whole planet. In Offlined's *Wiki Submarine* you fly over the GEBCO seabed, go down to a place and read
 its article; with these models you will also **see the wreck lying there**: the Titanic broken in two at
-3,800 m, the Thistlegorm with its cargo at 30 m, a U-boat on the North Sea bed.
+3,800 m, the Thistlegorm with its cargo at 30 m, a U-boat on the North Sea bed — and, with one button, the ship
+as she was floating just above her wreck, to compare the two.
 
 **[▶ Browse the catalog in 3D](https://aruvaro-chulvi.github.io/OfflinedSea3DModels/)** — search any wreck, look at it next to a diver
 for scale, open its Wikipedia article, and download its generic model as a starting point for a better one.
@@ -70,7 +73,10 @@ So the seabed is full from day one, and gets better with every contribution.
 
 You can help **without any 3D skills**: correct a position, a depth or a heading, or point out something that
 is not really under the sea. And if you model, a single class model can cover dozens of wrecks.
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+Anyone can also improve an existing model (a better Titanic, say) with a pull request.
+
+Every contribution goes through the automatic check, a review by the maintainer in the viewer, and only then into
+a release — Offlined downloads nothing that has not been published there. See [CONTRIBUTING.md](CONTRIBUTING.md#how-contributions-are-reviewed).
 
 ## Licences
 

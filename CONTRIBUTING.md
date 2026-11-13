@@ -39,6 +39,34 @@ work (or based only on CC BY 4.0 / CC0 works you credit), under **CC BY 4.0** or
 famous wrecks people visit in Offlined. The catalog page will show which have a model and which still use
 the generic one.
 
+### Improving a model that already exists
+
+Anyone can make a better Titanic. Fork the repository and change `models/item/Q25173/` in your fork:
+
+- **Built by code** (a `model_sources/Q…_*.py` script is there): improve the script, run it, and commit the
+  script together with the `.glb` it writes.
+- **Built in Blender or another program**: replace `model.glb` (and `model_built.glb`, `preview.jpg` if you
+  redo them).
+- In `meta.json`, **keep the authors who are already there and add yourself**, and add your sources. If you
+  start from someone else's model, that is what `based_on` is for.
+- In the pull request, say what is better and why (a new survey, a photo, a plan…).
+
+## How contributions are reviewed
+
+Nothing reaches Offlined without three filters:
+
+1. **The automatic check** (GitHub Actions, the same `tools/validate.py`): file format, size and triangle
+   limits, no external files or scripts, licence, authors and sources in `meta.json`, a real Wikidata id, and
+   sizes that match the real ship (a `model_built.glb` that is not about as long as the ship fails).
+2. **A maintainer looks at it** in the viewer before merging, with this list: it is the right wreck; it
+   matches its sources; the size, depth and heading are believable; the licence and authorship are credible
+   (not copied from a paid model or a site with another licence); there is nothing offensive or unrelated.
+   Only maintainers can merge — a pull request on its own changes nothing.
+3. **A release.** Offlined only downloads what is in a published release (its `manifest.json`, with the size
+   and SHA-256 of every file). A merged model waits there until the maintainer publishes the next release.
+
+Models that turn out to be wrong are removed in the next release; the previous release stays available.
+
 ## Code
 
 The catalog builder and the checker are in [`tools/`](tools/) (Python, MIT). To rebuild the catalog you need

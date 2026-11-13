@@ -174,6 +174,15 @@ def check_folder(d: Path, catalog: dict, errors: list, warnings: list):
     for f in ("model.glb", "model_built.glb"):
         if (d / f).exists():
             info = check_glb(d / f, kind, err, warn)
+            if info and f == "model_built.glb":
+                # the ship as built is whole: its length must match the real one (catches models of something else)
+                c = catalog.get(qid)
+                if info["extent"] and c and c.get("length"):
+                    L = max(info["extent"][0], info["extent"][2])
+                    if not 0.5 < L / c["length"] < 2:
+                        err(f"model_built.glb is about {L:.0f} m long, Wikidata says {c['length']:.0f} m: is it the right ship, in metres?")
+                    elif not 0.85 < L / c["length"] < 1.2:
+                        warn(f"model_built.glb is about {L:.0f} m long, Wikidata says {c['length']:.0f} m")
             if info and f == "model.glb":
                 c = catalog.get(qid)
                 if info["extent"] and c and c.get("length") and m.get("state") not in ("broken", "scattered"):

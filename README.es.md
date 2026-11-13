@@ -2,13 +2,16 @@
 
 *[Read in English](README.md)*
 
+![Offlined Sea 3D Models: pecios, arrecifes y fuentes hidrotermales a escala real — el Titanic, el Bismarck, el Prestige, el Lusitania, el Andrea Doria y el Yamato](docs/social-preview.png)
+
 **Modelos 3D abiertos de lo que hay en el fondo del mar —pecios, aviones hundidos, arrecifes, yacimientos
 submarinos—, cada uno unido a su artículo de Wikipedia y colocado donde está de verdad, a su tamaño real.**
 
 Un proyecto de [Offlined](https://www.offlined.org), la biblioteca sin conexión con Wikipedia, mapas y el
 fondo marino de todo el planeta. En el *Wiki Submarino* de Offlined sobrevuelas el fondo de GEBCO, bajas a un
 sitio y lees su artículo; con estos modelos además **verás el pecio ahí tendido**: el Titanic partido en dos a
-3.800 m, el Thistlegorm con su carga a 30 m, un U-Boot en el fondo del mar del Norte.
+3.800 m, el Thistlegorm con su carga a 30 m, un U-Boot en el fondo del mar del Norte; y, con un botón, el barco
+tal como era flotando justo encima de su pecio, para compararlos.
 
 **[▶ Explora el catálogo en 3D](https://aruvaro-chulvi.github.io/OfflinedSea3DModels/)**: busca cualquier pecio, míralo junto a un
 buzo para hacerte una idea del tamaño, abre su artículo de Wikipedia y descarga su modelo genérico como punto de partida
@@ -71,7 +74,10 @@ Así el fondo está lleno desde el primer día y mejora con cada aportación.
 
 Puedes ayudar **sin saber nada de 3D**: corregir una posición, una profundidad o un rumbo, o avisar de algo que
 en realidad no está bajo el mar. Y si modelas, un solo modelo de clase puede servir para decenas de pecios.
-Mira [CONTRIBUTING.es.md](CONTRIBUTING.es.md).
+También se puede mejorar un modelo que ya existe (un Titanic mejor, por ejemplo) con un *pull request*.
+
+Cada aportación pasa por la comprobación automática, la revisión de quien mantiene el proyecto en el visor y, solo
+después, una versión publicada: Offlined no descarga nada que no se haya publicado ahí. Mira [CONTRIBUTING.es.md](CONTRIBUTING.es.md#cómo-se-revisan-las-aportaciones).
 
 ## Licencias
 

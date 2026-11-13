@@ -40,6 +40,34 @@ Los modelos de `class` son los que más rinden: un solo modelo de U-Boot tipo VI
 Después, los pecios famosos que más se visitan en Offlined. La página del catálogo enseñará cuáles tienen
 modelo y cuáles siguen con el genérico.
 
+### Mejorar un modelo que ya existe
+
+Cualquiera puede hacer un Titanic mejor. Haz un *fork* del repositorio y cambia `models/item/Q25173/` en tu copia:
+
+- **Hecho por código** (hay un script `model_sources/Q…_*.py`): mejora el script, ejecútalo y sube el script
+  junto con el `.glb` que escribe.
+- **Hecho en Blender u otro programa**: sustituye `model.glb` (y `model_built.glb`, `preview.jpg` si los rehaces).
+- En `meta.json`, **deja los autores que ya están y añádete**, y añade tus fuentes. Si partes del modelo de
+  otra persona, para eso está `based_on`.
+- En el *pull request*, cuenta qué mejora y por qué (un estudio nuevo, una foto, un plano…).
+
+## Cómo se revisan las aportaciones
+
+Nada llega a Offlined sin pasar tres filtros:
+
+1. **La comprobación automática** (GitHub Actions, el mismo `tools/validate.py`): formato, límites de tamaño
+   y de triángulos, nada de archivos externos ni scripts, licencia, autores y fuentes en `meta.json`, un id
+   de Wikidata real, y medidas que cuadran con el barco real (un `model_built.glb` que no mide más o menos lo
+   que el barco no pasa).
+2. **Una persona que mantiene el proyecto lo mira** en el visor antes de aceptarlo, con esta lista: es el
+   pecio correcto; cuadra con sus fuentes; el tamaño, la profundidad y el rumbo son creíbles; la licencia y la
+   autoría son creíbles (no está copiado de un modelo de pago ni de una web con otra licencia); no hay nada
+   ofensivo ni ajeno. Solo quien mantiene el proyecto puede aceptar: un *pull request* por sí solo no cambia nada.
+3. **Una versión publicada.** Offlined solo descarga lo que está en una versión publicada (su `manifest.json`,
+   con el tamaño y el SHA-256 de cada archivo). Un modelo aceptado espera ahí hasta que se publica la siguiente.
+
+Si un modelo resulta estar mal, se quita en la versión siguiente; la anterior sigue disponible.
+
 ## Código
 
 El generador del catálogo y el comprobador están en [`tools/`](tools/) (Python, MIT). Para rehacer el catálogo

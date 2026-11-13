@@ -1,5 +1,6 @@
 """
-Prepare a release: every model as one file plus manifest.json (what Offlined downloads).
+Prepare a release: every model as one file (plus "-built.glb", the ship as built, when there is one)
+and manifest.json (what Offlined downloads).
 
     python tools/build_release.py models-2026-11-14          -> dist/
     gh release create models-2026-11-14 dist/* --title ... --notes ...
@@ -40,6 +41,11 @@ def main():
             data = (out / name).read_bytes()
             m = {"kind": kind, "id": d.name, "file": name, "size": len(data), "sha256": hashlib.sha256(data).hexdigest()}
             m.update({k: meta[k] for k in META_KEYS if k in meta})
+            if (d / "model_built.glb").exists():                     # the ship as built (optional; older Offlined ignores it)
+                bname = f"{kind}-{d.name}-built.glb"
+                shutil.copy2(d / "model_built.glb", out / bname)
+                bdata = (out / bname).read_bytes()
+                m["built"] = {"file": bname, "size": len(bdata), "sha256": hashlib.sha256(bdata).hexdigest()}
             models.append(m)
     man = {
         "name": "Offlined Sea 3D Models", "version": tag, "generated": dt.date.today().isoformat(),
@@ -48,7 +54,7 @@ def main():
         "models": models,
     }
     (out / "manifest.json").write_text(json.dumps(man, ensure_ascii=False, indent=1), "utf-8")
-    total = sum(m["size"] for m in models)
+    total = sum(m["size"] + m.get("built", {}).get("size", 0) for m in models)
     print(f"{len(models)} model(s), {total / 2**20:.2f} MB -> {out}")
 
 
