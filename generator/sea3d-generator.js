@@ -18,7 +18,7 @@
    sediment are baked in, so it needs no textures.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-export const GENERATOR_VERSION = "1.0";
+export const GENERATOR_VERSION = "1.1";
 
 // Typical size of each family when Wikidata has no length (m) and the usual length/beam ratio
 const DEFAULTS = {
@@ -311,25 +311,97 @@ function aircraft(K, L, rnd) {
   return { H: R * 2 };
 }
 
-function reef(K, L, r) {
-  const n = 70 + Math.floor(r() * 60), R = L / 2;
+// Coral reef: a rocky mound covered in colonies of different shapes (brain and boulder corals, branching
+// staghorn, table corals, sea fans, tube sponges, soft corals). Below 200 m it is a cold-water reef
+// (white, pink and orange Lophelia-like thickets, no table corals).
+const REEF_WARM = [0xc49a5a, 0xb06a48, 0x7d5f8f, 0x7f8d55, 0xd2b98a, 0xb8707a, 0x4f8f97, 0xd49aa8, 0xa8b25a, 0x9c7b4f];
+const REEF_COLD = [0xeee7da, 0xe9c9b4, 0xe08e5a, 0xd8b39a, 0xf2e3c6];
+const ROCK = [0x5f5746, 0x6a6150, 0x56604a, 0x625a4c];
+function reef(K, L, r, deep) {
+  const R = L / 2, pal = deep ? REEF_COLD : REEF_WARM, pick = a => a[Math.floor(r() * a.length)];
+  // the rock underneath (low mounds), so the colonies sit on relief and not on a flat floor
+  const mounds = [];
+  for (let i = 0; i < 11; i++) {
+    const a = r() * Math.PI * 2, d = Math.sqrt(r()) * R * 0.7, rad = R * (0.12 + r() * 0.14);
+    const x = Math.cos(a) * d, z = Math.sin(a) * d, sy = 0.16 + r() * 0.14;
+    K.sphere(rad, pick(ROCK), x, 0, z, 1 + r() * 0.4, sy, 1 + r() * 0.4, 2);
+    mounds.push([x, z, rad, rad * sy]);
+  }
+  const groundAt = (x, z) => { let h = 0; for (const [mx, mz, mr, mh] of mounds) { const q = 1 - ((x - mx) ** 2 + (z - mz) ** 2) / (mr * mr); if (q > 0) h = Math.max(h, mh * Math.sqrt(q)); } return h; };
+  const n = 240 + Math.floor(r() * 80);
   for (let i = 0; i < n; i++) {
-    const a = r() * Math.PI * 2, d = Math.sqrt(r()) * R, x = Math.cos(a) * d, z = Math.sin(a) * d;
-    const s = 0.8 + r() * 3 * (1 - d / R * 0.6), c = C.coral[Math.floor(r() * C.coral.length)];
-    if (r() < 0.65) K.sphere(s, c, x, s * 0.3, z, 1 + r() * 0.6, 0.5 + r() * 0.7, 1 + r() * 0.6);
-    else for (let b = 0; b < 4; b++) K.cyl(s * 0.12, s * 0.08, s * (1 + r()), c, x + (r() - 0.5) * s, 0, z + (r() - 0.5) * s, 5, (r() - 0.5) * 0.7, 0, (r() - 0.5) * 0.7);
+    // denser on the rock (where corals grow) than on the sand around it
+    let a = r() * Math.PI * 2, d = Math.sqrt(r()) * R, x = Math.cos(a) * d, z = Math.sin(a) * d;
+    if (groundAt(x, z) <= 0 && r() < 0.6) { const m = mounds[Math.floor(r() * mounds.length)]; a = r() * Math.PI * 2; d = Math.sqrt(r()) * m[2] * 0.9; x = m[0] + Math.cos(a) * d; z = m[1] + Math.sin(a) * d; }
+    const y = groundAt(x, z) - 0.15, rr0 = Math.hypot(x, z);
+    const s = (1 + r() * 2.4) * (1 - Math.min(1, rr0 / R) * 0.45), c = pick(pal), k = r();
+    if (k < (deep ? 0.15 : 0.3)) {                                          // brain / boulder coral
+      K.sphere(s, c, x, y + s * 0.25, z, 1 + r() * 0.3, 0.65 + r() * 0.3, 1 + r() * 0.3, s > 1.2 ? 2 : 1);
+    } else if (k < (deep ? 0.75 : 0.5)) {                                   // branching (staghorn / Lophelia), lighter tips
+      const tip = deep ? 0xfff6ea : 0xf3e6c4, nb = 5 + Math.floor(r() * 5);
+      for (let q = 0; q < nb; q++) {
+        const len = s * (0.7 + r() * 0.8), rad = s * 0.07;
+        K.add(new K.T.CylinderGeometry(rad * 0.6, rad, len, 5).translate(0, len / 2, 0), p => (p[1] > len * 0.78 ? tip : c),
+          x + (r() - 0.5) * s * 0.5, y, z + (r() - 0.5) * s * 0.5, (r() - 0.5) * 1.1, r() * 6, (r() - 0.5) * 1.1);
+      }
+    } else if (!deep && k < 0.62) {                                         // table coral: stalk and a flat plate
+      const h = s * 0.5, rr = s * (0.9 + r() * 0.6);
+      K.cyl(s * 0.12, s * 0.09, h, c, x, y, z, 6);
+      K.cyl(rr, rr * 0.92, s * 0.12, c, x, y + h, z, 14);
+    } else if (k < (deep ? 0.85 : 0.74)) {                                  // sea fan: a thin upright disc, half buried
+      const rr = s * (0.7 + r() * 0.5);
+      K.add(new K.T.CylinderGeometry(rr, rr, 0.05, 16), pick([0x8e3b6d, 0xb2453a, 0xd68a2b, 0x9a4fb0]), x, y + rr * 0.55, z, Math.PI / 2, r() * 6, 0);
+    } else if (k < (deep ? 0.95 : 0.87)) {                                  // tube sponges: a cluster of open tubes
+      const sc = pick([0xc49a3e, 0xa45a3a, 0x6e5288, 0xb07a40]), nt = 3 + Math.floor(r() * 3);
+      for (let t = 0; t < nt; t++) {
+        const h = s * (0.6 + r() * 0.9), rad = s * (0.1 + r() * 0.08);
+        K.add(new K.T.CylinderGeometry(rad, rad * 0.8, h, 9, 1, true).translate(0, h / 2, 0), sc,
+          x + (r() - 0.5) * s * 0.6, y, z + (r() - 0.5) * s * 0.6, (r() - 0.5) * 0.4, 0, (r() - 0.5) * 0.4);
+      }
+    } else {                                                                // soft corals / anemones: small bright knobs
+      const sc = pick(deep ? [0xf0b0a0, 0xffffff] : [0xd49aa8, 0xe0bf6a, 0x86c2b8, 0xa58cc8]);
+      for (let t = 0; t < 4; t++) K.sphere(s * 0.18, sc, x + (r() - 0.5) * s * 0.5, y + s * 0.1, z + (r() - 0.5) * s * 0.5, 1, 1.4, 1, 0);
+    }
   }
   return { H: 4 };
 }
+// Hydrothermal field: a sulphide mound with chimneys (stacked, with flanges), tube-worm bushes, mussel beds
+// and bacterial mats. White = carbonate towers like Lost City (taller, pale, almost no fauna).
+// Returns the chimney tops (vents) so the viewer can draw the smoke.
 function vent(K, L, r, white) {
-  const n = 6 + Math.floor(r() * 8), col = white ? C.chimneyW : C.chimneyB;
-  for (let i = 0; i < n; i++) {
-    const a = r() * Math.PI * 2, d = Math.sqrt(r()) * L * 0.45, x = Math.cos(a) * d, z = Math.sin(a) * d;
-    let h = (i === 0 ? 0.9 : 0.15 + r() * 0.5) * L * 0.8, y = 0, rad = h * 0.09 + 0.8;
-    while (h > 0.5) { const seg = Math.min(h, 3 + r() * 6); K.cyl(rad, rad * 0.8, seg, col, x + (r() - 0.5) * 0.4, y, z + (r() - 0.5) * 0.4, 9); y += seg * 0.97; h -= seg; rad *= 0.8; }
-    for (let k = 0; k < 3; k++) K.sphere(rad * 1.6, col, x + (r() - 0.5) * 2, y * r(), z + (r() - 0.5) * 2, 1.2, 0.5, 1.2, 0);
+  const col = white ? C.chimneyW : C.chimneyB, stain = white ? 0xbfb8a6 : 0x7a4a22, vents = [];
+  for (let i = 0; i < 6; i++) {                                             // the mound
+    const a = r() * Math.PI * 2, d = Math.sqrt(r()) * L * 0.3, rad = L * (0.12 + r() * 0.12);
+    K.sphere(rad, white ? 0xcfc8b6 : 0x3d3430, Math.cos(a) * d, 0, Math.sin(a) * d, 1.2, 0.25, 1.2, 1);
   }
-  return { H: L * 0.8 };
+  const n = 7 + Math.floor(r() * 8);
+  for (let i = 0; i < n; i++) {
+    const a = r() * Math.PI * 2, d = Math.sqrt(r()) * L * 0.42, x = Math.cos(a) * d, z = Math.sin(a) * d;
+    let h = (i === 0 ? 1 : 0.2 + r() * 0.55) * L * (white ? 1.1 : 0.7), y = 0, rad = h * 0.08 + 0.7, cx = x, cz = z;
+    const h0 = h;
+    while (h > 0.5) {
+      const seg = Math.min(h, 2.5 + r() * 5), y0 = y;
+      K.add(new K.T.CylinderGeometry(rad * 0.8, rad, seg, 9).translate(0, seg / 2, 0), p => (p[1] + y0 < h0 * 0.18 ? stain : col), cx, y, cz);
+      if (r() < 0.35) K.cyl(rad * 2.1, rad * 1.9, 0.18, col, cx, y + seg * (0.4 + r() * 0.5), cz, 10);     // flange
+      y += seg * 0.97; h -= seg; rad *= 0.82; cx += (r() - 0.5) * 0.5; cz += (r() - 0.5) * 0.5;
+    }
+    if (white && r() < 0.5) for (let s = 0; s < 3; s++) K.cyl(rad * 0.5, 0.05, h0 * 0.15, col, cx + (r() - 0.5) * rad * 2, y * (0.6 + r() * 0.3), cz + (r() - 0.5) * rad * 2, 6);
+    vents.push([cx, y, cz, rad]);
+    if (white) continue;
+    // fauna around the base: tube worms (white tubes, red plumes), mussels, bacterial mats
+    const nb = 1 + Math.floor(r() * 2);
+    for (let q = 0; q < nb; q++) {
+      const ba = r() * Math.PI * 2, bd = rad * 1.6 + r() * 1.5, bx = x + Math.cos(ba) * bd, bz = z + Math.sin(ba) * bd;
+      for (let t = 0; t < 12; t++) {
+        const len = 0.7 + r() * 1.1;
+        K.add(new K.T.CylinderGeometry(0.06, 0.07, len, 5).translate(0, len / 2, 0), p => (p[1] > len - 0.18 ? 0xc8202a : 0xe8e4d8),
+          bx + (r() - 0.5) * 1.1, 0, bz + (r() - 0.5) * 1.1, (r() - 0.5) * 0.5, 0, (r() - 0.5) * 0.5);
+      }
+      for (let m = 0; m < 10; m++) K.sphere(0.16, 0x3b3530, bx + (r() - 0.5) * 2.2, 0.05, bz + (r() - 0.5) * 2.2, 1.6, 0.6, 1, 0);
+    }
+    if (r() < 0.6) K.cyl(1.2 + r() * 1.8, 1.2 + r() * 1.8, 0.04, r() < 0.5 ? 0xe6dca0 : 0xf2efe4, x + (r() - 0.5) * 4, 0.02, z + (r() - 0.5) * 4, 14);
+  }
+  return { H: L * 0.8, vents };
 }
 function site(K, L, r) {
   const amph = t => 0.32 * (t < 0.12 ? 0.3 + t * 3 : t < 0.6 ? Math.sin(Math.PI * (t - 0.05) / 1.1) : t < 0.85 ? 0.6 - (t - 0.6) : 0.25);
@@ -375,7 +447,7 @@ function finish(T, K, o) {
       pos.push(v.x, v.y, v.z); nor.push(n.x, n.y, n.z);
       const ru = o.rust * sstep(0.35, 0.75, noise3(v.x * 0.09, v.y * 0.09, v.z * 0.09) + noise3(v.x * 0.5, v.y * 0.5, v.z * 0.5) * 0.25);
       const se = o.sed * sstep(0.45, 0.95, Math.abs(n.y)) * (n.y > 0 ? 1 : 0.3) * (0.6 + 0.4 * noise3(v.x * 0.2, 0, v.z * 0.2));
-      const low = sstep(1.5, 0, v.y) * 0.5;                               // seabed silt up the sides
+      const low = o.low === false ? 0 : sstep(1.5, 0, v.y) * 0.5;         // seabed silt up the sides (not on reefs and vents)
       let r = b.r + (rust.r - b.r) * ru, gg = b.g + (rust.g - b.g) * ru, bb = b.b + (rust.b - b.b) * ru;
       const k = Math.min(1, se + low);
       r += (sed.r - r) * k; gg += (sed.g - gg) * k; bb += (sed.b - bb) * k;
@@ -404,11 +476,11 @@ export function buildWreck(T, item, opts = {}) {
   let B = item.beam && item.beam > L / 25 && item.beam < L * 0.6 ? item.beam : L / d.ratio;
   if (fam === "aircraft" && !item.length) L = 30 + r() * 30;
   const K = new Kit(T, r), built = item.built;
-  let H, burial, roll, pitch, rustAmt, sedAmt;
+  let H, burial, roll, pitch, rustAmt, sedAmt, vents = null, white = false;
   if (fam === "submarine") { ({ H } = submarine(K, L, B, built)); burial = 0.1 + r() * 0.2; roll = (r() - 0.5) * 0.5; pitch = (r() - 0.5) * 0.06; rustAmt = 0.45; sedAmt = 0.45; }
   else if (fam === "aircraft") { ({ H } = aircraft(K, L, r)); burial = 0.15 + r() * 0.25; roll = (r() - 0.5) * 0.3; pitch = (r() - 0.5) * 0.05; rustAmt = 0.15; sedAmt = 0.55; }
-  else if (fam === "reef") { ({ H } = reef(K, L, r)); burial = 0; roll = 0; pitch = 0; rustAmt = 0; sedAmt = 0.1; }
-  else if (fam === "vent") { ({ H } = vent(K, L, r, /lost city/i.test(item.name || "") || r() < 0.3)); burial = 0; roll = 0; pitch = 0; rustAmt = 0; sedAmt = 0.15; }
+  else if (fam === "reef") { ({ H } = reef(K, L, r, item.depth != null && item.depth < -200)); burial = 0; roll = 0; pitch = 0; rustAmt = 0; sedAmt = 0.05; }
+  else if (fam === "vent") { white = /lost city/i.test(item.name || "") || r() < 0.3; ({ H, vents } = vent(K, L, r, white)); burial = 0; roll = 0; pitch = 0; rustAmt = 0; sedAmt = 0.08; }
   else if (fam === "site") { ({ H } = site(K, L, r)); burial = 0; roll = 0; pitch = 0; rustAmt = 0; sedAmt = 0.5; }
   else if (fam === "museum") { ({ H } = museum(K, L, r)); burial = 0; roll = 0; pitch = 0; rustAmt = 0; sedAmt = 0.25; }
   else {
@@ -421,11 +493,14 @@ export function buildWreck(T, item, opts = {}) {
   }
   if (opts.clean) { rustAmt = 0; sedAmt = 0; burial = 0; roll = 0; pitch = 0; }
   K.g.rotation.set(pitch, 0, roll);
-  const geo = finish(T, K, { rust: rustAmt, sed: sedAmt });
-  geo.translate(0, -geo.boundingBox.min.y - burial * H, 0);                 // lowest point buried below the seabed (y = 0)
+  const geo = finish(T, K, { rust: rustAmt, sed: sedAmt, low: !(fam === "reef" || fam === "vent") });
+  const dy = -geo.boundingBox.min.y - burial * H;
+  geo.translate(0, dy, 0);                                                   // lowest point buried below the seabed (y = 0)
   geo.computeBoundingBox(); geo.computeBoundingSphere();
   const mat = opts.material || new T.MeshStandardMaterial({ vertexColors: true, roughness: 0.92, metalness: 0.05, side: T.DoubleSide });
   const mesh = new T.Mesh(geo, mat);
   mesh.name = item.name || item.q || fam;
-  return { mesh, info: { fam, length: L, beam: B, generic: true, version: GENERATOR_VERSION, triangles: geo.attributes.position.count / 3 } };
+  const info = { fam, length: L, beam: B, generic: true, version: GENERATOR_VERSION, triangles: geo.attributes.position.count / 3 };
+  if (vents) info.vents = vents.map(([x, y, z, rad]) => ({ x, y: y + dy, z, r: rad, white }));   // chimney tops (model metres), for the smoke
+  return { mesh, info };
 }
