@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 KINDS = ("item", "class", "vehicle")
 LIMITS = {"item": (8 * 2**20, 200_000), "class": (5 * 2**20, 120_000), "vehicle": (5 * 2**20, 120_000)}
-EXT_OK = {"KHR_mesh_quantization", "EXT_meshopt_compression", "KHR_texture_transform",
+EXT_OK = {"KHR_mesh_quantization", "KHR_texture_transform",
           "KHR_materials_emissive_strength", "EXT_texture_webp"}
 LICENSES = {"CC-BY-4.0", "CC0-1.0"}
 STATES = {"intact", "broken", "scattered", "capsized", "buried"}
@@ -166,7 +166,7 @@ def check_folder(d: Path, catalog: dict, errors: list, warnings: list):
             info = check_glb(d / f, kind, err, warn)
             if info and f == "model.glb":
                 c = catalog.get(qid)
-                if info["extent"] and c and c.get("length"):
+                if info["extent"] and c and c.get("length") and m.get("state") not in ("broken", "scattered"):
                     L = max(info["extent"][0], info["extent"][2])
                     if not 0.7 < L / c["length"] < 1.4:
                         warn(f"model is about {L:.0f} m long, Wikidata says {c['length']:.0f} m: is it in metres?")

@@ -158,13 +158,18 @@ async function build(it) {
   }
   model.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
   scene.add(model);
-  const box = new THREE.Box3().setFromObject(model), size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
-  const R = Math.max(size.x, size.z, size.y, 4), S = Math.max(200, R * 5);
+  // A wreck in pieces (bow, stern, debris…): the camera frames the main piece, the seabed covers them all
+  const all = new THREE.Box3().setFromObject(model);
+  const main = model.getObjectByName("bow_section") || model.getObjectByName("main") || model;
+  const box = new THREE.Box3().setFromObject(main), size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
+  const R = Math.max(size.x, size.z, size.y, 4), allS = all.getSize(new THREE.Vector3());
+  const S = Math.max(200, R * 5, (Math.max(allS.x, allS.z) + Math.max(Math.abs(all.min.z - c.z), Math.abs(all.max.z - c.z), Math.abs(all.min.x - c.x), Math.abs(all.max.x - c.x))) * 1.3);
+  bed.position.set(c.x, 0, c.z);
   bed.scale.set(S, 1, S); bedMat.map.repeat.set(S / 12, S / 12);
   if (grid) { scene.remove(grid); grid.geometry.dispose(); }
   const step = R > 150 ? 50 : R > 40 ? 10 : 2;
   grid = new THREE.GridHelper(Math.round(S / step) * step, Math.round(S / step), 0x2f5468, 0x2f5468);
-  grid.material.transparent = true; grid.material.opacity = 0.25; grid.position.y = 0.02; scene.add(grid);
+  grid.material.transparent = true; grid.material.opacity = 0.25; grid.position.set(c.x, 0.02, c.z); scene.add(grid);
   diver.position.set(box.max.x + Math.max(2, R * 0.04), 0, c.z + size.z * 0.15);
   scene.fog.density = 0.9 / (R * 3);
   sun.position.set(c.x + R * 0.6, R * 1.5, c.z + R * 0.5); sun.target.position.copy(c);
@@ -251,4 +256,4 @@ async function gallery() {
 resize();
 if (new URLSearchParams(location.search).has("gallery")) gallery();
 else { renderer.setAnimationLoop(() => { controls.update(); renderer.render(scene, camera); }); load(); }
-window.__s3d = { scene, camera, show, CAT: () => CAT, build: (it, o) => buildWreck(THREE, it, o) };
+window.__s3d = { scene, camera, controls, renderer, show, CAT: () => CAT, build: (it, o) => buildWreck(THREE, it, o) };

@@ -19,7 +19,8 @@ para hacer uno mejor.
 | | |
 |---|---|
 | [`catalog/catalog.json`](catalog/catalog.json) | **4.537 cosas bajo el mar con artículo en Wikipedia** (en al menos uno de 10 idiomas), con su id de Wikidata, posición, profundidad de GEBCO, tamaño, fechas y familia. Se genera solo a partir de Wikidata + GEBCO. |
-| [`models/`](models/) | Los modelos 3D, una carpeta por id de Wikidata. |
+| [`models/`](models/) | Los modelos 3D, una carpeta por id de Wikidata. El primero: **[RMS Titanic](models/item/Q25173/)**, con la proa, la popa y el campo de restos tal como están hoy. |
+| [`model_sources/`](model_sources/) | Modelos hechos por código (Python + [`tools/meshkit.py`](tools/meshkit.py)): se ejecuta el script y sale el `.glb`. |
 | [`docs/MODEL_SPEC.es.md`](docs/MODEL_SPEC.es.md) | Las reglas que sigue cada modelo (glTF `.glb`, metros, ejes, origen, límites, `meta.json`). |
 | [`generator/`](generator/) | El generador de pecios genéricos (JavaScript, three.js): cualquier elemento del catálogo → un modelo a tamaño real, con pintura, óxido y sedimento. Offlined usa el mismo archivo. |
 | [`site/`](site/) | La página del catálogo que se publica en GitHub Pages. |

@@ -34,9 +34,9 @@ Each folder holds:
 ## 2. Format
 
 - **glTF 2.0 binary** (`.glb`), one file with everything inside (no external `.bin` or textures).
-- Extensions allowed: `KHR_mesh_quantization`, `EXT_meshopt_compression`, `KHR_texture_transform`,
-  `KHR_materials_emissive_strength`, `EXT_texture_webp`. **Not allowed:** Draco and KTX2/Basis (they need
-  extra decoders that are not shipped offline).
+- Extensions allowed: `KHR_mesh_quantization`, `KHR_texture_transform`, `KHR_materials_emissive_strength`,
+  `EXT_texture_webp`. **Not allowed:** Draco, meshopt and KTX2/Basis compression (they need extra decoders that
+  Offlined does not ship; the release packs are compressed as a whole instead).
 - Textures: JPEG, PNG or WebP, **2048 × 2048 px at most**, power-of-two sizes preferred.
 - Materials: PBR metallic-roughness (the glTF default). No lights, cameras or animations.
 

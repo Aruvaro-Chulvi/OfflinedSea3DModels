@@ -22,8 +22,7 @@
 2. Haz el modelo según [docs/MODEL_SPEC.es.md](docs/MODEL_SPEC.es.md): `.glb`, metros, +Y arriba, proa hacia
    +Z, origen donde toca el fondo, dentro de los límites de tamaño.
    Programas gratuitos que exportan `.glb`: [Blender](https://www.blender.org) (Archivo › Exportar › glTF 2.0,
-   formato *glTF Binary*, con «+Y Up» marcado) y [gltf.report](https://gltf.report) para revisarlo y
-   comprimirlo (meshopt).
+   formato *glTF Binary*, con «+Y Up» marcado) y [gltf.report](https://gltf.report) para revisarlo.
    Truco: en la [página del catálogo](https://aruvaro-chulvi.github.io/OfflinedSea3DModels/) cada pecio tiene un
    botón *Descargar .glb* con su modelo genérico, ya con el tamaño, los ejes y el origen correctos: impórtalo en
    Blender y trabaja sobre él.

@@ -18,7 +18,8 @@ for scale, open its Wikipedia article, and download its generic model as a start
 | | |
 |---|---|
 | [`catalog/catalog.json`](catalog/catalog.json) | **4,537 things under the sea that have a Wikipedia article** (in at least one of 10 languages), with their Wikidata id, position, GEBCO depth, size, dates and family. Built automatically from Wikidata + GEBCO. |
-| [`models/`](models/) | The 3D models, one folder per Wikidata id. |
+| [`models/`](models/) | The 3D models, one folder per Wikidata id. The first one: **[RMS Titanic](models/item/Q25173/)** — bow, stern and debris field as they lie today. |
+| [`model_sources/`](model_sources/) | Models built by code (Python + [`tools/meshkit.py`](tools/meshkit.py)): run the script, get the `.glb`. |
 | [`docs/MODEL_SPEC.md`](docs/MODEL_SPEC.md) | The rules every model follows (glTF `.glb`, metres, axes, origin, limits, `meta.json`). |
 | [`generator/`](generator/) | The generic wreck generator (JavaScript, three.js): any catalog item → a model at real size, with paint, rust and sediment. Offlined uses the same file. |
 | [`site/`](site/) | The catalog page published on GitHub Pages. |

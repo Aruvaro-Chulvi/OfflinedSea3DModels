@@ -34,9 +34,9 @@ Cada carpeta lleva:
 ## 2. Formato
 
 - **glTF 2.0 binario** (`.glb`), un único archivo con todo dentro (sin `.bin` ni texturas aparte).
-- Extensiones permitidas: `KHR_mesh_quantization`, `EXT_meshopt_compression`, `KHR_texture_transform`,
-  `KHR_materials_emissive_strength`, `EXT_texture_webp`. **No se admiten** Draco ni KTX2/Basis (necesitan
-  decodificadores que no van incluidos sin conexión).
+- Extensiones permitidas: `KHR_mesh_quantization`, `KHR_texture_transform`, `KHR_materials_emissive_strength`,
+  `EXT_texture_webp`. **No se admiten** las compresiones Draco, meshopt ni KTX2/Basis (necesitan decodificadores
+  que Offlined no incluye; los paquetes de cada versión ya van comprimidos enteros).
 - Texturas: JPEG, PNG o WebP, **como mucho 2048 × 2048 px**, mejor en potencias de dos.
 - Materiales: PBR metálico-rugosidad (el normal de glTF). Sin luces, cámaras ni animaciones.
 

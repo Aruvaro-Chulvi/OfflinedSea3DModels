@@ -22,7 +22,7 @@ Thank you! There are many ways to help, and most of them need no 3D skills.
 2. Make the model following [docs/MODEL_SPEC.md](docs/MODEL_SPEC.md): `.glb`, metres, +Y up, bow to +Z,
    origin where it touches the seabed, under the size limits.
    Free tools that export `.glb`: [Blender](https://www.blender.org) (File › Export › glTF 2.0, format
-   *glTF Binary*, "+Y Up" ticked), [gltf.report](https://gltf.report) to inspect and compress (meshopt).
+   *glTF Binary*, "+Y Up" ticked), [gltf.report](https://gltf.report) to inspect it.
    Tip: on the [catalog page](https://aruvaro-chulvi.github.io/OfflinedSea3DModels/) every wreck has a
    *Download .glb* button with its generic model, already at the right size, axes and origin — import it in
    Blender and build on it.
