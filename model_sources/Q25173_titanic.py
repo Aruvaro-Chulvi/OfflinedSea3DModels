@@ -496,15 +496,280 @@ def build(bow_extra=None):
     return {"bow": bow, "mud": mud, "stern": stern, "debris": debris, "ship": ship, "bow_extra": extra, "boilers": boilers}
 
 
+# ── Dressing: what makes the wreck worth a close look in Wiki Submarine ──────
+def dress(seed=41912):
+    """The wreck (model.glb) and the ship as built (model_built.glb), with rust, life, objects, textures and
+    baked ambient occlusion. Returns (wreck parts, instanced parts, materials, built parts, built materials)."""
+    import abyss
+    from scenekit import (material, steel_textures, rust_textures, planks_textures, bake_ao, instances)
+    global RUN_STYLE
+    RUN_STYLE = "drip"
+    r = np.random.default_rng(seed)
+    abyss.seed(seed)
+
+    # Captain Smith's bathtub: the wall of his quarters has fallen and the tub is in plain view (starboard side)
+    tub = merge([box(0.78, 0.62, 1.72, (0.86, 0.84, 0.78)), box(0.62, 0.02, 1.52, (0.32, 0.2, 0.1)).T(0, 0.55, 0),
+                 tube([(0.2, 0.62, -0.86), (0.2, 0.95, -0.95), (0.2, 1.05, -0.8)], 0.025, (0.5, 0.35, 0.18), seg=5)])
+    crumple(tub, 0.03, 2.0, 5)
+    W = build(bow_extra=[tub.T(-10.7, HA, zd(69))])
+    bow, mud, stern, debris = merge([W["bow"], W["bow_extra"]]), W["mud"], W["stern"], W["debris"]
+    RUN_STYLE = "quad"
+
+    # Up close the hull is a patchwork of rust: most of the black paint has turned brown
+    for m_, sd in ((bow, 201), (stern, 202), (debris, 203)):
+        lum = m_.c.mean(1)
+        k = 0.5 * sstep(0.25, 0.05, lum)
+        m_.c = m_.c * (1 - k[:, None]) + np.array([0.24, 0.12, 0.07]) * k[:, None]
+        weather(m_, rust=0.55, sediment=0.12, streaks=1.0, seed=sd, rust_col=(0.42, 0.17, 0.07))
+        m_.c = np.clip(m_.c * (0.85 + 0.3 * fbm(m_.v, 0.6, sd + 5, 2))[:, None], 0, 1)
+
+    # Where the wreck touches the ground (to keep things off the hull and on the flat ground Offlined makes)
+    occ = {}
+    for m_ in (bow, stern, debris, mud):
+        low = m_.v[m_.v[:, 1] < 2.5]
+        for x, z in np.floor(low[:, [0, 2]]).astype(int):
+            occ[(x, z)] = True
+    for x, z in np.floor(mud.v[:, [0, 2]]).astype(int):
+        occ[(x, z)] = True
+    circles = []                                            # the flat ground Offlined puts under each part
+    for m_ in (bow, mud, stern, debris):
+        lo, hi = m_.v.min(0), m_.v.max(0)
+        cx, cz = (lo[0] + hi[0]) / 2, (lo[2] + hi[2]) / 2
+        circles.append((cx, cz, min(math.hypot(hi[0] - lo[0], hi[2] - lo[2]) / 2 + 15, 800) - 12))
+    near_pts = np.array([k for k in occ.keys()], float)
+
+    def free(near=0.65):
+        for _ in range(80):
+            if r.random() < near:
+                b = near_pts[r.integers(len(near_pts))]
+                x, z = b[0] + r.normal(0, 14), b[1] + r.normal(0, 14)
+            else:
+                c = circles[r.integers(len(circles))]
+                a, d = r.uniform(0, 6.283), c[2] * math.sqrt(r.random())
+                x, z = c[0] + d * math.cos(a), c[1] + d * math.sin(a)
+            if any(math.hypot(x - c[0], z - c[1]) < c[2] for c in circles) and not any(
+                    occ.get((int(math.floor(x)) + i, int(math.floor(z)) + j)) for i in (-1, 0, 1) for j in (-1, 0, 1)):
+                return x, z
+        return None
+
+    def spots(n, near=0.65):
+        out = [free(near) for _ in range(n)]
+        return np.array([(x, 0.0, z) for x, z in (p for p in out if p)])
+
+    def on(mesh, n, cond):
+        s = abyss.sample_surface(mesh, n, cond, r)
+        return np.array([p for p, _ in s]), np.array([q for _, q in s])
+
+    INS = []                                                # (name, base mesh, material, instances)
+
+    def add(name, variants, mat, pos, nrm=None, yaw=None, scale=None):
+        """Split the copies among the variants of a shape (so they don't all look the same)."""
+        if not len(pos):
+            return
+        pos = np.asarray(pos, float); N = len(pos)
+        nrm = np.tile([0, 1.0, 0], (N, 1)) if nrm is None else np.asarray(nrm, float)
+        yaw = r.uniform(0, 6.283, N) if yaw is None else np.asarray(yaw, float)
+        scale = np.ones(N) if scale is None else np.asarray(scale, float)
+        pick = r.integers(len(variants), size=N)
+        for k, base in enumerate(variants):
+            s = pick == k
+            if s.any():
+                INS.append((f"{name}_{k}", base, mat, instances(pos[s], nrm[s], yaw[s], scale[s])))
+
+    # ── rust: icicles under every edge, runs down the walls ──
+    ice = [abyss.rusticle(1.0, 0.1, 50 + k) for k in range(4)]
+    flows = [abyss.rust_flow(1.0, 0.1, 60 + k) for k in range(4)]
+    for m_, n_i, n_f in ((bow, 2600, 2000), (stern, 1000, 800), (debris, 240, 160)):
+        p, _ = on(m_, n_i, lambda fn: fn[:, 1] < -0.35)
+        ln = r.uniform(0.3, 1.0, len(p)) ** 1.6 * 2.4 + 0.15
+        rad = r.uniform(0.5, 1.2, len(p)) * (0.6 + ln / 3)
+        add("rusticles", ice, "rust", p, scale=np.stack([rad, ln, rad], 1))
+        p, nn = on(m_, n_f, lambda fn: np.abs(fn[:, 1]) < 0.3)
+        ln = r.uniform(0.3, 1.0, len(p)) ** 1.5 * 3.2 + 0.3
+        w = r.uniform(0.4, 1.1, len(p))
+        add("rust_runs", flows, "rust", p + nn * 0.02, yaw=np.arctan2(nn[:, 0], nn[:, 2]), scale=np.stack([w, ln, w], 1))
+
+    # ── life on the wreck ──
+    an_cols = [(0.95, 0.9, 0.85), (0.95, 0.9, 0.85), (0.95, 0.72, 0.7), (0.98, 0.55, 0.3)]
+    anem = [abyss.anemone(0.06, c) for c in an_cols]
+    coral = [abyss.mushroom_coral(0.08) for _ in range(2)]
+    lobst = [abyss.squat_lobster(0.07) for _ in range(3)]
+    stars = [abyss.brittle_star(0.1, c) for c in ((0.85, 0.7, 0.58), (0.92, 0.88, 0.82), (0.78, 0.55, 0.45))]
+    for m_, a_, c_, l_, s_ in ((bow, 420, 90, 120, 140), (stern, 170, 45, 60, 70), (debris, 60, 10, 25, 25)):
+        p, nn = on(m_, a_, lambda fn: fn[:, 1] > -0.2)
+        add("anemones", anem, "life", p, nn, scale=r.uniform(0.6, 1.35, len(p)))
+        p, nn = on(m_, c_, lambda fn: fn[:, 1] > 0.0)
+        add("mushroom_corals", coral, "life", p, nn, scale=r.uniform(0.6, 1.3, len(p)))
+        p, nn = on(m_, l_, lambda fn: fn[:, 1] > -0.4)
+        add("squat_lobsters", lobst, "life", p + nn * 0.01, nn, scale=r.uniform(0.7, 1.3, len(p)))
+        p, nn = on(m_, s_, lambda fn: fn[:, 1] > 0.6)
+        add("brittle_stars", stars, "life", p + nn * 0.01, nn, scale=r.uniform(0.6, 1.1, len(p)))
+
+    # ── the ground around: stones dropped by icebergs, and the animals of the abyssal plain ──
+    stones, stone_pts = [], []
+    for i in range(40):
+        s = free(0.5)
+        if not s:
+            continue
+        rad = r.uniform(0.25, 0.9) ** 2 * 2.6 + 0.15
+        st = abyss.blob(rad, (0.42, 0.41, 0.4), 300 + i, sub=2, amp=0.35).S(1, r.uniform(0.5, 0.8), 1)
+        base = np.array([(0.38, 0.37, 0.36), (0.5, 0.46, 0.42), (0.3, 0.3, 0.32)][i % 3])
+        st.c = base * (0.8 + 0.4 * fbm(st.v, 2.0, i, 2))[:, None]
+        weather(st, rust=0.08, sediment=0.35, streaks=0.0, seed=i, sed_col=(0.62, 0.58, 0.5))
+        st.c *= 0.8
+        stones.append(st.R(0, r.uniform(0, 6.28), 0).T(s[0], -rad * 0.25, s[1]))
+        stone_pts.append((s[0], s[1], rad))
+    stones = merge(stones)
+    p, nn = on(stones, 160, lambda fn: fn[:, 1] > 0.3)
+    add("anemones_on_stones", anem, "life", p, nn, scale=r.uniform(0.7, 1.4, len(p)))
+    big = [(x, z, rad) for x, z, rad in stone_pts if rad > 0.8]
+    if big:
+        sp = [abyss.glass_sponge(0.6) for _ in range(2)]
+        bc = [abyss.bamboo_coral(0.9, 70 + k) for k in range(3)]
+        pts = np.array([(x, rad * 0.35, z) for x, z, rad in big])
+        add("glass_sponges", sp, "life", pts, scale=r.uniform(0.6, 1.3, len(pts)))
+        pts2 = pts + np.array([0.25, 0, 0.1])
+        add("bamboo_corals", bc, "life", pts2[r.random(len(pts2)) < 0.6], scale=None)
+    bs = spots(900, 0.65)
+    add("brittle_stars_mud", stars, "life", bs + [0, 0.01, 0], scale=r.uniform(0.6, 1.3, len(bs)))
+    cuc = [abyss.sea_cucumber("psychropotes"), abyss.sea_cucumber("psychropotes"), abyss.sea_cucumber("benthodytes"), abyss.sea_cucumber("benthodytes")]
+    add("sea_cucumbers", cuc, "life", spots(120, 0.45))
+    pens = [abyss.sea_pen(1.6) for _ in range(4)]
+    pp = spots(60, 0.15)
+    add("sea_pens", pens, "life", pp - [0, 0.05, 0], scale=r.uniform(0.55, 1.35, len(pp)))
+    xen = [abyss.xeno(0.07) for _ in range(4)]
+    xp = spots(420, 0.4)
+    add("xenophyophores", xen, "life", xp + [0, 0.01, 0], scale=r.uniform(0.6, 1.4, len(xp)))
+    mounds = [abyss.mound(0.25) for _ in range(2)]
+    mp = spots(380, 0.3)
+    add("burrow_mounds", mounds, "life", mp - [0, 0.01, 0], scale=r.uniform(0.5, 1.4, len(mp)))
+    fish = [abyss.rattail(0.65) for _ in range(3)]
+    fp = spots(45, 0.6)
+    fp[:, 1] = r.uniform(0.25, 1.4, len(fp))
+    tilt = np.stack([np.zeros(len(fp)), np.cos(0.45) * np.ones(len(fp)), -np.sin(0.45) * np.ones(len(fp))], 1)   # head down
+    add("grenadiers", fish, "life", fp, tilt, scale=r.uniform(0.7, 1.3, len(fp)))
+
+    # ── things from the ship, in the debris field ──
+    def near_free(x, z):
+        for k in range(400):
+            a = k * 2.39996; d = 0.7 * math.sqrt(k)
+            xx, zz = x + d * math.cos(a), z + d * math.sin(a)
+            if not any(occ.get((int(math.floor(xx)) + i, int(math.floor(zz)) + j)) for i in (-2, -1, 0, 1, 2) for j in (-2, -1, 0, 1, 2)):
+                return xx, zz
+        return x, z
+
+    shoes = [abyss.shoe(1.0, False), abyss.shoe(1.0, True)]
+    for m_ in shoes:
+        abyss.dust(m_, 0.45, 3)
+    sp_, sy_, ss_ = [], [], []
+    shoe_sites = [near_free(26, -250), near_free(-18, -420), near_free(52, -515)]
+    for sx, sz in shoe_sites:
+        for k in range(int(r.integers(3, 6))):
+            x, z = sx + r.normal(0, 1.4), sz + r.normal(0, 1.4)
+            yaw = r.uniform(0, 6.28); sc = r.uniform(0.85, 1.05)
+            for s in (-1, 1):                                   # pairs: where a person came to rest
+                sp_.append((x + math.cos(yaw) * s * 0.07, -0.02, z - math.sin(yaw) * s * 0.07)); sy_.append(yaw + s * 0.12); ss_.append(sc)
+    add("shoes", shoes, "artefact", np.array(sp_), yaw=np.array(sy_), scale=np.array(ss_))
+    plate = abyss.plate(0.13); abyss.dust(plate, 0.3, 4)
+    cup = abyss.cup(); abyss.dust(cup, 0.3, 5)
+    csx, csz = near_free(-30, -330)
+    pp, pn, py = [], [], []
+    for row in range(6):                                        # rows of plates still on edge where the racks rotted
+        yaw = 0.3 + r.normal(0, 0.08)
+        x0, z0 = csx + row * 0.9 * math.cos(yaw + 1.57), csz + row * 0.9 * math.sin(yaw + 1.57)
+        for k in range(int(r.integers(8, 16))):
+            pp.append((x0 + k * 0.045 * math.sin(yaw), 0.095, z0 + k * 0.045 * math.cos(yaw)))
+            t = r.normal(0, 0.12)
+            pn.append((math.sin(yaw) * math.cos(t), math.sin(t), math.cos(yaw) * math.cos(t))); py.append(r.uniform(0, 6.28))
+    for k in range(30):
+        pp.append((csx + r.normal(0, 2.5), 0.0, csz + r.normal(0, 2.5))); pn.append((r.normal(0, 0.15), 1, r.normal(0, 0.15))); py.append(r.uniform(0, 6.28))
+    add("plates", [plate], "china", np.array(pp), np.array(pn), np.array(py))
+    cp = np.array([(csx + r.normal(0, 2.2), 0.0, csz + r.normal(0, 2.2)) for _ in range(22)])
+    side = r.random(len(cp)) < 0.6
+    cn = np.where(side[:, None], np.stack([np.cos(r.uniform(0, 6.28, len(cp))), np.zeros(len(cp)), np.sin(r.uniform(0, 6.28, len(cp)))], 1), [0, 1, 0])
+    cp[side, 1] = 0.045
+    add("cups", [cup], "china", cp, cn)
+    bottles = [abyss.bottle(True), abyss.bottle(False)]
+    for m_ in bottles:
+        abyss.dust(m_, 0.5, 6)
+    bsx, bsz = near_free(38, -385)
+    bp = [(bsx + i * 0.1, 0.045, bsz + j * 0.1) for i in range(5) for j in range(6) if r.random() > 0.15]
+    bp += [(bsx + r.normal(0, 1.6), 0.045, bsz + r.normal(0, 1.6)) for _ in range(18)]
+    bp = np.array(bp)
+    bn = np.stack([np.zeros(len(bp)), np.zeros(len(bp)), np.ones(len(bp))], 1)
+    bn[30:] = np.stack([np.cos(a := r.uniform(0, 6.28, len(bp) - 30)), np.zeros(len(a)), np.sin(a)], 1)
+    add("bottles", bottles, "glass", bp, bn, yaw=np.zeros(len(bp)))
+    bench = abyss.bench_end(); abyss.dust(bench, 0.4, 7)
+    bnx, bnz = near_free(8, -185)
+    bep, bey = [], []
+    for k in range(3):
+        x, z = bnx + k * 3.2 + r.normal(0, 0.5), bnz + r.normal(0, 1.5)
+        yaw = r.uniform(0, 6.28)
+        for s in (-0.9, 0.9):
+            bep.append((x + math.cos(yaw) * s, -0.03, z - math.sin(yaw) * s)); bey.append(yaw)
+    add("bench_ends", [bench], "artefact", np.array(bep), yaw=np.array(bey))
+    pots = [abyss.pot(0.16) for _ in range(2)]
+    for m_ in pots:
+        abyss.dust(m_, 0.4, 8)
+    ptx, ptz = near_free(62, -468)
+    pp = np.array([(ptx + r.normal(0, 1.5), -0.02, ptz + r.normal(0, 1.5)) for _ in range(9)])
+    pn = np.where((r.random(len(pp)) < 0.5)[:, None], [0, 1, 0], [1, 0.2, 0])
+    add("pots", pots, "artefact", pp, pn, scale=r.uniform(0.7, 1.35, len(pp)))
+    singles = []
+    sfx, sfz = near_free(-44, -472)
+    singles.append(abyss.safe().R(0, 0.7, 0).T(sfx, -0.25, sfz))
+    tgx, tgz = near_free(34, -538)
+    singles.append(abyss.telegraph().R(0.25, 0, 0.1).R(0, 2.0, 0).T(tgx, -0.15, tgz))
+    for k in range(2):
+        singles.append(abyss.suitcase().R(0, r.uniform(0, 6), 0).T(shoe_sites[1][0] + 2.5 + k * 0.8, -0.03, shoe_sites[1][1] - 1.2 + k))
+    singles = merge(singles)
+    abyss.dust(singles, 0.45, 9)
+
+    # ── light: ambient occlusion baked into the colours of the big pieces ──
+    flat = lambda X, Z: np.zeros_like(X)
+    bake_ao([bow, stern, debris, mud, stones], occluders=[bow, stern, debris, stones], ground=flat, cell=0.6, rays=24, reach=12)
+
+    mats = {
+        "steel": material(rough=0.8, metal=0.05, tex=steel_textures(), uv=("tri", 7.2)),
+        "rust": material(rough=0.95, tex=rust_textures(), uv=("tri", 1.5), normal_scale=1.6),
+        "rock": material(rough=0.9, tex=rust_textures(512, 2.5, 11), uv=("tri", 2.5)),
+        "mud": material(rough=1.0),
+        "life": material(rough=0.55),
+        "china": material(rough=0.18),
+        "glass": material(rough=0.08),
+        "artefact": material(rough=0.7, metal=0.1),
+    }
+    parts = [("bow_section", bow, "steel"), ("mud", mud, "mud"), ("stern_section", stern, "steel"),
+             ("debris_field", [(debris, "steel"), (singles, "artefact"), (stones, "rock")])]
+
+    # ── the ship as built: planked decks, clean plating, and its own ambient occlusion ──
+    ship = W["ship"]
+    deckc = np.array(DECK)
+    isdeck = (np.abs(ship.c - deckc).sum(1) < 0.02)
+    fd = isdeck[ship.f].all(1)
+    rigging = []
+    for d, hgt, sx in ((45, 61.0, 1), (222, 57.0, 1)):         # shrouds from the mast heads to the sides
+        for s in (-1, 1):
+            for dd in (-3, 0, 3):
+                rigging.append(tube([(0, hgt - 2, zd(d)), (s * B * 0.48, yd_of(t_of(zd(d + dd))) + 0.5, zd(d + dd))], 0.03, (0.18, 0.17, 0.16), seg=3))
+    rig = merge(rigging)
+    bake_ao([ship], occluders=[ship], ground=None, cell=0.5, rays=20, reach=10, strength=0.75)
+    deck = Mesh(ship.v, ship.f[fd], ship.c)
+    rest = Mesh(ship.v, ship.f[~fd], ship.c)
+    bmats = {"paint": material(rough=0.6, metal=0.05, tex=steel_textures(1024, 7.2, 12, wear=0.15), uv=("tri", 7.2), normal_scale=0.6),
+             "deck": material(rough=0.75, tex=planks_textures(), uv=("xz", 4.0)),
+             "rigging": material(rough=0.8)}
+    bparts = [("main", [(rest, "paint"), (deck, "deck"), (rig, "rigging")])]
+    return parts, INS, mats, bparts, bmats
+
+
 # ── Write ────────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
-    W = build()
-    bow, mud, stern, debris, ship = W["bow"], W["mud"], W["stern"], W["debris"], W["ship"]
+    from scenekit import write_model
+    parts, ins, mats, bparts, bmats = dress()
     out = ROOT / "models" / "item" / "Q25173" / "model.glb"
     out.parent.mkdir(parents=True, exist_ok=True)
-    tris, size = write_glb(out, [("bow_section", bow), ("mud", mud), ("stern_section", stern), ("debris_field", debris)])
-    print(f"{out}: {tris:,} triangles, {size / 2**20:.2f} MB")
-    for n, m in (("bow", bow), ("mud", mud), ("stern", stern), ("debris", debris)):
-        print(f"  {n}: {m.tris:,} tris, x {m.v[:, 0].min():.0f}..{m.v[:, 0].max():.0f}, y {m.v[:, 1].min():.0f}..{m.v[:, 1].max():.0f}, z {m.v[:, 2].min():.0f}..{m.v[:, 2].max():.0f}")
-    tris2, size2 = write_glb(out.with_name("model_built.glb"), [("main", ship)])
-    print(f"model_built.glb: {tris2:,} triangles, {size2 / 2**20:.2f} MB, y {ship.v[:, 1].min():.1f}..{ship.v[:, 1].max():.1f}")
+    tris, size = write_model(out, parts, mats, instanced=ins)
+    print(f"{out}: {tris:,} triangles drawn ({len(ins)} instanced shapes), {size / 2**20:.2f} MB")
+    tris2, size2 = write_model(out.with_name("model_built.glb"), bparts, bmats)
+    print(f"model_built.glb: {tris2:,} triangles, {size2 / 2**20:.2f} MB")

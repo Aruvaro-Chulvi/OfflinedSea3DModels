@@ -30,15 +30,18 @@ Cada carpeta lleva:
 | `meta.json` | sí | Quién lo hizo, licencia, fuentes, posición y rumbo. Ver §4. |
 | `preview.jpg` | recomendado | Una imagen del modelo, 1280 × 720, para la página del catálogo. |
 | `model_built.glb` | opcional | El barco o avión **tal como era** cuando navegaba o volaba, para verlo «antes y ahora». |
-| `diorama.glb` | opcional (item) | El pecio **sobre su propio trozo de fondo**, con la vida y los objetos de alrededor, para verlo de cerca. Ver §7. |
-| `diorama.jpg` | opcional | Una imagen del diorama, 1280 × 720. |
 
 ## 2. Formato
 
 - **glTF 2.0 binario** (`.glb`), un único archivo con todo dentro (sin `.bin` ni texturas aparte).
-- Extensiones permitidas: `KHR_mesh_quantization`, `KHR_texture_transform`, `KHR_materials_emissive_strength`,
-  `EXT_texture_webp`. **No se admiten** las compresiones Draco, meshopt ni KTX2/Basis (necesitan decodificadores
-  que Offlined no incluye; los paquetes de cada versión ya van comprimidos enteros).
+- Extensiones permitidas: `KHR_mesh_quantization`, `KHR_texture_transform`, `EXT_mesh_gpu_instancing`,
+  `KHR_materials_emissive_strength`, `EXT_texture_webp`. **No se admiten** las compresiones Draco, meshopt ni
+  KTX2/Basis (necesitan decodificadores que Offlined no incluye). Cada versión publica además cada modelo comprimido
+  con gzip (`.glb.gz`): Offlined descarga y guarda ese.
+- **Que pese poco**: posiciones y coordenadas de textura de 16 bits y normales de 8 bits (`KHR_mesh_quantization`),
+  e **instancias** (`EXT_mesh_gpu_instancing`) para todo lo que se repite —carámbanos de óxido, anémonas, platos,
+  remaches…—: la forma se guarda una vez, más dónde va cada copia. [`tools/scenekit.py`](../tools/scenekit.py)
+  `write_model()` hace las dos cosas.
 - Texturas: JPEG, PNG o WebP, **como mucho 2048 × 2048 px**, mejor en potencias de dos.
 - Materiales: PBR metálico-rugosidad (el normal de glTF). Sin luces, cámaras ni animaciones.
 
@@ -103,39 +106,10 @@ falla. Puedes lanzarlo tú: `python tools/validate.py`.
 - Modela lo que **se ve hoy**: el pecio, no el barco. Si además quieres el barco como era, añade
   `model_built.glb`.
 - Usa planos y estudios reales, y cítalos. No adivines el rumbo: si no se sabe, dilo en `notes`.
-- Que pese poco: en Offlined el fondo está a escala 1:100 y la cámara casi nunca se acerca a menos de unos
-  metros. El detalle que no se ve a 10 m es peso para nada.
+- Que merezca verse de cerca: en Offlined puedes acercarte a un par de metros de cualquier parte del pecio. El
+  óxido, los carámbanos, los animales que viven allí de verdad (solo esos: por debajo de unos 1.000 m no hay luz,
+  así que ni arrecifes ni peces de colores) y objetos reconocibles en el campo de restos hacen interesante un
+  pecio; [`tools/abyss.py`](../tools/abyss.py) los tiene. Muchos pecios son tumbas: nunca restos humanos.
 - **No copies** modelos de otras webs salvo que su licencia sea CC-BY-4.0 o CC0-1.0 y nombres al autor en
   `based_on`. Muchas webs (Sketchfab incluida) tienen modelos con licencias *NoComercial* o propias: esos no
   pueden venir aquí.
-
-## 7. El diorama (`diorama.glb`)
-
-`model.glb` pesa poco porque Offlined lo dibuja en un mundo a escala 1:100 que recorres volando. El diorama es
-lo contrario: una escena para **pararse, darle la vuelta y acercarse**, que se abre desde la ficha del pecio
-(«verlo de cerca»). Es opcional y solo para carpetas `item`. Valen las reglas 2 y 3, con estas diferencias:
-
-- **Incluye el fondo**: un trozo de suelo que quepa todo el pecio (en el Titanic, proa, popa y el campo de
-  restos entre ellas), recortado como un diorama de museo. Mismo origen y ejes que `model.glb`, para que
-  coincidan.
-- **Las texturas son bienvenidas** (2048 px como mucho): mapas de color y de normales que se repitan, para el
-  barro, el acero, el óxido. Hornea la luz que no se mueve (oclusión ambiental) en los colores de los vértices o
-  en una textura: el visor solo añade sus propias luces (focos del ROV o una luz suave de museo) y la nieve marina.
-- **Solo lo que es real a esa profundidad.** Por debajo de unos 1.000 m no hay luz: ni arrecifes, ni algas, ni
-  peces de colores. Averigua qué animales viven allí (las fotos de las expediciones son la mejor fuente) y que
-  sean pocos y pequeños, como son. Cítalos en `meta.json` → `sources`.
-- **Puntos de interés**: nodos vacíos llamados `poi_<id>` cuyos `extras` son
-  `{ "poi": { "id", "label": { "en", "es", … }, "text": { "en", "es", … }, "kind", "view" } }`:
-  `label` son unas palabras, `text` una o dos frases, `kind` es `wreck`, `life` o `memorial`, y `view` a qué
-  distancia (m) se pone la cámara al ir allí. El inglés es obligatorio; añade los idiomas que puedas.
-- Opcionalmente, los `extras` de la escena pueden llevar `{ "diorama": { "depth", "bounds", "start": { "target", "distance" } } }`
-  con dónde empieza la cámara.
-- **Respeto**: muchos pecios son tumbas. Muestra lo que hay con cuidado; nunca restos humanos.
-
-| | `diorama.glb` |
-|---|---|
-| Tamaño del archivo | 40 MB |
-| Triángulos | 1.500.000 |
-
-El diorama del Titanic está hecho por código: [`model_sources/Q25173_titanic_diorama.py`](../model_sources/Q25173_titanic_diorama.py),
-con [`tools/scenekit.py`](../tools/scenekit.py) (texturas que se repiten, UV triplanares, AO horneada, puntos de interés).

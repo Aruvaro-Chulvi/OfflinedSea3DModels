@@ -1,19 +1,19 @@
 """
-scenekit — richer scenes on top of meshkit (MIT), for the close-up dioramas (docs/MODEL_SPEC.md, «diorama.glb»).
+scenekit — richer, lighter models on top of meshkit (MIT).
 
-- Procedural, seamlessly tiling PBR textures (colour + normal map) drawn with numpy: seabed ooze, riveted steel,
-  porous rust.
-- UV projection at write time (top-down «xz» for the seabed, «triplanar» for everything else), splitting the
-  vertices where a smooth surface changes projection so no texture gets smeared.
-- Ambient occlusion baked into the vertex colours with a voxel grid (no Blender, no ray tracer: numpy only).
-- A glTF writer with several materials, embedded JPEG textures and «points of interest» (empty nodes whose
-  extras carry a label in several languages).
+- Procedural, seamlessly tiling PBR textures (colour + normal map) drawn with numpy: riveted steel, porous rust,
+  deck planks, seabed ooze.
+- UV projection at write time (top-down «xz» or «triplanar»), splitting the vertices where a smooth surface
+  changes projection so no texture gets smeared.
+- Ambient occlusion baked into the vertex colours with a voxel grid (numpy only).
+- write_model(): a compact glTF — 16-bit positions and texture coordinates, 8-bit normals and colours
+  (KHR_mesh_quantization, KHR_texture_transform) and instancing (EXT_mesh_gpu_instancing) for things repeated
+  hundreds of times (rusticles, anemones, plates…): each shape is stored once, plus where its copies go.
 
     from meshkit import *
     from scenekit import *
-    bake_ao([hull, seabed], occluders=[hull], ground=lambda x, z: 0 * x)
-    write_scene("diorama.glb", [("seabed", seabed, "seabed"), ("hull", hull, "steel")],
-                {"seabed": material(tex=seabed_textures(), uv=("xz", 6)), "steel": material(tex=steel_textures())})
+    write_model("model.glb", [("hull", hull, "steel")], {"steel": material(tex=steel_textures())},
+                instanced=[("rusticles", icicle, "rust", instances(points, scale=sizes))])
 """
 from __future__ import annotations
 
@@ -111,9 +111,10 @@ def seabed_textures(n=1024, tile=6.0, seed=1):
     return {"map": _jpeg(col * 255), "normal": _jpeg(normal_map(h, tile, 1.0), 92), "tile": tile}
 
 
-def steel_textures(n=2048, tile=7.2, seed=2, strake=1.8, butt=3.6):
+def steel_textures(n=2048, tile=7.2, seed=2, strake=1.8, butt=3.6, wear=1.0):
     """Riveted plates eaten by rust, as a near-white multiplier (the paint and the rust colour are in the vertex
-    colours): seams, rows of rivets, pitting and flaking blisters. strake/butt: plate height and length (m)."""
+    colours): seams, rows of rivets, pitting and flaking blisters. strake/butt: plate height and length (m);
+    wear: 1 for a wreck, ~0.1 for a ship in service."""
     yy, xx = np.mgrid[0:n, 0:n] / n
     U, V = xx * tile, yy * tile
     row = np.floor(V / strake)
@@ -128,9 +129,9 @@ def steel_textures(n=2048, tile=7.2, seed=2, strake=1.8, butt=3.6):
     riv_v = np.exp(-((rvv ** 2 + (du - 0.045) ** 2) / 0.011 ** 2))
     riv = np.clip(riv_h + riv_v, 0, 1)
     pit = pfbm(n, 48, seed + 1, 4)
-    blis = np.clip((pfbm(n, 10, seed + 2, 5) - 0.55) * 6, 0, 1)
+    blis = np.clip((pfbm(n, 10, seed + 2, 5) - 0.55) * 6, 0, 1) * wear
     h = -0.003 * seam + 0.006 * riv - 0.004 * np.clip(pit - 0.5, 0, 1) * 2 + 0.003 * blis - 0.002 * pfbm(n, 160, seed + 3, 2)
-    lum = 0.80 + 0.22 * (pfbm(n, 8, seed + 4, 5) - 0.5) - 0.25 * seam + 0.05 * riv - 0.18 * np.clip(pit - 0.62, 0, 1) * 4
+    lum = 0.80 + 0.22 * wear * (pfbm(n, 8, seed + 4, 5) - 0.5) + 0.12 * (1 - wear) - 0.25 * seam + 0.05 * riv - 0.18 * wear * np.clip(pit - 0.62, 0, 1) * 4
     tint = np.array([1.0, 0.86, 0.72])
     col = lum[..., None] * (1 - 0.6 * blis[..., None]) + lum[..., None] * tint * 0.6 * blis[..., None] * 1.08
     return {"map": _jpeg(np.clip(col, 0, 1) * 255), "normal": _jpeg(normal_map(h, tile, 1.0), 92), "tile": tile}
@@ -239,6 +240,27 @@ def bake_ao(targets, occluders, ground=None, cell=0.7, rays=20, reach=14.0, stre
 
 
 # ── Writer ───────────────────────────────────────────────────────────────────
+UV_Q = 256                                     # texture coordinates stored as int16 in 1/256 of a tile
+
+
+def planks_textures(n=1024, tile=4.0, seed=5, plank=0.15, length=4.0):
+    """A wooden deck: planks along +V with caulked seams and staggered butts (multiplier around 1)."""
+    yy, xx = np.mgrid[0:n, 0:n] / n
+    U, V = xx * tile, yy * tile
+    k = np.floor(U / plank)
+    du = np.abs(U / plank - np.round(U / plank)) * plank
+    off = (k * 0.37 % 1.0) * length
+    dv = np.abs((V + off) / length - np.round((V + off) / length)) * length
+    seam = np.maximum(np.exp(-(du / 0.006) ** 2), np.exp(-(dv / 0.004) ** 2))
+    grain = pfbm(n, 6, seed, 4)
+    streak = 0.5 + 0.5 * np.sin((U * 40 + 6 * pfbm(n, 3, seed + 1, 3)) * math.pi)
+    rnd = np.random.default_rng(seed).uniform(0.85, 1.12, int(tile / plank) + 2)
+    lum = (0.92 + 0.1 * (grain - 0.5) + 0.04 * streak) * rnd[(k % len(rnd)).astype(int)] * (1 - 0.65 * seam)
+    col = lum[..., None] * np.array([1.0, 0.94, 0.86])
+    h = -0.002 * seam + 0.0004 * streak
+    return {"map": _jpeg(np.clip(col, 0, 1) * 255), "normal": _jpeg(normal_map(h, tile, 1.0), 92), "tile": tile}
+
+
 def _chunks(f, limit=65535):
     """Split faces into blocks that use at most `limit` vertices -> [(vertex ids, faces renumbered)]."""
     out, start, F = [], 0, len(f)
@@ -254,20 +276,57 @@ def _chunks(f, limit=65535):
     return out
 
 
-def write_scene(path, parts, materials, pois=(), generator="Offlined Sea 3D Models scenekit", extras=None):
-    """parts: [(name, Mesh, material key)]; materials: {key: material(...)};
-    pois: [{"id": str, "pos": (x, y, z), "label": {"en": .., "es": ..}, "text": {..}}] -> empty nodes with extras."""
+def _spatial_order(v, f, cell=12.0):
+    """Faces sorted by where they are, so the 65k-vertex blocks are compact (fewer vertices repeated)."""
+    c = v[f].mean(1)
+    gx, gz = np.floor(c[:, 0] / cell).astype(int), np.floor(c[:, 2] / cell).astype(int)
+    return f[np.lexsort((gx, gz))]
+
+
+def _quat_from_up(n, yaw):
+    """Quaternions (x, y, z, w): turn yaw radians around +Y, then +Y onto the unit vectors n."""
+    n = np.asarray(n, float); n = n / np.linalg.norm(n, axis=1, keepdims=True)
+    N = len(n)
+    qy = np.stack([np.zeros(N), np.sin(yaw / 2), np.zeros(N), np.cos(yaw / 2)], 1)
+    ax = np.stack([n[:, 2], np.zeros(N), -n[:, 0]], 1)                     # up × n
+    d = n[:, 1]
+    qa = np.concatenate([ax, (1 + d)[:, None]], 1)
+    qa[d < -0.9999] = (1, 0, 0, 0)
+    qa /= np.linalg.norm(qa, axis=1, keepdims=True)
+    x1, y1, z1, w1 = qa.T; x2, y2, z2, w2 = qy.T                            # qa * qy
+    return np.stack([w1 * x2 + x1 * w2 + y1 * z2 - z1 * y2, w1 * y2 - x1 * z2 + y1 * w2 + z1 * x2,
+                     w1 * z2 + x1 * y2 - y1 * x2 + z1 * w2, w1 * w2 - x1 * x2 - y1 * y2 - z1 * z2], 1)
+
+
+def instances(pos, normal=None, yaw=None, scale=None):
+    """(N,3) positions + optional normals (the copy's up axis), yaw (radians) and scale ((N,) or (N,3))."""
+    pos = np.asarray(pos, float).reshape(-1, 3); N = len(pos)
+    normal = np.tile([0.0, 1.0, 0.0], (N, 1)) if normal is None else np.asarray(normal, float).reshape(-1, 3)
+    yaw = np.zeros(N) if yaw is None else np.asarray(yaw, float)
+    sc = np.ones((N, 3)) if scale is None else np.asarray(scale, float)
+    if sc.ndim == 1:
+        sc = np.repeat(sc[:, None], 3, 1)
+    return {"t": pos, "r": _quat_from_up(normal, yaw) if N else np.zeros((0, 4)), "s": sc}
+
+
+def write_model(path, parts, materials, instanced=(), generator="Offlined Sea 3D Models scenekit"):
+    """parts: [(node name, Mesh, material key)] or [(node name, [(Mesh, material key), …])];
+    instanced: [(node name, Mesh, material key, instances(...))]; materials: {key: material(...)}.
+    Each block of up to 65,535 vertices is a child node whose translation/scale undo the 16-bit positions,
+    so the named nodes carry no transform themselves (Offlined moves them as pieces)."""
     binbuf = bytearray()
     views, accs, meshes, nodes, images, textures, mats = [], [], [], [], [], [], []
-    mat_idx = {}
+    mat_idx, used_ext = {}, {"KHR_mesh_quantization"}
 
-    def view(data, target=None):
+    def view(data, target=None, stride=None):
         while len(binbuf) % 4:
             binbuf.append(0)
         off = len(binbuf); binbuf.extend(data)
         v = {"buffer": 0, "byteOffset": off, "byteLength": len(data)}
         if target:
             v["target"] = target
+        if stride:
+            v["byteStride"] = stride
         views.append(v)
         return len(views) - 1
 
@@ -280,58 +339,92 @@ def write_scene(path, parts, materials, pois=(), generator="Offlined Sea 3D Mode
         m = {"name": key, "doubleSided": bool(md["double"]),
              "pbrMetallicRoughness": {"baseColorFactor": md["color"], "metallicFactor": md["metal"], "roughnessFactor": md["rough"]}}
         if md.get("tex"):
-            m["pbrMetallicRoughness"]["baseColorTexture"] = {"index": tex(md["tex"]["map"])}
-            m["normalTexture"] = {"index": tex(md["tex"]["normal"]), "scale": md["normal_scale"]}
+            tt = {"KHR_texture_transform": {"scale": [1 / UV_Q, 1 / UV_Q]}}
+            m["pbrMetallicRoughness"]["baseColorTexture"] = {"index": tex(md["tex"]["map"]), "extensions": tt}
+            m["normalTexture"] = {"index": tex(md["tex"]["normal"]), "scale": md["normal_scale"], "extensions": tt}
+            used_ext.add("KHR_texture_transform")
         if md.get("emissive"):
             m["emissiveFactor"] = list(md["emissive"])
         mat_idx[key] = len(mats); mats.append(m)
 
-    tris = 0
-    for name, mesh, key in parts:
-        if not len(mesh.f):
-            continue
+    def prim(v, f, c, n, uv, key, quantize=True):
+        """One primitive -> (primitive, translation, scale) for the node that holds it."""
+        mid = sc = None
+        if quantize:
+            lo, hi = v.min(0), v.max(0)
+            sc = np.maximum(hi - lo, 1e-6) / 65534.0
+            mid = (lo + hi) / 2
+            q = np.round((v - mid) / sc).astype(np.int16)
+            pos = np.hstack([q, np.zeros((len(q), 1), np.int16)])
+            pa = {"bufferView": view(pos.tobytes(), 34962, 8), "componentType": 5122, "count": len(q), "type": "VEC3",
+                  "min": q.min(0).tolist(), "max": q.max(0).tolist()}
+        else:
+            pf = v.astype(np.float32)
+            pa = {"bufferView": view(pf.tobytes(), 34962), "componentType": 5126, "count": len(pf), "type": "VEC3",
+                  "min": pf.min(0).tolist(), "max": pf.max(0).tolist()}
+        col = np.round(_srgb_to_linear(c) * 255).astype(np.uint8)
+        col = np.hstack([col, np.full((len(col), 1), 255, np.uint8)])
+        nq = np.round(np.clip(n, -1, 1) * 127).astype(np.int8)
+        nq = np.hstack([nq, np.zeros((len(nq), 1), np.int8)])
+        a0 = len(accs)
+        accs.extend([pa,
+                     {"bufferView": view(nq.tobytes(), 34962, 4), "componentType": 5120, "normalized": True, "count": len(nq), "type": "VEC3"},
+                     {"bufferView": view(col.tobytes(), 34962), "componentType": 5121, "normalized": True, "count": len(col), "type": "VEC4"},
+                     {"bufferView": view(f.astype(np.uint16).ravel().tobytes(), 34963), "componentType": 5123, "count": int(f.size), "type": "SCALAR"}])
+        attrs = {"POSITION": a0, "NORMAL": a0 + 1, "COLOR_0": a0 + 2}
+        if uv is not None:
+            u = uv - np.floor(uv.mean(0))                                   # whole tiles can be dropped: same picture
+            uq = np.clip(np.round(u * UV_Q), -32767, 32767).astype(np.int16)
+            accs.append({"bufferView": view(uq.tobytes(), 34962), "componentType": 5122, "count": len(uq), "type": "VEC2"})
+            attrs["TEXCOORD_0"] = len(accs) - 1
+        return {"attributes": attrs, "indices": a0 + 3, "material": mat_idx[key]}, mid, sc
+
+    def project(mesh, key):
         md = materials[key]
         nrm = normals(mesh)
         if md.get("tex"):
-            v, f, c, n, uv = project_uv(mesh, nrm, *md["uv"])
-        else:
-            v, f, c, n, uv = mesh.v, mesh.f, mesh.c, nrm, None
-        prims = []
-        for vi, fl in _chunks(f):                       # ≤ 65,535 vertices per primitive: 16-bit indices
-            pos = v[vi].astype(np.float32)
-            col = np.round(_srgb_to_linear(c[vi]) * 255).astype(np.uint8)
-            col = np.hstack([col, np.full((len(col), 1), 255, np.uint8)])
-            nq = np.round(np.clip(n[vi], -1, 1) * 127).astype(np.int8)          # KHR_mesh_quantization: int8 normals,
-            nq = np.hstack([nq, np.zeros((len(nq), 1), np.int8)])                  # padded to 4 bytes (byteStride 4)
-            idx = fl.astype(np.uint16).ravel()
-            a0 = len(accs)
-            vn = view(nq.tobytes(), 34962); views[vn]["byteStride"] = 4
-            accs += [
-                {"bufferView": view(pos.tobytes(), 34962), "componentType": 5126, "count": len(pos), "type": "VEC3",
-                 "min": pos.min(0).tolist(), "max": pos.max(0).tolist()},
-                {"bufferView": vn, "componentType": 5120, "normalized": True, "count": len(pos), "type": "VEC3"},
-                {"bufferView": view(col.tobytes(), 34962), "componentType": 5121, "normalized": True, "count": len(pos), "type": "VEC4"},
-                {"bufferView": view(idx.tobytes(), 34963), "componentType": 5123, "count": len(idx), "type": "SCALAR"},
-            ]
-            attrs = {"POSITION": a0, "NORMAL": a0 + 1, "COLOR_0": a0 + 2}
-            if uv is not None:
-                accs.append({"bufferView": view(uv[vi].astype(np.float32).tobytes(), 34962), "componentType": 5126, "count": len(pos), "type": "VEC2"})
-                attrs["TEXCOORD_0"] = len(accs) - 1
-            prims.append({"attributes": attrs, "indices": a0 + 3, "material": mat_idx[key]})
-        meshes.append({"name": name, "primitives": prims})
-        nodes.append({"name": name, "mesh": len(meshes) - 1})
-        tris += len(f)
-    for p in pois:
-        nodes.append({"name": "poi_" + p["id"], "translation": [float(x) for x in p["pos"]],
-                      "extras": {"poi": {k: p[k] for k in ("id", "label", "text", "kind", "wiki", "view") if k in p}}})
+            return project_uv(mesh, nrm, *md["uv"])
+        return mesh.v, mesh.f, mesh.c, nrm, None
+
+    tris, top = 0, []
+    for part in parts:
+        name = part[0]
+        items = part[1] if isinstance(part[1], list) else [(part[1], part[2])]
+        kids = []
+        for mesh, key in items:
+            if not len(mesh.f):
+                continue
+            v, f, c, n, uv = project(mesh, key)
+            f = _spatial_order(v, f)
+            for vi, fl in _chunks(f):
+                pr, mid, sc = prim(v[vi], fl, c[vi], n[vi], None if uv is None else uv[vi], key)
+                meshes.append({"name": f"{name}_{len(meshes)}", "primitives": [pr]})
+                nodes.append({"mesh": len(meshes) - 1, "translation": [float(x) for x in mid], "scale": [float(x) for x in sc]})
+                kids.append(len(nodes) - 1)
+            tris += len(f)
+        nodes.append({"name": name, "children": kids}); top.append(len(nodes) - 1)
+    for name, mesh, key, ins in instanced:
+        if not len(ins["t"]) or not len(mesh.f):
+            continue
+        v, f, c, n, uv = project(mesh, key)
+        assert len(v) <= 65535, name
+        pr, _, _ = prim(v, f, c, n, uv, key, quantize=False)
+        meshes.append({"name": name, "primitives": [pr]})
+        a = len(accs)
+        for arr, typ in ((ins["t"], "VEC3"), (ins["r"], "VEC4"), (ins["s"], "VEC3")):
+            d = np.asarray(arr, np.float32)
+            accs.append({"bufferView": view(d.tobytes()), "componentType": 5126, "count": len(d), "type": typ})
+        nodes.append({"name": name, "mesh": len(meshes) - 1,
+                      "extensions": {"EXT_mesh_gpu_instancing": {"attributes": {"TRANSLATION": a, "ROTATION": a + 1, "SCALE": a + 2}}}})
+        top.append(len(nodes) - 1)
+        used_ext.add("EXT_mesh_gpu_instancing")
+        tris += len(f) * len(ins["t"])
     g = {
         "asset": {"version": "2.0", "generator": generator},
-        "extensionsUsed": ["KHR_mesh_quantization"], "extensionsRequired": ["KHR_mesh_quantization"],
-        "scene": 0, "scenes": [{"nodes": list(range(len(nodes)))}], "nodes": nodes, "meshes": meshes, "materials": mats,
+        "extensionsUsed": sorted(used_ext), "extensionsRequired": sorted(used_ext - {"KHR_texture_transform"}),
+        "scene": 0, "scenes": [{"nodes": top}], "nodes": nodes, "meshes": meshes, "materials": mats,
         "accessors": accs, "bufferViews": views, "buffers": [{"byteLength": len(binbuf)}],
     }
-    if extras:
-        g["scenes"][0]["extras"] = extras
     if textures:
         g.update(images=images, textures=textures, samplers=[{"magFilter": 9729, "minFilter": 9987, "wrapS": 10497, "wrapT": 10497}])
     js = json.dumps(g, separators=(",", ":"), ensure_ascii=False).encode()

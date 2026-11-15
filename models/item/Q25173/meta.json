@@ -39,30 +39,30 @@
       "url": "https://livescience.com/18975-titanic-shipwreck-map.html"
     },
     {
-      "title": "Diorama — Halomonas titanicae, the bacterium found in the Titanic's rusticles",
+      "title": "Halomonas titanicae, the bacterium found in the Titanic's rusticles",
       "url": "https://en.wikipedia.org/wiki/Halomonas_titanicae"
     },
     {
-      "title": "Diorama — dropstones (rocks dropped by melting icebergs)",
+      "title": "Dropstones (rocks dropped by melting icebergs)",
       "url": "https://en.wikipedia.org/wiki/Dropstone"
     },
     {
-      "title": "Diorama — Umbellula, deep-sea sea pens",
-      "url": "https://en.wikipedia.org/wiki/Umbellula"
-    },
-    {
-      "title": "Diorama — Psychropotes longicauda, the deep-sea cucumber with a «sail»",
-      "url": "https://en.wikipedia.org/wiki/Psychropotes_longicauda"
-    },
-    {
-      "title": "Diorama — grenadiers (rattails), the commonest fish of the abyssal plains",
+      "title": "Grenadiers (rattails), the commonest fish of the abyssal plains",
       "url": "https://en.wikipedia.org/wiki/Grenadier_(fish)"
     },
     {
-      "title": "Diorama — xenophyophores, giant single-celled organisms of the deep seafloor",
+      "title": "Psychropotes longicauda, the deep-sea cucumber with a «sail»",
+      "url": "https://en.wikipedia.org/wiki/Psychropotes_longicauda"
+    },
+    {
+      "title": "Umbellula, deep-sea sea pens",
+      "url": "https://en.wikipedia.org/wiki/Umbellula"
+    },
+    {
+      "title": "Xenophyophores, giant single-celled organisms of the deep seafloor",
       "url": "https://en.wikipedia.org/wiki/Xenophyophorea"
     }
   ],
-  "triangles": 45207,
-  "notes": "Built by code (model_sources/Q25173_titanic.py, tools/meshkit.py) with AI assistance. Bow section (~143 m) upright, ploughed into a mud ridge: funnels gone (torn stubs), foremast fallen over the bridge, officers' quarters roof partly fallen in, holes where the wooden decks rotted away, decks sagging and torn plates at the break, rusticles and rust runs under the portholes. Stern section (~109 m) collapsed about 600 m to the south, facing the opposite way, with its propellers and plates standing up around it; debris field with five boilers (and their furnaces), coal, funnel pieces and fallen cranes. model_built.glb: the ship as she sailed (funnels, masts and aerial, lifeboats, glass dome). Headings are approximate (bow roughly north). diorama.glb (model_sources/Q25173_titanic_diorama.py, tools/scenekit.py): the wreck on its own 284 × 936 m piece of seabed cut out like a museum diorama (mud ridges at the bow, impact rim at the stern, sand waves, burrows, dropstones; strata on the edges), PBR textures made by code and baked ambient occlusion, rusticles and rust runs, deep-sea life (rattails, sea cucumbers and their trails, brittle stars, squat lobsters, anemones, mushroom and bamboo corals, Umbellula sea pens, glass sponges, xenophyophores), recognisable objects (pairs of shoes, rows of White Star plates, corked bottles, bench ends, a safe, copper pots, an engine telegraph, Captain Smith's bathtub) and 24 points of interest in English and Spanish."
+  "notes": "Built by code (model_sources/Q25173_titanic.py, tools/meshkit.py, tools/scenekit.py, tools/abyss.py) with AI assistance. Bow section (~143 m) upright, ploughed into a mud ridge: funnels gone (torn stubs), foremast fallen over the bridge, officers' quarters roof partly fallen in (Captain Smith's bathtub in view), holes where the wooden decks rotted away, decks sagging and torn plates at the break. Stern section (~109 m) collapsed about 600 m to the south, facing the opposite way, with its propellers and plates standing up around it; debris field with five boilers, coal, funnel pieces and fallen cranes. Riveted steel textures, the black paint gone brown, thousands of rusticles and rust runs, baked ambient occlusion. Life that really lives at 3,800 m: anemones, mushroom and bamboo corals, squat lobsters, brittle stars, glass sponges on dropstones, sea cucumbers, Umbellula sea pens, xenophyophores, burrow mounds and grenadier fish. In the debris field: pairs of shoes, rows of White Star plates, cups, corked bottles, bench ends, copper pots, a safe, an engine telegraph and suitcases. Repeated things are stored once with instancing (EXT_mesh_gpu_instancing); positions are 16-bit (KHR_mesh_quantization). model_built.glb: the ship as she sailed (funnels, masts, shrouds and aerial, lifeboats, glass dome), planked decks, clean plating, baked ambient occlusion. Headings are approximate (bow roughly north).",
+  "triangles": 75575
 }

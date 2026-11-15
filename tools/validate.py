@@ -16,14 +16,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 KINDS = ("item", "class", "vehicle")
-LIMITS = {"item": (8 * 2**20, 200_000), "class": (5 * 2**20, 120_000), "vehicle": (5 * 2**20, 120_000),
-          "diorama": (40 * 2**20, 1_500_000)}          # diorama.glb: the close-up scene (MODEL_SPEC §7)
-EXT_OK = {"KHR_mesh_quantization", "KHR_texture_transform",
+LIMITS = {"item": (8 * 2**20, 200_000), "class": (5 * 2**20, 120_000), "vehicle": (5 * 2**20, 120_000)}
+EXT_OK = {"KHR_mesh_quantization", "KHR_texture_transform", "EXT_mesh_gpu_instancing",
           "KHR_materials_emissive_strength", "EXT_texture_webp"}
 LICENSES = {"CC-BY-4.0", "CC0-1.0"}
 STATES = {"intact", "broken", "scattered", "capsized", "buried"}
 QID = re.compile(r"^Q[1-9][0-9]*$")
-FILES_OK = {"model.glb", "meta.json", "preview.jpg", "model_built.glb", "diorama.glb", "diorama.jpg"}
+FILES_OK = {"model.glb", "meta.json", "preview.jpg", "model_built.glb"}
 
 
 def image_size(b: bytes):
@@ -99,22 +98,20 @@ def check_glb(p: Path, kind: str, err, warn):
         sz = image_size(data)
         if sz and max(sz) > 2048:
             err(f"{p.name}: texture {i} is {sz[0]}×{sz[1]} px, more than 2048")
-    # size of the whole thing, from the POSITION bounds (node transforms ignored: a rough check)
+    # size of the whole thing, from the POSITION bounds and each node's own translation/scale (16-bit positions
+    # are undone that way); rotations and parents are ignored: a rough check
     lo, hi = [1e18] * 3, [-1e18] * 3
-    for m in g.get("meshes", []):
-        for pr in m.get("primitives", []):
+    for nd in g.get("nodes", []):
+        if "mesh" not in nd or "EXT_mesh_gpu_instancing" in (nd.get("extensions") or {}):
+            continue
+        t, sc = nd.get("translation", [0, 0, 0]), nd.get("scale", [1, 1, 1])
+        for pr in g["meshes"][nd["mesh"]].get("primitives", []):
             a = acc[pr["attributes"]["POSITION"]]
             if "min" in a and "max" in a:
-                lo = [min(x, y) for x, y in zip(lo, a["min"])]; hi = [max(x, y) for x, y in zip(hi, a["max"])]
+                lo = [min(x, tt + ss * y) for x, tt, ss, y in zip(lo, t, sc, a["min"])]
+                hi = [max(x, tt + ss * y) for x, tt, ss, y in zip(hi, t, sc, a["max"])]
     ext = [h - l for l, h in zip(lo, hi)] if hi[0] > -1e17 else None
-    pois = [n for n in g.get("nodes", []) if isinstance((n.get("extras") or {}).get("poi"), dict)]
-    for n in pois:
-        pp = n["extras"]["poi"]
-        if not (isinstance(pp.get("label"), dict) and pp["label"].get("en")):
-            err(f"{p.name}: point of interest {n.get('name')} needs label.en")
-        if "mesh" in n:
-            err(f"{p.name}: point of interest {n.get('name')} must be an empty node")
-    return {"triangles": tris, "extent": ext, "nodes": {n.get("name") for n in g.get("nodes", [])}, "pois": len(pois)}
+    return {"triangles": tris, "extent": ext, "nodes": {n.get("name") for n in g.get("nodes", [])}}
 
 
 def check_folder(d: Path, catalog: dict, errors: list, warnings: list):
@@ -202,13 +199,6 @@ def check_folder(d: Path, catalog: dict, errors: list, warnings: list):
                 for nm in (m.get("pieces") or {}):
                     if nm not in info["nodes"]:
                         err(f"pieces.{nm}: there is no node with that name in model.glb")
-    if (d / "diorama.glb").exists():
-        if kind != "item":
-            err("diorama.glb is only for a single wreck (models/item)")
-        else:
-            info = check_glb(d / "diorama.glb", "diorama", err, warn)
-            if info and not info["pois"]:
-                warn("diorama.glb has no points of interest (MODEL_SPEC §7)")
     pv = d / "preview.jpg"
     if pv.exists():
         sz = image_size(pv.read_bytes()[:65536])
