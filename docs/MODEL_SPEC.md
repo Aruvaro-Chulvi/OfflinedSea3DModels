@@ -30,6 +30,8 @@ Each folder holds:
 | `meta.json` | yes | Who made it, licence, sources, position and heading. See §4. |
 | `preview.jpg` | recommended | A picture of the model, 1280 × 720, for the catalog page. |
 | `model_built.glb` | optional | The ship or aircraft **as it was when it sailed or flew**, for a before/after view. |
+| `diorama.glb` | optional (item) | The wreck **on its own piece of seabed**, with the life and the objects around it, to look at closely. See §7. |
+| `diorama.jpg` | optional | A picture of the diorama, 1280 × 720. |
 
 ## 2. Format
 
@@ -107,3 +109,34 @@ wrong. You can run it yourself: `python tools/validate.py`.
 - Do **not** copy models from other websites unless their licence is CC-BY-4.0 or CC0-1.0 and you name the
   author in `based_on`. Many sites (Sketchfab included) host models under *NonCommercial* or custom licences:
   those cannot come here.
+
+## 7. The diorama (`diorama.glb`)
+
+`model.glb` is light because Offlined draws it in a 1:100 world you fly through. The diorama is the
+opposite: a scene to **stop, turn around and zoom into**, opened from the wreck's card («see it up close»).
+It is optional and only for `item` folders. Rules 2 and 3 apply, with these differences:
+
+- **It includes the seabed**: a piece of floor big enough to hold every part of the wreck (for the Titanic,
+  bow, stern and the debris field between them), cut out like a museum diorama. Keep the same origin and
+  axes as `model.glb`, so both line up.
+- **Textures are welcome** (2048 px at most): colour and normal maps that tile, for the mud, the steel, the
+  rust. Bake the light that does not move (ambient occlusion) into the vertex colours or a texture: the
+  viewer adds only its own lights (ROV lamps or a soft museum light) and the marine snow.
+- **Only what is real at that depth.** Below about 1,000 m there is no light: no reefs, no algae, no colourful
+  fish. Find out which animals live there (photos from the surveys are the best source) and keep them few
+  and small, as they are. Name them in `meta.json` → `sources`.
+- **Points of interest**: empty nodes named `poi_<id>` whose `extras` are
+  `{ "poi": { "id", "label": { "en", "es", … }, "text": { "en", "es", … }, "kind", "view" } }` —
+  `label` is a few words, `text` one or two sentences, `kind` is `wreck`, `life` or `memorial`, `view` how
+  far (m) the camera stands when it flies there. English is required; add any other languages you can.
+- Optionally, the scene's `extras` can hold `{ "diorama": { "depth", "bounds", "start": { "target", "distance" } } }`
+  for where the camera starts.
+- **Respect**: many wrecks are graves. Show what is there with care; no human remains, ever.
+
+| | `diorama.glb` |
+|---|---|
+| File size | 40 MB |
+| Triangles | 1,500,000 |
+
+The Titanic's diorama is built by code: [`model_sources/Q25173_titanic_diorama.py`](../model_sources/Q25173_titanic_diorama.py),
+with [`tools/scenekit.py`](../tools/scenekit.py) (tiling textures, triplanar UVs, baked AO, points of interest).

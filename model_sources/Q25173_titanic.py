@@ -26,6 +26,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 from meshkit import Mesh, merge, box, cyl, lathe, grid, quad, tube, crumple, weather, sstep, fbm, write_glb  # noqa: E402
 
 rng = np.random.default_rng(1912)
+RUN_STYLE = "quad"       # rust runs under the portholes: "quad" (this model) or "drip" (the diorama sets it)
 
 # ── The ship ─────────────────────────────────────────────────────────────────
 L, B = 269.1, 28.2
@@ -261,7 +262,12 @@ def ship_part(d0, d1, built=False):
                 P.append(quad(s * x, y, z, 0.42, 0.42, "+x" if s > 0 else "-x", DARK, eps=0.06))
                 if not built and rng.random() < 0.6:
                     ln = rng.uniform(0.8, 2.6)
-                    P.append(quad(s * hw(z, y - ln / 2), y - 0.2 - ln / 2, z, 0.3, ln, "+x" if s > 0 else "-x", RUSTY, eps=0.05))
+                    run = quad(s * hw(z, y - ln / 2), y - 0.2 - ln / 2, z, 0.3, ln, "+x" if s > 0 else "-x", RUSTY, eps=0.05)
+                    if RUN_STYLE == "drip":                # the diorama: a drip that narrows and fades downwards
+                        low = run.v[:, 1] < run.v[:, 1].mean()
+                        run.v[low, 2] = z + (run.v[low, 2] - z) * 0.12
+                        run.c = np.where(low[:, None], (0.62, 0.32, 0.12), (0.36, 0.15, 0.06))
+                    P.append(run)
     # Hatches (open on the wreck)
     for d, wd in ((26, 6), (49, 7), (217, 7), (240, 6)):
         if inr(d, 3):
@@ -333,145 +339,172 @@ def rudder_props():
     return merge(parts)
 
 
-# ── Bow section (the wreck) ──────────────────────────────────────────────────
-BOW_END = 143.0
-bow = merge(ship_part(0, BOW_END))
-y0 = yd_of(t_of(zd(45)))
-fore = merge([tube([(0, y0, zd(45)), (0.4, HT + 0.6, zd(86))], 0.42, (0.12, 0.1, 0.09), seg=8),        # foremast, fallen back over the bridge
-              cyl(0.9, 0.9, 1.6, (0.12, 0.1, 0.09), seg=10).R(0, 0, math.pi / 2 - 0.22).T(0.6, HT - 1.2, zd(76))])   # its crow's nest
-# torn plates at the break, sticking out backwards
-torn = []
-for i in range(30):
-    y = rng.uniform(4, HT)
-    wdt = hw(zd(BOW_END), min(y, H)) if y < H else B * 0.45
-    p = box(rng.uniform(2, 6), 0.12, rng.uniform(2, 7), BLACK if y < HB else WHITE, bottom=False)
-    crumple(p, 0.8, 0.35, 300 + i)
-    torn.append(p.R(rng.uniform(-0.6, 0.6), rng.uniform(-0.4, 0.4), rng.uniform(-0.8, 0.8)).T(rng.uniform(-wdt, wdt), y, zd(BOW_END) - rng.uniform(0.5, 4)))
-# where the wooden deck has gone: holes with the steel beams across
-holes = []
-for d, x, w_, l_ in ((66, 5, 4, 6), (70, -6, 3, 5), (88, -9, 3, 7), (112, 8, 4, 8), (128, -7, 5, 9)):
-    holes.append(quad(x, HA + 0.035, zd(d), w_, l_, "+y", DARK, eps=0.0))
-    for k in np.arange(-l_ / 2 + 0.6, l_ / 2, 1.2):
-        holes.append(at(box(w_, 0.25, 0.22, (0.22, 0.15, 0.09)), d + k, x=x, y=HA))
-bow = merge([bow, fore, merge(torn), merge(holes)])
-dfb = L / 2 - bow.v[:, 2]                                       # distance from the bow of every vertex
-w = sstep(110, BOW_END, dfb)
-bow.v[:, 1] -= w * (bow.v[:, 1] / HB) * 7.0                    # the decks sag towards the break
-sag = np.exp(-((dfb - 69) / 7) ** 2) * sstep(HA - 0.5, HT, bow.v[:, 1])
-bow.v[:, 1] -= sag * 1.6                                        # the roof of the officers' quarters has partly fallen in
-crumple(bow, 2.2, 0.12, 11, w)
-crumple(bow, 3.0, 0.35, 12, sstep(136, BOW_END, dfb))          # torn edges at the break
-crumple(bow, 0.25, 0.08, 13)                                    # dents everywhere
-# rusticles under the bow railing, the forecastle edge and along the hull top
-rail_v = Mesh(np.array([(s * (hw(zd(d), HB + 2) - 0.25), yd_of(t_of(zd(d))) + (HB - H), zd(d)) for d in np.arange(0.6, 120, 0.9) for s in (-1, 1)]))
-bow = merge([bow, rusticles(rail_v, 220, 5)])
-zc = (zd(0) + zd(BOW_END)) / 2
-bow.T(0, 0, -zc)
-bow.R(math.atan(4 / BOW_END), 0, 0)                              # bow down: ploughed into the mud
-bow.T(0, -13.0, 0)
-weather(bow, rust=0.75, sediment=0.6, streaks=0.95, seed=21)
+def build(bow_extra=None):
+    """The wreck: bow, mud, stern and debris (and the ship as built). bow_extra: meshes in ship coordinates
+    (bow at +L/2) that get the same sagging, crumpling and tilting as the bow; they come back apart, in
+    "bow_extra", so the diorama can use the positions they end up at."""
+    global rng
+    rng = np.random.default_rng(1912)
+    # ── Bow section (the wreck) ──────────────────────────────────────────────────
+    BOW_END = 143.0
+    bow = merge(ship_part(0, BOW_END))
+    y0 = yd_of(t_of(zd(45)))
+    fore = merge([tube([(0, y0, zd(45)), (0.4, HT + 0.6, zd(86))], 0.42, (0.12, 0.1, 0.09), seg=8),        # foremast, fallen back over the bridge
+                  cyl(0.9, 0.9, 1.6, (0.12, 0.1, 0.09), seg=10).R(0, 0, math.pi / 2 - 0.22).T(0.6, HT - 1.2, zd(76))])   # its crow's nest
+    # torn plates at the break, sticking out backwards
+    torn = []
+    for i in range(30):
+        y = rng.uniform(4, HT)
+        wdt = hw(zd(BOW_END), min(y, H)) if y < H else B * 0.45
+        p = box(rng.uniform(2, 6), 0.12, rng.uniform(2, 7), BLACK if y < HB else WHITE, bottom=False)
+        crumple(p, 0.8, 0.35, 300 + i)
+        torn.append(p.R(rng.uniform(-0.6, 0.6), rng.uniform(-0.4, 0.4), rng.uniform(-0.8, 0.8)).T(rng.uniform(-wdt, wdt), y, zd(BOW_END) - rng.uniform(0.5, 4)))
+    # where the wooden deck has gone: holes with the steel beams across
+    holes = []
+    for d, x, w_, l_ in ((66, 5, 4, 6), (70, -6, 3, 5), (88, -9, 3, 7), (112, 8, 4, 8), (128, -7, 5, 9)):
+        holes.append(quad(x, HA + 0.035, zd(d), w_, l_, "+y", DARK, eps=0.0))
+        for k in np.arange(-l_ / 2 + 0.6, l_ / 2, 1.2):
+            holes.append(at(box(w_, 0.25, 0.22, (0.22, 0.15, 0.09)), d + k, x=x, y=HA))
+    bow = merge([bow, fore, merge(torn), merge(holes)])
+    # parts that must follow every deformation of the bow (the diorama adds its own: a bathtub, probes…)
+    ev0, ef0 = len(bow.v), len(bow.f)
+    if bow_extra:
+        bow = merge([bow] + list(bow_extra))
+    ev1, ef1 = len(bow.v), len(bow.f)
+    dfb = L / 2 - bow.v[:, 2]                                       # distance from the bow of every vertex
+    w = sstep(110, BOW_END, dfb)
+    bow.v[:, 1] -= w * (bow.v[:, 1] / HB) * 7.0                    # the decks sag towards the break
+    sag = np.exp(-((dfb - 69) / 7) ** 2) * sstep(HA - 0.5, HT, bow.v[:, 1])
+    bow.v[:, 1] -= sag * 1.6                                        # the roof of the officers' quarters has partly fallen in
+    crumple(bow, 2.2, 0.12, 11, w)
+    crumple(bow, 3.0, 0.35, 12, sstep(136, BOW_END, dfb))          # torn edges at the break
+    crumple(bow, 0.25, 0.08, 13)                                    # dents everywhere
+    # rusticles under the bow railing, the forecastle edge and along the hull top
+    rail_v = Mesh(np.array([(s * (hw(zd(d), HB + 2) - 0.25), yd_of(t_of(zd(d))) + (HB - H), zd(d)) for d in np.arange(0.6, 120, 0.9) for s in (-1, 1)]))
+    bow = merge([bow, rusticles(rail_v, 220, 5)])
+    zc = (zd(0) + zd(BOW_END)) / 2
+    bow.T(0, 0, -zc)
+    bow.R(math.atan(4 / BOW_END), 0, 0)                              # bow down: ploughed into the mud
+    bow.T(0, -13.0, 0)
+    weather(bow, rust=0.75, sediment=0.6, streaks=0.95, seed=21)
 
-# the mud ridge the bow pushed up (it blends into the seabed at its edges)
-ztip = BOW_END / 2
-
-
-def mud_h(X, Z):
-    d = ztip - Z
-    hwd = np.array([B / 2 * w_of(t_of(zd(max(0.0, min(L, dd))))) for dd in d.ravel()]).reshape(d.shape)
-    side = 3.4 * np.exp(-((np.abs(X) - hwd - 3.5) / 4.5) ** 2) * sstep(95, 25, d) * (d > -2)
-    front = 1.8 * np.exp(-(X / 7) ** 2) * np.exp(-((d + 4) / 5) ** 2)
-    edge = sstep(42, 30, np.abs(X)) * sstep(-25, -15, -d + 0) * sstep(110, 95, d)
-    ridge = np.maximum(side, front)
-    bumps = 0.22 * fbm(np.stack([X.ravel(), np.zeros(X.size), Z.ravel()], 1), 0.2, 5).reshape(X.shape) * sstep(0.2, 1.2, ridge)
-    return (ridge + bumps) * edge - 0.6               # flat parts stay under the seabed
-
-
-mud = grid(-42, 42, ztip - 110, ztip + 26, 42, 68, mud_h, (0.52, 0.49, 0.43))
-mud.paint(lambda p: (0.5, 0.45, 0.36) + (fbm(p, 0.12, 9)[:, None] - 0.5) * 0.06)
-mud.f = mud.f[mud.v[mud.f][:, :, 1].max(axis=1) > 0.15]   # only the ridges: no flat sheet that could show above another seabed
-
-# ── Stern section (the wreck) ────────────────────────────────────────────────
-STERN_START = 160.0
-stern = merge(ship_part(STERN_START, L) + [rudder_props(), tube([(0, HB, zd(218)), (2.5, HB + 4, zd(250))], 0.4, (0.12, 0.1, 0.09), seg=8)])
-dfs = L / 2 - stern.v[:, 2]
-# collapsed: the decks pancaked down, the sides peeled outwards, the forward end torn apart; the poop held better
-keep = 0.3 + 0.5 * sstep(232, 258, dfs)
-y = stern.v[:, 1]
-stern.v[:, 1] = np.where(y > 6, 6 + (y - 6) * keep, y)
-stern.v[:, 0] *= 1 + 0.45 * sstep(6, 26, y) * (1 - 0.7 * sstep(235, 260, dfs))
-crumple(stern, 4.5, 0.12, 31, sstep(195, STERN_START, dfs))
-crumple(stern, 1.4, 0.1, 32)
-crumple(stern, 0.5, 0.4, 33)
-# hull plates torn off and standing up around the heap
-ups = []
-for i in range(36):
-    d = rng.uniform(STERN_START, 235)
-    s = rng.choice([-1, 1])
-    p = box(rng.uniform(2, 7), rng.uniform(3, 9), 0.12, BLACK if rng.random() < 0.7 else WHITE)
-    crumple(p, 0.9, 0.3, 500 + i)
-    ups.append(p.R(rng.uniform(-0.9, 0.9), rng.uniform(0, 6.28), rng.uniform(-0.5, 0.5)).T(s * rng.uniform(B * 0.3, B * 0.85), rng.uniform(2, 8), zd(d)))
-stern = merge([stern, merge(ups)])
-zc2 = (zd(STERN_START) + zd(L)) / 2
-stern.T(0, 0, -zc2).R(0, math.pi, 0.1).T(14, -12.5, -600)       # facing the opposite way, ~600 m south
-weather(stern, rust=0.9, sediment=0.75, streaks=0.8, seed=41)
-
-# ── Debris field ─────────────────────────────────────────────────────────────
-deb = []
+    # the mud ridge the bow pushed up (it blends into the seabed at its edges)
+    ztip = BOW_END / 2
 
 
-def spot(near_stern=0.65):
-    if rng.random() < near_stern:
-        return rng.normal(18, 45), rng.normal(-600, 55)
-    return rng.normal(6, 30), rng.uniform(-560, -90)
+    def mud_h(X, Z):
+        d = ztip - Z
+        hwd = np.array([B / 2 * w_of(t_of(zd(max(0.0, min(L, dd))))) for dd in d.ravel()]).reshape(d.shape)
+        side = 3.4 * np.exp(-((np.abs(X) - hwd - 3.5) / 4.5) ** 2) * sstep(95, 25, d) * (d > -2)
+        front = 1.8 * np.exp(-(X / 7) ** 2) * np.exp(-((d + 4) / 5) ** 2)
+        edge = sstep(42, 30, np.abs(X)) * sstep(-25, -15, -d + 0) * sstep(110, 95, d)
+        ridge = np.maximum(side, front)
+        bumps = 0.22 * fbm(np.stack([X.ravel(), np.zeros(X.size), Z.ravel()], 1), 0.2, 5).reshape(X.shape) * sstep(0.2, 1.2, ridge)
+        return (ridge + bumps) * edge - 0.6               # flat parts stay under the seabed
 
 
-for i in range(5):                                               # Scotch boilers, 4.8 m wide, with their three furnaces
-    x, z = rng.normal(20, 18), rng.normal(-560, 25)
-    b_ = merge([cyl(2.4, 2.4, 6.1, (0.16, 0.12, 0.09), seg=20)] +
-               [cyl(0.55, 0.55, 0.06, DARK, seg=12).T(dx, 6.1, dz) for dx, dz in ((-1.1, -0.5), (1.1, -0.5), (0, 0.9))])
-    deb.append(b_.T(0, -3.05, 0).R(0, 0, math.pi / 2).R(0, rng.uniform(0, math.pi), 0).T(x, 1.7, z))
-for i in range(70):                                              # coal, spilled near the boilers
-    x, z = rng.normal(20, 22), rng.normal(-560, 30)
-    s = rng.uniform(0.15, 0.5)
-    deb.append(box(s, s * 0.7, s, (0.05, 0.05, 0.05)).R(rng.uniform(0, 3), rng.uniform(0, 3), 0).T(x, -0.05, z))
-for i in range(3):                                               # pieces of funnel (curved plates, buff under the rust)
-    x, z = spot()
-    f = cyl(3.6, 3.6, rng.uniform(3, 6), BUFF, seg=24, sx=0.79, caps=False)
-    keep_ = np.arctan2(f.v[:, 2], f.v[:, 0]) > rng.uniform(0.5, 2.0)
-    f.f = f.f[keep_[f.f].all(axis=1)]
-    crumple(f, 0.6, 0.25, 700 + i)
-    deb.append(f.R(math.pi / 2, rng.uniform(0, 6.28), 0).T(x, 0.6, z))
-for i in range(2):                                               # cargo cranes, fallen
-    x, z = spot()
-    deb.append(merge([cyl(0.9, 0.8, 2.2, WHITE, seg=10), tube([(0, 2.2, 0), (2, 8.5, 6)], 0.18, WHITE, seg=5)]).R(math.pi / 2, rng.uniform(0, 6.28), 0).T(x, 0.9, z))
-for i in range(80):                                              # hull plates and deck pieces, bent
-    x, z = spot()
-    m = box(rng.uniform(2, 9), 0.18, rng.uniform(1.5, 4.5), BLACK if rng.random() < 0.6 else WHITE)
-    crumple(m, 0.6, 0.3, 100 + i)
-    deb.append(m.R(rng.uniform(-0.35, 0.35), rng.uniform(0, 6.28), rng.uniform(-0.35, 0.35)).T(x, 0.1, z))
-for i in range(28):                                              # beams
-    x, z = spot()
-    deb.append(box(0.4, 0.6, rng.uniform(4, 12), (0.2, 0.15, 0.1)).R(0, rng.uniform(0, 6.28), rng.uniform(-0.2, 0.2)).T(x, 0, z))
-for i in range(180):                                             # smaller things
-    x, z = spot(0.55)
-    s = rng.uniform(0.3, 1.4)
-    deb.append(box(s, s * rng.uniform(0.4, 1.0), s * rng.uniform(0.6, 1.6), (0.25, 0.2, 0.15)).R(0, rng.uniform(0, 6.28), 0).T(x, -0.1, z))
-big = box(22, 2.5, 12, (0.1, 0.08, 0.07))                       # a piece of the double bottom
-crumple(big, 1.5, 0.15, 77)
-deb.append(big.R(0.08, 0.6, 0.05).T(-6, -0.4, -350))
-debris = merge(deb)
-weather(debris, rust=0.85, sediment=0.75, streaks=0.5, seed=61)
+    mud = grid(-42, 42, ztip - 110, ztip + 26, 42, 68, mud_h, (0.52, 0.49, 0.43))
+    mud.paint(lambda p: (0.5, 0.45, 0.36) + (fbm(p, 0.12, 9)[:, None] - 0.5) * 0.06)
+    mud.f = mud.f[mud.v[mud.f][:, :, 1].max(axis=1) > 0.15]   # only the ridges: no flat sheet that could show above another seabed
 
-# ── The ship as she sailed (model_built.glb): whole, clean, keel on y = 0, centred ──
-ship = merge(ship_part(0, L, built=True) + [rudder_props()])
-ship.c = np.clip(ship.c * (0.94 + 0.06 * fbm(ship.v, 0.05, 3)[:, None]), 0, 1)          # a little life in the paint
+    # ── Stern section (the wreck) ────────────────────────────────────────────────
+    STERN_START = 160.0
+    stern = merge(ship_part(STERN_START, L) + [rudder_props(), tube([(0, HB, zd(218)), (2.5, HB + 4, zd(250))], 0.4, (0.12, 0.1, 0.09), seg=8)])
+    dfs = L / 2 - stern.v[:, 2]
+    # collapsed: the decks pancaked down, the sides peeled outwards, the forward end torn apart; the poop held better
+    keep = 0.3 + 0.5 * sstep(232, 258, dfs)
+    y = stern.v[:, 1]
+    stern.v[:, 1] = np.where(y > 6, 6 + (y - 6) * keep, y)
+    stern.v[:, 0] *= 1 + 0.45 * sstep(6, 26, y) * (1 - 0.7 * sstep(235, 260, dfs))
+    crumple(stern, 4.5, 0.12, 31, sstep(195, STERN_START, dfs))
+    crumple(stern, 1.4, 0.1, 32)
+    crumple(stern, 0.5, 0.4, 33)
+    # hull plates torn off and standing up around the heap
+    ups = []
+    for i in range(36):
+        d = rng.uniform(STERN_START, 235)
+        s = rng.choice([-1, 1])
+        p = box(rng.uniform(2, 7), rng.uniform(3, 9), 0.12, BLACK if rng.random() < 0.7 else WHITE)
+        crumple(p, 0.9, 0.3, 500 + i)
+        ups.append(p.R(rng.uniform(-0.9, 0.9), rng.uniform(0, 6.28), rng.uniform(-0.5, 0.5)).T(s * rng.uniform(B * 0.3, B * 0.85), rng.uniform(2, 8), zd(d)))
+    stern = merge([stern, merge(ups)])
+    zc2 = (zd(STERN_START) + zd(L)) / 2
+    stern.T(0, 0, -zc2).R(0, math.pi, 0.1).T(14, -12.5, -600)       # facing the opposite way, ~600 m south
+    weather(stern, rust=0.9, sediment=0.75, streaks=0.8, seed=41)
+
+    # ── Debris field ─────────────────────────────────────────────────────────────
+    deb = []
+
+
+    def spot(near_stern=0.65):
+        if rng.random() < near_stern:
+            return rng.normal(18, 45), rng.normal(-600, 55)
+        return rng.normal(6, 30), rng.uniform(-560, -90)
+
+
+    boilers = []
+    for i in range(5):                                               # Scotch boilers, 4.8 m wide, with their three furnaces
+        x, z = rng.normal(20, 18), rng.normal(-560, 25)
+        boilers.append((x, z))
+        b_ = merge([cyl(2.4, 2.4, 6.1, (0.16, 0.12, 0.09), seg=20)] +
+                   [cyl(0.55, 0.55, 0.06, DARK, seg=12).T(dx, 6.1, dz) for dx, dz in ((-1.1, -0.5), (1.1, -0.5), (0, 0.9))])
+        deb.append(b_.T(0, -3.05, 0).R(0, 0, math.pi / 2).R(0, rng.uniform(0, math.pi), 0).T(x, 1.7, z))
+    for i in range(70):                                              # coal, spilled near the boilers
+        x, z = rng.normal(20, 22), rng.normal(-560, 30)
+        s = rng.uniform(0.15, 0.5)
+        deb.append(box(s, s * 0.7, s, (0.05, 0.05, 0.05)).R(rng.uniform(0, 3), rng.uniform(0, 3), 0).T(x, -0.05, z))
+    for i in range(3):                                               # pieces of funnel (curved plates, buff under the rust)
+        x, z = spot()
+        f = cyl(3.6, 3.6, rng.uniform(3, 6), BUFF, seg=24, sx=0.79, caps=False)
+        keep_ = np.arctan2(f.v[:, 2], f.v[:, 0]) > rng.uniform(0.5, 2.0)
+        f.f = f.f[keep_[f.f].all(axis=1)]
+        crumple(f, 0.6, 0.25, 700 + i)
+        deb.append(f.R(math.pi / 2, rng.uniform(0, 6.28), 0).T(x, 0.6, z))
+    for i in range(2):                                               # cargo cranes, fallen
+        x, z = spot()
+        deb.append(merge([cyl(0.9, 0.8, 2.2, WHITE, seg=10), tube([(0, 2.2, 0), (2, 8.5, 6)], 0.18, WHITE, seg=5)]).R(math.pi / 2, rng.uniform(0, 6.28), 0).T(x, 0.9, z))
+    for i in range(80):                                              # hull plates and deck pieces, bent
+        x, z = spot()
+        m = box(rng.uniform(2, 9), 0.18, rng.uniform(1.5, 4.5), BLACK if rng.random() < 0.6 else WHITE)
+        crumple(m, 0.6, 0.3, 100 + i)
+        deb.append(m.R(rng.uniform(-0.35, 0.35), rng.uniform(0, 6.28), rng.uniform(-0.35, 0.35)).T(x, 0.1, z))
+    for i in range(28):                                              # beams
+        x, z = spot()
+        deb.append(box(0.4, 0.6, rng.uniform(4, 12), (0.2, 0.15, 0.1)).R(0, rng.uniform(0, 6.28), rng.uniform(-0.2, 0.2)).T(x, 0, z))
+    for i in range(180):                                             # smaller things
+        x, z = spot(0.55)
+        s = rng.uniform(0.3, 1.4)
+        deb.append(box(s, s * rng.uniform(0.4, 1.0), s * rng.uniform(0.6, 1.6), (0.25, 0.2, 0.15)).R(0, rng.uniform(0, 6.28), 0).T(x, -0.1, z))
+    big = box(22, 2.5, 12, (0.1, 0.08, 0.07))                       # a piece of the double bottom
+    crumple(big, 1.5, 0.15, 77)
+    deb.append(big.R(0.08, 0.6, 0.05).T(-6, -0.4, -350))
+    debris = merge(deb)
+    weather(debris, rust=0.85, sediment=0.75, streaks=0.5, seed=61)
+
+    # ── The ship as she sailed (model_built.glb): whole, clean, keel on y = 0, centred ──
+    ship = merge(ship_part(0, L, built=True) + [rudder_props()])
+    ship.c = np.clip(ship.c * (0.94 + 0.06 * fbm(ship.v, 0.05, 3)[:, None]), 0, 1)          # a little life in the paint
+
+    extra = None
+    if ev1 > ev0:
+        sel = np.zeros(len(bow.v), bool); sel[ev0:ev1] = True
+        fe = bow.f[ef0:ef1] - ev0
+        extra = Mesh(bow.v[ev0:ev1].copy(), fe, bow.c[ev0:ev1].copy())
+        keep = np.ones(len(bow.f), bool); keep[ef0:ef1] = False
+        remap = np.cumsum(~sel) - 1
+        bow = Mesh(bow.v[~sel], remap[bow.f[keep]], bow.c[~sel])
+    return {"bow": bow, "mud": mud, "stern": stern, "debris": debris, "ship": ship, "bow_extra": extra, "boilers": boilers}
+
 
 # ── Write ────────────────────────────────────────────────────────────────────
-out = ROOT / "models" / "item" / "Q25173" / "model.glb"
-out.parent.mkdir(parents=True, exist_ok=True)
-tris, size = write_glb(out, [("bow_section", bow), ("mud", mud), ("stern_section", stern), ("debris_field", debris)])
-print(f"{out}: {tris:,} triangles, {size / 2**20:.2f} MB")
-for n, m in (("bow", bow), ("mud", mud), ("stern", stern), ("debris", debris)):
-    print(f"  {n}: {m.tris:,} tris, x {m.v[:, 0].min():.0f}..{m.v[:, 0].max():.0f}, y {m.v[:, 1].min():.0f}..{m.v[:, 1].max():.0f}, z {m.v[:, 2].min():.0f}..{m.v[:, 2].max():.0f}")
-tris2, size2 = write_glb(out.with_name("model_built.glb"), [("main", ship)])
-print(f"model_built.glb: {tris2:,} triangles, {size2 / 2**20:.2f} MB, y {ship.v[:, 1].min():.1f}..{ship.v[:, 1].max():.1f}")
+if __name__ == "__main__":
+    W = build()
+    bow, mud, stern, debris, ship = W["bow"], W["mud"], W["stern"], W["debris"], W["ship"]
+    out = ROOT / "models" / "item" / "Q25173" / "model.glb"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    tris, size = write_glb(out, [("bow_section", bow), ("mud", mud), ("stern_section", stern), ("debris_field", debris)])
+    print(f"{out}: {tris:,} triangles, {size / 2**20:.2f} MB")
+    for n, m in (("bow", bow), ("mud", mud), ("stern", stern), ("debris", debris)):
+        print(f"  {n}: {m.tris:,} tris, x {m.v[:, 0].min():.0f}..{m.v[:, 0].max():.0f}, y {m.v[:, 1].min():.0f}..{m.v[:, 1].max():.0f}, z {m.v[:, 2].min():.0f}..{m.v[:, 2].max():.0f}")
+    tris2, size2 = write_glb(out.with_name("model_built.glb"), [("main", ship)])
+    print(f"model_built.glb: {tris2:,} triangles, {size2 / 2**20:.2f} MB, y {ship.v[:, 1].min():.1f}..{ship.v[:, 1].max():.1f}")

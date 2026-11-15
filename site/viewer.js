@@ -19,7 +19,7 @@ const TX = {
     length: "Length", beam: "Beam", depth: "Depth", built: "Built", sunk: "Lost", pos: "Position", klass: "Class", vehicle: "Aircraft",
     wp: "Wikipedia", wd: "Wikidata", ownM: "Own model by {a} · {lic}", classM: "Model of its class, by {a} · {lic}",
     gen: "Generic model, drawn by code from its family and size (generator {v}). <a href=\"{u}\">Make a better one!</a>",
-    glb: "⬇ Download .glb", asBuilt: "As built", asWreck: "As a wreck", diver: "The figure beside it is a 1.8 m diver.",
+    glb: "⬇ Download .glb", dio: "🔍 Diorama: see it up close", asBuilt: "As built", asWreck: "As a wreck", diver: "The figure beside it is a 1.8 m diver.",
     approx: "Depth from the GEBCO grid (~1 km cells): coastal wrecks may be shallower or deeper.", m: "m", coast: "near the coast",
     fam: { liner: "Liner or ferry", warship: "Warship", carrier: "Aircraft carrier", submarine: "Submarine", cargo: "Cargo ship", tanker: "Tanker",
            fishing: "Fishing vessel", steamer: "Steamship", ship: "Ship", sail: "Sailing ship", aircraft: "Aircraft", reef: "Reef",
@@ -32,7 +32,7 @@ const TX = {
     length: "Eslora", beam: "Manga", depth: "Profundidad", built: "Construido", sunk: "Perdido", pos: "Posición", klass: "Clase", vehicle: "Avión",
     wp: "Wikipedia", wd: "Wikidata", ownM: "Modelo propio de {a} · {lic}", classM: "Modelo de su clase, de {a} · {lic}",
     gen: "Modelo genérico, dibujado por código según su familia y tamaño (generador {v}). <a href=\"{u}\">¡Haz uno mejor!</a>",
-    glb: "⬇ Descargar .glb", asBuilt: "Como era", asWreck: "Como pecio", diver: "La figura de al lado es un buzo de 1,8 m.",
+    glb: "⬇ Descargar .glb", dio: "🔍 Diorama: verlo de cerca", asBuilt: "Como era", asWreck: "Como pecio", diver: "La figura de al lado es un buzo de 1,8 m.",
     approx: "Profundidad de la malla de GEBCO (celdas de ~1 km): en la costa el pecio puede estar más o menos hondo.", m: "m", coast: "cerca de la costa",
     fam: { liner: "Transatlántico o ferri", warship: "Buque de guerra", carrier: "Portaaviones", submarine: "Submarino", cargo: "Carguero", tanker: "Petrolero",
            fishing: "Pesquero", steamer: "Vapor", ship: "Barco", sail: "Velero", aircraft: "Avión", reef: "Arrecife",
@@ -199,11 +199,12 @@ function card(it) {
     <div class="links"><a href="${wp}" target="_blank" rel="noopener">${t("wp")} (${wpL})</a>
       <a href="https://www.wikidata.org/wiki/${it.q}" target="_blank" rel="noopener">${t("wd")}</a></div>
     <div class="model${own ? " own" : ""}">${mtxt}</div>
-    <div class="btns">${own && !own[1].built ? "" : `<button id="b-wreck" class="${clean ? "" : "on"}">${t("asWreck")}</button><button id="b-built" class="${clean ? "on" : ""}">${t("asBuilt")}</button>`}${own ? "" : `<button id="b-glb">${t("glb")}</button>`}</div>
+    <div class="btns">${own && !own[1].built ? "" : `<button id="b-wreck" class="${clean ? "" : "on"}">${t("asWreck")}</button><button id="b-built" class="${clean ? "on" : ""}">${t("asBuilt")}</button>`}${own ? "" : `<button id="b-glb">${t("glb")}</button>`}${own && own[1].diorama ? `<button id="b-dio">${t("dio")}</button>` : ""}</div>
     <div class="fam" style="margin-top:8px;font-size:12px">${t("approx")}</div>`;
   $("card").hidden = false; resize();
   $("b-min").onclick = () => { $("card").classList.toggle("min"); card(it); };
-  const bw = $("b-wreck"), bb = $("b-built"), bg = $("b-glb");
+  const bw = $("b-wreck"), bb = $("b-built"), bg = $("b-glb"), bd = $("b-dio");
+  if (bd) bd.onclick = () => { location.href = `diorama.html#${own[1].id}`; };
   if (bw) bw.onclick = () => { clean = false; build.keep = true; build(it).then(() => { build.keep = false; card(it); }); };
   if (bb) bb.onclick = () => { clean = true; build.keep = true; build(it).then(() => { build.keep = false; card(it); }); };
   if (bg) bg.onclick = () => new GLTFExporter().parse(model, buf => {

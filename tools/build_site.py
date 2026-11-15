@@ -3,7 +3,7 @@ Assemble the catalog web page (GitHub Pages) in a folder:
 
     python tools/build_site.py _site
 
-site/* + generator/ + catalog/catalog.json + models/ (glb, meta.json, preview.jpg) + models/index.json.
+site/* + generator/ + catalog/catalog.json + models/ (glb, diorama, meta.json, previews) + models/index.json.
 Standard library only.
 """
 from __future__ import annotations
@@ -32,11 +32,12 @@ def main():
             m = json.loads(meta.read_text("utf-8"))
             dst = out / "models" / kind / d.name
             dst.mkdir(parents=True)
-            for f in ("model.glb", "model_built.glb", "meta.json", "preview.jpg"):
+            for f in ("model.glb", "model_built.glb", "diorama.glb", "meta.json", "preview.jpg", "diorama.jpg"):
                 if (d / f).exists():
                     shutil.copy2(d / f, dst / f)
             idx[kind][d.name] = {k: m.get(k) for k in ("id", "name", "authors", "license", "state", "heading")}
             idx[kind][d.name]["built"] = (d / "model_built.glb").exists()
+            idx[kind][d.name]["diorama"] = (d / "diorama.glb").exists()
     (out / "models").mkdir(exist_ok=True)
     (out / "models" / "index.json").write_text(json.dumps(idx, ensure_ascii=False), "utf-8")
     (out / ".nojekyll").write_text("", "utf-8")
