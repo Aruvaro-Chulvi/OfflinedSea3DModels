@@ -1,0 +1,34 @@
+{
+  "id": "Q911858",
+  "kind": "item",
+  "name": "Endurance",
+  "state": "intact",
+  "heading": 0,
+  "depth": -3008,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Endurance22 — Endurance is found: the wreck at 3,008 m in the Weddell Sea, upright and intact, the name across the stern",
+      "url": "https://endurance22.org/endurance-is-found"
+    },
+    {
+      "title": "National Geographic — Endurance, Shackleton's ship, found off the Antarctic coast: the masts and spars down as in Hurley's last photographs, the bow damaged by the ice, the wardroom crushed by the mast, the rudder in the silt",
+      "url": "https://www.nationalgeographic.com/magazine/article/endurance-shackleton-ship-found-off-antarctic-coast"
+    },
+    {
+      "title": "Yacht.de — Spectacular find in the Antarctic: the video of the wreck at a depth of 3,000 metres",
+      "url": "https://www.yacht.de/en/worldwide/spectacular-find-in-the-antarctic-shackleton-s-endurance-the-video-from-a-depth-of-3000-metres/"
+    },
+    {
+      "title": "Endurance (1912 ship) — barquentine built at Framnæs as Polaris, about 44 m long, 7.6 m in the beam; crushed by the ice and sunk on 21 November 1915",
+      "url": "https://en.wikipedia.org/wiki/Endurance_(1912_ship)"
+    }
+  ],
+  "notes": "Built by code (model_sources/Q911858_endurance.py; tools/sailkit.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The wreck sits upright on the bottom, sunk in the mud to below her waterline, the hull whole and much of the black paint still on it: ENDURANCE in gold letters arched across the stern over the star; the ship's wheel standing on the after deck; the masts broken off near the deck, the foremast fallen over the starboard bow, the mainmast aft along the deck, the mizzen across the crushed aft deckhouse (the wardroom) and over the port quarter; yards, booms and gaffs on the bottom beside her, slack rigging over the rails; part of the planking of the starboard bow stove in by the ice, the ribs showing; the rudder lying in the mud under the stern. Dressed with tools/dresskit.py: its own sediment (painted by Offlined with the seabed colour), the scant life of the abyssal plain, textures and baked light. model_built.glb: the ship as she sailed in 1914, barquentine-rigged with her sails set, the funnel, the deckhouses and three boats. Approximate: the hull lines and the rig (after the photographs of Frank Hurley, not plans), the heading of the wreck and where the spars fell."
+}

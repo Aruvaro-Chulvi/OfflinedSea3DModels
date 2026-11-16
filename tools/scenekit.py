@@ -243,8 +243,10 @@ def bake_ao(targets, occluders, ground=None, cell=0.7, rays=20, reach=14.0, stre
 UV_Q = 256                                     # texture coordinates stored as int16 in 1/256 of a tile
 
 
-def planks_textures(n=1024, tile=4.0, seed=5, plank=0.15, length=4.0):
-    """A wooden deck: planks along +V with caulked seams and staggered butts (multiplier around 1)."""
+def planks_textures(n=1024, tile=4.0, seed=5, plank=0.15, length=4.0, along_u=False, wear=0.0):
+    """A wooden deck: planks along +V with caulked seams and staggered butts (multiplier around 1).
+    along_u: the planks run along U (a hull's strakes, seen on the sides with the triplanar UVs); wear: worn,
+    eroded wood (soft grain eaten away, seams opened)."""
     yy, xx = np.mgrid[0:n, 0:n] / n
     U, V = xx * tile, yy * tile
     k = np.floor(U / plank)
@@ -258,6 +260,12 @@ def planks_textures(n=1024, tile=4.0, seed=5, plank=0.15, length=4.0):
     lum = (0.92 + 0.1 * (grain - 0.5) + 0.04 * streak) * rnd[(k % len(rnd)).astype(int)] * (1 - 0.65 * seam)
     col = lum[..., None] * np.array([1.0, 0.94, 0.86])
     h = -0.002 * seam + 0.0004 * streak
+    if wear:
+        pits = pfbm(n, 24, seed + 7, 3)
+        h = h * (1 + 2 * wear) + wear * (0.0012 * streak - 0.002 * np.clip(pits - 0.55, 0, 1))
+        col = col * (1 - 0.25 * wear * np.clip((pits - 0.5) * 3, 0, 1))[..., None]
+    if along_u:
+        col, h = np.transpose(col, (1, 0, 2)), h.T
     return {"map": _jpeg(np.clip(col, 0, 1) * 255), "normal": _jpeg(normal_map(h, tile, 1.0), 92), "tile": tile}
 
 

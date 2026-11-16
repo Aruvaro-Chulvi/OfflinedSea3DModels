@@ -148,14 +148,18 @@ class Dresser:
         return np.array([p for p, _ in s]), np.array([q for _, q in s])
 
 
-def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None):
+def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None, wood=False, life="normal"):
     """One site (the main wreck, or a piece lying apart): returns (wreck parts, extra parts, instanced, ground objects)."""
     D = Dresser(zone, seed)
     r = D.r
     steel_m = [m for _, m in steel]
     # ── the paint: rust (deep) or a skin of growth (shallow) ──
     rust_k = {"abyssal": 0.55, "bathyal": 0.4, "shelf": 0.2}[zone]
-    for k, m in enumerate(steel_m):
+    for k, m in enumerate(steel_m if wood else []):            # wood: no rust; darkened, with a fine film of silt
+        m.c = m.c * (0.78 + 0.22 * fbm(m.v, 0.5, seed + 205 + k, 2))[:, None]
+        weather(m, rust=0.0, sediment=0.18, streaks=0.0, seed=seed + 200 + k)
+        m.c = np.clip(m.c * 0.9, 0, 1)
+    for k, m in enumerate([] if wood else steel_m):
         lum = m.c.mean(1)
         kk = 0.5 * sstep(0.25, 0.05, lum)
         m.c = m.c * (1 - kk[:, None]) + np.array([0.24, 0.12, 0.07]) * kk[:, None]
@@ -206,10 +210,10 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
     area = sum(_area(m) for m in steel_m)
     A = area / 1000.0                                         # thousands of m² of wreck surface
     # ── rust: rusticles and runs (deep wrecks are hung with them; shallow ones hardly) ──
-    dens = {"abyssal": 1.0, "bathyal": 0.5, "shelf": 0.06}[zone]
+    dens = {"abyssal": 1.0, "bathyal": 0.5, "shelf": 0.06}[zone] * (0 if wood else 1)
     ice = [abyss.rusticle(1.0, 0.1, seed + 50 + k) for k in range(4)]
     flows = [abyss.rust_flow(1.0, 0.1, seed + 60 + k) for k in range(4)]
-    for m in steel_m:
+    for m in (steel_m if dens else []):
         a_k = _area(m) / 1000.0
         p, _ = D.on(m, min(3000, 55 * a_k * dens), lambda fn: fn[:, 1] < -0.35)
         if len(p):
@@ -227,7 +231,9 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
     def on_wreck(n, cond):
         return D.on(wreck_all, min(int(n), 4000), cond)
 
-    if zone == "shelf":
+    if life == "baltic":                                     # the brackish, cold, often airless deep Baltic: hardly anything grows
+        pass
+    elif zone == "shelf":
         cols = [(0.96, 0.94, 0.9), (0.97, 0.9, 0.78), (0.96, 0.62, 0.32), (0.96, 0.94, 0.9)]
         plum = [abyss.plumose_anemone(0.35, c) for c in cols]
         p, nn = on_wreck(min(1400, 40 * A), lambda fn: fn[:, 1] > -0.5)
@@ -279,7 +285,18 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
         p, nn = D.on(stones, 120, lambda fn: fn[:, 1] > 0.3)
         anem2 = [abyss.anemone(0.06, c) for c in ((0.95, 0.9, 0.85), (0.95, 0.72, 0.7), (0.98, 0.55, 0.3))]
         D.add("anemones_on_stones", anem2, "life", p, nn, scale=r.uniform(0.7, 1.4, len(p)), parent=parent)
-    if zone == "shelf":
+    if life == "baltic":                                     # a few cod about the wreck, nothing on the bottom
+        fishv = [abyss.fish(0.9, c) for c in ((0.45, 0.42, 0.33), (0.5, 0.46, 0.36))]
+        fp, fy = [], []
+        for g in range(5):
+            c0 = free(0.9)
+            if not c0:
+                continue
+            for k in range(int(r.integers(2, 7))):
+                fp.append((c0[0] + r.normal(0, 4), r.uniform(0.6, 4), c0[1] + r.normal(0, 4))); fy.append(r.uniform(0, 6.28))
+        if fp:
+            D.add("fish", fishv, "life", np.array(fp), yaw=np.array(fy), scale=r.uniform(0.7, 1.3, len(fp)), parent=parent)
+    elif zone == "shelf":
         stars = [abyss.starfish(0.12, c) for c in ((0.85, 0.42, 0.18), (0.8, 0.3, 0.25))]
         bs = spots(260, 0.6)
         D.add("starfish_ground", stars, "life", bs + [0, 0.01, 0], scale=r.uniform(0.7, 1.5, len(bs)), parent=parent)
@@ -359,6 +376,22 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
         if cp:
             cp = np.array(cp); a_ = r.uniform(0, 6.28, len(cp))
             objs.append(("shell_casings", cas, "artefact", cp, np.stack([np.cos(a_), r.uniform(-0.1, 0.1, len(cp)), np.sin(a_)], 1), None))
+    if kind == "galleon":                                     # round shot and broken pots about the wreck
+        balls = [abyss.blob(0.08, (0.14, 0.13, 0.12), seed + 900 + k, sub=2, amp=0.08) for k in range(2)]
+        bp = []
+        for g in range(6):
+            c0 = free(0.95)
+            if c0:
+                bp += [(c0[0] + r.normal(0, 1.5), 0.05, c0[1] + r.normal(0, 1.5)) for _ in range(int(r.integers(4, 14)))]
+        if bp:
+            objs.append(("cannonballs", balls, "artefact", np.array(bp), None, None))
+        pots = [abyss.pot(0.3), abyss.pot(0.22)]
+        for m in pots:
+            abyss.dust(m, 0.5, 5)
+        pp = [p for p in (free(0.95) for _ in range(14)) if p]
+        if pp:
+            pp = np.array([(x, 0.0, z) for x, z in pp]); a_ = r.uniform(0, 6.28, len(pp))
+            objs.append(("pots", pots, "china", pp, np.stack([np.cos(a_) * 0.9, np.full(len(pp), 0.45), np.sin(a_) * 0.9], 1), None))
     if memorial:
         shoes = [abyss.shoe(1.0, False), abyss.shoe(1.0, True)]
         for m in shoes:
@@ -379,7 +412,8 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
         D.add(name, var, mat, pos, nrm, yaw, parent=parent)
     # ── everything on the ground rests on the sediment ──
     ON_GROUND = ("anemones_on_stones", "starfish_ground", "fish", "burrow_mounds", "brittle_stars_mud", "sea_cucumbers",
-                 "sea_pens", "xenophyophores", "grenadiers", "plates", "bottles", "shell_casings", "shoes", "sponges_ground")
+                 "sea_pens", "xenophyophores", "grenadiers", "plates", "bottles", "shell_casings", "shoes", "sponges_ground",
+                 "cannonballs", "pots")
     for name, _, _, ins, _ in D.INS:
         if any(name.startswith(g + "_") for g in ON_GROUND):
             ins["t"] = ins["t"].copy(); ins["t"][:, 1] += hAt(ins["t"][:, 0], ins["t"][:, 2])
@@ -396,9 +430,10 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
     return sediment, stones, D.INS
 
 
-def _materials():
+def _materials(wood=False):
     return {
-        "steel": material(rough=0.8, metal=0.05, tex=steel_textures(), uv=("tri", 7.2)),
+        "steel": (material(rough=0.9, tex=planks_textures(1024, 4.0, 21, plank=0.3, length=7.0, along_u=True, wear=1.0), uv=("tri", 4.0), normal_scale=1.4)
+                  if wood else material(rough=0.8, metal=0.05, tex=steel_textures(), uv=("tri", 7.2))),
         "rust": material(rough=0.95, tex=rust_textures(), uv=("tri", 1.5), normal_scale=1.6),
         "rock": material(rough=0.9, tex=rust_textures(512, 2.5, 11), uv=("tri", 2.5)),
         "sediment": material(rough=1.0),
@@ -411,7 +446,7 @@ def _materials():
     }
 
 
-def dress_wreck(out, sites, depth, kind, seed, memorial=False):
+def dress_wreck(out, sites, depth, kind, seed, memorial=False, wood=False, life="normal"):
     """sites: [{"steel": [(node name, Mesh)], "mud": [Mesh], "plain": [(node name, Mesh, material key)],
     "piece": None | (node name, {"translation", "rotation"})}] — the first is the main wreck; a piece lying apart
     (more than 1 km, meta.json "pieces") is written as one node with its transform, its own sediment and life inside."""
@@ -420,7 +455,7 @@ def dress_wreck(out, sites, depth, kind, seed, memorial=False):
     for k, s in enumerate(sites):
         piece = s.get("piece")
         sediment, stones, ins = dress_site(s["steel"], s.get("mud", []), s.get("plain", []), zone, seed + 1000 * k, kind,
-                                           memorial=memorial and k == 0, parent=piece[0] if piece else None)
+                                           memorial=memorial and k == 0, parent=piece[0] if piece else None, wood=wood, life=life)
         INS += ins
         if piece:
             items = [(m, "steel") for _, m in s["steel"]] + [(m, key) for _, m, key in s.get("plain", [])]
@@ -434,33 +469,45 @@ def dress_wreck(out, sites, depth, kind, seed, memorial=False):
             if len(stones.f):
                 parts.append(("stones", stones, "rock"))
             parts.append(("sediment", sediment, "sediment"))
-    tris, size = write_model(out, parts, _materials(), instanced=INS)
+    tris, size = write_model(out, parts, _materials(wood), instanced=INS)
     print(f"{out}: {tris:,} triangles drawn ({len(INS)} instanced shapes), {size / 2**20:.2f} MB, zone {zone}")
     return tris, size
 
 
 def dress_built(out, parts, deck_colors=(), seed=12):
-    """The ship as built: planked decks (faces of a deck colour that look up), clean plating, baked light."""
-    allm = [m for _, m in parts]
-    bake_ao(allm, occluders=allm, ground=None, cell=0.5, rays=20, reach=10, strength=0.75)
+    """The ship as built: planked decks (faces of a deck colour that look up), clean plating, baked light.
+    parts: [(node name, Mesh)] painted steel, or [(node name, Mesh, key)] with key "paint", "wood" (a planked hull),
+    "cloth" (sails), "rope" or "metal" (guns, fittings)."""
+    parts = [p if len(p) == 3 else (p[0], p[1], "paint") for p in parts]
+    allm = [m for _, m, k in parts if k != "rope"]
+    bake_ao(allm, occluders=[m for _, m, k in parts if k not in ("rope", "cloth")], ground=None, cell=0.5, rays=20, reach=10, strength=0.75)
     out_parts = []
     dc = [np.array(c) for c in deck_colors]
-    for name, m in parts:
-        if dc:
+    for name, m, key in parts:
+        if dc and key in ("paint", "wood"):
             n = normals(m)
             fc = m.c[m.f].mean(1); fn = n[m.f].mean(1)
             isdeck = np.zeros(len(m.f), bool)
             for c in dc:
                 rel = fc / np.maximum(fc.mean(1, keepdims=True), 1e-3) - c / max(c.mean(), 1e-3)    # same hue, any brightness (AO)
                 isdeck |= (np.abs(rel).max(1) < 0.12) & (fc.mean(1) > c.mean() * 0.4) & (fn[:, 1] > 0.7)
-            items = [(Mesh(m.v, m.f[~isdeck], m.c), "paint")]
+            items = [(Mesh(m.v, m.f[~isdeck], m.c), key)]
             if isdeck.any():
                 items.append((Mesh(m.v, m.f[isdeck], m.c), "deck"))
             out_parts.append((name, items))
         else:
-            out_parts.append((name, m, "paint"))
+            out_parts.append((name, m, key))
+    keys = {k for _, _, k in parts}
     mats = {"paint": material(rough=0.6, metal=0.05, tex=steel_textures(1024, 7.2, seed, wear=0.15), uv=("tri", 7.2), normal_scale=0.6),
             "deck": material(rough=0.75, tex=planks_textures(), uv=("xz", 4.0))}
+    if "wood" in keys:
+        mats["wood"] = material(rough=0.7, tex=planks_textures(1024, 4.0, seed + 3, plank=0.28, length=7.0, along_u=True), uv=("tri", 4.0), normal_scale=1.2)
+    if "cloth" in keys:
+        mats["cloth"] = material(rough=0.95)
+    if "rope" in keys:
+        mats["rope"] = material(rough=0.95)
+    if "metal" in keys:
+        mats["metal"] = material(rough=0.4, metal=0.6)
     tris, size = write_model(out, out_parts, mats)
     print(f"{out}: {tris:,} triangles, {size / 2**20:.2f} MB")
     return tris, size
