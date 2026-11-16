@@ -310,8 +310,9 @@ def instances(pos, normal=None, yaw=None, scale=None):
 
 
 def write_model(path, parts, materials, instanced=(), generator="Offlined Sea 3D Models scenekit"):
-    """parts: [(node name, Mesh, material key)] or [(node name, [(Mesh, material key), …])];
-    instanced: [(node name, Mesh, material key, instances(...))]; materials: {key: material(...)}.
+    """parts: [(node name, Mesh, material key)] or [(node name, [(Mesh, material key), …])], optionally followed by
+    {"translation", "rotation"} for a piece placed apart (an item can be (Mesh, key, child node name));
+    instanced: [(node name, Mesh, material key, instances(...)[, parent part name])]; materials: {key: material(...)}.
     Each block of up to 65,535 vertices is a child node whose translation/scale undo the 16-bit positions,
     so the named nodes carry no transform themselves (Offlined moves them as pieces)."""
     binbuf = bytearray()
@@ -387,23 +388,43 @@ def write_model(path, parts, materials, instanced=(), generator="Offlined Sea 3D
         return mesh.v, mesh.f, mesh.c, nrm, None
 
     tris, top = 0, []
+
+    def chunk_nodes(mesh, key, name):
+        nonlocal tris
+        out = []
+        if not len(mesh.f):
+            return out
+        v, f, c, n, uv = project(mesh, key)
+        f = _spatial_order(v, f)
+        for vi, fl in _chunks(f):
+            pr, mid, sc = prim(v[vi], fl, c[vi], n[vi], None if uv is None else uv[vi], key)
+            meshes.append({"name": f"{name}_{len(meshes)}", "primitives": [pr]})
+            nodes.append({"mesh": len(meshes) - 1, "translation": [float(x) for x in mid], "scale": [float(x) for x in sc]})
+            out.append(len(nodes) - 1)
+        tris += len(f)
+        return out
+
     for part in parts:
+        # (name, Mesh, key) | (name, [(Mesh, key) or (Mesh, key, child name)…]) | either + {"translation", "rotation"}
         name = part[0]
-        items = part[1] if isinstance(part[1], list) else [(part[1], part[2])]
+        if isinstance(part[1], list):
+            items, trs = part[1], (part[2] if len(part) > 2 else {})
+        else:
+            items, trs = [(part[1], part[2])], (part[3] if len(part) > 3 else {})
         kids = []
-        for mesh, key in items:
-            if not len(mesh.f):
-                continue
-            v, f, c, n, uv = project(mesh, key)
-            f = _spatial_order(v, f)
-            for vi, fl in _chunks(f):
-                pr, mid, sc = prim(v[vi], fl, c[vi], n[vi], None if uv is None else uv[vi], key)
-                meshes.append({"name": f"{name}_{len(meshes)}", "primitives": [pr]})
-                nodes.append({"mesh": len(meshes) - 1, "translation": [float(x) for x in mid], "scale": [float(x) for x in sc]})
-                kids.append(len(nodes) - 1)
-            tris += len(f)
-        nodes.append({"name": name, "children": kids}); top.append(len(nodes) - 1)
-    for name, mesh, key, ins in instanced:
+        for it in items:
+            if len(it) > 2:                                 # a named child (the sediment of a far piece)
+                sub = chunk_nodes(it[0], it[1], it[2])
+                nodes.append({"name": it[2], "children": sub}); kids.append(len(nodes) - 1)
+            else:
+                kids += chunk_nodes(it[0], it[1], name)
+        node = {"name": name, "children": kids}
+        node.update({k: [float(x) for x in trs[k]] for k in ("translation", "rotation") if k in trs})
+        nodes.append(node); top.append(len(nodes) - 1)
+    by_name = {nodes[i]["name"]: nodes[i] for i in top}
+    for entry in instanced:
+        name, mesh, key, ins = entry[:4]
+        parent = entry[4] if len(entry) > 4 else None    # inside a part (a piece placed apart): its copies go with it
         if not len(ins["t"]) or not len(mesh.f):
             continue
         v, f, c, n, uv = project(mesh, key)
@@ -416,7 +437,10 @@ def write_model(path, parts, materials, instanced=(), generator="Offlined Sea 3D
             accs.append({"bufferView": view(d.tobytes()), "componentType": 5126, "count": len(d), "type": typ})
         nodes.append({"name": name, "mesh": len(meshes) - 1,
                       "extensions": {"EXT_mesh_gpu_instancing": {"attributes": {"TRANSLATION": a, "ROTATION": a + 1, "SCALE": a + 2}}}})
-        top.append(len(nodes) - 1)
+        if parent and parent in by_name:
+            by_name[parent]["children"].append(len(nodes) - 1)
+        else:
+            top.append(len(nodes) - 1)
         used_ext.add("EXT_mesh_gpu_instancing")
         tris += len(f) * len(ins["t"])
     g = {

@@ -3,7 +3,9 @@ abyss — the deep sea, by code (MIT): animals that live on wrecks and on the ab
 from a ship that last on the bottom. Every function returns a meshkit Mesh in metres, built «up = +y» around
 the origin, so it can be stored once and copied with instancing (scenekit.instances / write_model).
 
-Only what is real far from the light (below ~1,000 m): no reefs, no algae, no colourful fish.
+Deep (below ~1,000 m): only what is real far from the light — no reefs, no algae, no colourful fish. Shallower
+wrecks on the continental shelf (tens of metres) are covered instead: plumose anemones, dead man's fingers, starfish
+and shoals of fish.
     abyss.seed(7); m = abyss.anemone(0.06, (0.95, 0.9, 0.85))
 """
 from __future__ import annotations
@@ -359,3 +361,67 @@ def dust(m, amt, seed, col=(0.66, 0.62, 0.55)):
     n = normals(m)
     k = amt * sstep(0.25, 0.95, n[:, 1]) * (0.6 + 0.4 * fbm(m.v, 6.0, seed, 2))
     m.c = m.c * (1 - k[:, None]) + np.array(col) * k[:, None]
+
+
+# ── Shelf wrecks (tens to a few hundred metres): what covers them ───────────
+def plumose_anemone(h, c):
+    """Metridium: a tall smooth column crowned by a fluffy, lobed head of fine tentacles (white, cream or orange)."""
+    col = mix(c, (0.9, 0.86, 0.8), 0.25)
+    body = lathe([(h * 0.16, 0), (h * 0.13, h * 0.3), (h * 0.12, h * 0.62), (h * 0.18, h * 0.78), (h * 0.001, h * 0.8)], col, seg=8)
+    parts = [body]
+    for k in range(4):                                          # the crown: a few lobes of soft, feathery tissue
+        a = k * math.pi / 2 + rng.uniform(-0.3, 0.3)
+        lobe = lathe([(0.001, 0), (h * 0.14, h * 0.05), (h * 0.18, h * 0.14), (h * 0.12, h * 0.22), (0.001, h * 0.24)], c, seg=7)
+        lobe.S(1, 0.8, 0.7).R(0.0, 0.0, 0.55).R(0, a, 0).T(math.cos(a) * h * 0.08, h * 0.74, math.sin(a) * h * 0.08)
+        parts.append(lobe)
+    m = merge(parts)
+    crumple(m, h * 0.025, 6.0 / h, int(rng.integers(1e6)))
+    return m
+
+
+def dead_mans_fingers(h, c=(0.95, 0.9, 0.82)):
+    """Alcyonium: a soft coral of a few thick, lumpy fingers (white or orange) on a common base."""
+    parts = [blob(h * 0.22, c, int(rng.integers(1e6)), sub=1, amp=0.2).S(1.2, 0.5, 1.2)]
+    for k in range(int(rng.integers(3, 6))):
+        a = rng.uniform(0, 6.28); r = h * rng.uniform(0.05, 0.18); hh = h * rng.uniform(0.6, 1.0)
+        p0 = np.array([math.cos(a) * r, 0, math.sin(a) * r])
+        tip = p0 + np.array([math.cos(a) * hh * 0.25, hh, math.sin(a) * hh * 0.25])
+        parts.append(ttube([p0, (p0 + tip) / 2 + rng.normal(0, h * 0.04, 3), tip], [h * 0.11, h * 0.1, h * 0.07], c, seg=6))
+    m = merge(parts)
+    crumple(m, h * 0.02, 8.0 / h, int(rng.integers(1e6)))
+    return m
+
+
+def starfish(r, c=(0.85, 0.42, 0.18)):
+    """A common starfish: a small disc and five tapering, gently curled arms (lying flat, up = +y)."""
+    parts = [cyl(r * 0.28, r * 0.22, r * 0.12, c, seg=10)]
+    a0 = rng.uniform(0, 6.28)
+    for k in range(5):
+        a = a0 + k * 2 * math.pi / 5; curl = rng.uniform(-0.25, 0.25)
+        pts = [((r * t) * math.cos(a + curl * t), r * 0.08 * (1 - t) + 0.01 * r, (r * t) * math.sin(a + curl * t)) for t in np.linspace(0.1, 1, 5)]
+        parts.append(ttube(pts, np.linspace(r * 0.16, r * 0.04, 5), c, seg=5))
+    m = merge(parts)
+    m.c = m.c * (0.8 + 0.35 * fbm(m.v, 30.0 / r, 3, 2))[:, None]
+    return m
+
+
+def fish(ln, c=(0.42, 0.45, 0.38), belly=(0.82, 0.82, 0.78)):
+    """A fish of the shoals that gather on shelf wrecks (pollack, cod, bass): head to +z, length ln."""
+    body = lathe([(0.001, -ln / 2), (ln * 0.05, -ln * 0.38), (ln * 0.1, -ln * 0.15), (ln * 0.11, ln * 0.08),
+                  (ln * 0.08, ln * 0.32), (0.001, ln / 2)], c, seg=10, axis="z")
+    body.S(0.62, 1, 1)
+    body.paint(lambda q: np.where((q[:, 1] < -ln * 0.02)[:, None], belly, c) * (0.9 + 0.2 * fbm(q, 12.0 / ln, 4, 2))[:, None])
+    tail = box(0.004, ln * 0.24, ln * 0.14, c, bottom=False).T(0, 0, -ln * 0.55)
+    dors = box(0.004, ln * 0.1, ln * 0.3, c, bottom=True).T(0, ln * 0.08, -ln * 0.02)
+    eyes = [cyl(ln * 0.02, ln * 0.02, 0.003, (0.05, 0.05, 0.05), seg=8).R(0, 0, s * math.pi / 2).T(s * ln * 0.045, ln * 0.025, ln * 0.36) for s in (-1, 1)]
+    return merge([body, tail, dors] + eyes)
+
+
+def shell_casing(ln=1.0, r=0.19):
+    """A brass cartridge case from a warship's guns, tarnished green-brown."""
+    br = (0.55, 0.42, 0.2)
+    m = lathe([(0.001, 0), (r * 1.08, 0), (r * 1.08, ln * 0.03), (r, ln * 0.05), (r * 0.97, ln * 0.9), (r * 0.88, ln), (r * 0.8, ln)], br, seg=14)
+    inner = lathe([(r * 0.8, ln), (r * 0.78, ln * 0.6), (0.001, ln * 0.6)], (0.12, 0.1, 0.07), seg=14)
+    out = merge([m, inner])
+    out.paint(lambda q: np.where((fbm(q, 6.0, 2, 2) > 0.58)[:, None], (0.3, 0.42, 0.32), br) * (0.75 + 0.3 * fbm(q, 14.0, 3, 2))[:, None])
+    return out

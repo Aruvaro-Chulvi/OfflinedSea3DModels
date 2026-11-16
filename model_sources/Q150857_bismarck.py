@@ -689,24 +689,18 @@ def paint_life(m, seed):
 
 
 # ── Write ────────────────────────────────────────────────────────────────────
+# Dressed with tools/dresskit.py: its own sediment, rust, the life of its depth, things from the ship, textures,
+# baked light, 16-bit positions and instancing (see docs/MODEL_SPEC.md).
+from dresskit import dress_wreck, dress_built  # noqa: E402
 out = ROOT / "models" / "item" / "Q150857" / "model.glb"
 out.parent.mkdir(parents=True, exist_ok=True)
-parts = [("hull", wreck), ("mud", mudm), ("slide_track", trackm)]
-for name in ("anton", "bruno", "caesar", "dora"):
+steel = [("hull", wreck)]
+for name in ("anton", "bruno", "caesar", "dora"):                # the turrets fell out when she capsized: where they lie
     m, tr = wturrets[name]
-    parts.append((f"turret_{name}", m, {"translation": tr}))
-parts.append(("debris_field", debris))
-tris, size = write_glb(out, parts)
-print(f"{out}: {tris:,} triangles, {size / 2**20:.2f} MB")
-for p in parts:
-    n, m = p[0], p[1]
-    o = np.array(p[2]["translation"]) if len(p) > 2 else np.zeros(3)
-    v = m.v + o
-    print(f"  {n}: {m.tris:,} tris, x {v[:, 0].min():.0f}..{v[:, 0].max():.0f}, y {v[:, 1].min():.0f}..{v[:, 1].max():.0f}, z {v[:, 2].min():.0f}..{v[:, 2].max():.0f}")
+    steel.append((f"turret_{name}", m.copy().T(*tr)))
+steel.append(("debris_field", debris))
+dress_wreck(out, [{"steel": steel, "mud": [mudm, trackm]}], depth=-4791, kind="warship", seed=1941)
 bparts = [("hull", paint_life(bhull, 3)), ("superstructure", paint_life(bsup, 4))]
 bparts += [(f"turret_{n}", paint_life(bturrets[n], 5)) for n in ("anton", "bruno", "caesar", "dora")]
 bparts.append(("aircraft", plane))
-tris2, size2 = write_glb(out.with_name("model_built.glb"), bparts)
-allv = np.vstack([p[1].v for p in bparts])
-print(f"model_built.glb: {tris2:,} triangles, {size2 / 2**20:.2f} MB, x {allv[:, 0].min():.1f}..{allv[:, 0].max():.1f}, "
-      f"y {allv[:, 1].min():.1f}..{allv[:, 1].max():.1f}, z {allv[:, 2].min():.1f}..{allv[:, 2].max():.1f}")
+dress_built(out.with_name("model_built.glb"), bparts, deck_colors=[TEAK])

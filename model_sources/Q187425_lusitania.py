@@ -690,15 +690,11 @@ ship.c = np.clip(ship.c * (0.94 + 0.06 * fbm(ship.v, 0.05, 3)[:, None]), 0, 1)
 ship.v[:, 1] -= ship.v[:, 1].min()
 
 # ── Write ────────────────────────────────────────────────────────────────────
+# Dressed with tools/dresskit.py: its own sediment, rust, the life of its depth, things from the ship, textures,
+# baked light, 16-bit positions and instancing (see docs/MODEL_SPEC.md).
+from dresskit import dress_wreck, dress_built  # noqa: E402
 out = ROOT / "models" / "item" / "Q187425" / "model.glb"
 out.parent.mkdir(parents=True, exist_ok=True)
-tris, size = write_glb(out, [("hull", hull_m), ("nets", nets_m), ("mud", mud), ("debris_field", debris)])
-print(f"{out}: {tris:,} triangles, {size / 2**20:.2f} MB  (last propeller at {PROP.round(1)})")
-for n, m in (("hull", hull_m), ("nets", nets_m), ("mud", mud), ("debris", debris)):
-    print(f"  {n}: {m.tris:,} tris, x {m.v[:, 0].min():.0f}..{m.v[:, 0].max():.0f}, y {m.v[:, 1].min():.1f}..{m.v[:, 1].max():.1f}, z {m.v[:, 2].min():.0f}..{m.v[:, 2].max():.0f}")
-for d in (5, 20, 40, 70, 100, 125, 150, 180, 210, 232):
-    sel = np.abs(hull_m.v[:, 2] - wz(d)) < 2
-    if sel.any():
-        print(f"    d={d:3d} m: height {hull_m.v[sel, 1].max():.1f} m, width {np.ptp(hull_m.v[sel, 0]):.1f} m")
-tris2, size2 = write_glb(out.with_name("model_built.glb"), [("main", ship)])
-print(f"model_built.glb: {tris2:,} triangles, {size2 / 2**20:.2f} MB, y {ship.v[:, 1].min():.1f}..{ship.v[:, 1].max():.1f}, z {ship.v[:, 2].min():.1f}..{ship.v[:, 2].max():.1f}")
+dress_wreck(out, [{"steel": [("hull", hull_m), ("debris_field", debris)], "mud": [mud], "plain": [("nets", nets_m, "net")]}],
+            depth=-93, kind="liner", seed=1915, memorial=True)
+dress_built(out.with_name("model_built.glb"), [("main", ship)], deck_colors=[DECK])

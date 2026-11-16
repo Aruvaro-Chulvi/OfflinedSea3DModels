@@ -612,11 +612,11 @@ ship = merge(ship_part(0, L, built=True) + [rudder_props()] + name_on_bow(1) + n
 ship.c = np.clip(ship.c * (0.94 + 0.06 * fbm(ship.v, 0.05, 3)[:, None]), 0, 1)
 
 # ── Write ────────────────────────────────────────────────────────────────────
+# Dressed with tools/dresskit.py: its own sediment, rust, the life of its depth, things from the ship, textures,
+# baked light, 16-bit positions and instancing (see docs/MODEL_SPEC.md).
+from dresskit import dress_wreck, dress_built  # noqa: E402
 out = ROOT / "models" / "item" / "Q493798" / "model.glb"
 out.parent.mkdir(parents=True, exist_ok=True)
-tris, size = write_glb(out, [("hull", hullw), ("bow_section", bow), ("debris_field", debris), ("nets", nets), ("sediment", sand)])
-print(f"{out}: {tris:,} triangles, {size / 2**20:.2f} MB")
-for n, m in (("hull", hullw), ("bow_section", bow), ("debris_field", debris), ("nets", nets), ("sediment", sand)):
-    print(f"  {n}: {m.tris:,} tris, x {m.v[:, 0].min():.0f}..{m.v[:, 0].max():.0f}, y {m.v[:, 1].min():.0f}..{m.v[:, 1].max():.0f}, z {m.v[:, 2].min():.0f}..{m.v[:, 2].max():.0f}")
-tris2, size2 = write_glb(out.with_name("model_built.glb"), [("main", ship)])
-print(f"model_built.glb: {tris2:,} triangles, {size2 / 2**20:.2f} MB, y {ship.v[:, 1].min():.1f}..{ship.v[:, 1].max():.1f}, z {ship.v[:, 2].min():.1f}..{ship.v[:, 2].max():.1f}")
+dress_wreck(out, [{"steel": [("hull", hullw), ("bow_section", bow), ("debris_field", debris)], "mud": [sand],
+                   "plain": [("nets", nets, "net")]}], depth=-73, kind="liner", seed=1956)
+dress_built(out.with_name("model_built.glb"), [("main", ship)], deck_colors=[DECK])

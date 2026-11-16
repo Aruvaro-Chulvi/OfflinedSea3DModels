@@ -433,6 +433,9 @@ ship = merge(ship_part(0, L, built=True) + [rudder_prop()] + name_plates(4, 1, D
 ship.c = np.clip(ship.c * (0.94 + 0.06 * fbm(ship.v, 0.05, 3)[:, None]), 0, 1)
 
 # ── Write ────────────────────────────────────────────────────────────────────
+# Dressed with tools/dresskit.py: its own sediment, rust, the life of its depth, things from the ship, textures,
+# baked light, 16-bit positions and instancing (see docs/MODEL_SPEC.md).
+from dresskit import dress_wreck, dress_built  # noqa: E402
 # Stern site: 42°12'N 12°02'W vs bow 42°10'N 12°03'W (published positions, rounded): ~3.7 km north, ~1.4 km east.
 LAT_B, LON_B, LAT_S, LON_S = 42.1667, -12.05, 42.2, -12.0333
 north = (LAT_S - LAT_B) * 111320.0
@@ -440,10 +443,15 @@ east = (LON_S - LON_B) * 111320.0 * math.cos(math.radians((LAT_B + LAT_S) / 2))
 STERN_HEADING = 40                                                       # approximate
 out = ROOT / "models" / "item" / "Q1977186" / "model.glb"
 out.parent.mkdir(parents=True, exist_ok=True)
-tris, size = write_glb(out, [("bow_section", bow), ("bow_site", bow_site),
-                             ("stern_section", stern_site, {"translation": [-east, 0, north], "rotation": yaw_quat(STERN_HEADING)})])
-print(f"{out}: {tris:,} triangles, {size / 2**20:.2f} MB  (stern {north:.0f} m N, {east:.0f} m E)")
-for n, m in (("bow", bow), ("bow_site", bow_site), ("stern_site", stern_site)):
-    print(f"  {n}: {m.tris:,} tris, x {m.v[:, 0].min():.0f}..{m.v[:, 0].max():.0f}, y {m.v[:, 1].min():.0f}..{m.v[:, 1].max():.0f}, z {m.v[:, 2].min():.0f}..{m.v[:, 2].max():.0f}")
-tris2, size2 = write_glb(out.with_name("model_built.glb"), [("main", ship)])
-print(f"model_built.glb: {tris2:,} triangles, {size2 / 2**20:.2f} MB, y {ship.v[:, 1].min():.1f}..{ship.v[:, 1].max():.1f}")
+sites = [
+    {"steel": [("bow_section", bow), ("debris_field", debris_near(0, -BOW_END / 2 - 25, 70, 22, 101))],
+     "mud": [mud_around(BOW_END, B / 2, 1.6, 5)],
+     "plain": [("oil", oil_patches(0, -BOW_END / 2 - 18, 6, 25, 201), "oil")]},
+    {"steel": [("stern", stern), ("stern_debris", debris_near(0, (L - STERN_START) / 2 + 22, 60, 20, 301))],
+     "mud": [mud_around(L - STERN_START, B / 2, 1.2, 6)],
+     "plain": [("stern_oil", oil_patches(0, (L - STERN_START) / 2 + 16, 5, 22, 401), "oil")],
+     "piece": ("stern_section", {"translation": [-east, 0, north], "rotation": yaw_quat(STERN_HEADING)})},
+]
+dress_wreck(out, sites, depth=-3830, kind="tanker", seed=1977)
+print(f"  stern {north:.0f} m N, {east:.0f} m E")
+dress_built(out.with_name("model_built.glb"), [("main", ship)])
