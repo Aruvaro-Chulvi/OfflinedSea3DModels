@@ -1,0 +1,38 @@
+{
+  "id": "Q1464299",
+  "kind": "item",
+  "name": "Kaleva",
+  "state": "scattered",
+  "heading": 0,
+  "depth": -74,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Kaleva (airplane) — Junkers Ju 52/3m OH-ALL of Aero O/Y, shot down over the Gulf of Finland on 14 June 1940; the remains found north of Keri in June 2024",
+      "url": "https://en.wikipedia.org/wiki/Kaleva_(airplane)"
+    },
+    {
+      "title": "Al Jazeera (2024) — Divers find remains of Finnish WWII plane shot down by Soviets: the landing gear, one of the engines and parts of the wings, at about 70 m",
+      "url": "https://www.aljazeera.com/news/2024/6/15/divers-find-remains-of-finnish-wwii-plane-shot-down-by-soviets"
+    },
+    {
+      "title": "Postimees (2024) — Divers believe they have found the wreck: in pieces on a rocky bottom of ridges and hollows, north of Keri",
+      "url": "https://news.postimees.ee/8035045/divers-believe-they-have-found-wreck-of-finnish-passenger-plane-shot-down-by-ussr"
+    },
+    {
+      "title": "Aviation Safety Network — Junkers Ju-52/3mge OH-ALL, 14 June 1940",
+      "url": "https://aviation-safety.net/wikibase/341879"
+    },
+    {
+      "title": "Junkers Ju 52 — the type: three radial engines, corrugated duralumin skin, the Junkers double wing; 18.9 m long, 29.25 m span",
+      "url": "https://en.wikipedia.org/wiki/Junkers_Ju_52"
+    }
+  ],
+  "notes": "Built by code (model_sources/Q1464299_kaleva.py; tools/airkit.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The remains, in pieces among outcrops of rock: the left wing outboard of the engine, torn off and upside down; a piece of the right wing with its flap; the left wing engine with its propeller blades bent back; a landing gear leg with its wheel; the tailplane and part of the fin; strips of the corrugated fuselage skin all about; the two other engines deep in the bottom. Dressed with tools/dresskit.py: its own sediment (painted by Offlined with the seabed colour), the dulled aluminium with a film of silt, the scant life of the deep Baltic, textures and baked light. model_built.glb: the airliner as she flew in 1940, natural metal, OH-ALL on the fuselage and the wings, KALEVA by the cockpit, standing on her wheels. Approximate: only the gear, one engine and parts of the wings have been described, so the other pieces and the places of all of them are a reconstruction; the airframe follows the general drawings of the Ju 52/3m."
+}

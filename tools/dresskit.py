@@ -155,7 +155,7 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
     steel_m = [m for _, m in steel]
     # ── the paint: rust (deep) or a skin of growth (shallow) ──
     rust_k = {"abyssal": 0.55, "bathyal": 0.4, "shelf": 0.2}[zone]
-    for k, m in enumerate(steel_m if wood else []):            # wood: no rust; darkened, with a fine film of silt
+    for k, m in enumerate(steel_m if wood else []):            # wood (or wood="alu", aluminium): no rust; dulled, a fine film of silt
         m.c = m.c * (0.78 + 0.22 * fbm(m.v, 0.5, seed + 205 + k, 2))[:, None]
         weather(m, rust=0.0, sediment=0.18, streaks=0.0, seed=seed + 200 + k)
         m.c = np.clip(m.c * 0.9, 0, 1)
@@ -233,6 +233,18 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
 
     if life == "baltic":                                     # the brackish, cold, often airless deep Baltic: hardly anything grows
         pass
+    elif zone == "shelf" and life == "tropical":                # a warm-water wreck: soft corals, sponges, crinoids' colours
+        dmf = [abyss.dead_mans_fingers(0.16, c) for c in ((0.86, 0.38, 0.6), (0.95, 0.55, 0.2), (0.62, 0.32, 0.72), (0.95, 0.85, 0.6))]
+        p, nn = on_wreck(min(260, 10 * A), lambda fn: fn[:, 1] > -0.3)
+        D.add("soft_corals", dmf, "life", p, nn, scale=r.uniform(0.5, 1.4, len(p)), parent=parent)
+        anem = [abyss.anemone(0.06, c) for c in ((0.95, 0.75, 0.3), (0.9, 0.35, 0.3), (0.55, 0.8, 0.5))]
+        p, nn = on_wreck(min(160, 6 * A), lambda fn: fn[:, 1] > -0.2)
+        D.add("anemones", anem, "life", p, nn, scale=r.uniform(0.7, 1.5, len(p)), parent=parent)
+        sp = [abyss.glass_sponge(0.35) for _ in range(2)]
+        for m in sp:
+            m.c = np.clip(m.c * np.array([1.0, 0.75, 0.5]), 0, 1)
+        p, nn = on_wreck(min(60, 2 * A), lambda fn: fn[:, 1] > 0.4)
+        D.add("sponges", sp, "life", p, nn, scale=r.uniform(0.5, 1.1, len(p)), parent=parent)
     elif zone == "shelf":
         cols = [(0.96, 0.94, 0.9), (0.97, 0.9, 0.78), (0.96, 0.62, 0.32), (0.96, 0.94, 0.9)]
         plum = [abyss.plumose_anemone(0.35, c) for c in cols]
@@ -301,7 +313,8 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
         bs = spots(260, 0.6)
         D.add("starfish_ground", stars, "life", bs + [0, 0.01, 0], scale=r.uniform(0.7, 1.5, len(bs)), parent=parent)
         # shoals of fish around the wreck: a few groups, all swimming the same way
-        fishv = [abyss.fish(0.6, c) for c in ((0.42, 0.45, 0.38), (0.5, 0.48, 0.4), (0.36, 0.4, 0.36))]
+        fishv = [abyss.fish(0.6, c) for c in (((0.85, 0.7, 0.25), (0.45, 0.6, 0.75), (0.8, 0.45, 0.35)) if life == "tropical"
+                                              else ((0.42, 0.45, 0.38), (0.5, 0.48, 0.4), (0.36, 0.4, 0.36)))]
         fp, fy = [], []
         for g in range(int(6 + 3 * min(A, 20) / 10)):
             c0 = free(0.85)
@@ -432,7 +445,8 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
 
 def _materials(wood=False):
     return {
-        "steel": (material(rough=0.9, tex=planks_textures(1024, 4.0, 21, plank=0.3, length=7.0, along_u=True, wear=1.0), uv=("tri", 4.0), normal_scale=1.4)
+        "steel": (material(rough=0.65, metal=0.2, tex=steel_textures(1024, 3.0, 23, wear=0.3), uv=("tri", 3.0), normal_scale=0.5) if wood == "alu"
+                  else material(rough=0.9, tex=planks_textures(1024, 4.0, 21, plank=0.3, length=7.0, along_u=True, wear=1.0), uv=("tri", 4.0), normal_scale=1.4)
                   if wood else material(rough=0.8, metal=0.05, tex=steel_textures(), uv=("tri", 7.2))),
         "rust": material(rough=0.95, tex=rust_textures(), uv=("tri", 1.5), normal_scale=1.6),
         "rock": material(rough=0.9, tex=rust_textures(512, 2.5, 11), uv=("tri", 2.5)),
@@ -449,7 +463,8 @@ def _materials(wood=False):
 def dress_wreck(out, sites, depth, kind, seed, memorial=False, wood=False, life="normal"):
     """sites: [{"steel": [(node name, Mesh)], "mud": [Mesh], "plain": [(node name, Mesh, material key)],
     "piece": None | (node name, {"translation", "rotation"})}] — the first is the main wreck; a piece lying apart
-    (more than 1 km, meta.json "pieces") is written as one node with its transform, its own sediment and life inside."""
+    (more than 1 km, meta.json "pieces") is written as one node with its transform, its own sediment and life inside.
+    wood: True for a wooden ship, "alu" for an aircraft (no rust either), False for steel."""
     zone = zone_of(depth)
     parts, INS = [], []
     for k, s in enumerate(sites):

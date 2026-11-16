@@ -41,7 +41,7 @@ def main():
     out.mkdir()
     models = []
     for kind in ("item", "class", "vehicle"):
-        for d in sorted((ROOT / "models" / kind).glob("Q*")):
+        for d in sorted([*(ROOT / "models" / kind).glob("Q*"), *(ROOT / "models" / kind).glob("L*")]):   # L…: own entries
             if not (d / "model.glb").exists() or not (d / "meta.json").exists():
                 continue
             meta = json.loads((d / "meta.json").read_text("utf-8"))

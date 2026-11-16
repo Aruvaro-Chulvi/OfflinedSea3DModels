@@ -11,6 +11,10 @@
   [`catalog/overrides.json`](catalog/overrides.json) en un *pull request*.
 - **Quitar algo que no está bajo el mar** (un barco museo en un puerto, un pecio que se reflotó…): igual, con
   `"exclude": true` y el motivo.
+- **Añadir un pecio famoso que no tiene artículo en Wikipedia** (un punto de buceo conocido, como el B-17 «Black
+  Jack»): añádelo a [`catalog/own_entries.json`](catalog/own_entries.json) con el siguiente id (L2, L3…), un texto
+  corto en inglés (y en otros idiomas si puedes) y sus fuentes, y ejecuta `python tools/build_catalog.py --own-only`.
+  Offlined lo enseña como una chincheta con ese texto en vez de un artículo.
 - **Pedir un modelo** de un pecio que te interese: aviso *Model request*. Los planos, fotos y estudios ayudan a
   quien lo haga.
 

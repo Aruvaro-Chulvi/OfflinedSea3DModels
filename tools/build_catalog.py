@@ -8,6 +8,7 @@ Build catalog/catalog.json: everything under the sea that has a Wikipedia articl
 3. GEBCO: the depth at that point. Only points below sea level are kept (museum ships in a
    harbour, accidents over land… fall out; a few coastal ones stay and are marked "coast").
 4. catalog/overrides.json: hand corrections from the community (exclude, move, rename…).
+5. catalog/own_entries.json: places with no Wikipedia article, with their own text and sources (ids L1, L2…).
 
     python tools/build_catalog.py --gebco "path/to/seafloor.pmtiles"
 
@@ -19,6 +20,7 @@ import argparse
 import datetime as dt
 import hashlib
 import json
+import re
 import sys
 import time
 import urllib.parse
@@ -238,10 +240,17 @@ def family_of(types: list[str], fam_map, built: int | None, srcs: list[str]) -> 
 # ── Main ─────────────────────────────────────────────────────────────────────
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--gebco", required=True, help="GEBCO Terrarium PMTiles (Offlined: Maps/Seafloor/seafloor.pmtiles)")
+    ap.add_argument("--gebco", help="GEBCO Terrarium PMTiles (Offlined: Maps/Seafloor/seafloor.pmtiles)")
     ap.add_argument("--out", default=str(ROOT / "catalog" / "catalog.json"))
+    ap.add_argument("--own-only", action="store_true", help="only merge catalog/own_entries.json into the existing catalog")
     a = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
+    if a.own_only:
+        c = json.loads(Path(a.out).read_text("utf-8"))
+        write(Path(a.out), merge_own([i for i in c["items"] if not OWN_ID.match(i["q"])]))
+        return
+    if not a.gebco:
+        ap.error("--gebco is needed to build the catalog (or --own-only)")
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from gebco_depth import Gebco
 
@@ -297,21 +306,38 @@ def main():
             if k in o: it[k] = o[k]
         items.append(it)
 
+    items = merge_own(items)
+    write(Path(a.out), items)
+    print("dropped:", dict(dropped))
+
+
+OWN_ID = re.compile(r"^L[1-9][0-9]*$")
+
+
+def merge_own(items):
+    """Add the hand-made entries of catalog/own_entries.json (places with no Wikipedia article): after the others."""
+    own = json.loads((ROOT / "catalog" / "own_entries.json").read_text("utf-8")).get("items", [])
+    for o in own:
+        if not OWN_ID.match(o.get("q", "")) or not (o.get("text") or {}).get("en"):
+            raise SystemExit(f"own_entries.json: {o.get('q')}: needs an id L1, L2… and text.en")
+    return items + own
+
+
+def write(out, items):
     fams = Counter(i["fam"] for i in items)
     langs = Counter(l for i in items for l in i["titles"])
     meta = {
         "name": "Offlined Sea 3D Models — catalog",
         "generated": dt.date.today().isoformat(),
-        "license": "CC0-1.0 (data from Wikidata, CC0; depths from the GEBCO Grid)",
+        "license": "CC0-1.0 (data from Wikidata, CC0; depths from the GEBCO Grid; own entries: CC0)",
         "count": len(items), "families": dict(fams.most_common()), "languages": dict(langs.most_common()),
     }
-    out = Path(a.out); out.parent.mkdir(parents=True, exist_ok=True)
+    out.parent.mkdir(parents=True, exist_ok=True)
     with out.open("w", encoding="utf-8", newline="\n") as f:          # one item per line: small, readable diffs
         f.write("{\n" + "\n".join(f'  "{k}": {json.dumps(v, ensure_ascii=False)},' for k, v in meta.items()) + '\n  "items": [\n')
         f.write(",\n".join("    " + json.dumps(i, ensure_ascii=False, separators=(",", ":")) for i in items))
         f.write("\n  ]\n}\n")
     print(f"\n{len(items)} items under the sea → {out}")
-    print("dropped:", dict(dropped))
     print("families:", dict(fams.most_common()))
     print("articles per language:", dict(langs.most_common()))
 

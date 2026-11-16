@@ -11,6 +11,10 @@ Thank you! There are many ways to help, and most of them need no 3D skills.
   [`catalog/overrides.json`](catalog/overrides.json) in a pull request.
 - **Remove something that is not under the sea** (a museum ship in a harbour, a raised wreck…): same way,
   with `"exclude": true` and the reason.
+- **Add a famous wreck that has no Wikipedia article** (a well-known dive site, like the B-17 «Black Jack»): add it to
+  [`catalog/own_entries.json`](catalog/own_entries.json) with the next id (L2, L3…), a short text in English (and
+  other languages if you can) and its sources, then run `python tools/build_catalog.py --own-only`. Offlined shows it
+  as a pin with that text instead of an article.
 - **Ask for a model** of a wreck you care about: issue *Model request*. Plans, photos and surveys help whoever
   makes it.
 

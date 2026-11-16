@@ -22,6 +22,7 @@ EXT_OK = {"KHR_mesh_quantization", "KHR_texture_transform", "EXT_mesh_gpu_instan
 LICENSES = {"CC-BY-4.0", "CC0-1.0"}
 STATES = {"intact", "broken", "scattered", "capsized", "buried"}
 QID = re.compile(r"^Q[1-9][0-9]*$")
+OWN_ID = re.compile(r"^L[1-9][0-9]*$")              # catalog/own_entries.json: places with no Wikipedia article
 FILES_OK = {"model.glb", "meta.json", "preview.jpg", "model_built.glb"}
 
 
@@ -121,8 +122,8 @@ def check_folder(d: Path, catalog: dict, errors: list, warnings: list):
     kind, qid = d.parent.name, d.name
     if kind not in KINDS:
         err(f"must be inside models/item, models/class or models/vehicle"); return
-    if not QID.match(qid):
-        err(f"folder name must be a Wikidata id like Q25173"); return
+    if not (QID.match(qid) or (kind == "item" and OWN_ID.match(qid))):
+        err(f"folder name must be a Wikidata id like Q25173 (or, for a place in catalog/own_entries.json, its id like L1)"); return
     for f in d.iterdir():
         if f.name not in FILES_OK:
             err(f"unexpected file {f.name} (allowed: {', '.join(sorted(FILES_OK))})")

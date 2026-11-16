@@ -25,7 +25,7 @@ def main():
     shutil.copy2(ROOT / "catalog" / "catalog.json", out / "catalog.json")
     idx = {"item": {}, "class": {}, "vehicle": {}}
     for kind in idx:
-        for d in sorted((ROOT / "models" / kind).glob("Q*")):
+        for d in sorted([*(ROOT / "models" / kind).glob("Q*"), *(ROOT / "models" / kind).glob("L*")]):   # L…: own entries
             meta = d / "meta.json"
             if not (meta.exists() and (d / "model.glb").exists()):
                 continue

@@ -1,0 +1,29 @@
+{
+  "_help": "Places under the sea that have no Wikipedia article (and so no Wikidata id the catalog can use), added by hand with their own text and sources. Ids: L1, L2… (never reused). Fields as in catalog.json, plus text (a short description by language; 'en' required) and sources [{title, url}]. Offlined shows them as a pin with this text instead of an article. Merged into catalog.json by tools/build_catalog.py (--own-only re-merges without rebuilding).",
+  "items": [
+    {
+      "q": "L1",
+      "name": "B-17 «Black Jack»",
+      "fam": "aircraft",
+      "lat": -9.658,
+      "lon": 150.04,
+      "pos": "own",
+      "depth": -48,
+      "length": 22.8,
+      "built": 1942,
+      "sunk": 1943,
+      "titles": {"en": "B-17 Black Jack", "es": "B-17 Black Jack", "de": "B-17 Black Jack", "fr": "B-17 Black Jack", "it": "B-17 Black Jack",
+                 "pt": "B-17 Black Jack", "ru": "B-17 «Блэк Джек»", "zh": "B-17“黑杰克”号", "ar": "بي-17 بلاك جاك", "hi": "बी-17 ब्लैक जैक"},
+      "text": {
+        "en": "Black Jack is a Boeing B-17F Flying Fortress (serial 41-24521) of the US Army Air Forces' 43rd Bomb Group, named after the last two digits of its serial: 21, a blackjack. On the night of 10–11 July 1943, coming back from a raid on Rabaul with two engines failing and almost out of fuel after a storm, it ditched off the village of Boga Boga at Cape Vogel, Papua New Guinea. The whole crew got out and reached the shore with the help of the villagers. The aircraft sank just beyond the reef and was found by divers in 1986. It sits upright on the sand at about 45–50 m, almost whole: the nose crumpled, the propellers twisted, the machine guns still in the turrets. It is one of the best-known aircraft wrecks in the world.",
+        "es": "Black Jack es un Boeing B-17F Flying Fortress (número de serie 41-24521) del 43.º Grupo de Bombardeo de las Fuerzas Aéreas del Ejército de EE. UU., llamado así por las dos últimas cifras de su número: 21, un «blackjack». La noche del 10 al 11 de julio de 1943, al volver de un bombardeo sobre Rabaul con dos motores fallando y casi sin combustible tras una tormenta, amerizó frente a la aldea de Boga Boga, en el cabo Vogel (Papúa Nueva Guinea). Toda la tripulación salió y llegó a la orilla con la ayuda de los aldeanos. El avión se hundió justo al otro lado del arrecife y unos buceadores lo encontraron en 1986. Descansa derecho sobre la arena a unos 45–50 m, casi entero: el morro aplastado, las hélices torcidas y las ametralladoras aún en sus torretas. Es uno de los pecios de avión más conocidos del mundo."
+      },
+      "sources": [
+        {"title": "X-Ray Mag — Papua New Guinea: B-17 Black Jack wreck", "url": "https://xray-mag.com/content/papua-new-guinea-b17-black-jack-wreck"},
+        {"title": "Indo Pacific Images — Discovery of B-17F Black Jack", "url": "https://indopacificimages.com/papua-new-guinea/guide-to-diving-papua-new-guinea/b-17f-black-jack/discovery-of-b17f-black-jack/"},
+        {"title": "Pacific Wrecks — B-17F-10-BO Flying Fortress 41-24521 «Black Jack»", "url": "https://pacificwrecks.com/aircraft/b-17/41-24521.html"}
+      ],
+      "note": "Position approximate (no published coordinates): just off the reef at Boga Boga, the tip of Cape Vogel, where the GEBCO grid is about 46 m deep."
+    }
+  ]
+}

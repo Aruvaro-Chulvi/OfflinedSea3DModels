@@ -1,0 +1,34 @@
+{
+  "id": "Q1757204",
+  "kind": "item",
+  "name": "USS Scorpion",
+  "state": "broken",
+  "heading": 0,
+  "depth": -3000,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "USS Scorpion (SSN-589) — Skipjack-class nuclear submarine, 76.7 m long, 9.6 m beam; lost with 99 men on 22 May 1968 south-west of the Azores; the wreck found at about 3,000 m",
+      "url": "https://en.wikipedia.org/wiki/USS_Scorpion_(SSN-589)"
+    },
+    {
+      "title": "Naval History and Heritage Command — Scorpion (SSN-589): the bow section and the reactor compartment and engine room in two impact trenches, the sail detached nearby in a large debris field",
+      "url": "https://history.navy.mil/browse-by-topic/ships/submarines/scorpion-ssn-589.html"
+    },
+    {
+      "title": "Naval History and Heritage Command — Scorpion image gallery: photographs of the wreck by Trieste II (1969), the starboard fairwater plane standing out of the sail",
+      "url": "https://history.navy.mil/browse-by-topic/ships/submarines/scorpion-ssn-589/scorpion-image-gallery.html"
+    },
+    {
+      "title": "Bruce Rule — Why the Scorpion was lost (2018): the engine room telescoped into the machinery space; the debris field, with battery cells, mainly north of the big pieces",
+      "url": "https://www.iusscaa.org/articles/brucerule/pdfs/why_the_scorpion_was_lost_updated_august_2018.pdf"
+    }
+  ],
+  "notes": "Built by code (model_sources/Q1757204_scorpion.py; tools/meshkit.py, tools/dresskit.py) with AI assistance. The bow section (the torpedo room and the forward part, broken off ahead of the sail) half buried in its impact trench; the stern section (the reactor compartment, the machinery space and the engine room driven forward into it, with the cruciform rudders and planes and the propeller) in a second trench some 60 m away; the sail torn off, on its side, a fairwater plane standing up; between and mainly to the north, the debris field of the operations compartment: torn hull plating, battery cells, piping. Dressed with tools/dresskit.py: its own sediment and the mud thrown up round the trenches (painted by Offlined with the seabed colour), rust, the life of the abyssal plain, textures and baked light. model_built.glb: the boat as commissioned, black, the teardrop hull of the class. Approximate: the headings and distances of the pieces and the extent of the debris field (published descriptions differ), the hull lines (from the class's general plans)."
+}

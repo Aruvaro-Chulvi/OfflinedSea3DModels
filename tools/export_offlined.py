@@ -15,7 +15,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-KEEP = ("q", "name", "fam", "lat", "lon", "depth", "titles", "length", "beam", "built", "sunk", "class", "vehicle", "heading")
+KEEP = ("q", "name", "fam", "lat", "lon", "depth", "titles", "length", "beam", "built", "sunk", "class", "vehicle", "heading",
+        "text", "sources")                           # text + sources: own entries (no Wikipedia article)
 
 
 def main():

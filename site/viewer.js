@@ -201,8 +201,10 @@ function card(it) {
   $("card").innerHTML = `<h2><button class="tog" id="b-min" title="−/+">${$("card").classList.contains("min") ? "▸" : "▾"}</button>${ICON[it.fam] || ""} ${esc(it.titles[L] || it.name)}</h2>
     <div class="fam">${esc(TX[L].fam[it.fam])} · ${it.q}</div>
     <dl>${rows.map(([a, b]) => `<dt>${esc(a)}</dt><dd>${esc(b)}</dd>`).join("")}</dl>
-    <div class="links"><a href="${wp}" target="_blank" rel="noopener">${t("wp")} (${wpL})</a>
-      <a href="https://www.wikidata.org/wiki/${it.q}" target="_blank" rel="noopener">${t("wd")}</a></div>
+    ${it.text ? `<p class="txt">${esc(it.text[L] || it.text.en)}</p><div class="links">${(it.sources || []).map(s =>
+      `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title.split(" — ")[0])}</a>`).join(" ")}</div>`
+    : `<div class="links"><a href="${wp}" target="_blank" rel="noopener">${t("wp")} (${wpL})</a>
+      <a href="https://www.wikidata.org/wiki/${it.q}" target="_blank" rel="noopener">${t("wd")}</a></div>`}
     <div class="model${own ? " own" : ""}">${mtxt}</div>
     <div class="btns">${own && !own[1].built ? "" : `<button id="b-wreck" class="${clean ? "" : "on"}">${t("asWreck")}</button><button id="b-built" class="${clean ? "on" : ""}">${t("asBuilt")}</button>`}${own ? "" : `<button id="b-glb">${t("glb")}</button>`}</div>
     <div class="fam" style="margin-top:8px;font-size:12px">${t("approx")}</div>`;
