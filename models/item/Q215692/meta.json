@@ -1,0 +1,42 @@
+{
+  "id": "Q215692",
+  "kind": "item",
+  "name": "HMHS Britannic",
+  "state": "intact",
+  "heading": 0,
+  "depth": -120,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "HMHS Britannic — the third Olympic-class ship, length 269 m, beam 28.65 m; hospital ship; sunk by a mine on 21 November 1916 in the Kea Channel; the wreck on her starboard side at about 120 m",
+      "url": "https://en.wikipedia.org/wiki/HMHS_Britannic"
+    },
+    {
+      "title": "Britannica — Britannic: the wreck at some 119 m, intact except for a large hole in its bow",
+      "url": "https://www.britannica.com/topic/Britannic"
+    },
+    {
+      "title": "Hydro International (2008) — Ghostly images of HMHS Britannic: side-scan sonar of the wreck and of the funnels away from it, the nearest about 50 m off",
+      "url": "https://www.hydro-international.com/content/article/ghostly-images-of-hmhs-britannic"
+    },
+    {
+      "title": "Advanced Diver Magazine — HMHS Britannic, Titanic's sister: the huge hole beneath the forward well deck; the gantry davits; the port ones standing, the starboard ones partly crushed",
+      "url": "https://advanceddivermagazine.com/britannic.html"
+    },
+    {
+      "title": "Divernet — The truth about the Britannic wreck: the bow damaged when it hit the seabed, the ship being longer than the water was deep",
+      "url": "https://divernet.com/scuba-news/wrecks/britannic-wreck-truth/"
+    },
+    {
+      "title": "RMS Titanic — the sister ship whose hull and superstructure the model shares",
+      "url": "https://en.wikipedia.org/wiki/Titanic"
+    }
+  ],
+  "notes": "Built by code (model_sources/Q215692_britannic.py, which shares the Olympic-class hull and superstructure with Q25173_titanic.py; tools/meshkit.py, tools/dresskit.py) with AI assistance. The wreck lies on her starboard side, nearly whole: the bow crumpled, shortened and bent where it hit the bottom first, a large hole beneath the forward well deck, the four funnels torn off and lying flattened 50–90 m from the hull, the gantry davits standing on the port side (uppermost) and partly crushed on the starboard side, torn funnel bases on the boat deck. Dressed with tools/dresskit.py: its own sediment (painted by Offlined with the seabed colour), rust, the life of the continental shelf, plates and bottles, textures and baked light. model_built.glb: His Majesty's Hospital Ship as she sailed in 1916 — white hull with a green band and three red crosses a side, buff funnels with black tops, the gantry davits. Approximate: the heading, the exact places of the funnels and of the debris, the number and places of the gantry davits, the internal differences from the Titanic (not modelled)."
+}

@@ -1,0 +1,38 @@
+{
+  "id": "Q220239",
+  "kind": "item",
+  "name": "HMS Hood",
+  "state": "scattered",
+  "heading": 0,
+  "depth": -2838,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "HMS Hood (51) — Admiral-class battlecruiser, length 262.3 m, beam 31.8 m; four twin 15-inch turrets; sunk 24 May 1941 in the Denmark Strait; the wreck found in 2001 at about 2,800 m",
+      "url": "https://en.wikipedia.org/wiki/HMS_Hood_(51)"
+    },
+    {
+      "title": "PBS — Hood expedition (2001): search method and daily updates from the wreck",
+      "url": "https://www.pbs.org/hood/search/method.html"
+    },
+    {
+      "title": "PBS — Hood expedition, day 24: filming the wreck among the debris fields",
+      "url": "https://www.pbs.org/hood/news/updates/day24.html"
+    },
+    {
+      "title": "Divernet — Wreck Tour: HMS Hood: the bow on its port side, the midships section inverted in a crater, the stern piece, the conning tower apart",
+      "url": "https://divernet.com/scuba-diving/wreck-tours/wreck-tour-7-hms-hood/"
+    },
+    {
+      "title": "Battleship Bismarck — the model whose guns and fittings this one adapts",
+      "url": "https://en.wikipedia.org/wiki/German_battleship_Bismarck"
+    }
+  ],
+  "notes": "Built by code (model_sources/Q220239_hood.py, which adapts the guns and fittings of Q150857_bismarck.py; tools/meshkit.py, tools/dresskit.py) with AI assistance. The file is laid out with +Z to the north, +X to the west and the origin under the midships section, the biggest piece. Midships section (from just abaft the bow to the after magazines, ~130 m) upside down, sunk into a large crater with a raised rim of thrown-up mud; the bow section (sheared off just ahead of A turret, ~44 m) on its port side about 600 m to the north-east; a small piece of the stern (~30 m, propellers and rudder) rising from the bottom at an angle nearby; the conning tower upside down by itself to the north-west; A and B turrets fallen out near the midships section; an eastern debris field (plates, 4-inch mounts, directors, two propellers) and a western one (a funnel). Dressed with tools/dresskit.py: its own sediment (painted by Offlined with the seabed colour), rust and rusticles, the life of the abyssal zone, brass shell casings, textures and baked light. model_built.glb: the battlecruiser as she sailed in May 1941, Home Fleet grey, wooden decks. Approximate: hull lines and superstructure (from photos and general plans, not drawings), the headings and the distances between the pieces (only their state and the two debris fields are published), the 1941 anti-aircraft fit (simplified), and the after part, destroyed by the explosion, which is not modelled except as debris."
+}

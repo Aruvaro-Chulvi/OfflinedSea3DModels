@@ -1,0 +1,42 @@
+{
+  "id": "Q1127368",
+  "kind": "item",
+  "name": "Musashi",
+  "state": "broken",
+  "heading": 290,
+  "depth": -1000,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Japanese battleship Musashi — the second Yamato-class battleship; sunk 24 October 1944 in the Sibuyan Sea; the wreck found in March 2015 at about 1,000 m",
+      "url": "https://en.wikipedia.org/wiki/Japanese_battleship_Musashi"
+    },
+    {
+      "title": "Paul Allen — Ocean Discoveries: Musashi (2015 expedition)",
+      "url": "https://musashi.paulallen.com/Exploration/Ocean-Discoveries.aspx"
+    },
+    {
+      "title": "Dawn / AP (2015) — D. Mearns: the upright bow section and the upside-down stern mean one or two magazine explosions sheared off the bow, the stern and the entire middle section",
+      "url": "https://www.dawn.com/news/1169351"
+    },
+    {
+      "title": "CBS News (2015) — the live feed: holes in the bow from the torpedo attacks, a torn-off propeller, gun turrets and catapults broken off",
+      "url": "https://www.cbsnews.com/news/video-sunken-japan-wwii-warship-musashi-paul-allen-research-team"
+    },
+    {
+      "title": "Inquirer Global Nation (2015) — a total wreck; the debris field about 800 × 500 m",
+      "url": "https://globalnation.inquirer.net/119569/japanese-warship-a-total-wreck"
+    },
+    {
+      "title": "Japanese battleship Yamato — the sister ship whose hull, guns and superstructure the model shares",
+      "url": "https://en.wikipedia.org/wiki/Japanese_battleship_Yamato"
+    }
+  ],
+  "notes": "Built by code (model_sources/Q1127368_musashi.py, which shares the ship with Q215010_yamato.py; tools/meshkit.py, tools/dresskit.py) with AI assistance. The file is laid out with +Z to 290° (the bow section's heading) and the origin under the bow section. Bow section (~70 m, sheared off ahead of turret No. 1) upright with a slight list, nose down in the mud, two torpedo holes low in the starboard bow. Stern section (~55 m, sheared off behind turret No. 3) upside down about 450 m east-south-east, one propeller missing. The middle of the ship destroyed: three big torn pieces of hull, four heaps of shattered structure (armour, boilers, gun mounts), the tower bridge on its side, the flattened funnel, the three main turrets (two upside down, one on its side) and two 15.5 cm turrets, both catapults and the torn-off propeller, spread over about 800 × 500 m with plates, beams and powder cans. Dressed with tools/dresskit.py: its own sediment (painted by Offlined with the seabed colour), rust, the life of the bathyal zone, brass shell casings, textures and baked light. model_built.glb: the battleship as she sailed (the Yamato's 1945 anti-aircraft fit, a little heavier than the Musashi's of October 1944). Approximate: the heading, where each break is, and every position in the debris field (only its size and the state of the main pieces are published)."
+}
