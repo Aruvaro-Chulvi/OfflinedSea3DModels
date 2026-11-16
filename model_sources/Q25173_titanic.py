@@ -523,13 +523,93 @@ def dress(seed=41912):
         weather(m_, rust=0.55, sediment=0.12, streaks=1.0, seed=sd, rust_col=(0.42, 0.17, 0.07))
         m_.c = np.clip(m_.c * (0.85 + 0.3 * fbm(m_.v, 0.6, sd + 5, 2))[:, None], 0, 1)
 
+
+    # ── Sediment: the mud piled against everything that lies on the bottom ──
+    # One height field around the whole wreck: drifts against the hull of the bow and the stern, smaller ones against
+    # every piece of the debris field, and the ridges the bow ploughed up. It fades into the flat ground, so the wreck
+    # does not end in a straight cut. Offlined paints it with the seabed's own colour (node "sediment"; the vertex
+    # colours carry only its light: SED_BASE × ambient occlusion).
+    CELL = 1.0
+    allv = np.vstack([bow.v, stern.v, debris.v])
+    gx0, gz0 = math.floor(allv[:, 0].min()) - 30, math.floor(allv[:, 2].min()) - 30
+    gx1, gz1 = math.ceil(allv[:, 0].max()) + 30, math.ceil(allv[:, 2].max()) + 30
+    NX, NZ = int((gx1 - gx0) / CELL) + 1, int((gz1 - gz0) / CELL) + 1
+
+    def src(ms, ymax):
+        g = np.zeros((NX, NZ), bool)
+        for m_ in ms:
+            v = m_.v[m_.v[:, 1] < ymax]
+            ii = np.clip(((v[:, 0] - gx0) / CELL).astype(int), 0, NX - 1); jj = np.clip(((v[:, 2] - gz0) / CELL).astype(int), 0, NZ - 1)
+            g[ii, jj] = True
+        return g
+
+    def spread(g, amp, reach):
+        """amp at the sources, falling off as exp(-distance / reach) (8-neighbour max-propagation)"""
+        h = np.where(g, amp, 0.0)
+        k1, k2 = math.exp(-CELL / reach), math.exp(-CELL * 1.414 / reach)
+        for _ in range(int(reach * 4 / CELL)):
+            p_ = np.pad(h, 1)
+            h = np.maximum.reduce([h, p_[:-2, 1:-1] * k1, p_[2:, 1:-1] * k1, p_[1:-1, :-2] * k1, p_[1:-1, 2:] * k1,
+                                   p_[:-2, :-2] * k2, p_[2:, 2:] * k2, p_[:-2, 2:] * k2, p_[2:, :-2] * k2])
+        return h
+
+    X, Z = np.meshgrid(gx0 + np.arange(NX) * CELL, gz0 + np.arange(NZ) * CELL, indexing="ij")
+    P3 = np.stack([X.ravel(), np.zeros(X.size), Z.ravel()], 1)
+    nz_ = fbm(P3, 0.08, 71, 3).reshape(X.shape)
+    hb = spread(src([bow, stern], 1.0), 2.6, 7.0) * (0.7 + 0.6 * nz_)
+    hd = spread(src([debris], 0.8), 0.7, 2.2) * (0.6 + 0.8 * fbm(P3, 0.3, 72, 2).reshape(X.shape))
+    # the ridges the bow pushed up (the old "mud" height field, a regular grid)
+    mg = mud.v.reshape(69, 43, 3)
+    mx, mz = mg[0, :, 0], mg[:, 0, 2]
+    fi = np.clip((X - mx[0]) / (mx[1] - mx[0]), 0, len(mx) - 1.001); fj = np.clip((Z - mz[0]) / (mz[1] - mz[0]), 0, len(mz) - 1.001)
+    i0, j0 = fi.astype(int), fj.astype(int); u, w = fi - i0, fj - j0
+    H_ = mg[:, :, 1]
+    ridge = (H_[j0, i0] * (1 - u) * (1 - w) + H_[j0, i0 + 1] * u * (1 - w) + H_[j0 + 1, i0] * (1 - u) * w + H_[j0 + 1, i0 + 1] * u * w)
+    inside = (X > mx[0]) & (X < mx[-1]) & (Z > mz[0]) & (Z < mz[-1])
+    ridge = np.where(inside, ridge, -1)
+    SEDH = np.maximum.reduce([hb, hd, ridge])
+    for _ in range(3):                                         # soften the steps the propagation leaves (no ribs in the light)
+        p_ = np.pad(SEDH, 1, mode="edge")
+        SEDH = (p_[:-2, 1:-1] + p_[2:, 1:-1] + p_[1:-1, :-2] + p_[1:-1, 2:] + 2 * SEDH) / 6
+    SEDH = SEDH + 0.04 * (fbm(P3, 0.6, 73, 2).reshape(X.shape) - 0.5) - 0.08
+
+    def hAt(x, z):
+        """Height of the sediment (≥ 0: the flat ground Offlined makes is y = 0)."""
+        x, z = np.asarray(x, float), np.asarray(z, float)
+        i = np.clip((x - gx0) / CELL, 0, NX - 1.001); j = np.clip((z - gz0) / CELL, 0, NZ - 1.001)
+        a, b = i.astype(int), j.astype(int); fu, fw = i - a, j - b
+        h = (SEDH[a, b] * (1 - fu) * (1 - fw) + SEDH[a + 1, b] * fu * (1 - fw) + SEDH[a, b + 1] * (1 - fu) * fw + SEDH[a + 1, b + 1] * fu * fw)
+        return np.maximum(h, 0.0)
+
+    # the mesh: only where the sediment rises above the flat ground (its edge sinks just below it)
+    keep = SEDH > -0.02
+    vid = -np.ones((NX, NZ), int)
+    use = np.zeros((NX, NZ), bool)
+    cellok = keep[:-1, :-1] | keep[1:, :-1] | keep[:-1, 1:] | keep[1:, 1:]
+    ci, cj = np.nonzero(cellok)
+    for di, dj in ((0, 0), (1, 0), (0, 1), (1, 1)):
+        use[ci + di, cj + dj] = True
+    ui, uj = np.nonzero(use)
+    vid[ui, uj] = np.arange(len(ui))
+    sh_ = SEDH[ui, uj]
+    sv = np.stack([X[ui, uj], np.where(sh_ > 0, sh_, np.maximum(sh_ * 6, -0.6)), Z[ui, uj]], 1)   # the edge dives under the ground
+    a_, b_, c_, d_ = vid[ci, cj], vid[ci + 1, cj], vid[ci, cj + 1], vid[ci + 1, cj + 1]
+    sf = np.concatenate([np.stack([a_, c_, b_], 1), np.stack([b_, c_, d_], 1)])
+    SED_BASE = np.array([0.83, 0.79, 0.70])                   # the seabed at ~3,800 m in Offlined (calcareous ooze)
+    sediment = Mesh(sv, sf, SED_BASE)
+    # the hull and the debris take the colour of the silt where they go into it
+    for m_ in (bow, stern, debris):
+        hh = m_.v[:, 1] - hAt(m_.v[:, 0], m_.v[:, 2])
+        k = 0.8 * sstep(1.4, -0.3, hh)
+        m_.c = m_.c * (1 - k[:, None]) + (SED_BASE * 0.78)[None] * k[:, None]
+
     # Where the wreck touches the ground (to keep things off the hull and on the flat ground Offlined makes)
     occ = {}
     for m_ in (bow, stern, debris, mud):
         low = m_.v[m_.v[:, 1] < 2.5]
         for x, z in np.floor(low[:, [0, 2]]).astype(int):
             occ[(x, z)] = True
-    for x, z in np.floor(mud.v[:, [0, 2]]).astype(int):
+    for x, z in np.floor(mud.v[mud.v[:, 1] > 0.3][:, [0, 2]]).astype(int):
         occ[(x, z)] = True
     circles = []                                            # the flat ground Offlined puts under each part
     for m_ in (bow, mud, stern, debris):
@@ -725,21 +805,35 @@ def dress(seed=41912):
     singles = merge(singles)
     abyss.dust(singles, 0.45, 9)
 
+    # ── everything on the ground rests on the sediment ──
+    ON_GROUND = ("anemones_on_stones", "glass_sponges", "bamboo_corals", "brittle_stars_mud", "sea_cucumbers", "sea_pens",
+                 "xenophyophores", "burrow_mounds", "grenadiers", "shoes", "plates", "cups", "bottles", "bench_ends", "pots")
+    for name, _, _, ins in INS:
+        if name.rsplit("_", 1)[0] in ON_GROUND:
+            ins["t"] = ins["t"].copy(); ins["t"][:, 1] += hAt(ins["t"][:, 0], ins["t"][:, 2])
+    for m_ in (stones, singles):
+        m_.v[:, 1] += hAt(m_.v[:, 0], m_.v[:, 2])
+
     # ── light: ambient occlusion baked into the colours of the big pieces ──
     flat = lambda X, Z: np.zeros_like(X)
-    bake_ao([bow, stern, debris, mud, stones], occluders=[bow, stern, debris, stones], ground=flat, cell=0.6, rays=24, reach=12)
+    bake_ao([bow, stern, debris, sediment, stones], occluders=[bow, stern, debris, stones, sediment], ground=flat, cell=0.6, rays=24, reach=12)
+    # the sediment's light: open, flat sediment must be exactly as bright as the seabed around (the voxel ground darkens
+    # it a little everywhere), so only the shade against the wreck stays
+    lum = sediment.c.mean(1); ref = np.percentile(lum, 90)
+    sediment.c = np.clip(sediment.c / ref * SED_BASE.mean(), 0, None) * (SED_BASE / SED_BASE.mean())[None]
+    sediment.c = np.minimum(sediment.c, SED_BASE[None])
 
     mats = {
         "steel": material(rough=0.8, metal=0.05, tex=steel_textures(), uv=("tri", 7.2)),
         "rust": material(rough=0.95, tex=rust_textures(), uv=("tri", 1.5), normal_scale=1.6),
         "rock": material(rough=0.9, tex=rust_textures(512, 2.5, 11), uv=("tri", 2.5)),
-        "mud": material(rough=1.0),
+        "sediment": material(rough=1.0),
         "life": material(rough=0.55),
         "china": material(rough=0.18),
         "glass": material(rough=0.08),
         "artefact": material(rough=0.7, metal=0.1),
     }
-    parts = [("bow_section", bow, "steel"), ("mud", mud, "mud"), ("stern_section", stern, "steel"),
+    parts = [("bow_section", bow, "steel"), ("sediment", sediment, "sediment"), ("stern_section", stern, "steel"),
              ("debris_field", [(debris, "steel"), (singles, "artefact"), (stones, "rock")])]
 
     # ── the ship as built: planked decks, clean plating, and its own ambient occlusion ──
