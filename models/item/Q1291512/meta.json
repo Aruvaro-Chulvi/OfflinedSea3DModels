@@ -1,0 +1,27 @@
+{
+  "id": "Q1291512",
+  "kind": "item",
+  "name": "Japanese battleship Nagato",
+  "state": "capsized",
+  "heading": 0,
+  "depth": -52,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Japanese battleship Nagato — capsized and sank on the night of 29/30 July 1946 after the Baker test; the wreck upside down, her four propellers its most prominent feature at 33.5 m",
+      "url": "https://en.wikipedia.org/wiki/Japanese_battleship_Nagato"
+    },
+    {
+      "title": "Bikini Atoll dive tour — Nagato: upside down in 170 ft, hull and propellers at 110 ft, the bridge accessible at 150 ft",
+      "url": "https://www.bikiniatoll.com/divetour1.html"
+    }
+  ],
+  "triangles": 116024,
+  "notes": "Built by code (model_sources/Q1291512_nagato.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 52 m, resting on her deck edge with the turrets and upperworks crushed down into the bottom; the four great propellers and the rudder uppermost; the pagoda bridge broken off and lying on its side beside the hull; corals and fish. The heading (not published: 0), the state of the turrets and the place of the pagoda are approximate. model_built.glb: the battleship as she was in 1946."
+}
