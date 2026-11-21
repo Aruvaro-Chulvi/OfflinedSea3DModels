@@ -23,7 +23,8 @@
     },
     "Q521459": { "include": true,
       "fam": "vent",
-      "note": "Hydrothermal field (Wikidata class not under 'hydrothermal vent').",
+      "depth": -800,
+      "note": "Hydrothermal field (Wikidata class not under 'hydrothermal vent'). On the top of the Atlantis Massif at 750-900 m; the GEBCO cell gives 1,258 m.",
       "source": "https://en.wikipedia.org/wiki/Lost_City_Hydrothermal_Field"
     },
     "Q105992189": { "include": true,

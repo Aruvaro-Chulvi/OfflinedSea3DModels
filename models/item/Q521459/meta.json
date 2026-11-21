@@ -1,0 +1,35 @@
+{
+  "id": "Q521459",
+  "kind": "item",
+  "name": "Lost City Hydrothermal Field",
+  "state": "intact",
+  "heading": 0,
+  "depth": -800,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Lost City Hydrothermal Field — on the Atlantis Massif at 750-900 m: carbonate chimneys up to 60 m (Poseidon), alkaline fluids from serpentinisation",
+      "url": "https://en.wikipedia.org/wiki/Lost_City_Hydrothermal_Field"
+    },
+    {
+      "title": "Kelley et al. (2001), An off-axis hydrothermal vent field near the Mid-Atlantic Ridge at 30° N, Nature 412",
+      "url": "https://www.nature.com/articles/35084000"
+    },
+    {
+      "title": "Kelley et al. (2005), A serpentinite-hosted ecosystem: the Lost City hydrothermal field, Science 307",
+      "url": "https://www.science.org/doi/10.1126/science.1102556"
+    },
+    {
+      "title": "NOAA Ocean Explorer — Lost City expeditions (chimneys, flanges, fauna)",
+      "url": "https://oceanexplorer.noaa.gov/explorations/05lostcity/welcome.html"
+    }
+  ],
+  "triangles": 40299,
+  "notes": "Built by code (model_sources/Q521459_lost_city.py, tools/meshkit.py, tools/scenekit.py) with AI assistance. The terrace on the top of the Atlantis Massif, about 300 m across, with Poseidon (about 60 m, a massive base with several spires) and some thirty other carbonate chimneys, from slender pinnacles a few metres high to towers of 35 m, with flanges growing from their sides; white and cream where active, grey where extinct; snails and amphipods on the active surfaces, bacterial films, a few fish. The place and shape of each chimney are approximate."
+}
