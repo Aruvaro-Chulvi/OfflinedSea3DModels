@@ -1,0 +1,35 @@
+{
+  "id": "Q2136142",
+  "kind": "item",
+  "name": "Redbird Reef",
+  "state": "scattered",
+  "heading": 0,
+  "depth": -24,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Delaware DNREC — Artificial reefs: reef site 11, the Redbird Reef, largely 997 retired New York City 'Redbird' subway cars",
+      "url": "https://dnrec.delaware.gov/fish-wildlife/fishing/artificial-reefs"
+    },
+    {
+      "title": "Redbird Reef — 16 miles off Delaware, about 80 ft, 1.3 square miles; subway cars, 86 tanks, tugboats, barges, a trawler and a cruise ship",
+      "url": "https://en.wikipedia.org/wiki/Redbird_Reef"
+    },
+    {
+      "title": "CBC — Why artificial reefs made of old subway cars are great for fish",
+      "url": "https://www.cbc.ca/lite/story/1.5110634"
+    },
+    {
+      "title": "Delaware News (2024) — DNREC sinks two vintage vessels on reef site 11, the Redbird Reef",
+      "url": "https://news.delaware.gov/2024/07/22/dnrec-sinks-two-vintage-vessels-on-delaware-reef-site-11-the-redbird-reef-to-enhance-recreational-opportunities"
+    }
+  ],
+  "triangles": 190846,
+  "notes": "Built by code (model_sources/Q2136142_redbird_reef.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. A patch about 400 m across of the reef at about 24 m: 110 Redbird subway cars (a sample of the 997), stripped of wheels, doors and windows, lying in loose rows where they were dropped, some on their sides; eight Army tanks and a tug; blue mussels, anemones and sponges crusting the steel, fish about them. The layout is approximate."
+}
