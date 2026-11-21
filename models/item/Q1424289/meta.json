@@ -1,0 +1,31 @@
+{
+  "id": "Q1424289",
+  "kind": "item",
+  "name": "SS Yongala",
+  "state": "intact",
+  "heading": 347,
+  "depth": -29,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "SS Yongala — Armstrong Whitworth 1903: length 106.7 m, beam 13.8 m, depth 8.3 m, single screw; the wreck on her starboard side listing 60-70°, bow on 347°, seabed about 30 m, upper parts at 16 m; superstructure intact, ventilators and railings collapsed, sand scoured from the starboard side",
+      "url": "https://en.wikipedia.org/wiki/SS_Yongala"
+    },
+    {
+      "title": "Yongala Dive — history of the wreck: on her starboard side, 14 m on top, 28 m on the sand, 109 m long, coral encrusted",
+      "url": "https://www.yongaladive.com.au/ss-yongala-history"
+    },
+    {
+      "title": "Yongala Dive — marine life on the wreck (Queensland groper at the bow, giant trevally, Maori wrasse, rays, turtles, sea snakes)",
+      "url": "https://www.yongaladive.com.au/marine-life"
+    }
+  ],
+  "triangles": 97492,
+  "notes": "Built by code (model_sources/Q1424289_yongala.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The hull whole, on her starboard side at 65° (published: 60-70°), bow on 347°, crusted with coral; the saloon and boat-deck houses, bridge and davits still in place, the hatches open with general cargo (crates, casks, bales); the ventilators and railings collapsed onto the sand with some crates; single propeller and rudder; warm-water corals, sponges and fish of the Great Barrier Reef. The funnel and the masts are not described in the sources: here they have fallen and lie on the sand. She is a protected site and the grave of 122 people. Colours and the exact layout of the superstructure are approximate. model_built.glb: the ship as she sailed (1903-1911)."
+}
