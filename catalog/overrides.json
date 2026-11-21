@@ -44,6 +44,10 @@
       "note": "Bow section of the wreck (stern ~4 km to the NNE, 3,565 m). The Wikidata point is off Cape Finisterre, where the ship got into trouble.",
       "source": "https://bibrepo.uca.es/articuloscientificos/32481810.pdf"
     },
+    "Q20181784": { "depth": -22,
+      "note": "On the reef slope of Sha'ab Abu Nuhas, about 10-30 m; the GEBCO cell gives 73 m.",
+      "source": "https://www.duikersgids.nl/en/abu-nuhas-giannis-d"
+    },
     "Q708046": { "lat": -26.10889,
       "lon": 111.0725,
       "depth": -2560,

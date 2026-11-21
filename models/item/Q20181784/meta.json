@@ -1,0 +1,35 @@
+{
+  "id": "Q20181784",
+  "kind": "item",
+  "name": "Giannis D",
+  "state": "broken",
+  "heading": 0,
+  "depth": -22,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Duikersgids — Abu Nuhas (Giannis D): the bow in about 10 m, the stern down to about 25 m",
+      "url": "https://www.duikersgids.nl/en/abu-nuhas-giannis-d"
+    },
+    {
+      "title": "Wrecks and Reefs — Giannis D: three sections (bow, amidships, stern) more or less parallel to the reef; the stern on its port side",
+      "url": "https://wrecksandreefs.com/giannisd.htm"
+    },
+    {
+      "title": "Yumping — The Giannis D: loaded with timber, ran onto the north-west corner of Sha'ab Abu Nuhas on 19 April 1983",
+      "url": "https://www.yumping.com/en/adventure-sports-news/the-giannis-d--c372"
+    },
+    {
+      "title": "Dive Site Directory — Giannis D: the propeller on the seabed near 30 m",
+      "url": "https://divesitedirectory.co.uk/dive_site_red_sea_north_hurghada_wreck_giannis_d.html"
+    }
+  ],
+  "triangles": 100978,
+  "notes": "Built by code (model_sources/Q20181784_giannis_d.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Three sections lying roughly in line: the bow (a little over to port, a derrick post standing), the middle broken down and flattened with her timber cargo strewn about, the stern section on its port side with the accommodation, the funnel with its D, the propeller and rudder; Red Sea corals. The real pieces lie from about 10 to 30 m on the reef slope; on Offlined's flat seabed they lie at the mean depth. Heading (not published: 0), the angles of the pieces and the colours are approximate. model_built.glb: the ship as she sailed in 1983."
+}
