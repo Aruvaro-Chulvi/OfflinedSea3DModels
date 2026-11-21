@@ -1,0 +1,35 @@
+{
+  "id": "Q1664018",
+  "kind": "item",
+  "name": "RMS Rhone",
+  "state": "broken",
+  "heading": 0,
+  "depth": -18,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "RMS Rhone — Royal Mail Steam Packet Company steamer of 1865, wrecked by the hurricane of 29 October 1867 off Salt Island",
+      "url": "https://en.wikipedia.org/wiki/RMS_Rhone"
+    },
+    {
+      "title": "Dive Site Directory — RMS Rhone: the bow in 24 m, the stern in about 10 m, 95 m long",
+      "url": "https://divesitedirectory.co.uk/dive_site_caribbean_british_virgin_islands_wreck_rms_rhone.html"
+    },
+    {
+      "title": "Divernet — The RMS Rhone, diving the BVI's most legendary wreck: two sections, the stern more broken up (Royal Navy demolition, 1950), the four-bladed bronze propeller and the shaft to the engine and gears; boilers strewn",
+      "url": "https://divernet.com/scuba-news/wrecks/the-rms-rhone-diving-the-bvis-most-legendary-wreck/"
+    },
+    {
+      "title": "Scuba Diving — History of the BVI's Rhone shipwreck",
+      "url": "https://www.scubadiving.com/history-bvis-rhone-shipwreck"
+    }
+  ],
+  "triangles": 87144,
+  "notes": "Built by code (model_sources/Q1664018_rms_rhone.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The bow section on its side (the iron frames open where the wooden deck has gone), the foremast with its crow's nest beside it; between, the burst boilers and the engine and gearbox; the stern section broken down to its lower hull, with the shaft, the great four-bladed propeller and the rudder; Caribbean corals. The real pieces lie from about 9 to 24 m; on Offlined's flat seabed they lie at the mean depth. Heading (not published: 0), the side the bow lies on (after dive guides), the gaps between the pieces and the rig are approximate. model_built.glb: the steamer as she sailed in 1867."
+}
