@@ -1,0 +1,35 @@
+{
+  "id": "Q857891",
+  "kind": "item",
+  "name": "USS Monitor",
+  "state": "capsized",
+  "heading": 0,
+  "depth": -73,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "NOAA Ocean Explorer — the Monitor wreck: upside down, the stern resting on the turret; hull plating in the sand at the stern; significant deterioration",
+      "url": "https://oceanexplorer.noaa.gov/explorations/monitor01/background/wreck/wreck.html"
+    },
+    {
+      "title": "Monitor National Marine Sanctuary — 2002: a 30-ton section of hull and armour belt removed to recover the turret, raised from 240 ft",
+      "url": "https://www.monitor.noaa.gov/150th/2002.html"
+    },
+    {
+      "title": "Monitor National Marine Sanctuary — condition report (state of the site)",
+      "url": "https://sanctuaries.noaa.gov/science/condition/monitor/state.html"
+    },
+    {
+      "title": "WUNC (2022) — Historic Civil War ship sunk off NC coast in 'astounding' shape, experts say",
+      "url": "https://www.wunc.org/news/2022-06-06/historic-civil-war-ship-sunk-off-nc-coast-in-astounding-shape-experts-say"
+    }
+  ],
+  "triangles": 24366,
+  "notes": "Built by code (model_sources/Q857891_uss_monitor.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 73 m, listing onto one side of her armour belt: the narrow iron lower hull uppermost on the flat armoured raft, the anchor well forward, the stern cut open where the propeller, the engine and the turret were raised (1998-2002), hull plating and the grout bags of 2000 in the sand at the stern. Sixteen men died in her sinking. The list, the heading (not published: 0) and the size of the cut-away are approximate. model_built.glb: the ironclad in 1862, with her turret, pilot house and smoke-pipe boxes."
+}
