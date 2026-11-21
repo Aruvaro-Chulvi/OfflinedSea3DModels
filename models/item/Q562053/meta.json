@@ -1,0 +1,35 @@
+{
+  "id": "Q562053",
+  "kind": "item",
+  "name": "USS Oriskany",
+  "state": "intact",
+  "heading": 180,
+  "depth": -65,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Florida Fish and Wildlife Conservation Commission — Oriskany reef: bottom about 212 ft, top of the island decking at 84 ft",
+      "url": "https://myfwc.com/fishing/saltwater/artificial-reefs/oriskany/"
+    },
+    {
+      "title": "Visit Florida — Diving the Oriskany: 212 ft to the bottom, the flight deck at about 145-150 ft",
+      "url": "https://www.visitflorida.com/travel-ideas/articles/outdoors-nature-diving-oriskany/"
+    },
+    {
+      "title": "USS Oriskany (CV-34) — Essex-class carrier, rebuilt with an angled deck; scuttled as a reef on 17 May 2006",
+      "url": "https://en.wikipedia.org/wiki/USS_Oriskany_(CV-34)"
+    },
+    {
+      "title": "Vindicator (AP, 19 May 2006) — Divers get a look at sunken carrier: upright on the bottom, flight deck at 150 ft",
+      "url": "https://vindyarchives.com/news/2006/may/19/divers-get-a-look-at-sunken-carrier"
+    }
+  ],
+  "triangles": 99312,
+  "notes": "Built by code (model_sources/Q562053_uss_oriskany.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the sand at about 65 m, bow to the south: the hurricane bow, the hangar, the angled flight deck with its lifts, the island with the stack and mast rising to about 26 m; no armament (removed before scuttling); an artificial reef with fish, sponges and corals. The layout of the island and of the lifts is approximate. model_built.glb: the carrier as she was when decommissioned."
+}
