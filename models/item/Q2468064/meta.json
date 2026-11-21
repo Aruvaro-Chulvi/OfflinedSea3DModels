@@ -1,0 +1,35 @@
+{
+  "id": "Q2468064",
+  "kind": "item",
+  "name": "USAT Liberty",
+  "state": "broken",
+  "heading": 270,
+  "depth": -18,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "USAT Liberty — cargo ship of 1918, torpedoed in January 1942, beached at Tulamben, pushed off the beach by the 1963 eruption of Mount Agung; the wreck from about 5 to 30 m",
+      "url": "https://en.wikipedia.org/wiki/USAT_Liberty"
+    },
+    {
+      "title": "Dive Concepts — USAT Liberty dive site: lying on her right (starboard) flank, 5-28 m, bow to the west, stern to the east; a gun under its mount at the front in 28 m",
+      "url": "https://diveconcepts.com/bali/spot-usat-liberty.php"
+    },
+    {
+      "title": "Pacific Wrecks — USAT Liberty",
+      "url": "https://pacificwrecks.com/ship/usat/liberty.html"
+    },
+    {
+      "title": "Alert Diver EU — Cult dive: the USAT Liberty (both guns in place, propeller salvaged, corals and sponges)",
+      "url": "https://alertdiver.eu/en_US/articles/cult-dive-the-usat-liberty/?print=pdf"
+    }
+  ],
+  "triangles": 102823,
+  "notes": "Built by code (model_sources/Q2468064_usat_liberty.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her starboard side, bow to the west, the middle of the hull broken and collapsed with plating fallen away into the holds, the superstructure crumpled; the bow and stern guns still in place; no propeller (salvaged); funnel and masts lying on the sand; densely covered in corals and sponges. The real wreck lies on a slope from about 5 to 30 m; on Offlined's flat seabed she lies at the mean depth. The degree of collapse, the colours and the layout are approximate. model_built.glb: the ship as she sailed in 1942."
+}
