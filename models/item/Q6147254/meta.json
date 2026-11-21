@@ -1,0 +1,35 @@
+{
+  "id": "Q6147254",
+  "kind": "item",
+  "name": "USS Grunion",
+  "state": "broken",
+  "heading": 0,
+  "depth": -975,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "USS Grunion — Gato-class submarine lost off Kiska in July 1942; found by the Abele family's search (2006-2007), confirmed by the Navy in 2008",
+      "url": "https://en.wikipedia.org/wiki/USS_Grunion"
+    },
+    {
+      "title": "ScienceDaily (2008) — the Navy confirms the wreck is Grunion: about 3,200 ft, cold water and little current keeping much of her intact",
+      "url": "https://www.sciencedaily.com/releases/2008/10/081003193648.htm"
+    },
+    {
+      "title": "Marine Link — submarine confirmed: markings, propeller guards and limber holes matching her design; the hull collapsed",
+      "url": "https://marinelink.com/news/submarine-confirms328168"
+    },
+    {
+      "title": "Navy Memorial — Grunion (the crew)",
+      "url": "https://navylog.navymemorial.org/grunion"
+    }
+  ],
+  "triangles": 30514,
+  "notes": "Built by code (model_sources/Q6147254_uss_grunion.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. At about 1,000 m on the slope off Kiska, settled with a list: the pressure hull partly collapsed (dished in), the casing with its limber holes, the conning-tower fairwater with the periscope shears, the deck gun, the planes and the two screws with their guards; the bow broken off and lying a little apart, at the end of the furrow she cut in the slope; deep-water life. A war grave (70 men). The break, the furrow and the heading (not published: 0) are approximate. model_built.glb: the submarine as commissioned in 1942."
+}

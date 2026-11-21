@@ -76,6 +76,10 @@
       "note": "Upside down at about 73 m (240 ft) off Cape Hatteras; the GEBCO cell gives 58 m.",
       "source": "https://www.monitor.noaa.gov/150th/2002.html"
     },
+    "Q6147254": { "depth": -975,
+      "note": "About 3,000-3,200 ft (some 1,000 m) on the slope off Kiska; the GEBCO cell gives 1,484 m.",
+      "source": "https://www.sciencedaily.com/releases/2008/10/081003193648.htm"
+    },
     "Q708046": { "lat": -26.10889,
       "lon": 111.0725,
       "depth": -2560,
