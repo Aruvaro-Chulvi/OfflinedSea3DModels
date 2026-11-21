@@ -1,0 +1,31 @@
+{
+  "id": "Q481485",
+  "kind": "item",
+  "name": "SMS Markgraf",
+  "state": "capsized",
+  "heading": 0,
+  "depth": -45,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Scapa Flow Wrecks — Markgraf, diving: almost completely upturned on her starboard side, held by the superstructure; 45 m; armour belt and propellers salvaged, engine rooms blasted, a V cut at the bow; seven casemate guns, the bent foremast with its spotting top, the twin rudders",
+      "url": "https://scapaflowwrecks.com/wrecks/markgraf/diving.php"
+    },
+    {
+      "title": "Canmore — SMS Markgraf, Cava Sound, Scapa Flow: upside down with a list, general depths 45-50 m",
+      "url": "https://canmore.org.uk/site/102310"
+    },
+    {
+      "title": "SMS Markgraf — König-class battleship, scuttled in Scapa Flow on 21 June 1919",
+      "url": "https://en.wikipedia.org/wiki/SMS_Markgraf"
+    }
+  ],
+  "triangles": 51795,
+  "notes": "Built by code (model_sources/Q481485_sms_markgraf.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Almost upturned on her starboard side at about 45 m, resting on her superstructure (crushed into the bottom): the stem rising from the seabed with the salvors' V-cut, the anchor chain across the hull, the armour belt gone, the engine rooms blasted open, the casemate guns along the side, the bent foremast with its spotting top, the twin rudders and the stubs of the A-frames (no propellers). The exact angle and heading (not published: 0) are approximate. model_built.glb: the battleship as she sailed in 1918."
+}

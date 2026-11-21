@@ -64,6 +64,10 @@
       "note": "On her port side at about 40-53 m off Batticaloa; the GEBCO cell gives 3,085 m.",
       "source": "https://nsd.ccf.gov.lk/shipwrecks/slebattm21"
     },
+    "Q481485": { "depth": -45,
+      "note": "Almost upturned on her starboard side at about 45 m in Scapa Flow; the GEBCO cell gives 35 m.",
+      "source": "https://scapaflowwrecks.com/wrecks/markgraf/diving.php"
+    },
     "Q708046": { "lat": -26.10889,
       "lon": 111.0725,
       "depth": -2560,
