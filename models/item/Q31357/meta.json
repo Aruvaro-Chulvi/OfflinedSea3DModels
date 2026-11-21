@@ -26,5 +26,6 @@
       "url": "https://sciencenordic.com/researchers-get-bottom-ship"
     }
   ],
+  "triangles": 63275,
   "notes": "Built by code (model_sources/Q31357_mars.py; tools/sailkit.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The wreck: the after part of the hull heeled over to starboard and half buried, with its lower hull, the starboard side, the stern and the stumps of the main and mizzen masts; the port side fallen away outwards and lying flat beside it, its ribs uppermost; the fore part blown apart, except a piece of the lower bow lying on its side ahead of the break; bronze and iron guns, gun carriages, planks, broken ribs, a mast and two anchors all about. Dressed with tools/dresskit.py: its own sediment (painted by Offlined with the seabed colour), the darkened wood, round shot and pots, the scant life of the deep Baltic (a few cod), textures and baked light. model_built.glb: the ship as she sailed in 1564, with her castles, three masts with their sails, the spritsail and the guns at the ports. Approximate: no plans of the ship survive, so the hull lines, the castles, the rig and the number of ports follow the illustrations of the period and the reconstructions of the wreck; the heading and the places of the pieces."
 }

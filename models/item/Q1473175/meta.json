@@ -1,0 +1,35 @@
+{
+  "id": "Q1473175",
+  "kind": "item",
+  "name": "Fujikawa Maru",
+  "state": "intact",
+  "heading": 0,
+  "depth": -34,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Fujikawa Maru — Mitsubishi 1938, 6,938 GRT, aircraft transport; 6-inch bow gun; sunk in Operation Hailstone, 17 February 1944",
+      "url": "https://en.wikipedia.org/wiki/Fujikawa_Maru"
+    },
+    {
+      "title": "Liveaboard.com — Fujikawa Maru: upright on the bottom, from about 5 to 37 m, Zero fighters and aircraft parts in a hold",
+      "url": "https://www.liveaboard.com/diving/micronesia/fujikawa-maru"
+    },
+    {
+      "title": "DAN Alert Diver — 66 Years Down: into hold 2 to see the Zero fighters",
+      "url": "https://dan.org/alert-diver/article/66-years-down/"
+    },
+    {
+      "title": "NPS — War in the Pacific: depths of the Truk Lagoon wrecks (Fujikawa Maru 12-35 m)",
+      "url": "https://www.nps.gov/parkhistory/online_books/npswapa/extContent/wapa/paradise/paradise8.htm"
+    }
+  ],
+  "triangles": 101428,
+  "notes": "Built by code (model_sources/Q1473175_fujikawa_maru.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright at about 34 m, crusted with coral; the two masts still standing (tops a few metres under the surface), the bridge and accommodation island, the funnel gone to a stump, the hatches open; the 6-inch gun on the forecastle and another on the poop; Zero fuselages, drop tanks and wing parts in hold 2, drums and crates in the other holds; a torpedo hole on the starboard side aft. Heading (not published: 0), the layout of the holds and superstructure, the place of the cargo and of the hole are approximate. model_built.glb: the ship as she sailed in 1943-44."
+}

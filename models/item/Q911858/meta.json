@@ -30,5 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/Endurance_(1912_ship)"
     }
   ],
+  "triangles": 60517,
   "notes": "Built by code (model_sources/Q911858_endurance.py; tools/sailkit.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The wreck sits upright on the bottom, sunk in the mud to below her waterline, the hull whole and much of the black paint still on it: ENDURANCE in gold letters arched across the stern over the star; the ship's wheel standing on the after deck; the masts broken off near the deck, the foremast fallen over the starboard bow, the mainmast aft along the deck, the mizzen across the crushed aft deckhouse (the wardroom) and over the port quarter; yards, booms and gaffs on the bottom beside her, slack rigging over the rails; part of the planking of the starboard bow stove in by the ice, the ribs showing; the rudder lying in the mud under the stern. Dressed with tools/dresskit.py: its own sediment (painted by Offlined with the seabed colour), the scant life of the abyssal plain, textures and baked light. model_built.glb: the ship as she sailed in 1914, barquentine-rigged with her sails set, the funnel, the deckhouses and three boats. Approximate: the hull lines and the rig (after the photographs of Frank Hurley, not plans), the heading of the wreck and where the spars fell."
 }
