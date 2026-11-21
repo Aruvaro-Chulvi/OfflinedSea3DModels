@@ -1,0 +1,35 @@
+{
+  "id": "Q1143472",
+  "kind": "item",
+  "name": "MS Mikhail Lermontov",
+  "state": "intact",
+  "heading": 0,
+  "depth": -36,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "MS Mikhail Lermontov — Ivan Franko-class liner, Wismar 1972; sank in Port Gore on 16 February 1986; on her starboard side at 37 m",
+      "url": "https://en.wikipedia.org/wiki/MS_Mikhail_Lermontov"
+    },
+    {
+      "title": "Global Dive — Marlborough Sounds, Mikhail Lermontov: 176 m, in 36 m of water, shallowest point 12 m",
+      "url": "https://globaldive.net/marlborough-sounds-mikhail-lermontov"
+    },
+    {
+      "title": "Te Ara — Diving at the Mikhail Lermontov (the hammer and sickle on the funnel)",
+      "url": "https://teara.govt.nz/en/photograph/7310/diving-at-the-mikhail-lermontov"
+    },
+    {
+      "title": "PADI — MS Mikhail Lermontov wreck: top at 12 m, down to 34 m, penetration for technical divers",
+      "url": "https://padi.com/dive-site/new-zealand/ms-mikhail-lermontov-wreck"
+    }
+  ],
+  "triangles": 52079,
+  "notes": "Built by code (model_sources/Q1143472_mikhail_lermontov.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Whole, on her starboard side at about 36 m, the port side some 12 m under the surface: the long superstructure of five decks, the bridge and radar mast, the funnel with the red band and the hammer and sickle, the boat davits (a couple of boats on the bottom), twin screws; cold-water life (anemones, sponges). Heading (not published: 0), the colours and the exact layout of the decks are approximate. model_built.glb: the liner as she sailed in 1986."
+}
