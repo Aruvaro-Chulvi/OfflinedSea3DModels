@@ -177,6 +177,11 @@ def check_folder(d: Path, catalog: dict, errors: list, warnings: list):
                     err(f"pieces.{nm} needs lat, lon and source")
                 if "heading" in pc and not (isinstance(pc["heading"], (int, float)) and 0 <= pc["heading"] < 360):
                     err(f"pieces.{nm}.heading must be 0-359")
+    if "hole" in m:
+        h = m["hole"]
+        if not (isinstance(h, dict) and isinstance(h.get("r"), (int, float)) and h["r"] > 0
+                and isinstance(h.get("floor"), (int, float)) and h["floor"] < 0):
+            err("hole: {r: radius in m (> 0), floor: depth of the floor below the origin in m (< 0)}")
     for f in ("model.glb", "model_built.glb"):
         if (d / f).exists():
             info = check_glb(d / f, kind, err, warn)

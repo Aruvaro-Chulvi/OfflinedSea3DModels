@@ -35,7 +35,7 @@ def main():
             for f in ("model.glb", "model_built.glb", "meta.json", "preview.jpg"):
                 if (d / f).exists():
                     shutil.copy2(d / f, dst / f)
-            idx[kind][d.name] = {k: m.get(k) for k in ("id", "name", "authors", "license", "state", "heading")}
+            idx[kind][d.name] = {k: m.get(k) for k in ("id", "name", "authors", "license", "state", "heading", "hole")}
             idx[kind][d.name]["built"] = (d / "model_built.glb").exists()
     (out / "models").mkdir(exist_ok=True)
     (out / "models" / "index.json").write_text(json.dumps(idx, ensure_ascii=False), "utf-8")

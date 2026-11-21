@@ -1,0 +1,35 @@
+{
+  "id": "Q2896085",
+  "kind": "item",
+  "name": "Atlit Yam",
+  "state": "buried",
+  "heading": 0,
+  "depth": -10,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — Atlit Yam (8-11 m, about 40,000 m², seven megaliths round a spring)",
+      "url": "https://en.wikipedia.org/wiki/Atlit_Yam"
+    },
+    {
+      "title": "Galili et al., Atlit-Yam: a prehistoric site on the sea floor off the Israeli coast (Journal of Field Archaeology, 1993)",
+      "url": "https://www.wikidata.org/wiki/Q60231486"
+    },
+    {
+      "title": "Tel Aviv University — Atlit Yam",
+      "url": "https://ddc.tau.ac.il/Atlit-Yam"
+    },
+    {
+      "title": "Atlas Obscura — Atlit Yam",
+      "url": "https://www.atlasobscura.com/places/atlit-yam"
+    }
+  ],
+  "triangles": 12074,
+  "notes": "Built by code (model_sources/Q2896085_atlit_yam.py, tools/meshkit.py, tools/placekit.py) with AI assistance. At 8-11 m some 200-400 m off the Carmel coast, often under sand: the semicircle of seven megaliths round the freshwater spring, the stone foundations of rectangular houses, stone-lined wells, hearths, loose stones. The layout is approximate. No marine life in the model: Offlined draws the living things itself."
+}

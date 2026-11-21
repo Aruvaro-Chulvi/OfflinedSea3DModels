@@ -1,0 +1,35 @@
+{
+  "id": "Q1607758",
+  "kind": "item",
+  "name": "Thonis-Heracleion",
+  "state": "buried",
+  "heading": 0,
+  "depth": -10,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — Heracleion (found by Franck Goddio in 2000 in Aboukir Bay)",
+      "url": "https://en.wikipedia.org/wiki/Heracleion"
+    },
+    {
+      "title": "Atlas Obscura — The lost city of Heracleion",
+      "url": "https://atlasobscura.com/places/the-lost-city-of-heracleion-al-maadeyah-egypt"
+    },
+    {
+      "title": "Divernet — Divers reveal treasures from Egypt's lost temples",
+      "url": "https://divernet.com/world-dives/middle-east/divers-reveal-treasures-from-egypts-lost-temples/"
+    },
+    {
+      "title": "The National — Sunken temples of Aphrodite and Amun found off Egypt's Mediterranean coast (2023)",
+      "url": "https://www.thenationalnews.com/mena/2023/09/20/sunken-temples-of-aphrodite-and-amun-found-off-egypts-mediterranean-coast"
+    }
+  ],
+  "triangles": 45928,
+  "notes": "Built by code (model_sources/Q1607758_heracleion.py, tools/meshkit.py, tools/placekit.py) with AI assistance. Under about 10 m of water in Aboukir Bay: the lowest courses of the temple of Amun-Gereb, collapsed towards the canal beside it, granite and limestone blocks, a fallen headless colossus and the empty bases of others (the great statues were raised and are in museums), a naos, stelae, fallen columns, stone anchors spread all over the old harbour, the low mounds of buried ships with their frames showing, amphorae. The layout and the sizes are approximate. No marine life in the model: Offlined draws the living things itself."
+}

@@ -1,0 +1,35 @@
+{
+  "id": "L2",
+  "kind": "item",
+  "name": "Aqaba Underwater Military Museum",
+  "state": "intact",
+  "heading": 0,
+  "depth": -22,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Phys.org (AFP) — Fish tanks: Jordan sinks military hardware for underwater museum (2019)",
+      "url": "https://phys.org/news/2019-07-fish-tanks-jordan-military-hardware.pdf"
+    },
+    {
+      "title": "DIVE Magazine — Marine manoeuvres: Aqaba's underwater military museum",
+      "url": "https://divemagazine.com/scuba-diving-travel/aqabas-underwater-military-museum"
+    },
+    {
+      "title": "PADI — Underwater Military Museum dive site",
+      "url": "https://www.padi.com/dive-site/jordan/underwater-military-museum/"
+    },
+    {
+      "title": "Duikersgids — Underwater Military Museum (8 objects at 15-20 m, 11 at 20-28 m)",
+      "url": "https://www.duikersgids.nl/en/dive-spots/underwater-military-museum"
+    }
+  ],
+  "triangles": 45410,
+  "notes": "Built by code (model_sources/L2_aqaba_military_museum.py, tools/meshkit.py, tools/placekit.py) with AI assistance. Off Aqaba's South Beach, Jordan, sunk in 2019 as an artificial reef: tanks, armoured troop carriers, anti-aircraft guns, two cranes, an ambulance and an attack helicopter laid out in a battle formation along the reef over some 140 m. The model sets them on flat ground at about 22 m (they lie at 15-28 m along the slope); the types, number and places of the vehicles are approximate. No marine life in the model: Offlined draws the living things itself."
+}

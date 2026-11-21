@@ -24,6 +24,47 @@
         {"title": "Pacific Wrecks — B-17F-10-BO Flying Fortress 41-24521 «Black Jack»", "url": "https://pacificwrecks.com/aircraft/b-17/41-24521.html"}
       ],
       "note": "Position approximate (no published coordinates): just off the reef at Boga Boga, the tip of Cape Vogel, where the GEBCO grid is about 46 m deep."
+    },
+    {
+      "q": "L2",
+      "name": "Aqaba Underwater Military Museum",
+      "fam": "museum",
+      "lat": 29.44619,
+      "lon": 34.9748,
+      "pos": "own",
+      "depth": -22,
+      "built": 2019,
+      "titles": {
+        "en": "Aqaba Underwater Military Museum",
+        "es": "Museo Militar Submarino de Áqaba",
+        "de": "Unterwasser-Militärmuseum Akaba",
+        "fr": "Musée militaire sous-marin d'Aqaba",
+        "it": "Museo militare subacqueo di Aqaba",
+        "pt": "Museu Militar Subaquático de Aqaba",
+        "ru": "Подводный военный музей Акабы",
+        "zh": "亚喀巴水下军事博物馆",
+        "ar": "متحف العقبة العسكري تحت الماء",
+        "hi": "अक़बा अंडरवाटर मिलिट्री म्यूज़ियम"
+      },
+      "text": {
+        "en": "In July 2019 the Aqaba Special Economic Zone Authority and the Jordanian armed forces sank some 19–21 decommissioned military vehicles off Aqaba's South Beach, in the Red Sea, to make an artificial reef and a dive site: tanks, an ambulance, a military crane, a troop carrier, an anti-aircraft gun and a combat helicopter. They were laid out along the coral reef as if in a battle formation, over some 140 m of sea bed, most of them between 15 and 28 m deep, a couple near 5 m, so that divers, snorkellers and free-divers can all see part of it.",
+        "es": "En julio de 2019, la Autoridad de la Zona Económica Especial de Áqaba y las fuerzas armadas jordanas hundieron unos 19–21 vehículos militares dados de baja frente a la playa sur de Áqaba, en el mar Rojo, para hacer un arrecife artificial y un punto de buceo: tanques, una ambulancia, una grúa militar, un transporte de tropas, un cañón antiaéreo y un helicóptero de combate. Se colocaron a lo largo del arrecife de coral como en una formación de batalla, a lo largo de unos 140 m de fondo, casi todos entre 15 y 28 m de profundidad y un par cerca de los 5 m, para que puedan verlos buceadores, buceadores de superficie y apneístas."
+      },
+      "sources": [
+        {
+          "title": "Phys.org (AFP) — Fish tanks: Jordan sinks military hardware for underwater museum (2019)",
+          "url": "https://phys.org/news/2019-07-fish-tanks-jordan-military-hardware.pdf"
+        },
+        {
+          "title": "DIVE Magazine — Marine manoeuvres: Aqaba's underwater military museum",
+          "url": "https://divemagazine.com/scuba-diving-travel/aqabas-underwater-military-museum"
+        },
+        {
+          "title": "PADI — Underwater Military Museum dive site (29.44619, 34.96700)",
+          "url": "https://www.padi.com/dive-site/jordan/underwater-military-museum/"
+        }
+      ],
+      "note": "PADI's point is on the steep slope where the GEBCO grid gives some 195 m: the pin is moved 0.8 km east, inshore, to where Offlined's terrain gives about 22 m."
     }
   ]
 }

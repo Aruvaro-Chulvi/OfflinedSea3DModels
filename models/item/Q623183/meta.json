@@ -1,0 +1,35 @@
+{
+  "id": "Q623183",
+  "kind": "item",
+  "name": "Aquarius Reef Base",
+  "state": "intact",
+  "heading": 0,
+  "depth": -18,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Florida International University — Aquarius fact sheet (2019): 14 × 3 m, 82 t, baseplate 120 t, 18 m",
+      "url": "https://environment.fiu.edu/aquarius/working-with-aquarius/_assets/arb_factsheet_2019.pdf"
+    },
+    {
+      "title": "Florida International University — Aquarius facilities and vessels (the baseplate holds it 13 ft off the bottom)",
+      "url": "https://environment.fiu.edu/aquarius/working-with-aquarius/facilities-vessels/"
+    },
+    {
+      "title": "NOAA Office of National Marine Sanctuaries — Meet Aquarius",
+      "url": "https://sanctuaries.noaa.gov/missions/2010aquarius/meet_aquarius.html"
+    },
+    {
+      "title": "Wikipedia — Aquarius Reef Base",
+      "url": "https://en.wikipedia.org/wiki/Aquarius_Reef_Base"
+    }
+  ],
+  "triangles": 21327,
+  "notes": "Built by code (model_sources/Q623183_aquarius_reef_base.py, tools/meshkit.py, tools/placekit.py) with AI assistance. On the sand beside Conch Reef off Key Largo, at about 18-19 m: the white habitat cylinder on its steel baseplate some 4 m above the bottom, the wet porch with its moon pool, the portholes of the living quarters, the equipment on top, the start of the umbilical, the small air-filled «gazebo» nearby, and the spurs of reef rock beside it. The heading and the layout round it are approximate; the life-support buoy at the surface is not drawn. No marine life in the model: Offlined draws the living things itself."
+}

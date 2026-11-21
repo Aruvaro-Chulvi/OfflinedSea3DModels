@@ -1,0 +1,35 @@
+{
+  "id": "Q885734",
+  "kind": "item",
+  "name": "Blue Hole (Dahab)",
+  "state": "intact",
+  "heading": 90,
+  "depth": -6,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — Blue Hole (Red Sea) (just over 100 m deep; the saddle at 6-7 m; the Arch at about 55 m)",
+      "url": "https://en.wikipedia.org/wiki/Blue_Hole_(Red_Sea)"
+    },
+    {
+      "title": "Scuba.com — Diving the Blue Hole in Dahab, Egypt",
+      "url": "https://www.scuba.com/blog/diving-dahab-blue-hole/"
+    },
+    {
+      "title": "Dive Site Directory — Red Sea, Dahab reef: the Blue Hole",
+      "url": "https://divesitedirectory.co.uk/dive_site_red_sea_dahab_reef_the_blue_hole.html"
+    }
+  ],
+  "hole": {
+    "r": 28,
+    "floor": -110
+  },
+  "triangles": 45424,
+  "notes": "Built by code (model_sources/Q885734_dahab_blue_hole.py, tools/meshkit.py, tools/placekit.py) with AI assistance. In the reef north of Dahab: the round hole some 55 m across and just over 100 m deep, the reef rim standing a few metres above the saddle (6-7 m) that opens it to the sea, the mouth of the Arch at about 55 m on the seaward side (the tunnel is cut short in the model: the reef wall beyond it is not drawn). meta.json \"hole\" tells Offlined to open the seabed down to the floor; heading 90 = the saddle and the Arch towards the east, the open sea. The profile and the sizes are approximate. Many divers have died at the Arch. No marine life in the model: Offlined draws the living things itself."
+}

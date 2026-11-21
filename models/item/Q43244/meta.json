@@ -1,0 +1,39 @@
+{
+  "id": "Q43244",
+  "kind": "item",
+  "name": "Lighthouse of Alexandria (underwater remains)",
+  "state": "scattered",
+  "heading": 0,
+  "depth": -8,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "French Ministry of Culture — Alexandria, Egypt (the underwater site of the Pharos, CEAlex)",
+      "url": "https://archeologie.culture.gouv.fr/archeo-sous-marine/en/alexandria-egypt"
+    },
+    {
+      "title": "Archaeology magazine — Alexandria (more than 25 sphinxes, hundreds of columns, thousands of blocks)",
+      "url": "https://archive.archaeology.org/9903/abstracts/alexandria.html"
+    },
+    {
+      "title": "CEAlex — Underwater excavations on the Pharos site",
+      "url": "https://www.cealex.org/?p=8893"
+    },
+    {
+      "title": "Archaeology — Submerged blocks of Alexandria's ancient lighthouse lifted from seafloor (2025)",
+      "url": "https://archaeology.org/news/2025/07/01/submerged-blocks-of-alexandrias-ancient-lighthouse-lifted-from-seafloor/"
+    },
+    {
+      "title": "Wikipedia — Lighthouse of Alexandria",
+      "url": "https://en.wikipedia.org/wiki/Lighthouse_of_Alexandria"
+    }
+  ],
+  "triangles": 43096,
+  "notes": "Built by code (model_sources/Q43244_lighthouse_of_alexandria.py, tools/meshkit.py, tools/placekit.py) with AI assistance. A few metres down east of Fort Qaitbay, over some 140 by 100 m: the jumble of huge granite blocks of the fallen lighthouse, column shafts, capitals, obelisk fragments, sphinxes and broken colossal statues of Ptolemaic rulers. Some pieces have been raised (in 2025, 22 blocks of the doorway). The layout and the depth are approximate. No marine life in the model: Offlined draws the living things itself."
+}

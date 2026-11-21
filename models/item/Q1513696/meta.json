@@ -1,0 +1,31 @@
+{
+  "id": "Q1513696",
+  "kind": "item",
+  "name": "Kolumbo hydrothermal field",
+  "state": "intact",
+  "heading": 0,
+  "depth": -500,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — Kolumbo (crater 1.5 km wide, floor at about 500 m; the 1650 eruption)",
+      "url": "https://en.wikipedia.org/wiki/Kolumbo"
+    },
+    {
+      "title": "Kilias et al. 2013, Scientific Reports — New insights into hydrothermal vent processes in the unique shallow-submarine arc-volcano, Kolumbo",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3741630"
+    },
+    {
+      "title": "NOAA Ocean Explorer — Hydrothermal vents in the Kolumbo crater",
+      "url": "https://oceanexplorer.noaa.gov/explorations/06blacksea/logs/summary_thera/media/hydrothermal.html"
+    }
+  ],
+  "triangles": 123427,
+  "notes": "Built by code (model_sources/Q1513696_kolumbo.py, tools/meshkit.py, tools/placekit.py) with AI assistance. On the floor of Kolumbo's crater, about 500 m down, 7 km north-east of Santorini: the central part of the hydrothermal field, some 200 m across — low mounds of vent deposits, sulphide chimneys up to 4-6 m high (the tallest, «Poet's Candle», about 6 m), rusty orange where they have oxidised, on grey and orange iron-stained sediment. The place and height of each chimney are approximate. No marine life in the model (the bacterial mats are Offlined's to draw)."
+}

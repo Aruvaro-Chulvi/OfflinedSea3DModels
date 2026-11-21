@@ -1,0 +1,39 @@
+{
+  "id": "Q1740807",
+  "kind": "item",
+  "name": "Kick 'em Jenny summit crater",
+  "state": "intact",
+  "heading": 0,
+  "depth": -185,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — Kick 'em Jenny (summit about 185 m below the sea surface)",
+      "url": "https://en.wikipedia.org/wiki/Kick_%27em_Jenny"
+    },
+    {
+      "title": "VolcanoDiscovery — Kick 'em Jenny (crater about 330 m across and up to 80 m deep)",
+      "url": "https://www.volcanodiscovery.com/kick-em-jenny.html"
+    },
+    {
+      "title": "Imperial College London — Underwater volcano behaviour captured by timely scientific expedition (2018)",
+      "url": "https://www.imperial.ac.uk/news/185269/underwater-volcano-behaviour-captured-timely-scientific/"
+    },
+    {
+      "title": "Allen et al. 2018, Geochemistry, Geophysics, Geosystems (University of Southampton repository)",
+      "url": "https://eprints.soton.ac.uk/417746/1/818506_1_merged_1517510005.pdf"
+    }
+  ],
+  "hole": {
+    "r": 166,
+    "floor": -80
+  },
+  "triangles": 72549,
+  "notes": "Built by code (model_sources/Q1740807_kick_em_jenny.py, tools/meshkit.py, tools/placekit.py) with AI assistance. At the summit of the submarine volcano north of Grenada, about 185 m down: the almost round crater about 330 m across and up to 80 m deep, its walls of scree and lava blocks stained yellow-brown where the vents seep, the floor of ash and fallen blocks, the rim ridge round it (the cone's flanks beyond are drawn by Offlined's seabed). meta.json \"hole\" tells Offlined to open the seabed down to the crater floor. An active volcano with an exclusion zone for boats. The shape of the crater is approximate. No marine life in the model: Offlined draws the living things itself."
+}

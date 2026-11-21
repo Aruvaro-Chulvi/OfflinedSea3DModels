@@ -84,6 +84,7 @@ Cada carpeta lleva:
 | `position` | no | Solo si el pecio no está donde dice el catálogo: `lat`, `lon` y una `source`. |
 | `depth` | no | Profundidad real del pecio en metros (negativa), si se sabe mejor que con la malla de ~1 km de GEBCO. |
 | `pieces` | no | Para un pecio partido en trozos muy separados (más de 1 km, o a distintas profundidades): `{ "nombre del nodo": { lat, lon, heading, depth, source } }`. Cada uno de esos nodos se modela alrededor de su propio origen (en el archivo puede estar a su distancia de la pieza principal, con +Z al norte y +X al oeste); los programas que conocen el fondo lo colocan en su sitio. |
+| `hole` | no | Para un lugar que es un hoyo en el fondo (un agujero azul, un cráter): `{ "r": radio en m, "floor": profundidad de su suelo bajo el origen en m (negativa) }`, centrado en el origen. El modelo pone las paredes, el suelo y una tapa de fondo alrededor de la boca (el origen está al nivel del fondo de alrededor); los programas que dibujan el fondo lo abren hasta el suelo dentro de r para poder bajar dentro. |
 | `authors` | sí | Todas las personas que lo han hecho. `url` es opcional. |
 | `license` | sí | `CC-BY-4.0` o `CC0-1.0`. No se acepta otra (ver [NOTICE](../NOTICE.md)). |
 | `sources` | sí | Los planos, fotos, estudios o artículos que has usado. Al menos uno. |

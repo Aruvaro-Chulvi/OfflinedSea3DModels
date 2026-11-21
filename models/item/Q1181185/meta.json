@@ -1,0 +1,35 @@
+{
+  "id": "Q1181185",
+  "kind": "item",
+  "name": "Dean's Blue Hole",
+  "state": "intact",
+  "heading": 0,
+  "depth": -3,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — Dean's Blue Hole (202 m; mouth 25-35 m across, a chamber about 100 m across from about 20 m down)",
+      "url": "https://en.wikipedia.org/wiki/Dean%27s_Blue_Hole"
+    },
+    {
+      "title": "Atlas Obscura — Dean's Blue Hole",
+      "url": "https://www.atlasobscura.com/places/deans-blue-hole"
+    },
+    {
+      "title": "Scuba.com — What to see at Dean's Blue Hole",
+      "url": "https://www.scuba.com/blog/?p=30698"
+    }
+  ],
+  "hole": {
+    "r": 53,
+    "floor": -202
+  },
+  "triangles": 43010,
+  "notes": "Built by code (model_sources/Q1181185_deans_blue_hole.py, tools/meshkit.py, tools/placekit.py) with AI assistance. In the sandy bay west of Clarence Town, Long Island, a few metres down: the round mouth about 30 m across, the shaft opening out at about 20 m into the great chamber about 100 m across, the walls dropping to the bottom at 202 m, the limestone cliff of the shore beside it. meta.json \"hole\" tells Offlined to open the seabed down to the floor. The profile and the cliff are approximate. No marine life in the model: Offlined draws the living things itself."
+}

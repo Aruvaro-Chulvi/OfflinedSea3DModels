@@ -1,0 +1,35 @@
+{
+  "id": "Q3408831",
+  "kind": "item",
+  "name": "Conshelf II (Précontinent II)",
+  "state": "intact",
+  "heading": 0,
+  "depth": -10,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — Continental Shelf Station Two (Sha'ab Rumi, 1963)",
+      "url": "https://en.wikipedia.org/wiki/Continental_Shelf_Station_Two"
+    },
+    {
+      "title": "Diving Almanac — First underwater colony (Conshelf II, 10 m, 30 days)",
+      "url": "https://divingalmanac.com/first-underwater-colony"
+    },
+    {
+      "title": "Atlas Obscura — Précontinent II (the saucer garage remains, the Starfish House was removed)",
+      "url": "https://www.atlasobscura.com/places/precontinent-ii"
+    },
+    {
+      "title": "Scuba Diving — The hidden wonders of wreck diving in Sudan's central Red Sea (the tool shed and fish cages)",
+      "url": "https://www.scubadiving.com/hidden-wonders-wreck-diving-in-sudans-central-red-sea"
+    }
+  ],
+  "triangles": 11196,
+  "notes": "Built by code (model_sources/Q3408831_conshelf_ii.py, tools/meshkit.py, tools/placekit.py, tools/dresskit.py) with AI assistance. On the reef plateau of Sha'ab Rumi, off Port Sudan, at about 10 m: what Cousteau's team left in 1963 — the domed hangar of the diving saucer on its legs, with the air pocket under it, the tool shed and two fish pens — with the reef rock beside them. The Starfish House and the deep cabin were taken away. The layout and the heading (not published here: 0) are approximate. model_built.glb: the station in 1963, with the Starfish House. No marine life in the model (in the sea they are covered in coral): Offlined draws the living things itself."
+}

@@ -1,0 +1,39 @@
+{
+  "id": "Q86486",
+  "kind": "item",
+  "name": "Great Blue Hole",
+  "state": "intact",
+  "heading": 0,
+  "depth": -5,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — Great Blue Hole (about 300 m across and 125 m deep)",
+      "url": "https://en.wikipedia.org/wiki/Great_Blue_Hole"
+    },
+    {
+      "title": "GPS World — Belize's Great Blue Hole revealed in expedition survey (2018)",
+      "url": "https://www.gpsworld.com/belizes-great-blue-hole-revealed-in-expedition-survey/"
+    },
+    {
+      "title": "Southern Fried Science — Logs from a majestic pit of acid: diving Belize's Blue Hole",
+      "url": "https://www.southernfriedscience.com/logs-from-a-majestic-pit-of-acid-diving-belizes-blue-hole-with-erika-bergman/"
+    },
+    {
+      "title": "IFLScience — New photographs reveal the inside of Belize's Great Blue Hole",
+      "url": "https://www.iflscience.com/new-photographs-reveal-the-inside-of-belize-s-great-blue-hole-51584"
+    }
+  ],
+  "hole": {
+    "r": 163,
+    "floor": -125
+  },
+  "triangles": 114984,
+  "notes": "Built by code (model_sources/Q86486_great_blue_hole.py, tools/meshkit.py, tools/placekit.py) with AI assistance. In the lagoon of Lighthouse Reef, Belize: the sinkhole about 300 m across, its walls dropping almost sheer to the ledge of caverns at about 36-55 m with their stalactites, then sloping down to a floor of silt and fallen blocks at about 125 m; patches of reef rock round the rim. meta.json \"hole\" tells Offlined to open the seabed down to the floor. The profile, the ledge and the stalactites are approximate. No marine life in the model: Offlined draws the living things itself."
+}

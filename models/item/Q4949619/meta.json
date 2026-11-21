@@ -1,0 +1,35 @@
+{
+  "id": "Q4949619",
+  "kind": "item",
+  "name": "Bouldnor Cliff",
+  "state": "buried",
+  "heading": 0,
+  "depth": -11,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Maritime Archaeology Trust — Bouldnor Cliff (11 m underwater, 1 km east of Yarmouth)",
+      "url": "https://maritimearchaeologytrust.org/?p=801"
+    },
+    {
+      "title": "Wikipedia — Bouldnor Cliff",
+      "url": "https://en.wikipedia.org/wiki/Bouldnor_Cliff"
+    },
+    {
+      "title": "Smithsonian — 8,000-year-old boat-building platform found off the coast of Britain (2019)",
+      "url": "https://www.smithsonianmag.com/smart-news/8000-year-old-boat-building-platform-found-coast-britain-180972989/"
+    },
+    {
+      "title": "Current Archaeology — Mesolithic maritime discovery at Bouldnor Cliff",
+      "url": "https://archaeology.co.uk/articles/mesolithic-maritime-discovery-at-bouldnor-cliff.htm"
+    }
+  ],
+  "triangles": 38860,
+  "notes": "Built by code (model_sources/Q4949619_bouldnor_cliff.py, tools/meshkit.py, tools/placekit.py) with AI assistance. At about 11 m off Bouldnor, Isle of Wight: a stretch of the eroding underwater cliff of peat and clay — the edge of the land drowned some 8,000 years ago — with oak trunks and stumps sticking out of it and worked timbers washed out on the floor below. The 2019 timber platform was lifted for conservation. The shape of the cliff is approximate. No marine life in the model: Offlined draws the living things itself."
+}

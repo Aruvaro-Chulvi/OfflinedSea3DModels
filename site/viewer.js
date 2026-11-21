@@ -171,10 +171,11 @@ async function build(it) {
   const S = Math.max(200, R * 5, (Math.max(allS.x, allS.z) + Math.max(Math.abs(all.min.z - c.z), Math.abs(all.max.z - c.z), Math.abs(all.min.x - c.x), Math.abs(all.max.x - c.x))) * 1.3);
   bed.position.set(c.x, 0, c.z);
   bed.scale.set(S, 1, S); bedMat.map.repeat.set(S / 12, S / 12);
+  bed.visible = !(own && own[1].hole);                       // a hole in the seabed (blue hole, crater): its own rim of sediment, no floor over it
   if (grid) { scene.remove(grid); grid.geometry.dispose(); }
   const step = R > 150 ? 50 : R > 40 ? 10 : 2;
   grid = new THREE.GridHelper(Math.round(S / step) * step, Math.round(S / step), 0x2f5468, 0x2f5468);
-  grid.material.transparent = true; grid.material.opacity = 0.25; grid.position.set(c.x, 0.02, c.z); scene.add(grid);
+  grid.material.transparent = true; grid.material.opacity = 0.25; grid.position.set(c.x, 0.02, c.z); scene.add(grid); grid.visible = bed.visible;
   diver.position.set(box.max.x + Math.max(2, R * 0.04), 0, c.z + size.z * 0.15);
   scene.fog.density = 0.9 / (R * 3);
   sun.position.set(c.x + R * 0.6, R * 1.5, c.z + R * 0.5); sun.target.position.copy(c);

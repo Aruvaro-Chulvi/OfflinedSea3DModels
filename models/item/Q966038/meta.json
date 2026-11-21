@@ -1,0 +1,35 @@
+{
+  "id": "Q966038",
+  "kind": "item",
+  "name": "Pavlopetri",
+  "state": "buried",
+  "heading": 0,
+  "depth": -4,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — Pavlopetri (at least 15 buildings in 3-4 m of water; streets, buildings and tombs)",
+      "url": "https://en.wikipedia.org/wiki/Pavlopetri"
+    },
+    {
+      "title": "University of Nottingham — The Pavlopetri Underwater Archaeology Project 2009-2013",
+      "url": "https://nottingham.ac.uk/pavlopetri/projectoverview2009-2013.aspx"
+    },
+    {
+      "title": "University of Southampton — Secrets of the world's oldest known submerged town (2009)",
+      "url": "https://www.southampton.ac.uk/news/2009/10/secrets-of-the-worlds-oldest-known-submerged-town.page"
+    },
+    {
+      "title": "REF impact case study — Pavlopetri: improving the public presentation, management and conservation of submerged cultural heritage",
+      "url": "https://impact.ref.ac.uk/casestudies/CaseStudy.aspx?Id=28862"
+    }
+  ],
+  "triangles": 91280,
+  "notes": "Built by code (model_sources/Q966038_pavlopetri.py, tools/meshkit.py, tools/placekit.py) with AI assistance. In 3-4 m off Pounta, Laconia: the heart of the Bronze Age town, about 160 m across — houses and larger courtyard buildings in blocks along the streets, their stone walls standing a course or two above the sand, a cemetery of cist graves, sherds of pottery. The whole site covers some 8 hectares. The plan is drawn in outline after the published site plans: the line of each wall and building is approximate. No marine life in the model: Offlined draws the living things itself."
+}

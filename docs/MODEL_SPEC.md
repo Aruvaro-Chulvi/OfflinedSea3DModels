@@ -83,6 +83,7 @@ Each folder holds:
 | `position` | no | Only if the wreck site differs from the catalog's: `lat`, `lon` and a `source`. |
 | `depth` | no | Real depth of the wreck in metres (negative), if known better than GEBCO's ~1 km grid. |
 | `pieces` | no | For a wreck broken into pieces lying far apart (more than 1 km, or at different depths): `{ "node name": { lat, lon, heading, depth, source } }`. Each of those nodes is modelled around its own origin (in the file it can sit at its offset from the main piece, with +Z north and +X west); programs that know the seabed place it on its own spot. |
+| `hole` | no | For a place that is a hole in the seabed (a blue hole, a crater): `{ "r": radius in m, "floor": depth of its floor below the origin in m (negative) }`, centred on the origin. The model gives the walls, the floor and a lid of seabed round the opening (the origin sits at the level of the surrounding bottom); programs that draw the seabed open it down to the floor inside r so you can go down into it. |
 | `authors` | yes | Everyone who made it. `url` is optional. |
 | `license` | yes | `CC-BY-4.0` or `CC0-1.0`. Nothing else is accepted (see [NOTICE](../NOTICE.md)). |
 | `sources` | yes | The plans, photos, surveys or papers you used. At least one. |
