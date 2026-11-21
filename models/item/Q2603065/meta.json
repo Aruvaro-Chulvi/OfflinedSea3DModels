@@ -1,0 +1,35 @@
+{
+  "id": "Q2603065",
+  "kind": "item",
+  "name": "MS Zenobia",
+  "state": "intact",
+  "heading": 0,
+  "depth": -42,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "MS Zenobia — Kockums ro-ro ferry of 1979; ballast fault, list to port, sank off Larnaca on 7 June 1980; on her port side at about 42 m",
+      "url": "https://en.wikipedia.org/wiki/MS_Zenobia"
+    },
+    {
+      "title": "Wrecks and Reefs — Zenobia: 172 m, the upturned starboard side 16 m below the surface",
+      "url": "https://wrecksandreefs.com/zenibia.htm"
+    },
+    {
+      "title": "Visit Cyprus — the Zenobia wreck diving site: lorries scattered over the seabed and still on the two car decks",
+      "url": "https://www.visitcyprus.com/index.php/pl/discovercyprus/sun-sea/diving/394-the-zenobia-wreck-diving-site"
+    },
+    {
+      "title": "Divernet — Unraveling the mystery: the sinking of MS Zenobia (lorries hanging from their deck chains)",
+      "url": "https://divernet.com/scuba-diving/unraveling-the-mystery-the-sinking-of-ms-zenobia/"
+    }
+  ],
+  "triangles": 80293,
+  "notes": "Built by code (model_sources/Q2603065_zenobia.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Whole on her port side at about 42 m, the starboard side some 16 m under the surface: the accommodation and bridge forward, the funnels aft, the stern ramp, articulated lorries still on the open vehicle deck (a few hanging askew from their chains) and others scattered on the seabed; Mediterranean life. Heading (not published: 0), the layout of the superstructure and the stowage of the lorries are approximate. model_built.glb: the ferry with her lorries as she sailed in 1980."
+}
