@@ -1,0 +1,35 @@
+{
+  "id": "Q3273207",
+  "kind": "item",
+  "name": "MV Bianca C",
+  "state": "broken",
+  "heading": 0,
+  "depth": -50,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Scuba Diving — History of Grenada's Bianca C shipwreck: upright off Pink Gin Beach, about 50 m to the bottom, the pools at about 130 ft",
+      "url": "https://www.scubadiving.com/history-grenadas-bianca-c-shipwreck"
+    },
+    {
+      "title": "Divernet — Mark Evans, Grenada's 'Titanic of the Caribbean': most of the starboard side collapsed onto the seabed, the masts toppled, the superstructure partly fallen in",
+      "url": "https://divernet.com/world-dives/mark-evans-grenadas-titanic-of-the-caribbean-the-bianca-c/"
+    },
+    {
+      "title": "Advanced Diver Magazine — the Bianca C: on her keel at 167 ft, the fantail broken away, superstructure plates scattered",
+      "url": "https://advanceddivermagazine.com/articles/biancac/biancac.html"
+    },
+    {
+      "title": "NUMA — Unlucky lady of Grenada",
+      "url": "https://numa.net/?p=1801"
+    }
+  ],
+  "triangles": 93004,
+  "notes": "Built by code (model_sources/Q3273207_bianca_c.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on her keel at about 50 m: the bow and the fire-gutted superstructure, partly fallen in, the funnel with the Costa C, the two pools on the after decks; most of the starboard side collapsed outwards onto the seabed; the fantail broken away and lying a little apart; the masts toppled; plates from the superstructure strewn about; corals and sponges. Heading (not published: 0), the colours and the extent of the collapse are approximate. model_built.glb: the liner as she sailed in 1961."
+}
