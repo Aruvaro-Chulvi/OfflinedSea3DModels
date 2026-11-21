@@ -44,6 +44,18 @@
       "note": "Bow section of the wreck (stern ~4 km to the NNE, 3,565 m). The Wikidata point is off Cape Finisterre, where the ship got into trouble.",
       "source": "https://bibrepo.uca.es/articuloscientificos/32481810.pdf"
     },
+    "Q708046": { "lat": -26.10889,
+      "lon": 111.0725,
+      "depth": -2560,
+      "note": "The forward section of the wreck (debris fields 1.4 and 2.1 km to the north); the Wikidata point is some 15 km to the east.",
+      "source": "https://www.sydneymemorial.com/final_report/Volume%201%20-%20Report/Final%20Report.pdf"
+    },
+    "Q1031986": { "lat": -26.24583,
+      "lon": 111.21528,
+      "depth": -2468,
+      "note": "Centre of the main hull (the bow lies 450 m NNW).",
+      "source": "https://www.sydneymemorial.com/final_report/Volume%201%20-%20Report/Final%20Report.pdf"
+    },
     "Q2478173": { "depth": -32,
       "note": "The wreck rests on the slope of Wingate Reef at about 30-38 m (the starboard side a few metres under the surface); the GEBCO cell gives 61 m.",
       "source": "https://en.wikipedia.org/wiki/SS_Umbria"

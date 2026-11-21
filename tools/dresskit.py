@@ -43,7 +43,7 @@ def _area(m):
 
 
 # ── Sediment ───────────────────────────────────────────────────────────────
-def sediment_field(steel, muds, zone, seed, cell=1.0, loose=()):
+def sediment_field(steel, muds, zone, seed, cell=1.0, loose=(), drift=1.0):
     """-> (sediment Mesh, hAt(x, z)). Drifts against big pieces (hull) and small ones (debris), plus the old mud.
     loose: ids of meshes that are many small things spread over a wide area (a debris field): they drift like small ones."""
     allv = np.vstack([m.v for m in steel + muds])
@@ -71,7 +71,7 @@ def sediment_field(steel, muds, zone, seed, cell=1.0, loose=()):
 
     big = [m for m in steel if id(m) not in loose and np.ptp(m.v[:, 0]) + np.ptp(m.v[:, 2]) > 40]
     small = [m for m in steel if m not in big]
-    amp = {"abyssal": 2.6, "bathyal": 2.0, "shelf": 1.5}[zone]                     # sand drifts less than ooze piles up
+    amp = {"abyssal": 2.6, "bathyal": 2.0, "shelf": 1.5}[zone] * drift             # sand drifts less than ooze piles up
     hb = spread(src(big, 1.0), amp, 7.0) * (0.7 + 0.6 * fbm(P3, 0.08, seed + 71, 3).reshape(X.shape)) if big else np.zeros(X.shape)
     hd = spread(src(small, 0.8), amp * 0.27, 2.2) * (0.6 + 0.8 * fbm(P3, 0.3, seed + 72, 2).reshape(X.shape)) if small else np.zeros(X.shape)
     # the old mud (ridges, slide tracks, scour mounds): its highest point in every cell, softened
@@ -149,7 +149,7 @@ class Dresser:
         return np.array([p for p, _ in s]), np.array([q for _, q in s])
 
 
-def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None, wood=False, life="normal"):
+def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None, wood=False, life="normal", drift=1.0):
     """One site (the main wreck, or a piece lying apart): returns (wreck parts, extra parts, instanced, ground objects).
     steel: [(node name, Mesh)] or (node name, Mesh, "loose") for scattered small things (sand drifts less against them)."""
     D = Dresser(zone, seed)
@@ -172,9 +172,9 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
             m.c = m.c * (1 - 0.6 * g[:, None]) + np.array([0.55, 0.56, 0.48]) * 0.6 * g[:, None]
         m.c = np.clip(m.c * (0.85 + 0.3 * fbm(m.v, 0.6, seed + 205 + k, 2))[:, None], 0, 1)
     # ── sediment ──
-    sediment, hAt = sediment_field(steel_m, muds, zone, seed, loose=loose)
+    sediment, hAt = sediment_field(steel_m, muds, zone, seed, loose=loose, drift=drift)
     if sediment.tris > 100000:                               # a big site (long debris field, slide track): coarser cells
-        sediment, hAt = sediment_field(steel_m, muds, zone, seed, cell=math.sqrt(sediment.tris / 90000), loose=loose)
+        sediment, hAt = sediment_field(steel_m, muds, zone, seed, cell=math.sqrt(sediment.tris / 90000), loose=loose, drift=drift)
     base = SED_BASE[zone]
     for m in steel_m:
         hh = m.v[:, 1] - hAt(m.v[:, 0], m.v[:, 2])
@@ -463,17 +463,18 @@ def _materials(wood=False):
     }
 
 
-def dress_wreck(out, sites, depth, kind, seed, memorial=False, wood=False, life="normal"):
+def dress_wreck(out, sites, depth, kind, seed, memorial=False, wood=False, life="normal", drift=1.0):
     """sites: [{"steel": [(node name, Mesh)], "mud": [Mesh], "plain": [(node name, Mesh, material key)],
     "piece": None | (node name, {"translation", "rotation"})}] — the first is the main wreck; a piece lying apart
     (more than 1 km, meta.json "pieces") is written as one node with its transform, its own sediment and life inside.
-    wood: True for a wooden ship, "alu" for an aircraft (no rust either), False for steel."""
+    wood: True for a wooden ship, "alu" for an aircraft (no rust either), False for steel.
+    drift: how much sediment piles against the wreck (1 = the usual for its depth; less where the hull lies exposed)."""
     zone = zone_of(depth)
     parts, INS = [], []
     for k, s in enumerate(sites):
         piece = s.get("piece")
         sediment, stones, ins = dress_site(s["steel"], s.get("mud", []), s.get("plain", []), zone, seed + 1000 * k, kind,
-                                           memorial=memorial and k == 0, parent=piece[0] if piece else None, wood=wood, life=life)
+                                           memorial=memorial and k == 0, parent=piece[0] if piece else None, wood=wood, life=life, drift=drift)
         INS += ins
         if piece:
             items = [(e[1], "steel") for e in s["steel"]] + [(m, key) for _, m, key in s.get("plain", [])]

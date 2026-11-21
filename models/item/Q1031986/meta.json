@@ -1,0 +1,49 @@
+{
+  "id": "Q1031986",
+  "kind": "item",
+  "name": "HMAS Sydney",
+  "state": "broken",
+  "heading": 135,
+  "position": {
+    "lat": -26.24583,
+    "lon": 111.21528,
+    "source": "https://www.sydneymemorial.com/final_report/Volume%201%20-%20Report/Final%20Report.pdf"
+  },
+  "depth": -2468,
+  "pieces": {
+    "bow_section": {
+      "lat": -26.24194,
+      "lon": 111.21333,
+      "heading": 135,
+      "depth": -2468,
+      "source": "https://www.sydneymemorial.com/final_report/Volume%201%20-%20Report/Final%20Report.pdf"
+    }
+  },
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Finding Sydney Foundation — Final report of the search (2008), §3.2: the hull upright, NW/SE with the stern to the north, 166 × 18 m, 14 m high; the bow 28 × 14 m, 10.5 m high, 450 m NNW; positions of the hull, the bow and the debris (whaler, pinnace, berthing drum, torpedo tubes, catapult, director tower and bridge roof, foremast); ROV photo guides (A turret, B turret, X and Y turrets, compass platform, bow upside down, buckled stern)",
+      "url": "https://www.sydneymemorial.com/final_report/Volume%201%20-%20Report/Final%20Report.pdf"
+    },
+    {
+      "title": "HMAS Sydney (D48) — Modified Leander-class cruiser: 171.4 m, beam 17.3 m; armament and layout; wreck at 2,468 m",
+      "url": "https://en.wikipedia.org/wiki/HMAS_Sydney_(D48)"
+    },
+    {
+      "title": "Sinking of HMAS Sydney — battle damage (torpedo forward of A turret, B turret, bridge; X and Y trained to port), 11.4 nmi from Kormoran",
+      "url": "https://en.wikipedia.org/wiki/Sinking_of_HMAS_Sydney"
+    },
+    {
+      "title": "WA Museum — Finding HMAS Sydney (II), the 2015 expedition and wreck photographs (lower hull exposed, 15 cm hole through the compass platform, inverted bow, torpedo-tube mount on the seabed with two torpedoes loaded)",
+      "url": "https://museum.wa.gov.au/explore/sydney/history-hmas-sydney-ii/finding-hmas-sydney-ii/index.html"
+    }
+  ],
+  "triangles": 85336,
+  "notes": "Built by code (model_sources/Q1031986_sydney.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Hull from the break forward of A turret to the stern, upright, its lower hull exposed, the stern buckled; A turret wrecked, B turret without its roof, X and Y trained to port; the bridge tower without its director tower and roof, a shell hole through the compass platform, shell holes along the starboard side; funnels collapsed to stumps (not described: approximate), catapult turntable, searchlight platform, 4-inch guns, the port torpedo tubes, empty boat cradles. Near the hull: the 27-ft whaler, the large pieces, the berthing drum and wire, the starboard torpedo tubes (two loaded), a boat across the motor pinnace, plates. Node 'bow_section' (placed with 'pieces', 450 m NNW): the bow upside down with the catapult and a boat, the director tower and bridge roof, the foremast and plates around it. A war grave (645 men). Headings of the pieces, the shapes of the debris and the damage in detail are approximate. model_built.glb: the cruiser as she sailed in 1941, with her Walrus on the catapult."
+}
