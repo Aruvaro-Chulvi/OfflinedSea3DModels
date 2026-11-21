@@ -43,8 +43,9 @@ def _area(m):
 
 
 # ── Sediment ───────────────────────────────────────────────────────────────
-def sediment_field(steel, muds, zone, seed, cell=1.0):
-    """-> (sediment Mesh, hAt(x, z)). Drifts against big pieces (hull) and small ones (debris), plus the old mud."""
+def sediment_field(steel, muds, zone, seed, cell=1.0, loose=()):
+    """-> (sediment Mesh, hAt(x, z)). Drifts against big pieces (hull) and small ones (debris), plus the old mud.
+    loose: ids of meshes that are many small things spread over a wide area (a debris field): they drift like small ones."""
     allv = np.vstack([m.v for m in steel + muds])
     gx0, gz0 = math.floor(allv[:, 0].min()) - 30, math.floor(allv[:, 2].min()) - 30
     gx1, gz1 = math.ceil(allv[:, 0].max()) + 30, math.ceil(allv[:, 2].max()) + 30
@@ -68,7 +69,7 @@ def sediment_field(steel, muds, zone, seed, cell=1.0):
                                    p[:-2, :-2] * k2, p[2:, 2:] * k2, p[:-2, 2:] * k2, p[2:, :-2] * k2])
         return h
 
-    big = [m for m in steel if np.ptp(m.v[:, 0]) + np.ptp(m.v[:, 2]) > 40]
+    big = [m for m in steel if id(m) not in loose and np.ptp(m.v[:, 0]) + np.ptp(m.v[:, 2]) > 40]
     small = [m for m in steel if m not in big]
     amp = {"abyssal": 2.6, "bathyal": 2.0, "shelf": 1.5}[zone]                     # sand drifts less than ooze piles up
     hb = spread(src(big, 1.0), amp, 7.0) * (0.7 + 0.6 * fbm(P3, 0.08, seed + 71, 3).reshape(X.shape)) if big else np.zeros(X.shape)
@@ -149,10 +150,12 @@ class Dresser:
 
 
 def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None, wood=False, life="normal"):
-    """One site (the main wreck, or a piece lying apart): returns (wreck parts, extra parts, instanced, ground objects)."""
+    """One site (the main wreck, or a piece lying apart): returns (wreck parts, extra parts, instanced, ground objects).
+    steel: [(node name, Mesh)] or (node name, Mesh, "loose") for scattered small things (sand drifts less against them)."""
     D = Dresser(zone, seed)
     r = D.r
-    steel_m = [m for _, m in steel]
+    steel_m = [e[1] for e in steel]
+    loose = {id(e[1]) for e in steel if len(e) > 2 and e[2] == "loose"}
     # ── the paint: rust (deep) or a skin of growth (shallow) ──
     rust_k = {"abyssal": 0.55, "bathyal": 0.4, "shelf": 0.2}[zone]
     for k, m in enumerate(steel_m if wood else []):            # wood (or wood="alu", aluminium): no rust; dulled, a fine film of silt
@@ -169,9 +172,9 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
             m.c = m.c * (1 - 0.6 * g[:, None]) + np.array([0.55, 0.56, 0.48]) * 0.6 * g[:, None]
         m.c = np.clip(m.c * (0.85 + 0.3 * fbm(m.v, 0.6, seed + 205 + k, 2))[:, None], 0, 1)
     # ── sediment ──
-    sediment, hAt = sediment_field(steel_m, muds, zone, seed)
+    sediment, hAt = sediment_field(steel_m, muds, zone, seed, loose=loose)
     if sediment.tris > 100000:                               # a big site (long debris field, slide track): coarser cells
-        sediment, hAt = sediment_field(steel_m, muds, zone, seed, cell=math.sqrt(sediment.tris / 90000))
+        sediment, hAt = sediment_field(steel_m, muds, zone, seed, cell=math.sqrt(sediment.tris / 90000), loose=loose)
     base = SED_BASE[zone]
     for m in steel_m:
         hh = m.v[:, 1] - hAt(m.v[:, 0], m.v[:, 2])
@@ -473,13 +476,13 @@ def dress_wreck(out, sites, depth, kind, seed, memorial=False, wood=False, life=
                                            memorial=memorial and k == 0, parent=piece[0] if piece else None, wood=wood, life=life)
         INS += ins
         if piece:
-            items = [(m, "steel") for _, m in s["steel"]] + [(m, key) for _, m, key in s.get("plain", [])]
+            items = [(e[1], "steel") for e in s["steel"]] + [(m, key) for _, m, key in s.get("plain", [])]
             if len(stones.f):
                 items.append((stones, "rock"))
             items.append((sediment, "sediment", "sediment_" + piece[0]))
             parts.append((piece[0], items, piece[1]))
         else:
-            parts += [(name, m, "steel") for name, m in s["steel"]]
+            parts += [(e[0], e[1], "steel") for e in s["steel"]]
             parts += [(name, m, key) for name, m, key in s.get("plain", [])]
             if len(stones.f):
                 parts.append(("stones", stones, "rock"))

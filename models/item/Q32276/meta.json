@@ -1,0 +1,44 @@
+{
+  "id": "Q32276",
+  "kind": "item",
+  "name": "SS Thistlegorm",
+  "state": "broken",
+  "heading": 0,
+  "position": {
+    "lat": 27.81415,
+    "lon": 33.92037,
+    "source": "https://divernet.com/world-dives/middle-east/the-truth-behind-the-icon-dispelling-myths-of-the-thistlegorm-65-years-later/"
+  },
+  "depth": -30,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "SS Thistlegorm — shelter-deck steamer of 1940: length 126.5 m, beam 17.7 m; cargo, the bombing of hold 4, the two locomotives off port (level with the blast) and starboard (level with hold 2)",
+      "url": "https://en.wikipedia.org/wiki/SS_Thistlegorm"
+    },
+    {
+      "title": "The Thistlegorm Project (2017 photogrammetry survey) — holds 1-3 on two levels, the deck fallen in on the port side of hold 1, cargo counts",
+      "url": "https://thethistlegormproject.com/3d-photogrammetry-survey/"
+    },
+    {
+      "title": "Divernet — myths of the Thistlegorm: only two locomotives, coal tenders and water wagons still on deck, official GPS position",
+      "url": "https://divernet.com/world-dives/middle-east/the-truth-behind-the-icon-dispelling-myths-of-the-thistlegorm-65-years-later/"
+    },
+    {
+      "title": "Dive Magazine — 75 facts about the Thistlegorm: deck at about 17 m, seabed at 30 m, the locomotives thrown about 30 m to each side, the stern as a separate dive",
+      "url": "https://divemagazine.com/scuba-diving-long-reads/75-facts-about-the-thistlegorm"
+    },
+    {
+      "title": "Scuba Diving — the bow upright, the stern twisted onto its port side",
+      "url": "https://www.scubadiving.com/history-red-sea-thistlegorm-shipwreck"
+    }
+  ],
+  "triangles": 104728,
+  "notes": "Built by code (model_sources/Q32276_thistlegorm.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Bow section (bow to just aft of the engine room) upright at about 30 m with holds 1-3 open: Bedford lorries, Norton/BSA motorcycles and Universal carriers in the lower hold and the 'tween deck, boots and crates in hold 1, the main deck fallen in on the port side of hold 1; the water wagons and coal tenders on deck by hatches 1 and 2; the midships superstructure torn (bridge level crumpled, wheelhouse and funnel lying off the port side), the engine room open at the break. Where hold 4 was: the bottom plating splayed open, torn plates, carriers (two upside down), wrecked lorries, shells and tyres. Stern section twisted onto its port side a few metres aft, with the anti-aircraft tub, the stern gun, the propeller and the rudder. The two LMS 8F locomotives off the port side (level with the blast) and the starboard side (level with hold 2). model_built.glb: the ship as she sailed in 1941, with the locomotives on deck by hatch 4. Heading (bow to the north, after dive guides), the angle of the stern, the place of each piece of cargo and of the debris are approximate."
+}
