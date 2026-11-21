@@ -184,9 +184,9 @@
       "source": "https://divernet.com/world-dives/the-magnificent-rainbow-warrior/"
     },
     "Q7870825": { "lat": 19.362,
-      "lon": -81.394,
+      "lon": -81.392,
       "depth": -21,
-      "note": "On the sand next to the reef at about 21 m off Seven Mile Beach; at the Wikidata point the GEBCO cells, beyond the drop-off, give 97 m, so the pin moves a few hundred metres inshore, to where they give 21 m.",
+      "note": "On the sand next to the reef at about 21 m off Seven Mile Beach; at the Wikidata point the GEBCO cells, beyond the drop-off, give 97 m, so the pin moves a few hundred metres inshore, to where they give about 21 m (checked against the depths Offlined itself draws).",
       "source": "https://divernet.com/scuba-diving/caymans-kittiwake-shipwreck-rolled-over-by-tropical-storm-nate/"
     },
     "Q7874298": { "depth": -40,
