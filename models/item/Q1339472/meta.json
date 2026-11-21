@@ -1,0 +1,35 @@
+{
+  "id": "Q1339472",
+  "kind": "item",
+  "name": "RMS Empress of Ireland",
+  "state": "intact",
+  "heading": 0,
+  "depth": -40,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "RMS Empress of Ireland — Fairfield 1906 for Canadian Pacific, about 173 m; sank 29 May 1914 off Pointe-au-Père after the collision with the Storstad; 1,012 dead",
+      "url": "https://en.wikipedia.org/wiki/RMS_Empress_of_Ireland"
+    },
+    {
+      "title": "PBS Lost Liners — Empress of Ireland: 130 ft (40 m) down; listed sharply to starboard as she sank",
+      "url": "https://www.pbs.org/lostliners/empress.html"
+    },
+    {
+      "title": "ShipwreckWorld — RMS Empress of Ireland: currents, salvage and deterioration; the twin funnels and superstructure rusted away; the passage cut into the hull still open",
+      "url": "https://www.shipwreckworld.com/maps/rms-empress-of-ireland"
+    },
+    {
+      "title": "Fisheries and Oceans Canada — the Empress of Ireland, subject of evolving hydrographic technologies",
+      "url": "https://www.qc.dfo-mpo.gc.ca/en/infocean/empress-ireland-subject-evolving-hydrographic-technologies"
+    }
+  ],
+  "triangles": 51688,
+  "notes": "Built by code (model_sources/Q1339472_empress_of_ireland.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The hull whole on her starboard side in about 40 m, the decks sagging and broken, the superstructure rusted down to low remains, the funnels and masts fallen and lying broken on the bottom, the 1914 salvage passage in the port side amidships, twin screws; cold, silty water with anemones and sponges. A national historic site and the grave of 1,012 people. The list (here 70°), the heading (not published: 0), the extent of the collapse and the colours are approximate. model_built.glb: the liner as she sailed in 1914."
+}
