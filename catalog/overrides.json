@@ -48,6 +48,10 @@
       "note": "On the reef slope of Sha'ab Abu Nuhas, about 10-30 m; the GEBCO cell gives 73 m.",
       "source": "https://www.duikersgids.nl/en/abu-nuhas-giannis-d"
     },
+    "Q1043906": { "depth": -24,
+      "note": "On the reef slope of Sha'ab Abu Nuhas, 18-27 m; the GEBCO cell gives 86 m.",
+      "source": "https://yachtway.com/places-to-go/ss-carnatic/"
+    },
     "Q708046": { "lat": -26.10889,
       "lon": 111.0725,
       "depth": -2560,

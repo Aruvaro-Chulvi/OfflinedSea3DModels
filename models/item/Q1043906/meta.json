@@ -1,0 +1,35 @@
+{
+  "id": "Q1043906",
+  "kind": "item",
+  "name": "SS Carnatic",
+  "state": "broken",
+  "heading": 0,
+  "depth": -24,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "SS Carnatic — P&O steamer of 1862 (iron frames, wooden planking, compound engine and sails), lost on Sha'ab Abu Nuhas in September 1869; broke in two, the halves settled almost back together",
+      "url": "https://en.wikipedia.org/wiki/SS_Carnatic"
+    },
+    {
+      "title": "The SS Thistlegorm site — other wrecks: the Carnatic",
+      "url": "https://ssthistlegorm.com/other-wrecks/carnatic"
+    },
+    {
+      "title": "Yachtway — SS Carnatic: 18-27 m, exposed ribs, wine bottles in the debris",
+      "url": "https://yachtway.com/places-to-go/ss-carnatic/"
+    },
+    {
+      "title": "Yumping — Carnatic shipwreck",
+      "url": "https://www.yumping.com/en/adventure-sports-news/carnatic-shipwreck--c437"
+    }
+  ],
+  "triangles": 111652,
+  "notes": "Built by code (model_sources/Q1043906_carnatic.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her port side, broken in two with the halves almost together; the wooden decks gone, the iron deck beams and frames open like a ribcage, a few planks left; the deckhouse crumpled, funnel and masts gone (the masts lying on the sand); wine and soda-water bottles about the stern; soft and hard corals. The real wreck lies in 18-27 m; on Offlined's flat seabed she lies at the mean depth. Heading (not published: 0), the place of the break and the rig are approximate. model_built.glb: the steamer as she sailed in 1869."
+}
