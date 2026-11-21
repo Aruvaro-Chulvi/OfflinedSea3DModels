@@ -42,7 +42,11 @@ Cada carpeta lleva:
   e **instancias** (`EXT_mesh_gpu_instancing`) para todo lo que se repite —carámbanos de óxido, anémonas, platos,
   remaches…—: la forma se guarda una vez, más dónde va cada copia. [`tools/scenekit.py`](../tools/scenekit.py)
   `write_model()` hace las dos cosas.
-- Texturas: JPEG, PNG o WebP, **como mucho 2048 × 2048 px**, mejor en potencias de dos.
+- Texturas: JPEG, PNG o WebP, **como mucho 2048 × 2048 px**, mejor en potencias de dos. Los modelos de este
+  repositorio llevan WebP (`EXT_texture_webp`, obligatoria) de **1024 px como mucho**: a las distancias a las que
+  Offlined enseña un pecio no se nota la diferencia con 2048 px, y el modelo carga antes.
+  [`tools/slim.py`](../tools/slim.py) lo hace (y quita materiales sin usar y une bloques y copias que se pueden unir);
+  `write_model()` lo ejecuta solo.
 - Materiales: PBR metálico-rugosidad (el normal de glTF). Sin luces, cámaras ni animaciones.
 
 ## 3. Escala, ejes y origen

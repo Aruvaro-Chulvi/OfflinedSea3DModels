@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import io
 import json
+import os
 import math
 import struct
 
@@ -478,4 +479,7 @@ def write_model(path, parts, materials, instanced=(), generator="Offlined Sea 3D
         fh.write(b"glTF" + struct.pack("<II", 2, total))
         fh.write(struct.pack("<II", len(js), 0x4E4F534A) + js)
         fh.write(struct.pack("<II", len(binbuf), 0x004E4942) + bytes(binbuf))
+    if os.environ.get("SEA3D_NO_SLIM") != "1":          # WebP textures ≤ 1024 px, unused materials out (tools/slim.py)
+        from slim import slim_file
+        _, total, _ = slim_file(path)
     return tris, total

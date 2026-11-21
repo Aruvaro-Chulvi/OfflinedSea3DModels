@@ -41,7 +41,11 @@ Each folder holds:
 - **Make it light**: 16-bit positions and texture coordinates and 8-bit normals (`KHR_mesh_quantization`), and
   **instancing** (`EXT_mesh_gpu_instancing`) for anything repeated — rusticles, anemones, plates, rivets…: the shape
   is stored once, plus where each copy goes. [`tools/scenekit.py`](../tools/scenekit.py) `write_model()` does both.
-- Textures: JPEG, PNG or WebP, **2048 × 2048 px at most**, power-of-two sizes preferred.
+- Textures: JPEG, PNG or WebP, **2048 × 2048 px at most**, power-of-two sizes preferred. The models in this
+  repository carry WebP (`EXT_texture_webp`, required) of **1024 px at most**: at the distances Offlined shows a
+  wreck the difference with 2048 px cannot be seen, and the model loads faster. [`tools/slim.py`](../tools/slim.py)
+  does it (and drops unused materials, joins blocks and instanced copies that can be joined); `write_model()` runs it
+  by itself.
 - Materials: PBR metallic-roughness (the glTF default). No lights, cameras or animations.
 
 ## 3. Scale, axes and origin
