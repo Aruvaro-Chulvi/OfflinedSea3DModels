@@ -1,0 +1,35 @@
+{
+  "id": "Q632738",
+  "kind": "item",
+  "name": "Darwin Mounds",
+  "state": "intact",
+  "heading": 0,
+  "depth": -1000,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "JNCC — Darwin Mounds MPA: over 300 sandy mounds up to 5 m high and 75 m across, capped with Lophelia pertusa thickets, 710-1,129 m",
+      "url": "https://jncc.gov.uk/our-work/darwin-mounds-mpa"
+    },
+    {
+      "title": "JNCC — Darwin Mounds selection assessment (fauna: echiuran worms, brittle stars, brisingid starfish, sponges; Madrepora oculata)",
+      "url": "https://data.jncc.gov.uk/data/fec5694b-fda2-4d1d-8d1c-9f13df3f83cc/DarwinMounds-SelectionAssessment-4.0.pdf"
+    },
+    {
+      "title": "Masson et al. (2003), The origin of deep-water, coral-topped mounds in the northern Rockall Trough (fluid expulsion, sandy contourite, tails)",
+      "url": "https://research.ucc.ie/en/publications/the-origin-of-deep-water-coral-topped-mounds-in-the-northern-rock/"
+    },
+    {
+      "title": "GBIF — Darwin Mounds settlement study (950-1,050 m)",
+      "url": "https://gbif.org/dataset/24ef0672-0e0c-460d-b72a-871efeb95a0c"
+    }
+  ],
+  "triangles": 13436,
+  "notes": "Built by code (model_sources/Q632738_darwin_mounds.py, tools/meshkit.py, tools/scenekit.py) with AI assistance. A group of fourteen sandy mounds about 600 m across at about 1,000 m, each 45-75 m across and 2.5-5 m high, capped with thickets of Lophelia coral, with a low sediment tail downstream to the south-west strewn with xenophyophores; on four of them the coral is broken into rubble by trawling; brittle stars, brisingid starfish and sponges among the corals; a few grenadiers. The layout of the mounds, the direction of the tails and the trawl damage are approximate."
+}
