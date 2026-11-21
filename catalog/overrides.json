@@ -60,6 +60,10 @@
       "note": "On her port side at about 42 m off Larnaca; the GEBCO cell gives 12 m.",
       "source": "https://en.wikipedia.org/wiki/MS_Zenobia"
     },
+    "Q596282": { "depth": -52,
+      "note": "On her port side at about 40-53 m off Batticaloa; the GEBCO cell gives 3,085 m.",
+      "source": "https://nsd.ccf.gov.lk/shipwrecks/slebattm21"
+    },
     "Q708046": { "lat": -26.10889,
       "lon": 111.0725,
       "depth": -2560,
