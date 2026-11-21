@@ -1,0 +1,35 @@
+{
+  "id": "Q247567",
+  "kind": "item",
+  "name": "Queen Anne's Revenge",
+  "state": "scattered",
+  "heading": 0,
+  "depth": -7,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — Queen Anne's Revenge (Blackbeard's flagship, lost at Beaufort Inlet in 1718)",
+      "url": "https://en.wikipedia.org/wiki/Queen_Anne%27s_Revenge"
+    },
+    {
+      "title": "North Carolina Department of Natural and Cultural Resources — Queen Anne's Revenge Project",
+      "url": "https://www.qaronline.org/"
+    },
+    {
+      "title": "Queen Anne's Revenge Project — Discovery of the shipwreck (24 cannons raised by 2015, the anchors raised in 2009-2011)",
+      "url": "https://www.qaronline.org/history/discovery-shipwreck"
+    },
+    {
+      "title": "NC Department of Natural and Cultural Resources — Lab conserving treasures recovered from the Queen Anne's Revenge celebrates 10 years",
+      "url": "https://www.dncr.nc.gov/blog/2014/05/30/lab-conserving-treasures-recovered-blackbeards-queen-annes-revenge-shipwreck"
+    }
+  ],
+  "triangles": 28391,
+  "notes": "Built by code (model_sources/Q247567_queen_annes_revenge.py, tools/meshkit.py, tools/sailkit.py, tools/dresskit.py) with AI assistance. In 6-8 m at Beaufort Inlet, North Carolina, as recorded during the excavations: a low mound of ballast stones over a section of the lower hull, concreted iron guns heaped on and around it, four large anchors. Most of the guns, the anchors and hundreds of thousands of objects have since been raised and conserved. The layout and the heading (not published here: 0) are approximate. model_built.glb: Blackbeard's ship as she was in 1718. No marine life in the model: Offlined draws the living things itself."
+}

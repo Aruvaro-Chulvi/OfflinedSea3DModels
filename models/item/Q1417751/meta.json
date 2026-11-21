@@ -1,0 +1,35 @@
+{
+  "id": "Q1417751",
+  "kind": "item",
+  "name": "MV Salem Express",
+  "state": "capsized",
+  "heading": 0,
+  "depth": -30,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — MV Salem Express (sank off Safaga on 17 December 1991)",
+      "url": "https://en.wikipedia.org/wiki/MV_Salem_Express"
+    },
+    {
+      "title": "Divernet — Salem Express: dive into maritime tragedy",
+      "url": "https://divernet.com/world-dives/salem-express-dive-into-maritime-tragedy/"
+    },
+    {
+      "title": "Scuba.com — Salem Express: Egypt's most controversial wreck dive (on her starboard side, divers not allowed inside)",
+      "url": "https://www.scuba.com/blog/egypts-controversial-wreck-dive-salem-express/"
+    },
+    {
+      "title": "Duikersgids — Salem Express (30 m, bow and screws intact)",
+      "url": "https://www.duikersgids.nl/en/dive-spots/salem-express"
+    }
+  ],
+  "triangles": 36056,
+  "notes": "Built by code (model_sources/Q1417751_salem_express.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her starboard side in about 30-32 m off Safaga, largely intact: the white hull and tall superstructure, the bow visor shut, the two funnels side by side with their big S, lifeboats on the sand beside her. A grave (officially 470 died): divers are asked not to enter her. The heading (not published here: 0) is approximate. model_built.glb: the ferry as she was in 1991. No marine life in the model: Offlined draws the living things itself."
+}

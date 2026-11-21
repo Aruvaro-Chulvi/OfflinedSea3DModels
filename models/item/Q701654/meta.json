@@ -1,0 +1,39 @@
+{
+  "id": "Q701654",
+  "kind": "item",
+  "name": "RMS Lancastria",
+  "state": "capsized",
+  "heading": 0,
+  "depth": -25,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — RMS Lancastria (bombed off Saint-Nazaire on 17 June 1940)",
+      "url": "https://en.wikipedia.org/wiki/RMS_Lancastria"
+    },
+    {
+      "title": "GOV.UK — The 75th anniversary of the sinking of HMT Lancastria",
+      "url": "https://www.gov.uk/government/news/the-75th-anniversary-of-the-sinking-of-hmt-lancastria"
+    },
+    {
+      "title": "Royal Navy — The Lancastria story (80th anniversary)",
+      "url": "https://www.royalnavy.mod.uk/news/2020/june/17/200617-lancastria-story"
+    },
+    {
+      "title": "The National Archives — Forgotten tragedy: the loss of HMT Lancastria",
+      "url": "https://media.nationalarchives.gov.uk/index.php/forgotten-tragedy-the-loss-of-hmt-lancastria/"
+    },
+    {
+      "title": "Cirkwi — Sur les traces du Lancastria (wreck at 24 m, 17 km south of Saint-Nazaire, marked by a buoy)",
+      "url": "https://www.cirkwi.com/en/point-interet/671428-sur-les-traces-du-lancastria"
+    }
+  ],
+  "triangles": 45644,
+  "notes": "Built by code (model_sources/Q701654_lancastria.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. In about 24-26 m some 17 km south of Saint-Nazaire. She rolled over as she sank: the model lays her over on her port side, nearly keel up, the superstructure crushed under her, the bomb holes through the decks. The published sources do not describe her attitude on the bottom: attitude, collapse and heading (not published here: 0) are approximate. A war grave (at least 1,738 died): diving is not allowed. model_built.glb: the troopship as she was in 1940. No marine life in the model: Offlined draws the living things itself."
+}

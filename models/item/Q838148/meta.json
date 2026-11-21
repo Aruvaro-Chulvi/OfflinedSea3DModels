@@ -1,0 +1,39 @@
+{
+  "id": "Q838148",
+  "kind": "item",
+  "name": "USS Lexington (CV-2)",
+  "state": "broken",
+  "heading": 0,
+  "depth": -3000,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — USS Lexington (CV-2) (lost at the Battle of the Coral Sea, 8 May 1942; wreck found in 2018)",
+      "url": "https://en.wikipedia.org/wiki/USS_Lexington_(CV-2)"
+    },
+    {
+      "title": "Naval History and Heritage Command — USS Lexington (CV-2)",
+      "url": "https://history.navy.mil/browse-by-topic/ships/aircraft-carriers/uss-lexington.html"
+    },
+    {
+      "title": "NAVSEA — Carderock's unique capabilities help assess damage to sunken Lexington",
+      "url": "https://www.navsea.navy.mil/Media/News/Article-View/Article/2490603/carderocks-unique-capabilities-help-assess-damage-to-sunken-lexington/"
+    },
+    {
+      "title": "USNI News — Video: Paul Allen finds lost World War II carrier USS Lexington",
+      "url": "https://news.usni.org/2018/03/05/video-billionaire-paul-allen-finds-lost-world-war-ii-carrier-uss-lexington"
+    },
+    {
+      "title": "tDAR — The 2018 discovery of «Lady Lex», the first American aircraft carrier casualty",
+      "url": "https://core.tdar.org/document/448990/the-2018-discovery-of-lady-lex-the-first-american-aircraft-carrier-casualty"
+    }
+  ],
+  "triangles": 108740,
+  "notes": "Built by code (model_sources/Q838148_uss_lexington.py, tools/meshkit.py, tools/airkit.py, tools/dresskit.py) with AI assistance. At about 3,000 m in the Coral Sea, broken into three pieces resting together: the flight deck torn by bombs and the explosions, the island and the great flat funnel, the torpedo holes in both sides, and some of her aircraft on the bottom around her — Devastator torpedo bombers and a Wildcat fighter with their national stars. A war grave (216 died). The pieces, the damage, the aircraft and the heading (not published here: 0) are approximate. model_built.glb: the carrier as she was in 1942. No marine life in the model: Offlined draws the living things itself."
+}

@@ -1,0 +1,39 @@
+{
+  "id": "Q1920341",
+  "kind": "item",
+  "name": "SS Mendi",
+  "state": "broken",
+  "heading": 270,
+  "depth": -40,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — SS Mendi (sunk 21 February 1917 after a collision with SS Darro; 646 died)",
+      "url": "https://en.wikipedia.org/wiki/SS_Mendi"
+    },
+    {
+      "title": "Wessex Archaeology — SS Mendi geophysical assessment (multibeam bathymetry of the wreck)",
+      "url": "https://www.wessexarch.co.uk/ss-mendi-geophysical-assessment"
+    },
+    {
+      "title": "Wessex Archaeology — SS Mendi report for English Heritage (2008)",
+      "url": "https://www.wessexarch.co.uk/sites/default/files/projects/ss-Mendi/ssMendi-Report-final_64442-02_Apr-08-figs.pdf"
+    },
+    {
+      "title": "Historic England — The South African Native Labour Corps and the wreck of the SS Mendi",
+      "url": "https://historicengland.org.uk/whats-new/first-world-war-home-front/what-we-already-know/sea/ssmendi"
+    },
+    {
+      "title": "Maritime Archaeology Trust — SS Mendi (Forgotten Wrecks of the First World War)",
+      "url": "https://museum.maritimearchaeologytrust.org/2022/11/09/ss-mendi/"
+    }
+  ],
+  "triangles": 31368,
+  "notes": "Built by code (model_sources/Q1920341_mendi.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her starboard side in about 40 m, roughly east-west with the bow to the west: the port side standing up from the bottom, the decks fallen in, the boilers showing through the broken plating, masts and funnel gone. A protected place (Protection of Military Remains Act): 646 died. The amount of collapse is approximate. model_built.glb: the steamer as she was in 1917. No marine life in the model: Offlined draws the living things itself."
+}

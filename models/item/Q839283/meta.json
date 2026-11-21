@@ -1,0 +1,35 @@
+{
+  "id": "Q839283",
+  "kind": "item",
+  "name": "HMS Victory (1737)",
+  "state": "scattered",
+  "heading": 0,
+  "depth": -75,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — HMS Victory (1737) (lost on 5 October 1744; site found in 2008)",
+      "url": "https://en.wikipedia.org/wiki/HMS_Victory_(1737)"
+    },
+    {
+      "title": "GOV.UK — HMS Victory 1744: a rare gift to the Foundation (found at a depth of 80 m in the western Channel)",
+      "url": "https://www.gov.uk/government/news/hms-victory-1744-a-rare-gift-to-foundation"
+    },
+    {
+      "title": "Live Science — In photos: the HMS Victory wreck site",
+      "url": "https://www.livescience.com/48492-in-photos-the-hms-victory-wreck-site.html"
+    },
+    {
+      "title": "Academia.edu — monitoring of the HMS Victory (1744) site (74 m; seven areas, all disturbed by fishing and illicit salvage)",
+      "url": "https://www.academia.edu/3597444/"
+    }
+  ],
+  "triangles": 43290,
+  "notes": "Built by code (model_sources/Q839283_hms_victory_1737.py, tools/meshkit.py, tools/sailkit.py, tools/dresskit.py) with AI assistance. At about 75-80 m in the western English Channel: a scatter of bronze guns (the great 42-pounders among them) and two anchors over the low, mostly buried remains of the bottom of the hull, with timbers and shot around; the site has been disturbed by trawling and illicit salvage. Some 1,100 men died. The layout of the guns and remains and the heading (not published here: 0) are approximate. model_built.glb: the first-rate as she was in 1744. No marine life in the model: Offlined draws the living things itself."
+}

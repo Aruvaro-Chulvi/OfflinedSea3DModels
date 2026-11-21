@@ -1,0 +1,35 @@
+{
+  "id": "Q2003934",
+  "kind": "item",
+  "name": "USS Juneau (CL-52)",
+  "state": "broken",
+  "heading": 0,
+  "depth": -4200,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — USS Juneau (CL-52) (sunk by I-26 on 13 November 1942; wreck found in 2018)",
+      "url": "https://en.wikipedia.org/wiki/USS_Juneau_(CL-52)"
+    },
+    {
+      "title": "Smithsonian Magazine — Wreck of USS Juneau discovered in the Solomon Islands",
+      "url": "https://www.smithsonianmag.com/smart-news/wreck-uss-juneau-discovered-solomon-islands-180968556/"
+    },
+    {
+      "title": "The Maritime Executive — R/V Petrel finds the Sullivan brothers' ship",
+      "url": "https://maritime-executive.com/article/paul-allen-s-research-vessel-finds-sullivan-brothers-ship"
+    },
+    {
+      "title": "Peninsula Clarion (AP) — Wreckage of ship blown apart in WWII found (bow and stern close, debris over a mile)",
+      "url": "https://www.peninsulaclarion.com/news/wreckage-of-ship-blown-apart-in-wwii-found-offering-closure/"
+    }
+  ],
+  "triangles": 61873,
+  "notes": "Built by code (model_sources/Q2003934_uss_juneau.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. At about 4,200 m off the Solomon Islands, blown apart by the explosion of her forward magazine: the stern nearly upright, the bow on its side not far away, a piece of the middle upside down, 5-inch mounts and plating spread around (the real debris field runs for more than a mile). A war grave (687 died, the five Sullivan brothers among them). The pieces, their layout and the heading (not published here: 0) are approximate. model_built.glb: the cruiser as she was in 1942. No marine life in the model: Offlined draws the living things itself."
+}

@@ -1,0 +1,35 @@
+{
+  "id": "Q5653859",
+  "kind": "item",
+  "name": "ARA San Juan",
+  "state": "broken",
+  "heading": 0,
+  "depth": -907,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — ARA San Juan (S-42) (lost on 15 November 2017; wreck found on 16 November 2018)",
+      "url": "https://en.wikipedia.org/wiki/ARA_San_Juan_(S-42)"
+    },
+    {
+      "title": "Ocean Infinity — Ocean Infinity locates the missing Argentinian submarine ARA San Juan (920 m, in a ravine)",
+      "url": "https://oceaninfinity.com/news/ocean-infinity-locates-the-missing-argentinian-submarine-ara-san-juan/"
+    },
+    {
+      "title": "The Maritime Executive — Argentina's submarine San Juan found",
+      "url": "https://maritime-executive.com/article/argentina-s-submarine-san-juan-found"
+    },
+    {
+      "title": "Baird Maritime — Missing Argentine submarine found after one-year search (collapsed hull, debris over 70 m)",
+      "url": "https://www.bairdmaritime.com/?p=66458"
+    }
+  ],
+  "triangles": 40270,
+  "notes": "Built by code (model_sources/Q5653859_ara_san_juan.py, tools/meshkit.py, tools/sailkit.py, tools/dresskit.py) with AI assistance. At about 907-920 m in a ravine some 460 km off the Valdés peninsula: the pressure hull in one larger piece, imploded, the stern crushed and telescoped, the plating split, debris spread over some 70 m. A memorial: 44 died. The damage, the layout and the heading (not published here: 0) are approximate. model_built.glb: the submarine as she was in 2017. No marine life in the model: Offlined draws the living things itself."
+}

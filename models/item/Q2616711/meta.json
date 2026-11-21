@@ -1,0 +1,39 @@
+{
+  "id": "Q2616711",
+  "kind": "item",
+  "name": "Antikythera wreck",
+  "state": "scattered",
+  "heading": 0,
+  "depth": -50,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — Antikythera wreck (1st century BC; found in 1900)",
+      "url": "https://en.wikipedia.org/wiki/Antikythera_wreck"
+    },
+    {
+      "title": "University of Geneva — New discoveries on the wreck of Antikythera (2023)",
+      "url": "https://www.unige.ch/medias/en/2023/nouvelles-decouvertes-sur-lepave-danticythere"
+    },
+    {
+      "title": "University of Geneva — Antikythera: a part of the ancient ship brought to the surface (2025)",
+      "url": "https://www.unige.ch/medias/en/2025/anticythere-une-portion-du-navire-antique-remonte-la-surface"
+    },
+    {
+      "title": "Smithsonian — Divers pull marble head of Hercules from the shipwreck (2022, boulders of up to 8.5 tonnes moved)",
+      "url": "https://www.smithsonianmag.com/smart-news/divers-pull-marble-head-hercules-shipwreck-greece-180980306/"
+    },
+    {
+      "title": "The Maritime Executive — Archaeologists find more treasures from the Antikythera wreck",
+      "url": "https://maritime-executive.com/article/archaeologists-find-more-treasures-from-the-antikythera-wreck"
+    }
+  ],
+  "triangles": 32064,
+  "notes": "Built by code (model_sources/Q2616711_antikythera_wreck.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Off the east coast of Antikythera at some 45-55 m: the low mound of the buried hull with timbers at its edges, broken amphorae and fine pottery spilled around it, lead anchor stocks, bronze nails, marble statues still lying in the sand, and boulders fallen from the cliff over parts of the site. The model sets it on flat ground at about 50 m: the slope, the layout and the heading (not published here: 0) are approximate. No marine life in the model: Offlined draws the living things itself."
+}

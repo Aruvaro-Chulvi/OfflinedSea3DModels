@@ -1,0 +1,35 @@
+{
+  "id": "Q2164015",
+  "kind": "item",
+  "name": "USS Thresher (SSN-593)",
+  "state": "scattered",
+  "heading": 0,
+  "depth": -2560,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — USS Thresher (SSN-593) (lost on 10 April 1963 with 129 men)",
+      "url": "https://en.wikipedia.org/wiki/USS_Thresher_(SSN-593)"
+    },
+    {
+      "title": "GlobalSecurity — SSN 593 Thresher (six major sections in a debris field about 400 yards square)",
+      "url": "https://www.globalsecurity.org/military/agency/navy/ssn-593.htm"
+    },
+    {
+      "title": "Naval History and Heritage Command — Thresher sail mosaic (the sail upside down, the planes fully reversed)",
+      "url": "https://ibiblio.org/hyperwar/OnlineLibrary/photos/images/h97000/h97563c.htm"
+    },
+    {
+      "title": "USNI Proceedings — Thresher Freedom of Information Act request yielding results (2019)",
+      "url": "https://m.usni.org/magazines/proceedings/2019/may/thresher-freedom-information-act-request-yielding-results"
+    }
+  ],
+  "triangles": 105590,
+  "notes": "Built by code (model_sources/Q2164015_uss_thresher.py, tools/meshkit.py, tools/sailkit.py, tools/dresskit.py) with AI assistance. At about 2,560 m some 220 miles east of Cape Cod: the six major sections of the broken hull — bow, sonar dome, operations spaces, engineering spaces, tail section with its rudders and propeller, and the sail lying upside down — in a debris field some 365 m across, the tail off to starboard, with plating, piping and battery cells around. A memorial: 129 died. The layout of the pieces and their headings are approximate. model_built.glb: the submarine as she was in 1963. No marine life in the model: Offlined draws the living things itself."
+}

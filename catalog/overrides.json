@@ -226,6 +226,82 @@
     "Q1333909": { "depth": -1000,
       "note": "At about 1,000 m some 30 nautical miles east of Gibraltar.",
       "source": "https://en.wikipedia.org/wiki/HMS_Ark_Royal_(91)"
+    },
+    "Q504096": { "lat": 49.46667,
+      "lon": -10.76667,
+      "depth": -157,
+      "note": "Upright at about 150-160 m some 120 miles west of Fastnet. Wikidata's point has a typo in the longitude (19°46′W for 10°46′W) that puts her in 3,900 m.",
+      "source": "https://www.britannica.com/topic/Carpathia"
+    },
+    "Q701654": { "depth": -25,
+      "note": "Wreck at 24-26 m, 17 km south of Saint-Nazaire; Offlined's GEBCO terrain at the Wikidata point gives 11 m.",
+      "source": "https://www.cirkwi.com/en/point-interet/671428-sur-les-traces-du-lancastria"
+    },
+    "Q703586": { "depth": -70,
+      "note": "On her port side at about 70 m, the hull rising to 50 m; Offlined's GEBCO terrain at the Wikidata point gives 22 m.",
+      "source": "https://en.wikipedia.org/wiki/SS_General_von_Steuben"
+    },
+    "Q1041233": { "depth": -4700,
+      "note": "Found by Odyssey at nearly 4,700 m (exact position not published); Offlined's GEBCO terrain at the Wikidata point gives 3,764 m.",
+      "source": "https://en.wikipedia.org/wiki/SS_Gairsoppa"
+    },
+    "Q1417751": { "depth": -30,
+      "note": "On her starboard side at 30-32 m near Hyndman reef; Offlined's GEBCO terrain at the Wikidata point gives 25 m.",
+      "source": "https://www.duikersgids.nl/en/dive-spots/salem-express"
+    },
+    "Q1618842": { "lat": 12.1084,
+      "lon": -68.28152,
+      "depth": -30,
+      "note": "On a sandy plateau at about 30 m off Angel City; the GEBCO cell at the Wikidata point is off the drop-off (130 m): the pin is moved about 1 km inshore, where Offlined's terrain gives 34 m.",
+      "source": "https://infobonaire.com/?p=10541"
+    },
+    "Q686392": { "depth": -2059,
+      "note": "Found by David Mearns at 2,059 m; Offlined's GEBCO terrain at the Wikidata point gives 1,920 m.",
+      "source": "https://awm.gov.au/encyclopedia/centaur"
+    },
+    "Q1502183": { "depth": -145,
+      "note": "Standing on end, the bow buried in the bottom at about 140-150 m, the stern at about 75 m; Offlined's GEBCO terrain at the Wikidata point gives 74 m.",
+      "source": "https://divingalmanac.com/most-vertical-wreck"
+    },
+    "Q155430": { "lat": 8.76605,
+      "lon": 167.68547,
+      "depth": -35,
+      "note": "Capsized on the reef slope off Enubuj, the stern on the reef, the bow at about 35 m; the GEBCO cell at the Wikidata point gives 154 m: the pin is moved 1.5 km to where Offlined's terrain gives 42 m.",
+      "source": "https://img.pacificwrecks.com/ship/german/prinz_eugen.html"
+    },
+    "Q598221": { "depth": -190,
+      "note": "Upside down at about 180-200 m; Offlined's GEBCO terrain at the Wikidata point gives 171 m.",
+      "source": "https://divernet.com/scuba-diving/deep-historic-war-wrecks-located-in-philippines/"
+    },
+    "Q2003934": { "depth": -4200,
+      "note": "Found by R/V Petrel at about 4,200 m; Offlined's GEBCO terrain at the Wikidata point gives 4,445 m.",
+      "source": "https://en.wikipedia.org/wiki/USS_Juneau_(CL-52)"
+    },
+    "Q320967": { "depth": -5490,
+      "note": "Upright at about 5,490 m; Offlined's GEBCO terrain at the Wikidata point gives 5,293 m.",
+      "source": "https://en.wikipedia.org/wiki/Japanese_aircraft_carrier_Akagi"
+    },
+    "Q2164015": { "depth": -2560,
+      "note": "Debris field at about 2,560 m (8,400 ft); Offlined's GEBCO terrain at the Wikidata point gives 2,318 m.",
+      "source": "https://en.wikipedia.org/wiki/USS_Thresher_(SSN-593)"
+    },
+    "Q2616711": { "depth": -50,
+      "note": "On the slope off the east coast at 45-55 m; Offlined's GEBCO terrain at the Wikidata point gives 18 m.",
+      "source": "https://www.smithsonianmag.com/smart-news/divers-pull-marble-head-hercules-shipwreck-greece-180980306/"
+    },
+    "Q281442": { "lat": -9.40355,
+      "lon": 159.984,
+      "depth": -131,
+      "note": "On her port side at about 130 m (430 ft) off Lunga Point; the GEBCO cell at the Wikidata point gives 248 m: the pin is moved 1.6 km to where Offlined's terrain gives 147 m.",
+      "source": "https://img.pacificwrecks.com/ship/usn/CL-51.html"
+    },
+    "Q839283": { "depth": -75,
+      "note": "Site at 74-80 m in the western Channel (figures published up to 100 m); Offlined's GEBCO terrain at the Wikidata point gives 71 m.",
+      "source": "https://www.gov.uk/government/news/hms-victory-1744-a-rare-gift-to-foundation"
+    },
+    "Q571310": { "depth": -30,
+      "note": "About 30 m (100 ft) off Bodie Island; Offlined's GEBCO terrain at the Wikidata point gives 26 m.",
+      "source": "https://monitor.noaa.gov/shipwrecks/u-85.html"
     }
   }
 }

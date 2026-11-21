@@ -1,0 +1,35 @@
+{
+  "id": "Q1618842",
+  "kind": "item",
+  "name": "Hilma Hooker",
+  "state": "capsized",
+  "heading": 180,
+  "depth": -30,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — Hilma Hooker (sank off Bonaire on 12 September 1984)",
+      "url": "https://en.wikipedia.org/wiki/Hilma_Hooker"
+    },
+    {
+      "title": "Rijksdienst voor het Cultureel Erfgoed (MASS) — Hilma Hooker",
+      "url": "https://mass.cultureelerfgoed.nl/hilma-hooker"
+    },
+    {
+      "title": "Scuba Diving — The history of Bonaire's Hilma Hooker shipwreck",
+      "url": "https://www.scubadiving.com/history-bonaire-hilma-hooker-shipwreck"
+    },
+    {
+      "title": "Infobonaire — Hilma Hooker (on her starboard side, bow south, stern with rudder and propeller north)",
+      "url": "https://infobonaire.com/?p=10541"
+    }
+  ],
+  "triangles": 24870,
+  "notes": "Built by code (model_sources/Q1618842_hilma_hooker.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her starboard side on a sandy plateau at about 30 m off Bonaire, her port side at about 18 m: the hull whole, the bow to the south, the stern with its rudder and propeller to the north, the masts lying out over the sand, the bridge house aft. model_built.glb: the cargo ship as she was in 1984. No marine life in the model: Offlined draws the living things itself."
+}

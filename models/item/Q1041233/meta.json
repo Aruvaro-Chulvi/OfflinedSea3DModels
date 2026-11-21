@@ -1,0 +1,35 @@
+{
+  "id": "Q1041233",
+  "kind": "item",
+  "name": "SS Gairsoppa",
+  "state": "intact",
+  "heading": 0,
+  "depth": -4700,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — SS Gairsoppa (sunk by U-101 on 17 February 1941; found in 2011 at nearly 4,700 m)",
+      "url": "https://en.wikipedia.org/wiki/SS_Gairsoppa"
+    },
+    {
+      "title": "gCaptain — Largest treasure find: the Gairsoppa found upright with her holds open",
+      "url": "https://gcaptain.com/largest-treasure-find-nazis/"
+    },
+    {
+      "title": "Odyssey Marine Exploration — Gairsoppa operations",
+      "url": "https://www.shipwreck.net/gairsoppa-operations"
+    },
+    {
+      "title": "Irish Examiner — Exploration of ill-fated SS Gairsoppa reveals treasure from the deep",
+      "url": "https://www.irishexaminer.com/lifestyle/arid-20238719.html"
+    }
+  ],
+  "triangles": 40729,
+  "notes": "Built by code (model_sources/Q1041233_gairsoppa.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright and intact at nearly 4,700 m some 300 miles south-west of Ireland: the black hull, the holds open, the bridge house, the funnel stump, the lifeboat cradles, the torpedo hole, the opening Odyssey cut into hold 2 in 2012 to raise the silver (a few bars drawn on the bottom beside it). The exact position is not published: the catalog pin is approximate, and so are the damage and the heading (not published here: 0). model_built.glb: the steamer as she was in 1941. No marine life in the model: Offlined draws the living things itself."
+}

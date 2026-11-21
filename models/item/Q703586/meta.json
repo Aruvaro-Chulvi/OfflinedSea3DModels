@@ -1,0 +1,35 @@
+{
+  "id": "Q703586",
+  "kind": "item",
+  "name": "SS General von Steuben",
+  "state": "capsized",
+  "heading": 0,
+  "depth": -70,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — SS General von Steuben (sunk by S-13 on 10 February 1945; lies on her port side at about 70 m)",
+      "url": "https://en.wikipedia.org/wiki/SS_General_von_Steuben"
+    },
+    {
+      "title": "Geosciences (MDPI) — Using remote sensing data to identify large bottom objects: the case of World War II shipwreck of General von Steuben",
+      "url": "https://www.mdpi.com/2076-3263/10/6/240"
+    },
+    {
+      "title": "Ocean Liners Magazine — The General von Steuben disaster",
+      "url": "https://oceanlinersmagazine.com/2021/02/09/the-general-von-steuben-disaster/"
+    },
+    {
+      "title": "Traces of War — Ship wreck SS General von Steuben",
+      "url": "https://tracesofwar.com/sights/103269/Ship-Wreck-SS-General-von-Steuben.htm"
+    }
+  ],
+  "triangles": 46311,
+  "notes": "Built by code (model_sources/Q703586_steuben.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her port side at about 70 m off the Polish coast, the hull rising to about 50 m: the torpedo holes in the starboard bow below the bridge, the superstructure rotting through, the two funnels fallen beside her. A war grave (some 4,000 died). The collapse and the heading (not published here: 0) are approximate. model_built.glb: the liner as she was in 1945. No marine life in the model: Offlined draws the living things itself."
+}

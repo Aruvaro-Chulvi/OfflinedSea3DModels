@@ -1,0 +1,39 @@
+{
+  "id": "Q686392",
+  "kind": "item",
+  "name": "AHS Centaur",
+  "state": "broken",
+  "heading": 0,
+  "depth": -2059,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — AHS Centaur (sunk by I-177 on 14 May 1943; wreck found in 2009)",
+      "url": "https://en.wikipedia.org/wiki/AHS_Centaur"
+    },
+    {
+      "title": "Australian War Memorial — Centaur (Hospital ship)",
+      "url": "https://awm.gov.au/encyclopedia/centaur"
+    },
+    {
+      "title": "Australian War Memorial — The sinking of the Centaur (the wreck in one piece, the hull broken in one or two places)",
+      "url": "https://www.awm.gov.au/articles/blog/the-sinking-of-the-centaur"
+    },
+    {
+      "title": "State Library of Queensland — Discovery of the Centaur",
+      "url": "https://www.slq.qld.gov.au/blog/discovery-centaur"
+    },
+    {
+      "title": "Science Illustrated — Wreck-hunters find sunken hospital ship (red crosses and the number 47 still visible)",
+      "url": "https://scienceillustrated.com.au/blog/technology/wreck-hunters-find-sunken-hospital-ship/"
+    }
+  ],
+  "triangles": 36723,
+  "notes": "Built by code (model_sources/Q686392_centaur.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. At 2,059 m some 30 nautical miles east of Moreton Island: very badly damaged, the hull broken through forward where the torpedo struck but in one piece, the houses fallen in, the masts and funnel gone, the green band, the red crosses and the number 47 still on her sides. The published sources do not describe how she lies: attitude, damage and heading (not published here: 0) are approximate. A war grave (268 died). model_built.glb: the hospital ship as she was in 1943. No marine life in the model: Offlined draws the living things itself."
+}

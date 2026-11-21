@@ -1,0 +1,35 @@
+{
+  "id": "Q700168",
+  "kind": "item",
+  "name": "MV Goya",
+  "state": "broken",
+  "heading": 0,
+  "depth": -76,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — MV Goya (torpedoed by L-3 on 16 April 1945; wreck found in 2003)",
+      "url": "https://en.wikipedia.org/wiki/MV_Goya"
+    },
+    {
+      "title": "Royal Navy — HMS Echo surveys Second World War shipwrecks in the Baltic (2021: Goya broken towards the bow)",
+      "url": "https://www.royalnavy.mod.uk/news/2021/february/05/210205-hms-echo-surveys-shipwrecks"
+    },
+    {
+      "title": "Divers24 — Baltictech group conducted an inventory of the Goya wreck",
+      "url": "https://divers24.com/baltictech-group-conducted-an-inventory-of-the-goya-wreck/"
+    },
+    {
+      "title": "Divernet — Divers find dinner bell on deep wreck (Goya, 76 m)",
+      "url": "https://divernet.com/scuba-news/divers-find-dinner-bell-on-deep-wreck/"
+    }
+  ],
+  "triangles": 46254,
+  "notes": "Built by code (model_sources/Q700168_goya.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright at about 76 m in the Baltic: the hull whole from the forward hatches aft, the bridge house and the short funnel, the king posts, the torpedo holes, the bow broken off and twisted, lost fishing nets draped over her. A war grave (more than 6,000 died): diving is forbidden. The break, the nets, the side of the torpedo hits and the heading (not published here: 0) are approximate. model_built.glb: the transport as she was in 1945. No marine life in the model: Offlined draws the living things itself."
+}

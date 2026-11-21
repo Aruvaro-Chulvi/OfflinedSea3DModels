@@ -1,0 +1,35 @@
+{
+  "id": "Q686128",
+  "kind": "item",
+  "name": "SS Baron Gautsch",
+  "state": "intact",
+  "heading": 0,
+  "depth": -40,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — SS Baron Gautsch (sunk on an Austro-Hungarian mine off Rovinj, 13 August 1914)",
+      "url": "https://en.wikipedia.org/wiki/SS_Baron_Gautsch"
+    },
+    {
+      "title": "Istria tourist board — Baron Gautsch wreck, Rovinj diving",
+      "url": "https://www.istra.hr/en/destinations/rovinj/do-not-miss/sports-and-outdoor/diving/1383"
+    },
+    {
+      "title": "PADI — Baron Gautsch dive site (upright at 40 m, upper deck at 28 m)",
+      "url": "https://www.padi.com/dive-site/croatia/baron-gautsch-2/"
+    },
+    {
+      "title": "Total Croatia News — SS Baron Gautsch, the biggest attraction for divers in Croatia",
+      "url": "https://total-croatia-news.com/news/travel/ss-baron-gautsch/"
+    }
+  ],
+  "triangles": 29835,
+  "notes": "Built by code (model_sources/Q686128_baron_gautsch.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright and well preserved in 38-40 m off Rovinj, the upper deck at about 28 m: the black hull, the white house with its open promenade deck, railings and davits, the funnel stump, the broken masts, the mine hole forward on the port side, the propellers removed. A protected cultural monument (some 147 died). The heading (not published here: 0) is approximate. model_built.glb: the steamer as she was in 1914. No marine life in the model: Offlined draws the living things itself."
+}

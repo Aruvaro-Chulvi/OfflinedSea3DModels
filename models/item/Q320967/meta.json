@@ -1,0 +1,35 @@
+{
+  "id": "Q320967",
+  "kind": "item",
+  "name": "Akagi",
+  "state": "intact",
+  "heading": 0,
+  "depth": -5490,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — Japanese aircraft carrier Akagi (scuttled after the Battle of Midway, 5 June 1942)",
+      "url": "https://en.wikipedia.org/wiki/Japanese_aircraft_carrier_Akagi"
+    },
+    {
+      "title": "Nautilus Live — First visual survey of IJN Akagi (10 September 2023)",
+      "url": "https://nautiluslive.org/video/2023/09/17/first-visual-survey-ijn-akagi-chicheng-historic-battle-midway-shipwreck"
+    },
+    {
+      "title": "NOAA Ocean Exploration — Akagi photogrammetry project",
+      "url": "https://oceanexplorer.noaa.gov/photogrammetry/akagi/"
+    },
+    {
+      "title": "Nautilus Live — Exploring iconic shipwrecks of the Battle of Midway provide never-seen details",
+      "url": "https://nautiluslive.org/blog/2023/09/14/exploring-iconic-shipwrecks-battle-midway-provide-never-seen-details"
+    }
+  ],
+  "triangles": 63451,
+  "notes": "Built by code (model_sources/Q320967_akagi.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright at about 5,490 m north-west of Midway: the bow driven deep into the seabed with the chrysanthemum crest, the flight deck and the burnt-out hangar fallen in, the island on the port side, the funnel curving down over the starboard side, the 20 cm casemate guns aft, debris along the port side. A war grave (267 died). The damage and the heading (not published here: 0) are approximate. model_built.glb: the carrier as she was in 1942. No marine life in the model: Offlined draws the living things itself."
+}

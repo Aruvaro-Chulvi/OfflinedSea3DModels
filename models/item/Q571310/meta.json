@@ -1,0 +1,35 @@
+{
+  "id": "Q571310",
+  "kind": "item",
+  "name": "U-85",
+  "state": "intact",
+  "heading": 0,
+  "depth": -30,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "NOAA Monitor National Marine Sanctuary — U-85 (Battle of the Atlantic)",
+      "url": "https://monitor.noaa.gov/shipwrecks/u-85.html"
+    },
+    {
+      "title": "Wikipedia — German submarine U-85 (1941) (sunk by USS Roper on 14 April 1942)",
+      "url": "https://en.wikipedia.org/wiki/German_submarine_U-85_(1941)"
+    },
+    {
+      "title": "NOAA — World War II: Battle of the Atlantic expeditions (U-85, U-352, U-701 surveyed in 2008)",
+      "url": "https://monitor.noaa.gov/science/world-war-2-battle-of-the-atlantic-expeditions.html"
+    },
+    {
+      "title": "Scuba Diver Life — Preserving America's underwater battlefield: U-85 (shell damage behind the conning tower)",
+      "url": "https://scubadiverlife.com/preserving-americas-underwater-battlefield-u-85/"
+    }
+  ],
+  "triangles": 22625,
+  "notes": "Built by code (model_sources/Q571310_u85.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. In about 30 m off Bodie Island, North Carolina, on the sand off the Bodie Island lighthouse: largely intact, the conning tower with the shell damage of the Roper's gunfire behind it, the deck gun, the outer casing rotted in places over the frames, the bow cracked showing the torpedo tubes. A war grave: all 46 men died. The list, the rot of the casing and the heading (not published here: 0) are approximate. model_built.glb: the U-boat as she was in 1942. No marine life in the model: Offlined draws the living things itself."
+}

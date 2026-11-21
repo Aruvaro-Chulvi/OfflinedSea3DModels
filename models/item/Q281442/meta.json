@@ -1,0 +1,39 @@
+{
+  "id": "Q281442",
+  "kind": "item",
+  "name": "USS Atlanta (CL-51)",
+  "state": "capsized",
+  "heading": 0,
+  "depth": -131,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Wikipedia — USS Atlanta (CL-51) (scuttled off Lunga Point on 13 November 1942)",
+      "url": "https://en.wikipedia.org/wiki/USS_Atlanta_(CL-51)"
+    },
+    {
+      "title": "Naval History and Heritage Command — Atlanta III (CL-51)",
+      "url": "https://www.history.navy.mil/research/histories/ship-histories/danfs/a/atlanta-cl-51-iii.html"
+    },
+    {
+      "title": "Pacific Wrecks — USS Atlanta (CL-51) (on her port side at 430 feet in Iron Bottom Sound)",
+      "url": "https://img.pacificwrecks.com/ship/usn/CL-51.html"
+    },
+    {
+      "title": "US Navy — Expedition reveals thirteen shipwrecks from WWII battles off Guadalcanal (2025)",
+      "url": "https://www.navy.mil/Press-Office/News-Stories/display-news/Article/4272152/expedition-reveals-thirteen-shipwrecks-from-wwii-battles-off-guadalcanal/"
+    },
+    {
+      "title": "National Geographic — A new expedition to Guadalcanal reveals WWII shipwrecks for the first time",
+      "url": "https://www.nationalgeographic.com/history/article/shipwrecks-wwii-guadalcanal-warships"
+    }
+  ],
+  "triangles": 41448,
+  "notes": "Built by code (model_sources/Q281442_uss_atlanta.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her port side at about 130 m (430 ft) off Lunga Point in Ironbottom Sound: the hull whole, the eight twin 5-inch mounts, the bridge and the two funnels, the superstructure riddled by gunfire, the torpedo hole amidships, masts gone. A war grave (some 170 died, Rear Admiral Norman Scott among them). The damage and the heading (not published here: 0) are approximate. model_built.glb: the cruiser as she was in 1942. No marine life in the model: Offlined draws the living things itself."
+}
