@@ -1,0 +1,39 @@
+{
+  "id": "Q1060785",
+  "kind": "item",
+  "name": "HMS Hampshire",
+  "state": "capsized",
+  "heading": 0,
+  "depth": -62,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "University of Dundee — HMS Hampshire 100: survey report (2016 ROV survey: she capsized as she sank, upside down in about 60 m, large debris field)",
+      "url": "https://discovery.dundee.ac.uk/en/publications/hms-hampshire-100-survey-report/"
+    },
+    {
+      "title": "The Orcadian — first images from the Hampshire ROV survey (the port side bronze propeller; the rudder on the seabed)",
+      "url": "https://orcadian.co.uk/first-images-hampshire-rov-survey-released/"
+    },
+    {
+      "title": "Royal Navy (2023) — divers capture WW1 Royal Navy wrecks in stunning detail: the shattered stern of HMS Hampshire",
+      "url": "https://www.royalnavy.mod.uk/news/2023/june/15/20230615-divers-capture-ww1-royal-navy-wrecks-in-stunning-detail"
+    },
+    {
+      "title": "Canmore — HMS Hampshire, Marwick Head, Orkney",
+      "url": "https://canmore.org.uk/site/102221"
+    },
+    {
+      "title": "HMS Hampshire (1903) — Devonshire-class armoured cruiser, mined on 5 June 1916 with Lord Kitchener aboard",
+      "url": "https://en.wikipedia.org/wiki/HMS_Hampshire_(1903)"
+    }
+  ],
+  "triangles": 47036,
+  "notes": "Built by code (model_sources/Q1060785_hms_hampshire.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 60-70 m off Marwick Head, her upperworks crushed into the bottom: the hull torn forward on the port side where the mine struck, the stern shattered, the rudder lying on the seabed beside it, the port bronze propeller still on its shaft (the starboard one was taken by illegal salvors between 1977 and 1983), the casemate guns along the side, a wide debris field of plating about the stern and the bow. The exact angle, extent of the damage and heading (not published here: 0) are approximate. A war grave. model_built.glb: the cruiser as she was in 1916. No marine life in the model: Offlined draws the living things itself."
+}

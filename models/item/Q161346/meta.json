@@ -1,0 +1,35 @@
+{
+  "id": "Q161346",
+  "kind": "item",
+  "name": "Blücher",
+  "state": "capsized",
+  "heading": 0,
+  "depth": -90,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "X-Ray Mag — the Blücher wreck, WWII German cruiser in Norway: on the bottom of the Oslofjord at 90 m",
+      "url": "https://xray-mag.com/content/blucher-wreck-wwii-german-cruiser-norway"
+    },
+    {
+      "title": "Oslofjordmuseet — Tales of the Blücher (the wreck on the seabed of the fjord; protected since 2016, no diving without permission)",
+      "url": "https://mia.no/oslofjordmuseet/tales-of-the-blucher"
+    },
+    {
+      "title": "Advanced Diver Magazine — Wreck of the German heavy cruiser Blücher (oil removal, continued seepage)",
+      "url": "https://advanceddivermagazine.com/blucher.html"
+    },
+    {
+      "title": "German cruiser Blücher — Admiral Hipper-class heavy cruiser sunk in the Drøbak Sound on 9 April 1940",
+      "url": "https://en.wikipedia.org/wiki/German_cruiser_Bl%C3%BCcher"
+    }
+  ],
+  "triangles": 57518,
+  "notes": "Built by code (model_sources/Q161346_blucher.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 90 m on the bottom of the Oslofjord in the Drøbak Sound, rolled over to port: the keel uppermost, the upperworks (turrets, tower bridge, funnel, masts) crushed into the bottom under her, the holes of the two torpedoes from Oscarsborg in her port side amidships and shell holes along her sides, the three propellers and the rudder in place, plating fallen about her. The exact angle and heading (not published here: 0) are approximate; one of her Arado floatplanes was raised in 1994. model_built.glb: the cruiser as she sailed in April 1940. No marine life in the model: Offlined draws the living things itself."
+}

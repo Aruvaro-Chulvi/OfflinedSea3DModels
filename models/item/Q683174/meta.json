@@ -1,0 +1,31 @@
+{
+  "id": "Q683174",
+  "kind": "item",
+  "name": "Armenia",
+  "state": "intact",
+  "heading": 0,
+  "depth": -1500,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Russian Geographical Society — Scarier than Titanic: Armenia ship found 79 years after the wreck (sonar in March 2020, identified in April 2020 with an underwater robot at about 1,500 m; she did not split and stands on an even keel; two bomb hit zones)",
+      "url": "https://rgo.ru/en/activity/redaction/news/scarier-than-titanic-armenia-ship-found-79-years-after-the-wreck/"
+    },
+    {
+      "title": "Russian Geographical Society — a detailed version of the inspection of the hospital ship Armenia (video)",
+      "url": "https://rgo.ru/en/activity/redaction/news/we-publish-a-detailed-version-of-the-inspection-of-hospital-ship-armenia-video/"
+    },
+    {
+      "title": "Soviet hospital ship Armenia — Adzharia-class passenger ship, sunk off Yalta on 7 November 1941",
+      "url": "https://en.wikipedia.org/wiki/Soviet_hospital_ship_Armenia"
+    }
+  ],
+  "triangles": 41506,
+  "notes": "Built by code (model_sources/Q683174_armenia.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On an even keel in one piece at about 1,500 m some 15 nautical miles off Yalta, sunk into the mud up to her bilges: the white hull and superstructure with the red crosses of a hospital ship on her sides and funnel, the funnel standing, the masts broken short, two zones of damage torn in her sides forward and aft, plating fallen beside them. The exact damage, the state of the masts and the heading (not published here: 0) are approximate. Some 5,000 or more people died with her: a war grave. model_built.glb: the ship as a hospital transport in 1941. No marine life in the model: Offlined draws the living things itself."
+}

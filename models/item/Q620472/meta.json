@@ -1,0 +1,35 @@
+{
+  "id": "Q620472",
+  "kind": "item",
+  "name": "HMS Royal Oak",
+  "state": "capsized",
+  "heading": 0,
+  "depth": -31,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Canmore — HMS Royal Oak, Scapa Bay: capsized as she sank, lies almost upside down in about 33 m; designated war grave",
+      "url": "https://canmore.org.uk/site/102373/hms-royal-oak-scapa-bay-scapa-flow-orkney"
+    },
+    {
+      "title": "Scapa Flow Wrecks (ADUS) — Royal Oak: multibeam survey of the hull, masts, overhanging features and the debris on the seabed",
+      "url": "https://scapaflowwrecks.com/wrecks/royal-oak/wreck.php"
+    },
+    {
+      "title": "The Orcadian — the ROYAL OAK 80 survey project (2018-2019): port/deck side, hull, starboard side and outlying targets",
+      "url": "https://orcadian.co.uk/survey-project-sheds-new-light-on-hms-royal-oak/"
+    },
+    {
+      "title": "HMS Royal Oak (08) — Revenge-class battleship, torpedoed by U-47 on 14 October 1939",
+      "url": "https://en.wikipedia.org/wiki/HMS_Royal_Oak_(08)"
+    }
+  ],
+  "triangles": 57479,
+  "notes": "Built by code (model_sources/Q620472_hms_royal_oak.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Almost upside down at about 30-33 m in Scapa Bay, rolled over to starboard: the keel and bilges uppermost, the upperworks (turrets, tripod foremast, bridge, funnel) crushed into the bottom under her, the torpedo holes of U-47 in her starboard side amidships and at the bow, the four propellers and the rudder still in place, plating fallen about her. A war grave: diving is prohibited. The exact angle and heading (not published here: 0) are approximate. model_built.glb: the battleship as she was in 1939. No marine life in the model: Offlined draws the living things itself."
+}

@@ -1,0 +1,35 @@
+{
+  "id": "Q838125",
+  "kind": "item",
+  "name": "USS Hornet (CV-8)",
+  "state": "intact",
+  "heading": 0,
+  "depth": -5350,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "US Navy — Final resting place of USS Hornet (CV-8) located in South Pacific (R/V Petrel, about 5,400 m, identified by her hull number)",
+      "url": "https://www.navy.mil/Press-Office/News-Stories/Article/2240189/final-resting-place-of-uss-hornet-cv-8-located-in-south-pacific/"
+    },
+    {
+      "title": "USNI News — WWII aircraft carrier USS Hornet discovered in Solomon Islands (an aircraft tug upright on the hangar deck)",
+      "url": "https://news.usni.org/2019/02/12/41053"
+    },
+    {
+      "title": "CBS News — USS Hornet: underwater photos of the wreckage (anti-aircraft guns clearly visible)",
+      "url": "https://www.cbsnews.com/pictures/uss-hornet-wreckage-discovered-underwater-photos"
+    },
+    {
+      "title": "USS Hornet (CV-8) — Yorktown-class carrier sunk at the Battle of the Santa Cruz Islands, 26-27 October 1942",
+      "url": "https://en.wikipedia.org/wiki/USS_Hornet_(CV-8)"
+    }
+  ],
+  "triangles": 70218,
+  "notes": "Built by code (model_sources/Q838125_uss_hornet_cv8.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the floor of the South Pacific at about 5,330-5,400 m near the Solomon Islands, largely intact: the island, the guns at the corners and edges of the flight deck, the open hangar with an aircraft tug still standing upright on its deck, bomb holes through the flight deck, the torpedo holes of the Japanese aircraft in her starboard side and of the US destroyers that tried to scuttle her in her port side, the four propellers and the rudder. The exact location is kept secret; the damage, list and heading (not published here: 0) are approximate. A war grave. model_built.glb: the carrier as she was in 1942. No marine life in the model: Offlined draws the living things itself."
+}

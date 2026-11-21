@@ -1,0 +1,35 @@
+{
+  "id": "Q533999",
+  "kind": "item",
+  "name": "SMS Scharnhorst",
+  "state": "intact",
+  "heading": 0,
+  "depth": -1610,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Royal Navy — WW1 Falklands wreck discovered (December 2019)",
+      "url": "https://www.royalnavy.mod.uk/news/2019/december/06/191206-ww1-falklands-wreck-discovered"
+    },
+    {
+      "title": "Maritime Executive — Wreck of famed WWI heavy cruiser SMS Scharnhorst discovered (98 nautical miles south-east of Stanley, 1,610 m; upright and intact, with an impact crater)",
+      "url": "https://maritime-executive.com/article/wreck-of-famed-wwi-heavy-cruiser-sms-scharnhorst-discovered"
+    },
+    {
+      "title": "Archaeology — German ship sunk during World War I discovered (Mensun Bound: big guns pointing in all directions)",
+      "url": "https://archaeology.org/news/2019/12/05/191206-world-war-i-shipwreck/"
+    },
+    {
+      "title": "SMS Scharnhorst — armoured cruiser, flagship of Graf Spee, sunk at the Battle of the Falkland Islands on 8 December 1914",
+      "url": "https://en.wikipedia.org/wiki/SMS_Scharnhorst"
+    }
+  ],
+  "triangles": 64057,
+  "notes": "Built by code (model_sources/Q533999_sms_scharnhorst.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright and intact at about 1,610 m some 98 nautical miles south-east of Stanley, sunk into the bottom inside the raised rim of her impact crater: battle-scarred, her sides and upperworks holed by shells, the four funnels shot through and partly fallen in, her two twin turrets and wing guns trained in different directions, the casemate guns, the masts, the three propellers and the rudder. The damage, the trains of the guns and the heading (not published here: 0) are approximate. A war grave. model_built.glb: the armoured cruiser as she was in 1914. No marine life in the model: Offlined draws the living things itself."
+}

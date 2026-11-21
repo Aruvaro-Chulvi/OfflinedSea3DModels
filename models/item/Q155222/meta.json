@@ -1,0 +1,27 @@
+{
+  "id": "Q155222",
+  "kind": "item",
+  "name": "Scharnhorst",
+  "state": "broken",
+  "heading": 0,
+  "depth": -290,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "German battleship Scharnhorst — sunk at the Battle of the North Cape on 26 December 1943; the wreck found in September 2000 at about 290 m, upside down, the bow torn off",
+      "url": "https://en.wikipedia.org/wiki/German_battleship_Scharnhorst"
+    },
+    {
+      "title": "Battle of the North Cape — the action of 26 December 1943 (14-inch hits and torpedoes from HMS Duke of York and her escorts)",
+      "url": "https://en.wikipedia.org/wiki/Battle_of_the_North_Cape"
+    }
+  ],
+  "triangles": 78526,
+  "notes": "Built by code (model_sources/Q155222_scharnhorst.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 290 m north of the North Cape: the keel uppermost, the upperworks crushed into the bottom, torpedo and shell holes along both sides, the bow torn off ahead of turret Anton and lying apart on its side some 60 m ahead of the hull, plating and wreckage spread about both. The layout, the distance to the bow, the angle and the heading (not published here: 0) are approximate. A war grave. model_built.glb: the battleship as she sailed in 1943. No marine life in the model: Offlined draws the living things itself."
+}

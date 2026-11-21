@@ -122,6 +122,110 @@
       "depth": -52,
       "note": "Wikidata copies the Yamato's position. Nagato capsized in the north-east of the Bikini lagoon after test Baker (11°35'N 165°31'E) and lies upside down on the bottom at about 52 m; the exact wreck position is approximate.",
       "source": "https://en.wikipedia.org/wiki/Operation_Crossroads"
+    },
+    "Q620472": { "depth": -31,
+      "note": "Almost upside down in about 30-33 m in Scapa Bay (Canmore: 33 m); the GEBCO cell gives 26 m.",
+      "source": "https://canmore.org.uk/site/102373/hms-royal-oak-scapa-bay-scapa-flow-orkney"
+    },
+    "Q161346": { "depth": -90,
+      "note": "Upside down at about 90 m in the Drøbak Sound; the GEBCO cell gives 44 m.",
+      "source": "https://xray-mag.com/content/blucher-wreck-wwii-german-cruiser-norway"
+    },
+    "Q155014": { "depth": -46,
+      "note": "In 45-47 m north of Łeba; the GEBCO cell gives 36 m.",
+      "source": "https://dailymare.com/news/80-years-after-the-wilhelm-gustloff-tragedy-the-deadliest-maritime-disaster-in-history,828"
+    },
+    "Q54887": { "depth": -41,
+      "note": "At about 41 m off Jurmo; the GEBCO cell gives 18 m.",
+      "source": "https://shipwrecks.hist.sites.carleton.edu/?p=6581"
+    },
+    "Q1789811": { "depth": -26,
+      "note": "At 26 m east of Hulterstad (Kalmar läns museum); the GEBCO cell gives 22 m.",
+      "source": "https://guide.kalmarlansmuseum.se/en/the-crown/the-wreck-site/"
+    },
+    "Q3589083": { "depth": -38,
+      "note": "At about 36-39 m off Mahdia; the GEBCO cell gives 27 m.",
+      "source": "https://en.wikipedia.org/wiki/Mahdia_shipwreck"
+    },
+    "Q683174": { "depth": -1500,
+      "note": "At about 1,500 m off Yalta (Russian Geographical Society, 2020); the GEBCO cell gives 1,386 m.",
+      "source": "https://rgo.ru/en/activity/redaction/news/scarier-than-titanic-armenia-ship-found-79-years-after-the-wreck/"
+    },
+    "Q1255918": { "depth": -35,
+      "note": "Upright in about 35 m off Hulhulé.",
+      "source": "https://dive.site/explore/site/maldive-victory-wreck-2vmj"
+    },
+    "Q2279126": { "depth": -38,
+      "note": "Upright at about 38 m in Chuuk Lagoon; the GEBCO cell gives 27 m.",
+      "source": "https://www.tracesofwar.com/sights/9272/Ship-Wreck-Shinkoku-Maru.htm"
+    },
+    "Q311245": { "depth": -5150,
+      "note": "At about 5,100-5,200 m (NOAA, 2025).",
+      "source": "https://oceanexplorer.noaa.gov/photogrammetry/yorktown/"
+    },
+    "Q838125": { "depth": -5350,
+      "note": "At about 5,330-5,400 m (R/V Petrel, 2019).",
+      "source": "https://www.navy.mil/Press-Office/News-Stories/Article/2240189/final-resting-place-of-uss-hornet-cv-8-located-in-south-pacific/"
+    },
+    "Q726146": { "depth": -5400,
+      "note": "At about 5,400 m (R/V Petrel, 2019).",
+      "source": "https://news.usni.org/2019/10/18/video-wreck-discovered-of-wwii-japanese-carrier-key-to-pearl-harbor-attack"
+    },
+    "Q600180": { "depth": -5500,
+      "note": "At about 5,500 m (R/V Petrel, 2017); the GEBCO cell at the Wikidata point gives 3,608 m (the location is confidential).",
+      "source": "https://history.navy.mil/news-and-events/news/2017/august/USSIndianapolisLocated.html"
+    },
+    "Q5229080": { "depth": -6456,
+      "note": "The forward part at 6,456 m (Vescovo, 2021).",
+      "source": "https://history.navy.mil/news-and-events/news/2021/wreckage-confirmed-as-heroic-uss-johnston--dd-557-.html"
+    },
+    "Q627265": { "depth": -26,
+      "note": "On the sand at about 26-27 m; the GEBCO cell gives 17 m.",
+      "source": "https://divernet.com/world-dives/the-magnificent-rainbow-warrior/"
+    },
+    "Q7870825": { "lat": 19.362,
+      "lon": -81.394,
+      "depth": -21,
+      "note": "On the sand next to the reef at about 21 m off Seven Mile Beach; at the Wikidata point the GEBCO cells, beyond the drop-off, give 97 m, so the pin moves a few hundred metres inshore, to where they give 21 m.",
+      "source": "https://divernet.com/scuba-diving/caymans-kittiwake-shipwreck-rolled-over-by-tropical-storm-nate/"
+    },
+    "Q7874298": { "depth": -40,
+      "note": "Upright in about 40 m off Key Largo.",
+      "source": "https://fla-keys.com/diving/spiegel-grove"
+    },
+    "Q32804": { "depth": -35,
+      "note": "In about 35 m (115 ft) south of Cape Lookout; the GEBCO cell gives 31 m.",
+      "source": "https://en.wikipedia.org/wiki/German_submarine_U-352"
+    },
+    "Q533999": { "depth": -1610,
+      "note": "At 1,610 m south-east of Stanley (Falklands Maritime Heritage Trust, 2019).",
+      "source": "https://maritime-executive.com/article/wreck-of-famed-wwi-heavy-cruiser-sms-scharnhorst-discovered"
+    },
+    "Q5874775": { "lat": 9.5833,
+      "lon": -76.4069,
+      "depth": -600,
+      "note": "At about 600 m; Colombia keeps the position secret and the GEBCO cell at the Wikidata point gives 78 m, so the pin moves some 15 km west, to where the cells give about 600 m (approximate).",
+      "source": "https://phys.org/news/2022-06-colombia-unprecedented-images-treasure-laden.pdf"
+    },
+    "Q155222": { "depth": -290,
+      "note": "Upside down at about 290 m north of the North Cape.",
+      "source": "https://en.wikipedia.org/wiki/German_battleship_Scharnhorst"
+    },
+    "Q1060785": { "depth": -62,
+      "note": "Upside down in about 60-70 m off Marwick Head.",
+      "source": "https://discovery.dundee.ac.uk/en/publications/hms-hampshire-100-survey-report/"
+    },
+    "Q470400": { "depth": -38,
+      "note": "Upside down on her starboard side in 34-43 m.",
+      "source": "https://scapaflowwrecks.com/wrecks/kronprinz/"
+    },
+    "Q499298": { "depth": -1680,
+      "note": "At about 1,680 m south-west of Bjørnøya.",
+      "source": "https://framsenteret.no/expedition-to-the-sunken-nuclear-submarine-komsomolets-in-the-norwegian-sea/"
+    },
+    "Q1333909": { "depth": -1000,
+      "note": "At about 1,000 m some 30 nautical miles east of Gibraltar.",
+      "source": "https://en.wikipedia.org/wiki/HMS_Ark_Royal_(91)"
     }
   }
 }

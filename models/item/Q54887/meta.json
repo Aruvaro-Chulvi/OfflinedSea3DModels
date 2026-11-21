@@ -1,0 +1,35 @@
+{
+  "id": "Q54887",
+  "kind": "item",
+  "name": "Vrouw Maria",
+  "state": "intact",
+  "heading": 156,
+  "depth": -41,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Carleton College — Autopsy report of the wreck of the Vrouw Maria: upright on her keel at about 41 m, bow to 156°, the 26 by 7 m hull in excellent condition",
+      "url": "https://shipwrecks.hist.sites.carleton.edu/?p=6581"
+    },
+    {
+      "title": "Carleton College — The Vrouw Maria: the accident, history and cargo (she hit a rock twice and lost her rudder)",
+      "url": "https://shipwrecks.hist.sites.carleton.edu/vrouw-maria/vrouw-maria-the-accident-history-and-cargo/"
+    },
+    {
+      "title": "Vrak — Museum of Wrecks, Stockholm: 1771 Vrouw Maria (the masts still standing, rising to 22-24 m below the surface)",
+      "url": "https://www.vrak.se/en/explore/dive-deep-among-the-wrecks/1700-talet/1771-vrouw-maria"
+    },
+    {
+      "title": "Vrouw Maria — Dutch snow lost in 1771 off Jurmo, Finland, with works of art for Catherine the Great; found in 1999",
+      "url": "https://en.wikipedia.org/wiki/Vrouw_Maria"
+    }
+  ],
+  "triangles": 37472,
+  "notes": "Built by code (model_sources/Q54887_vrouw_maria.py, tools/meshkit.py, tools/sailkit.py, tools/dresskit.py) with AI assistance. Upright on her keel at about 41 m, sunk a little into the clay and leaning slightly to starboard, bow to the south-south-west (156°): the hull whole, the paint gone, the lower fore and main masts still standing with their tops (the upper masts and the rigging gone), the stump of the trysail mast, the bowsprit broken short, no rudder (lost on the rock); a spar or two and a few cargo barrels on the clay beside her. The lean and how deep she has sunk are approximate. model_built.glb: the snow under sail in 1771. No marine life in the model: Offlined draws the living things itself."
+}

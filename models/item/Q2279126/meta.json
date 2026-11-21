@@ -1,0 +1,35 @@
+{
+  "id": "Q2279126",
+  "kind": "item",
+  "name": "Shinkoku Maru",
+  "state": "intact",
+  "heading": 0,
+  "depth": -38,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Divernet — Deeper into Truk (Shinkoku Maru: upright, a divers' favourite for her engine room and dense covering of soft corals)",
+      "url": "https://divernet.com/features/deeper-into-truk/"
+    },
+    {
+      "title": "Pacific Wrecks — Shinkoku Maru, tanker / fleet oiler sunk in Truk Lagoon on 17 February 1944",
+      "url": "https://img.pacificwrecks.com/ship/maru/shinkoku.html"
+    },
+    {
+      "title": "Dive3D — Shinkoku Maru, Chuuk Lagoon (3D model of the wreck)",
+      "url": "https://dive3d.eu/models/chuuk-lagoon-truk/shinkoku-maru/"
+    },
+    {
+      "title": "Traces of War — Ship wreck Shinkoku Maru: upright at about 38 m, the deck at some 15-20 m",
+      "url": "https://www.tracesofwar.com/sights/9272/Ship-Wreck-Shinkoku-Maru.htm"
+    }
+  ],
+  "triangles": 44488,
+  "notes": "Built by code (model_sources/Q2279126_shinkoku_maru.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the bottom of Chuuk Lagoon at about 38-39 m, a slight list: the forecastle with its gun, the long tank deck with the tank lids, pipes and raised catwalk, the bridge island amidships with its masts, the poop aft with the funnel and the stern gun, the propeller and rudder. The soft corals and anemones that cover her are not in the model (Offlined draws the life). The list, the damage and the heading (not published here: 0) are approximate. model_built.glb: the fleet oiler as she was in 1944. No marine life in the model: Offlined draws the living things itself."
+}

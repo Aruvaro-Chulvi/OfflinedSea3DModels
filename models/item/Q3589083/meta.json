@@ -1,0 +1,31 @@
+{
+  "id": "Q3589083",
+  "kind": "item",
+  "name": "Mahdia shipwreck",
+  "state": "scattered",
+  "heading": 0,
+  "depth": -38,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Mahdia shipwreck — Roman-era wreck of the 1st century BC found by sponge divers in 1907; some 60-70 marble columns; excavated by Merlin (1907-1913), Tailliez and Cousteau (1948), later surveys",
+      "url": "https://en.wikipedia.org/wiki/Mahdia_shipwreck"
+    },
+    {
+      "title": "Oxford Roman Economy Project — Mahdia (wreck database: date, depth, cargo of marble architecture)",
+      "url": "https://oxrep.classics.ox.ac.uk/databases/sites/tunisia/mahdia/2516_mahdia/"
+    },
+    {
+      "title": "Ministère de la Culture — heavy gear and the Mahdia shipwreck (the early underwater excavations)",
+      "url": "https://archeologie.culture.gouv.fr/archeo-sous-marine/en/heavy-gear-and-mahdia-shipwreck"
+    }
+  ],
+  "triangles": 24926,
+  "notes": "Built by code (model_sources/Q3589083_mahdia_shipwreck.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The site at about 36-39 m some 5 km off Mahdia: the low sand mound over the buried hull with a few timbers and the ballast showing at its edges, the marble columns of the cargo still lying in rows across it as they were stowed and some slid off onto the sand, Ionic capitals and column bases, lead anchor stocks and amphorae, many broken. The sculptures and bronzes are in the Bardo Museum; the number and layout of the columns drawn are approximate. No model_built.glb (the ship's form is not known). No marine life in the model: Offlined draws the living things itself."
+}

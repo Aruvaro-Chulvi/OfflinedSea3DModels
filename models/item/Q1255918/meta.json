@@ -1,0 +1,35 @@
+{
+  "id": "Q1255918",
+  "kind": "item",
+  "name": "Maldive Victory",
+  "state": "intact",
+  "heading": 0,
+  "depth": -35,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "PADI — The story beneath one of the most famous dive sites in the Maldives (the cargo ship sunk off Hulhulé on 13 February 1981)",
+      "url": "https://pros-blog.padi.com/?p=15217"
+    },
+    {
+      "title": "Divernet — Maldives Victory wreck damaged but diveable (anchors of the bridge works on the wheelhouse and cabins, sediment)",
+      "url": "https://divernet.com/scuba-news/maldives-victory-wreck-damaged-but-diveable/"
+    },
+    {
+      "title": "Dive Against Debris — Towards conserving the Maldive Victory wreck (the 83 m cargo vessel)",
+      "url": "https://www.diveagainstdebris.org/node/87731"
+    },
+    {
+      "title": "dive.site — Maldive Victory wreck: upright, slightly tilted, in 35 m",
+      "url": "https://dive.site/explore/site/maldive-victory-wreck-2vmj"
+    }
+  ],
+  "triangles": 28599,
+  "notes": "Built by code (model_sources/Q1255918_maldive_victory.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright and slightly tilted at about 35 m off Hulhulé, parallel to the house reef: the forecastle, the three holds with their hatch coamings and the stumps of the derrick posts, the hull holed low on one side where she struck the reef, the accommodation block aft with its wheelhouse and upper cabins crushed by the anchors of the bridge works, the funnel, the propeller and the rudder. The exact tilt, the layout of the holds and the heading (not published here: 0) are approximate. model_built.glb: the ship as she sailed in 1981. No marine life in the model: Offlined draws the living things itself."
+}

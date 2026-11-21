@@ -1,0 +1,35 @@
+{
+  "id": "Q155014",
+  "kind": "item",
+  "name": "MV Wilhelm Gustloff",
+  "state": "broken",
+  "heading": 0,
+  "depth": -46,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Royal Navy (2021) — HMS Echo surveys the wrecks of the Wilhelm Gustloff and the Goya: the Gustloff split in three parts",
+      "url": "https://www.royalnavy.mod.uk/news/2021/february/05/210205-hms-echo-surveys-shipwrecks"
+    },
+    {
+      "title": "Maritime Executive — new sonar imaging of the deadliest shipwrecks in history (Wilhelm Gustloff)",
+      "url": "https://www.maritime-executive.com/editorials/photos-new-sonar-imaging-of-the-deadliest-shipwrecks-in-history"
+    },
+    {
+      "title": "Daily Mare — 80 years after the Wilhelm Gustloff tragedy: the wreck some 19 nautical miles north of Łeba in 45-47 m, a war grave since 1994, no diving within 500 m",
+      "url": "https://dailymare.com/news/80-years-after-the-wilhelm-gustloff-tragedy-the-deadliest-maritime-disaster-in-history,828"
+    },
+    {
+      "title": "MV Wilhelm Gustloff — torpedoed on the port side by S-13 on 30 January 1945",
+      "url": "https://en.wikipedia.org/wiki/MV_Wilhelm_Gustloff"
+    }
+  ],
+  "triangles": 57887,
+  "notes": "Built by code (model_sources/Q155014_wilhelm_gustloff.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Broken in three parts at about 45-47 m north of Łeba, lying over on her port side, the side the torpedoes struck: the bow section with its forecastle and the stump of the foremast, a middle part broken down (the superstructure collapsed, plating torn away, the funnel gone), and the stern section with the mainmast stump, the propellers and the rudder; plating and lifeboats about them. The side she lies on, the gaps between the parts and the heading (not published here: 0) are approximate. A war grave. model_built.glb: the ship in her wartime grey. No marine life in the model: Offlined draws the living things itself."
+}

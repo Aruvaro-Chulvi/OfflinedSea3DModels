@@ -1,0 +1,35 @@
+{
+  "id": "Q5874775",
+  "kind": "item",
+  "name": "San José",
+  "state": "scattered",
+  "heading": 0,
+  "depth": -600,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Phys.org (2022) — Colombia shares unprecedented images of treasure-laden wreck (four campaigns by the Colombian Navy: cannons partly covered in mud, porcelain, bottles, pottery, gold)",
+      "url": "https://phys.org/news/2022-06-colombia-unprecedented-images-treasure-laden.pdf"
+    },
+    {
+      "title": "Live Science — $17 billion shipwreck near Colombia is remarkably preserved (intact porcelain in the remains of the hull; bronze guns cast with dolphins)",
+      "url": "https://livescience.com/new-images-most-valuable-shipwreck-colombia"
+    },
+    {
+      "title": "Divernet — Items lifted from San José shipwreck: the first objects raised from the upper layers of the debris field at about 600 m",
+      "url": "https://divernet.com/scuba-news/wrecks/items-lifted-from-san-jose-shipwreck-its-not-about-treasure/"
+    },
+    {
+      "title": "San José (ship) — Spanish galleon sunk in Wager's Action on 8 June 1708",
+      "url": "https://en.wikipedia.org/wiki/San_Jos%C3%A9_(ship)"
+    }
+  ],
+  "triangles": 56874,
+  "notes": "Built by code (model_sources/Q5874775_san_jose.py, tools/meshkit.py, tools/sailkit.py, tools/dresskit.py) with AI assistance. The debris field at about 600 m off the Rosario Islands: the bottom of the hull, below the turn of the bilge, deep in the mud with its frames showing, the rest of the ship blown apart; about four dozen bronze guns half-buried in and around it, Chinese porcelain bowls, glass bottles, jars, gold coins and ingots, and timbers spread by the explosion. Colombia keeps the position secret: the catalog pin is moved some 15 km west of the Wikidata point, to where the GEBCO cells give the real depth of about 600 m (there they give 78 m). The layout of the remains is approximate. model_built.glb: the galleon under sail in 1708. No marine life in the model: Offlined draws the living things itself."
+}

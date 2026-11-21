@@ -1,0 +1,35 @@
+{
+  "id": "Q311245",
+  "kind": "item",
+  "name": "USS Yorktown (CV-5)",
+  "state": "intact",
+  "heading": 0,
+  "depth": -5150,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "NOAA Ocean Exploration — USS Yorktown (CV-5) photogrammetry project (2025 ROV survey: port-side torpedo damage, bomb damage to the flight deck)",
+      "url": "https://oceanexplorer.noaa.gov/photogrammetry/yorktown/"
+    },
+    {
+      "title": "USNI News — Back to Yorktown (2025): the bridge, anti-aircraft guns and portions of the flight deck largely intact",
+      "url": "https://news.usni.org/2025/05/07/back-to-yorktown"
+    },
+    {
+      "title": "Maritime Reporter (1998) — the Yorktown found three miles deep by Robert Ballard: upright, in surprisingly good condition",
+      "url": "https://magazines.marinelink.com/Magazines/MaritimeReporter/199807/page/20"
+    },
+    {
+      "title": "USS Yorktown (CV-5) — sunk after the Battle of Midway, 7 June 1942",
+      "url": "https://en.wikipedia.org/wiki/USS_Yorktown_(CV-5)"
+    }
+  ],
+  "triangles": 69449,
+  "notes": "Built by code (model_sources/Q311245_uss_yorktown.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the bottom at about 5,100-5,200 m north of Midway, in remarkably good condition: the island with its bridge, funnel and tripod mast, the 5-inch and anti-aircraft guns at the corners and edges of the flight deck, the open hangar and lifts; bomb holes through the flight deck, the torpedo holes in her port side, the stern listing to starboard and the flight deck at the bow collapsing towards the starboard side; the four propellers and the rudder. The list, the size of the holes and the heading (not published here: 0) are approximate. A war grave. model_built.glb: the carrier as she was in 1942. No marine life in the model: Offlined draws the living things itself."
+}

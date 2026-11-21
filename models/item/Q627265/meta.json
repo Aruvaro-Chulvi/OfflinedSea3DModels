@@ -1,0 +1,35 @@
+{
+  "id": "Q627265",
+  "kind": "item",
+  "name": "Rainbow Warrior",
+  "state": "intact",
+  "heading": 0,
+  "depth": -26,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Divernet — Scuba diving the magnificent Rainbow Warrior: about 40 m long, the masts removed, some 8 m tall, a slight list to starboard",
+      "url": "https://divernet.com/world-dives/the-magnificent-rainbow-warrior/"
+    },
+    {
+      "title": "PADI — Rainbow Warrior wreck dive site, Cavalli Islands (maximum about 27 m)",
+      "url": "https://padi.com/dive-site/new-zealand/rainbow-warrior-wreck-2"
+    },
+    {
+      "title": "NZ Geographic — Wreck to reef: the transfiguration of the Rainbow Warrior",
+      "url": "https://www.nzgeo.com/?p=1200"
+    },
+    {
+      "title": "Rainbow Warrior (1955) — the Greenpeace ship bombed in Auckland in 1985 and scuttled off the Cavalli Islands in 1987",
+      "url": "https://en.wikipedia.org/wiki/Rainbow_Warrior_(1955)"
+    }
+  ],
+  "triangles": 18818,
+  "notes": "Built by code (model_sources/Q627265_rainbow_warrior.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Almost upright on the sand at about 26-27 m between Matauri Bay and the Cavalli Islands, with a slight list to starboard: the green hull with the rainbow and the dove at the bow, the high forecastle, the wheelhouse and accommodation amidships with the funnel, the masts removed (stumps only), the propeller and the rudder. The heading (not published here: 0) and the exact list are approximate. model_built.glb: the ship in her Greenpeace colours. No marine life in the model: Offlined draws the living things itself."
+}

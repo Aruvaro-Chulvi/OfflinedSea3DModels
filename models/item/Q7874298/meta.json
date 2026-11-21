@@ -1,0 +1,35 @@
+{
+  "id": "Q7874298",
+  "kind": "item",
+  "name": "USS Spiegel Grove",
+  "state": "intact",
+  "heading": 0,
+  "depth": -40,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Florida Keys — The Spiegel Grove wreck: 155 m long, sunk in May 2002, set upright in about 40 m by Hurricane Dennis in July 2005",
+      "url": "https://fla-keys.com/diving/spiegel-grove"
+    },
+    {
+      "title": "NBC News (2005) — Hurricane fixes artificial reef by righting ship",
+      "url": "https://www.nbcnews.com/id/8561245/ns/us_news-environment/t/hurricane-fixes-artificial-reef-righting-ship"
+    },
+    {
+      "title": "PADI — Celebrating 20 years of Florida Keys wreck diving on the Spiegel Grove",
+      "url": "https://blog.padi.com/celebrating-20-years-of-florida-keys-wreck-diving-on-the-spiegel-grove/"
+    },
+    {
+      "title": "USS Spiegel Grove (LSD-32) — Thomaston-class dock landing ship",
+      "url": "https://en.wikipedia.org/wiki/USS_Spiegel_Grove"
+    }
+  ],
+  "triangles": 44253,
+  "notes": "Built by code (model_sources/Q7874298_uss_spiegel_grove.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the bottom in about 40 m six miles off Key Largo, where Hurricane Dennis set her in 2005: the tall superstructure forward with the bridge and the mast stump, the two funnels side by side, the long well deck aft between its high wing walls, the two cranes on the walls, the stern gate, the propellers and the rudders. The heading (not published here: 0) and the state of the cranes are approximate. model_built.glb: the dock landing ship in service. No marine life in the model: Offlined draws the living things itself."
+}

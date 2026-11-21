@@ -1,0 +1,35 @@
+{
+  "id": "Q1789811",
+  "kind": "item",
+  "name": "Kronan",
+  "state": "broken",
+  "heading": 0,
+  "depth": -26,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Kalmar läns museum — the wreck site: 26 m deep, 3.2 nautical miles east of Hulterstad; two thirds of the port side, from the stern forward, preserved, about 40 by 20 m, lying flat on the sea floor",
+      "url": "https://guide.kalmarlansmuseum.se/en/the-crown/the-wreck-site/"
+    },
+    {
+      "title": "Kalmar läns museum — The Royal Ship Kronan (excavations since 1980, over 35,000 finds)",
+      "url": "https://kalmarlansmuseum.se/the-royal-ship-kronan/"
+    },
+    {
+      "title": "Swedish east coast wrecks — Kronan: the hull broken apart, a large section of the port side intact, its outside facing the bottom clay",
+      "url": "https://abc.se/~pa/uwa/kronan-e.htm"
+    },
+    {
+      "title": "Kronan (ship) — Swedish royal ship lost at the Battle of Öland on 1 June 1676",
+      "url": "https://en.wikipedia.org/wiki/Kronan_(ship)"
+    }
+  ],
+  "triangles": 69264,
+  "notes": "Built by code (model_sources/Q1789811_kronan.py, tools/meshkit.py, tools/sailkit.py, tools/dresskit.py) with AI assistance. The port side, two thirds of the ship's length from the stern forward, lying flat on the clay at 26 m with its outside to the bottom: the planking with its gunports and wales, the ribs and the stubs of the three gun decks upward, the edge ragged where the explosion tore the ship apart; around it timbers and planks, gun carriages, a mast, three anchors and some forty guns (most of them bronze). The layout of the scattered remains is approximate, and many of the guns and finds have been raised by the museum. model_built.glb: the ship under sail in 1676. No marine life in the model: Offlined draws the living things itself."
+}

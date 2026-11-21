@@ -1,0 +1,35 @@
+{
+  "id": "Q5229080",
+  "kind": "item",
+  "name": "USS Johnston (DD-557)",
+  "state": "broken",
+  "heading": 0,
+  "depth": -6456,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Naval History and Heritage Command — Wreckage confirmed as heroic USS Johnston (DD-557) (2021): the forward part slid down a cliff face, peppered with shell holes, relatively intact, hull number 557",
+      "url": "https://history.navy.mil/news-and-events/news/2021/wreckage-confirmed-as-heroic-uss-johnston--dd-557-.html"
+    },
+    {
+      "title": "Naval History and Heritage Command — H-Gram 060: the search for USS Johnston (DD-557)",
+      "url": "https://history.navy.mil/about-us/leadership/director/directors-corner/h-grams/h-gram-060/h-060-3.html"
+    },
+    {
+      "title": "USNI News — Famed WWII destroyer USS Johnston discovered 4 miles down (Vescovo: the front two thirds upright and intact at 6,456 m)",
+      "url": "https://news.usni.org/2021/04/01/video-famed-wwii-destroyer-uss-johnston-discovered-4-miles-down"
+    },
+    {
+      "title": "USS Johnston (DD-557) — Fletcher-class destroyer sunk in the Battle off Samar, 25 October 1944",
+      "url": "https://en.wikipedia.org/wiki/USS_Johnston_(DD-557)"
+    }
+  ],
+  "triangles": 30397,
+  "notes": "Built by code (model_sources/Q5229080_uss_johnston.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The forward two thirds of the destroyer, upright and intact at 6,456 m in the Philippine Sea, where they slid down a cliff face: the bow with the hull number 557, the two forward 5-inch gun mounts, the bridge and the pole mast, both funnels, the anti-aircraft guns and the two quintuple torpedo-tube mounts, the hull peppered with shell holes, the ragged break abaft them; some plating about the break. The after third, broken up, lies apart up the slope and is not drawn. The exact damage and heading (not published here: 0) are approximate. A war grave. model_built.glb: the destroyer as she was in 1944. No marine life in the model: Offlined draws the living things itself."
+}

@@ -1,0 +1,35 @@
+{
+  "id": "Q499298",
+  "kind": "item",
+  "name": "K-278 Komsomolets",
+  "state": "intact",
+  "heading": 0,
+  "depth": -1680,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Fram Centre — Expedition to the sunken nuclear submarine Komsomolets in the Norwegian Sea (2019, ROV Ægir 6000)",
+      "url": "https://framsenteret.no/expedition-to-the-sunken-nuclear-submarine-komsomolets-in-the-norwegian-sea/"
+    },
+    {
+      "title": "Physics World — the sunken submarine leaking radioactive material from a ventilation pipe near the reactor compartment",
+      "url": "https://physicsworld.com/a/sunken-nuclear-submarine-is-leaking-radioactive-material-intermittently/"
+    },
+    {
+      "title": "H I Sutton — K-278 Komsomolets, Project 685 'Plavnik' (Mike class)",
+      "url": "https://www.hisutton.com/K-278_Komsomolets.html"
+    },
+    {
+      "title": "Soviet submarine K-278 Komsomolets — the only Project 685, titanium hull; sank on 7 April 1989 at 1,680 m south-west of Bjørnøya",
+      "url": "https://en.wikipedia.org/wiki/Soviet_submarine_K-278_Komsomolets"
+    }
+  ],
+  "triangles": 36549,
+  "notes": "Built by code (model_sources/Q499298_k278_komsomolets.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the bottom at about 1,680 m with a slight list, her keel in the mud: the long low sail with the recess of the escape capsule empty (it came free and surfaced as she sank), the rubber anechoic tiles gone in patches and lying beside the hull, the outer hull torn about the torpedo compartment, the ventilation pipe aft of the sail where the leak was filmed in 2019, the cruciform tail with its pod and the propeller. The extent of the damage, the list and the heading (not published here: 0) are approximate. model_built.glb: the boat as commissioned in 1983. A war grave. No marine life in the model: Offlined draws the living things itself."
+}

@@ -1,0 +1,27 @@
+{
+  "id": "Q1333909",
+  "kind": "item",
+  "name": "HMS Ark Royal",
+  "state": "broken",
+  "heading": 0,
+  "depth": -1000,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "HMS Ark Royal (91) — Rediscovery: found in 2002 at about 1,000 m, some 30 nautical miles from Gibraltar; she broke in two, the stern part upright, the forward part upside down with about 20 m of the bow separated, the island and funnel in the debris field between them, aircraft about the wreck",
+      "url": "https://en.wikipedia.org/wiki/HMS_Ark_Royal_(91)"
+    },
+    {
+      "title": "Hydro International — Discovering H.M.S. Ark Royal (C & C Technologies, AUV Hugin 3000: the site strewn over some 0.27 km², oriented north-south, several gun turrets intact)",
+      "url": "https://www.hydro-international.com/content/article/discovering-h-m-s-ark-royal"
+    }
+  ],
+  "triangles": 94715,
+  "notes": "Built by code (model_sources/Q1333909_hms_ark_royal.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Broken in two at about 1,000 m east of Gibraltar, the site oriented north to south: the after part upright on the bottom with a slight list, its twin gun turrets at the after corners of the flight deck, the three propellers and the rudder; some 250 m away across the debris field the forward part upside down, and about 20 m of the bow broken off and lying on its side beside it; the island with its big funnel fallen on its side in the debris field between them, among plating, flight-deck planking and the frames of five Swordfish. The distances between the pieces, the angles and the heading (not published here: 0) are approximate. model_built.glb: the carrier as she was in 1941. No marine life in the model: Offlined draws the living things itself."
+}

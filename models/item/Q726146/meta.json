@@ -1,0 +1,35 @@
+{
+  "id": "Q726146",
+  "kind": "item",
+  "name": "Kaga",
+  "state": "broken",
+  "heading": 0,
+  "depth": -5400,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "USNI News — Wreck discovered of WWII Japanese carrier key to Pearl Harbor attack (Kaga found by R/V Petrel, October 2019, about 5,400 m; a 20 cm gun, a gun mount and a barbette filmed)",
+      "url": "https://news.usni.org/2019/10/18/video-wreck-discovered-of-wwii-japanese-carrier-key-to-pearl-harbor-attack"
+    },
+    {
+      "title": "Papahānaumokuākea Marine National Monument — IJN Kaga found off Midway Atoll (2019)",
+      "url": "https://www.papahanaumokuakea.gov/new-news/2019/10/21/kaga/"
+    },
+    {
+      "title": "Maritime Executive — Sunken Japanese fleet carrier Kaga discovered (sitting upright, much of the flight deck missing)",
+      "url": "https://www.maritime-executive.com/article/sunken-japanese-fleet-carrier-kaga-discovered"
+    },
+    {
+      "title": "Japanese aircraft carrier Kaga — sunk at the Battle of Midway, 4 June 1942",
+      "url": "https://en.wikipedia.org/wiki/Japanese_aircraft_carrier_Kaga"
+    }
+  ],
+  "triangles": 74657,
+  "notes": "Built by code (model_sources/Q726146_kaga.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright at about 5,400 m north-west of Midway, twisted: most of the flight deck gone and the hangar sides buckled and torn where it fell in, the small island, the funnel trunked out along the starboard side, the 20 cm casemate guns low on her sides aft, the anti-aircraft sponsons, the four propellers and the rudder; wreckage spread about her. The damage, the extent of what is left of the flight deck and the heading (not published here: 0) are approximate. A war grave. model_built.glb: the carrier as she was in 1942. No marine life in the model: Offlined draws the living things itself."
+}

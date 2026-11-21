@@ -1,0 +1,35 @@
+{
+  "id": "Q470400",
+  "kind": "item",
+  "name": "SMS Kronprinz Wilhelm",
+  "state": "capsized",
+  "heading": 0,
+  "depth": -38,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Canmore — SMS Kronprinz Wilhelm, Scapa Flow: upside down on her starboard side, extensively salvaged; general depth 34 m",
+      "url": "https://canmore.org.uk/site/102311"
+    },
+    {
+      "title": "Scapa Flow Wrecks — Kronprinz Wilhelm: maximum depth 43 m, shallowest about 12 m, many of her guns still on her",
+      "url": "https://scapaflowwrecks.com/wrecks/kronprinz/"
+    },
+    {
+      "title": "Divernet — Wreck Tour 33: the Kronprinz Wilhelm (the stern turrets and their 12-inch barrels under the overhanging deck)",
+      "url": "https://divernet.com/scuba-diving/wreck-tours/wreck-tour-33-the-kronprinz-wilhlem/"
+    },
+    {
+      "title": "SMS Kronprinz — König-class battleship, scuttled in Scapa Flow on 21 June 1919",
+      "url": "https://en.wikipedia.org/wiki/SMS_Kronprinz"
+    }
+  ],
+  "triangles": 46403,
+  "notes": "Built by code (model_sources/Q470400_sms_kronprinz_wilhelm.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down on her starboard side at about 34-43 m, resting on her superstructure (crushed into the bottom): the armour belt gone and the engine and boiler rooms blasted open by the salvors, the two stern turrets and the forward one still in place with their barrels reaching out under the overhanging side, the other two turrets lying upside down on the seabed beside the hull, the casemate guns along the side, the twin rudders (no propellers: salvaged). The exact angle and heading (not published: 0) are approximate. model_built.glb: the battleship as she was in 1918. No marine life in the model: Offlined draws the living things itself."
+}

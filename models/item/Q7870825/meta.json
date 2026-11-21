@@ -1,0 +1,31 @@
+{
+  "id": "Q7870825",
+  "kind": "item",
+  "name": "USS Kittiwake",
+  "state": "capsized",
+  "heading": 0,
+  "depth": -21,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Divernet — Cayman's Kittiwake shipwreck rolled over by Tropical Storm Nate (October 2017, moved 18-20 m and onto her port side, about 6 m deeper)",
+      "url": "https://divernet.com/scuba-diving/caymans-kittiwake-shipwreck-rolled-over-by-tropical-storm-nate/"
+    },
+    {
+      "title": "DAN Alert Diver — The anatomy of a shipwreck: the Kittiwake in Grand Cayman",
+      "url": "https://dan.org/alert-diver/article/the-anatomy-of-a-shipwreck-the-kittiwake-in-grand-cayman/"
+    },
+    {
+      "title": "USS Kittiwake (ASR-13) — Chanticleer-class submarine rescue ship, 76.6 m, sunk as an artificial reef off Seven Mile Beach on 5 January 2011",
+      "url": "https://en.wikipedia.org/wiki/USS_Kittiwake"
+    }
+  ],
+  "triangles": 22448,
+  "notes": "Built by code (model_sources/Q7870825_uss_kittiwake.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her port side on the sand next to the reef off Seven Mile Beach, the sand at about 21 m (most of the dive at 15 m), where Tropical Storm Nate rolled her in October 2017: the long superstructure with its bridge, the funnel, the stump of the mast, the working deck aft with the A-frame of the rescue chamber and the winches, the propeller and the rudder. The heading (not published here: 0) is approximate; the catalog pin is moved a few hundred metres inshore of the Wikidata point, where the GEBCO cells give the real depth instead of the drop-off beyond the reef. model_built.glb: the rescue ship in service. No marine life in the model: Offlined draws the living things itself."
+}

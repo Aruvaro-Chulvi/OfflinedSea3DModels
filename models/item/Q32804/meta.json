@@ -1,0 +1,35 @@
+{
+  "id": "Q32804",
+  "kind": "item",
+  "name": "U-352",
+  "state": "intact",
+  "heading": 0,
+  "depth": -35,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "NOAA Monitor National Marine Sanctuary — U-352 (Battle of the Atlantic)",
+      "url": "https://monitor.noaa.gov/shipwrecks/u-352.html"
+    },
+    {
+      "title": "Divernet — U-352, North Carolina's World War II shipwreck",
+      "url": "https://divernet.com/world-dives/u-352-north-carolinas-world-war-ii-shipwreck/"
+    },
+    {
+      "title": "Underwater Journal — the U-352, North Carolina's German U-boat wreck (the cracked bow with the forward torpedo tubes, the gun mount, the conning tower)",
+      "url": "https://www.underwaterjournal.com/the-u-352-north-carolinas-german-u-boat-wreck/"
+    },
+    {
+      "title": "German submarine U-352 — Type VIIC sunk by USCGC Icarus on 9 May 1942; about 35 m with a 45-degree list to starboard",
+      "url": "https://en.wikipedia.org/wiki/German_submarine_U-352"
+    }
+  ],
+  "triangles": 22763,
+  "notes": "Built by code (model_sources/Q32804_u352.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On the sand at about 35 m south of Cape Lookout with a 45-degree list to starboard: the pressure hull with the outer casing largely rotted away over its frames, the bow cracked open on the starboard side showing the forward torpedo tubes, the empty mount of the deck gun (blown off by the depth charges), the wrecked conning tower and winter garden, the diving planes, the twin propellers and the rudder; plating of the casing on the sand. The heading (not published here: 0) is approximate. A war grave. model_built.glb: the U-boat as commissioned in 1941. No marine life in the model: Offlined draws the living things itself."
+}
