@@ -1,0 +1,35 @@
+{
+  "id": "Q154115",
+  "kind": "item",
+  "name": "Admiral Graf Spee",
+  "state": "buried",
+  "heading": 0,
+  "depth": -11,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Admiral Graf Spee — Deutschland-class Panzerschiff, scuttled off Montevideo on 17 December 1939; the wreck at about 11 m, partially broken up in situ in 1942-43",
+      "url": "https://en.wikipedia.org/wiki/German_cruiser_Admiral_Graf_Spee"
+    },
+    {
+      "title": "german-navy.de — the wreck of the Admiral Graf Spee and the 2004 salvage of the main rangefinder",
+      "url": "https://german-navy.de/kriegsmarine/ships/panzerschiffe/admiralgrafspee/wreck.html"
+    },
+    {
+      "title": "MercoPress (2004) — Graf Spee range finder recovered; a 27-ton part of the command tower lifted",
+      "url": "https://en.mercopress.com/2004/02/26/graf-spee-range-finder-recovered"
+    },
+    {
+      "title": "Montevideo Portal — ¿Por qué el Graf Spee sigue hundido frente a Montevideo y no se lo rescata?",
+      "url": "https://www.montevideo.com.uy/Noticias/-Por-que-el-Graf-Spee-sigue-hundido-frente-a-Montevideo-y-no-se-lo-rescata--uc981693"
+    }
+  ],
+  "triangles": 57843,
+  "notes": "Built by code (model_sources/Q154115_graf_spee.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright, deep in the soft bottom of the River Plate estuary at about 11 m, only the upper part of the hull showing: the two triple 28 cm turrets, the 15 cm guns, the superstructure cut down by the 1940s scrappers to its lower levels and the stump of the tower (its rangefinder raised in 2004), no funnel, the after part wrecked by the scuttling charges and the fire; murky water with little life. The degree of burial, the heading (not published: 0) and what the scrappers took are approximate. model_built.glb: the Panzerschiff as she sailed in 1939, with the tower mast."
+}

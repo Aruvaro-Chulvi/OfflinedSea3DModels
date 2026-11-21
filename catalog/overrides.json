@@ -68,6 +68,10 @@
       "note": "Almost upturned on her starboard side at about 45 m in Scapa Flow; the GEBCO cell gives 35 m.",
       "source": "https://scapaflowwrecks.com/wrecks/markgraf/diving.php"
     },
+    "Q154115": { "depth": -11,
+      "note": "Upright in the mud at about 11 m off Montevideo; the GEBCO cell gives 7 m.",
+      "source": "https://en.wikipedia.org/wiki/German_cruiser_Admiral_Graf_Spee"
+    },
     "Q708046": { "lat": -26.10889,
       "lon": 111.0725,
       "depth": -2560,
