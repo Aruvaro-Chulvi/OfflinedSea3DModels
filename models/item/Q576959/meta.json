@@ -1,0 +1,35 @@
+{
+  "id": "Q576959",
+  "kind": "item",
+  "name": "MS Antilla",
+  "state": "broken",
+  "heading": 0,
+  "depth": -17,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "PADI — Antilla wreck: German freighter scuttled on 10 May 1940, lying on her port side, 55 ft maximum",
+      "url": "https://www.padi.com/dive-site/aruba/antilla-wreck/"
+    },
+    {
+      "title": "Duikersgids — Antilla wrak: 121.4 m, 16-18 m, broken in two parts",
+      "url": "https://www.duikersgids.nl/en/antilla-wrak"
+    },
+    {
+      "title": "Aruba.com — Exploring the Antilla shipwreck, Aruba's underwater heritage",
+      "url": "https://www.aruba.com/uk/blog/exploring-antilla-shipwreck---arubas-underwater-heritage"
+    },
+    {
+      "title": "Arubiana — The Antilla (Biblioteca Nacional Aruba, digital collection)",
+      "url": "https://archive.org/download/BNADIGARUBIANA3306II/BNA-DIG-ARUBIANA-3306-II ANTILLA ENGLISH FULL.pdf"
+    }
+  ],
+  "triangles": 105502,
+  "notes": "Built by code (model_sources/Q576959_antilla.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her port side in about 17 m, broken in two about amidships (the after part a little twisted and apart), the superstructure crumpled, the funnel and mainmast lying on the sand, covered in sponges and corals. Where she broke, the heading (not published: 0), the colours and the layout are approximate. model_built.glb: the freighter as she sailed in 1939-40."
+}
