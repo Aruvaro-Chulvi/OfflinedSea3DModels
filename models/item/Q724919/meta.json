@@ -1,0 +1,35 @@
+{
+  "id": "Q724919",
+  "kind": "item",
+  "name": "HMS Prince of Wales",
+  "state": "capsized",
+  "heading": 0,
+  "depth": -68,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "HMS Prince of Wales (53) — King George V-class battleship; sunk on 10 December 1941; the wreck upside down at about 68 m off Kuantan, illegally salvaged in the 21st century, a Protected Place since 2001",
+      "url": "https://en.wikipedia.org/wiki/HMS_Prince_of_Wales_(53)"
+    },
+    {
+      "title": "UK Ministry of Defence — wreck assessment of HMS Prince of Wales and HMS Repulse (2019, FOI 20190/7097): intact shells and cordite scattered on the wreck sites",
+      "url": "https://data.parliament.uk/DepositedPapers/Files/DEP2023-0636/FOI20190_7097_HMSPOW_repulse_FINAL.pdf"
+    },
+    {
+      "title": "Pacific Wrecks — HMS Prince of Wales hull damage",
+      "url": "https://www.pacificwrecks.com/ship/hms/prince-of-wales/pow-hull-damage.pdf"
+    },
+    {
+      "title": "The Star (2025) — Sunken ships and stolen history (looting of the wrecks)",
+      "url": "https://www.thestar.com.my/news/focus/2025/08/31/sunken-ships-and-stolen-history"
+    }
+  ],
+  "triangles": 102053,
+  "notes": "Built by code (model_sources/Q724919_hms_prince_of_wales.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 68 m, a little over to starboard, resting on her deck edge with the bridge, funnels and turrets crushed down into the bottom; the bilge, the four shafts and screws and the rudder uppermost; the hull stove in aft on the port side (torpedoes) and plates torn away by the scrap thieves; shells and cordite charges strewn about. A war grave (327 men). The angle, the heading (not published: 0), the torpedo damage and the extent of the looting are approximate. model_built.glb: the battleship as she sailed in 1941."
+}
