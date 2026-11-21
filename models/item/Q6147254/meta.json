@@ -30,6 +30,6 @@
       "url": "https://navylog.navymemorial.org/grunion"
     }
   ],
-  "triangles": 30514,
-  "notes": "Built by code (model_sources/Q6147254_uss_grunion.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. At about 1,000 m on the slope off Kiska, settled with a list: the pressure hull partly collapsed (dished in), the casing with its limber holes, the conning-tower fairwater with the periscope shears, the deck gun, the planes and the two screws with their guards; the bow broken off and lying a little apart, at the end of the furrow she cut in the slope; deep-water life. A war grave (70 men). The break, the furrow and the heading (not published: 0) are approximate. model_built.glb: the submarine as commissioned in 1942."
+  "triangles": 25326,
+  "notes": "Built by code (model_sources/Q6147254_uss_grunion.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. At about 1,000 m on the slope off Kiska, settled with a list: the pressure hull partly collapsed (dished in), the casing with its limber holes, the conning-tower fairwater with the periscope shears, the deck gun, the planes and the two screws with their guards; the bow broken off and lying a little apart, at the end of the furrow she cut in the slope. A war grave (70 men). The break, the furrow and the heading (not published: 0) are approximate. model_built.glb: the submarine as commissioned in 1942. No marine life in the model: Offlined draws the living things itself."
 }

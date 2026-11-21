@@ -62,6 +62,7 @@ r = np.random.default_rng(7)
 INS = []
 tyres = [tyre(0.3 + 0.04 * k) for k in range(3)]
 pos, nrm = [], []
+stack = {}
 cleared = [(rng.uniform(-60, 80), rng.uniform(-90, 90), rng.uniform(12, 25)) for _ in range(4)]
 
 
@@ -74,9 +75,13 @@ for k in range(9000):                                                         # 
     z = r.uniform(-125, 125)
     if is_cleared(x, z) and r.random() < 0.9:
         continue
-    pile = max(0.0, (x + 95) < 25) * r.uniform(0, 1.6)
-    y = 0.1 + pile * r.random()
-    pos.append((x, y, z)); a = r.uniform(0, 6.28); tl = r.uniform(0, 1.2) if pile else r.uniform(0, 0.25)
+    cell = (int(x // 0.85), int(z // 0.85)); k = stack.get(cell, 0); stack[cell] = k + 1
+    if k >= 6:                                                               # heaps of up to six
+        continue
+    if k:                                                                    # on top of the tyre already there: a heap, never in the water
+        x, z = (cell[0] + 0.5) * 0.85 + r.normal(0, 0.08), (cell[1] + 0.5) * 0.85 + r.normal(0, 0.08)
+    y = 0.12 + 0.22 * k
+    pos.append((x, y, z)); a = r.uniform(0, 6.28); tl = r.uniform(0, 0.25) if k == 0 else r.uniform(0, 0.1)
     nrm.append((math.sin(tl) * math.cos(a), math.cos(tl), math.sin(tl) * math.sin(a)))
 for b in range(30):                                                           # bundles still tied: stacks of tyres
     bx, bz = rng.uniform(-60, 100), rng.uniform(-110, 110)

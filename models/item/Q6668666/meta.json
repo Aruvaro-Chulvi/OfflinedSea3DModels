@@ -30,6 +30,6 @@
       "url": "https://www.livescience.com/38704-norway-seafloor-vents-photos.html"
     }
   ],
-  "triangles": 22408,
-  "notes": "Built by code (model_sources/Q6668666_lokis_castle.py, tools/meshkit.py, tools/scenekit.py) with AI assistance. One sulphide mound about 200 m across and 25 m high, black and rust-brown, with two vent sites: at each, two active black-smoker chimneys of 9-13 m with beehive ledges and white bacterial dusting near the top, and smaller extinct or diffuse chimneys about them; fields of thin tubeworms on top of the mound; bacterial mats; a few fish. The shape of the mound and of each chimney, and the distance between the vent sites, are approximate."
+  "triangles": 22086,
+  "notes": "Built by code (model_sources/Q6668666_lokis_castle.py, tools/meshkit.py, tools/scenekit.py) with AI assistance. One sulphide mound about 200 m across and 25 m high, black and rust-brown, with two vent sites: at each, two active black-smoker chimneys of 9-13 m with beehive ledges and white bacterial dusting near the top, and smaller extinct or diffuse chimneys about them. The shape of the mound and of each chimney, and the distance between the vent sites, are approximate. No marine life in the model: Offlined draws the living things itself."
 }

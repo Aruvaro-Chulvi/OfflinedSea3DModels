@@ -30,6 +30,6 @@
       "url": "https://archaeology.org/issues/online/features/hms-investigator-banks-island-canada/"
     }
   ],
-  "triangles": 48826,
-  "notes": "Built by code (model_sources/Q1564906_hms_investigator.py, tools/sailkit.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright in about 11 m, the hull deep in the silt with only some 3 m of her above it, the upper deck and its fittings intact, the masts sheared off by the ice, the stump of the bowsprit, a few spars half buried around her; cold Arctic water with little life. The heading (not published: 0), the depth of the silt and the deck fittings are approximate. model_built.glb: the ship under sail in 1850."
+  "triangles": 43496,
+  "notes": "Built by code (model_sources/Q1564906_hms_investigator.py, tools/sailkit.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright in about 11 m, the hull deep in the silt with only some 3 m of her above it, the upper deck and its fittings intact, the masts sheared off by the ice, the stump of the bowsprit, a few spars half buried around her. The heading (not published: 0), the depth of the silt and the deck fittings are approximate. model_built.glb: the ship under sail in 1850. No marine life in the model: Offlined draws the living things itself."
 }

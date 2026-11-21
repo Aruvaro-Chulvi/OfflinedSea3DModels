@@ -30,6 +30,6 @@
       "url": "https://gbif.org/dataset/24ef0672-0e0c-460d-b72a-871efeb95a0c"
     }
   ],
-  "triangles": 13436,
-  "notes": "Built by code (model_sources/Q632738_darwin_mounds.py, tools/meshkit.py, tools/scenekit.py) with AI assistance. A group of fourteen sandy mounds about 600 m across at about 1,000 m, each 45-75 m across and 2.5-5 m high, capped with thickets of Lophelia coral, with a low sediment tail downstream to the south-west strewn with xenophyophores; on four of them the coral is broken into rubble by trawling; brittle stars, brisingid starfish and sponges among the corals; a few grenadiers. The layout of the mounds, the direction of the tails and the trawl damage are approximate."
+  "triangles": 12458,
+  "notes": "Built by code (model_sources/Q632738_darwin_mounds.py, tools/meshkit.py, tools/scenekit.py) with AI assistance. A group of fourteen sandy mounds about 600 m across at about 1,000 m, each 45-75 m across and 2.5-5 m high, capped with thickets of Lophelia coral, with a low sediment tail downstream to the south-west; on four of them the coral is broken into rubble by trawling. The layout of the mounds, the direction of the tails and the trawl damage are approximate. No marine life in the model: Offlined draws the living things itself."
 }

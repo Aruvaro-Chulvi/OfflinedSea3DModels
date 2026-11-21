@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/USS_Saratoga_(CV-3)"
     }
   ],
-  "triangles": 119908,
-  "notes": "Built by code (model_sources/Q852981_uss_saratoga.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright at about 52 m: the enclosed hangar, the flight deck (its after part collapsed onto the hangar deck), the island and the great flat funnel, the twin 5-inch mounts, the lifts, four screws; Helldiver aircraft left in the hangar; plates on the bottom; corals and fish. The heading (not published: 0), the extent of the collapse, the state of the funnel and the aircraft are approximate. model_built.glb: the carrier as she was in 1946."
+  "triangles": 74478,
+  "notes": "Built by code (model_sources/Q852981_uss_saratoga.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright at about 52 m: the enclosed hangar, the flight deck (its after part collapsed onto the hangar deck), the island and the great flat funnel, the twin 5-inch mounts, the lifts, four screws; Helldiver aircraft left in the hangar; plates on the bottom. The heading (not published: 0), the extent of the collapse, the state of the funnel and the aircraft are approximate. model_built.glb: the carrier as she was in 1946. No marine life in the model: Offlined draws the living things itself."
 }

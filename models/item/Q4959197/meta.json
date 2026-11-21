@@ -30,6 +30,6 @@
       "url": "https://legionmagazine.com/the-worlds-most-northerly-shipwreck/"
     }
   ],
-  "triangles": 50568,
-  "notes": "Built by code (model_sources/Q4959197_breadalbane.py, tools/sailkit.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright and intact at about 100 m, bow to the east: two masts still standing with their tops and a few shrouds, the yards hanging askew; the hole cut by the ice in the starboard bow with the frames showing; the helm on the after deck; the fractured bowsprit; the third mast (here the mizzen) fallen over the port quarter, spars and rigging on the bottom; copper sheathing gone green. Which mast fell, the yards and the size of the hole are approximate. model_built.glb: the barque under sail in 1853."
+  "triangles": 45208,
+  "notes": "Built by code (model_sources/Q4959197_breadalbane.py, tools/sailkit.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright and intact at about 100 m, bow to the east: two masts still standing with their tops and a few shrouds, the yards hanging askew; the hole cut by the ice in the starboard bow with the frames showing; the helm on the after deck; the fractured bowsprit; the third mast (here the mizzen) fallen over the port quarter, spars and rigging on the bottom; copper sheathing gone green. Which mast fell, the yards and the size of the hole are approximate. model_built.glb: the barque under sail in 1853. No marine life in the model: Offlined draws the living things itself."
 }

@@ -26,6 +26,6 @@
       "url": "https://old.xray-mag.com/content/demise-sms-szent-istv%C3%A1n"
     }
   ],
-  "triangles": 53540,
-  "notes": "Built by code (model_sources/Q642429_sms_szent_istvan.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 66 m, resting on her deck edge with the upperworks crushed into the bottom; the bow broken off and lying right beside the hull; the two propellers and the twin rudders uppermost; the torpedo holes on the starboard side by the boiler rooms; a searchlight half buried in the sand; plates about. A war grave (89 men). The heading (not published: 0), the angle of the bow and the turrets' state are approximate. model_built.glb: the battleship as she sailed in 1918."
+  "triangles": 48240,
+  "notes": "Built by code (model_sources/Q642429_sms_szent_istvan.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 66 m, resting on her deck edge with the upperworks crushed into the bottom; the bow broken off and lying right beside the hull; the two propellers and the twin rudders uppermost; the torpedo holes on the starboard side by the boiler rooms; a searchlight half buried in the sand; plates about. A war grave (89 men). The heading (not published: 0), the angle of the bow and the turrets' state are approximate. model_built.glb: the battleship as she sailed in 1918. No marine life in the model: Offlined draws the living things itself."
 }

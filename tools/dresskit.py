@@ -6,8 +6,8 @@ What it adds to the plain geometry of a wreck (Q…_name.py builds the hull, the
   ridges of the old mud, fading into the seabed (node «sediment»; its vertex colours carry only the baked light,
   so Offlined paints it with the seabed's own colour);
 - rust: the paint turned brown, rusticles under every edge and runs down the walls (fewer the shallower);
-- the life that really lives there, by depth: abyssal (deep-sea animals, very few), bathyal, or shelf (a wreck in
-  tens of metres of water is covered in plumose anemones and soft corals, with shoals of fish around it);
+- (no marine life: Offlined's Wiki Submarine draws the living things itself; scenekit.write_model leaves out
+  anything made with the "life" material);
 - things from the ship (plates and bottles of a liner, shell casings of a warship, shoes where people died);
 - riveted steel textures, baked ambient occlusion, and the compact writer (16-bit, instancing).
 And for the ship as built: planked decks, clean plating and baked light.
@@ -167,9 +167,6 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
         kk = 0.5 * sstep(0.25, 0.05, lum)
         m.c = m.c * (1 - kk[:, None]) + np.array([0.24, 0.12, 0.07]) * kk[:, None]
         weather(m, rust=rust_k, sediment=0.12, streaks=1.0 if zone != "shelf" else 0.4, seed=seed + 200 + k, rust_col=(0.42, 0.17, 0.07))
-        if zone == "shelf":                                  # encrusting life: pale and greenish blotches over everything
-            g = sstep(0.4, 0.75, fbm(m.v, 0.35, seed + 300 + k, 3))
-            m.c = m.c * (1 - 0.6 * g[:, None]) + np.array([0.55, 0.56, 0.48]) * 0.6 * g[:, None]
         m.c = np.clip(m.c * (0.85 + 0.3 * fbm(m.v, 0.6, seed + 205 + k, 2))[:, None], 0, 1)
     # ── sediment ──
     sediment, hAt = sediment_field(steel_m, muds, zone, seed, loose=loose, drift=drift)

@@ -442,7 +442,7 @@ def torn_end(d_break, y_lo, y_hi, n, seed, aft_side):
         y = r.uniform(y_lo, y_hi)
         wdt = hw(z0, y) - 0.5
         p = plate(r, r.uniform(2, 6), 0.12, r.uniform(2.5, 7), GREY if y > WL else RED, 0.8, seed + i)
-        dz = r.uniform(0.5, 4.5) * (1 if aft_side else -1)
+        dz = r.uniform(-1.2, 1.4) * (1 if aft_side else -1)                     # rooted in the torn end, not hanging free in front of it
         out.append(p.R(r.uniform(-0.6, 0.6), r.uniform(-0.4, 0.4), r.uniform(-0.8, 0.8)).T(r.uniform(-wdt, wdt), y, z0 + dz))
     # dark bulkhead just inside the break and the decks seen through it
     inner = box(B * 0.92, D * 0.86, 0.25, INSIDE).T(0, 0.8, z0 + (-4.0 if aft_side else 4.0))

@@ -30,6 +30,6 @@
       "url": "https://alertdiver.eu/en_US/articles/cult-dive-the-usat-liberty/?print=pdf"
     }
   ],
-  "triangles": 102823,
-  "notes": "Built by code (model_sources/Q2468064_usat_liberty.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her starboard side, bow to the west, the middle of the hull broken and collapsed with plating fallen away into the holds, the superstructure crumpled; the bow and stern guns still in place; no propeller (salvaged); funnel and masts lying on the sand; densely covered in corals and sponges. The real wreck lies on a slope from about 5 to 30 m; on Offlined's flat seabed she lies at the mean depth. The degree of collapse, the colours and the layout are approximate. model_built.glb: the ship as she sailed in 1942."
+  "triangles": 30213,
+  "notes": "Built by code (model_sources/Q2468064_usat_liberty.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her starboard side, bow to the west, the middle of the hull broken and collapsed with plating fallen away into the holds, the superstructure crumpled; the bow and stern guns still in place; no propeller (salvaged); funnel and masts lying on the sand. The real wreck lies on a slope from about 5 to 30 m; on Offlined's flat seabed she lies at the mean depth. The degree of collapse, the colours and the layout are approximate. model_built.glb: the ship as she sailed in 1942. No marine life in the model: Offlined draws the living things itself."
 }

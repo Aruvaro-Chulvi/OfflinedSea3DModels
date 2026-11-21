@@ -30,6 +30,6 @@
       "url": "https://news.delaware.gov/2024/07/22/dnrec-sinks-two-vintage-vessels-on-delaware-reef-site-11-the-redbird-reef-to-enhance-recreational-opportunities"
     }
   ],
-  "triangles": 190846,
-  "notes": "Built by code (model_sources/Q2136142_redbird_reef.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. A patch about 400 m across of the reef at about 24 m: 110 Redbird subway cars (a sample of the 997), stripped of wheels, doors and windows, lying in loose rows where they were dropped, some on their sides; eight Army tanks and a tug; blue mussels, anemones and sponges crusting the steel, fish about them. The layout is approximate."
+  "triangles": 57496,
+  "notes": "Built by code (model_sources/Q2136142_redbird_reef.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. A patch about 400 m across of the reef at about 24 m: 110 Redbird subway cars (a sample of the 997), stripped of wheels, doors and windows, lying in loose rows where they were dropped, some on their sides; eight Army tanks and a tug. The layout is approximate. No marine life in the model: Offlined draws the living things itself."
 }

@@ -30,6 +30,6 @@
       "url": "https://www.wunc.org/news/2022-06-06/historic-civil-war-ship-sunk-off-nc-coast-in-astounding-shape-experts-say"
     }
   ],
-  "triangles": 24366,
-  "notes": "Built by code (model_sources/Q857891_uss_monitor.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 73 m, listing onto one side of her armour belt: the narrow iron lower hull uppermost on the flat armoured raft, the anchor well forward, the stern cut open where the propeller, the engine and the turret were raised (1998-2002), hull plating and the grout bags of 2000 in the sand at the stern. Sixteen men died in her sinking. The list, the heading (not published: 0) and the size of the cut-away are approximate. model_built.glb: the ironclad in 1862, with her turret, pilot house and smoke-pipe boxes."
+  "triangles": 19036,
+  "notes": "Built by code (model_sources/Q857891_uss_monitor.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 73 m, listing onto one side of her armour belt: the narrow iron lower hull uppermost on the flat armoured raft, the anchor well forward, the stern cut open where the propeller, the engine and the turret were raised (1998-2002), hull plating and the grout bags of 2000 in the sand at the stern. Sixteen men died in her sinking. The list, the heading (not published: 0) and the size of the cut-away are approximate. model_built.glb: the ironclad in 1862, with her turret, pilot house and smoke-pipe boxes. No marine life in the model: Offlined draws the living things itself."
 }

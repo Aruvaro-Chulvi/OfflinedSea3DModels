@@ -30,6 +30,6 @@
       "url": "https://www.scubadiving.com/history-bvis-rhone-shipwreck"
     }
   ],
-  "triangles": 87144,
-  "notes": "Built by code (model_sources/Q1664018_rms_rhone.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The bow section on its side (the iron frames open where the wooden deck has gone), the foremast with its crow's nest beside it; between, the burst boilers and the engine and gearbox; the stern section broken down to its lower hull, with the shaft, the great four-bladed propeller and the rudder; Caribbean corals. The real pieces lie from about 9 to 24 m; on Offlined's flat seabed they lie at the mean depth. Heading (not published: 0), the side the bow lies on (after dive guides), the gaps between the pieces and the rig are approximate. model_built.glb: the steamer as she sailed in 1867."
+  "triangles": 29040,
+  "notes": "Built by code (model_sources/Q1664018_rms_rhone.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The bow section on its side (the iron frames open where the wooden deck has gone), the foremast with its crow's nest beside it; between, the burst boilers and the engine and gearbox; the stern section broken down to its lower hull, with the shaft, the great four-bladed propeller and the rudder. The real pieces lie from about 9 to 24 m; on Offlined's flat seabed they lie at the mean depth. Heading (not published: 0), the side the bow lies on (after dive guides), the gaps between the pieces and the rig are approximate. model_built.glb: the steamer as she sailed in 1867. No marine life in the model: Offlined draws the living things itself."
 }

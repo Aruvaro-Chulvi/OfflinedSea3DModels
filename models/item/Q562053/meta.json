@@ -30,6 +30,6 @@
       "url": "https://vindyarchives.com/news/2006/may/19/divers-get-a-look-at-sunken-carrier"
     }
   ],
-  "triangles": 99312,
-  "notes": "Built by code (model_sources/Q562053_uss_oriskany.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the sand at about 65 m, bow to the south: the hurricane bow, the hangar, the angled flight deck with its lifts, the island with the stack and mast rising to about 26 m; no armament (removed before scuttling); an artificial reef with fish, sponges and corals. The layout of the island and of the lifts is approximate. model_built.glb: the carrier as she was when decommissioned."
+  "triangles": 68216,
+  "notes": "Built by code (model_sources/Q562053_uss_oriskany.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the sand at about 65 m, bow to the south: the hurricane bow, the hangar, the angled flight deck with its lifts, the island with the stack and mast rising to about 26 m; no armament (removed before scuttling); an artificial reef. The layout of the island and of the lifts is approximate. model_built.glb: the carrier as she was when decommissioned. No marine life in the model: Offlined draws the living things itself."
 }

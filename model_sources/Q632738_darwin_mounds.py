@@ -8,7 +8,9 @@ sea floor north-west of Scotland at about 950-1,050 m, an area of some 100 km² 
 up to about 75 m across and 5 m high, formed by fluid escaping through a thin sandy contourite shaped by the
 Shelf Edge Current. Each mound is capped with thickets of the cold-water corals Lophelia pertusa (Desmophyllum
 pertusum) and Madrepora oculata, home to brittle stars, brisingid starfish, echiuran worms and sponges; downstream
-of most mounds a long, low "tail" of sediment is strewn with giant single-celled xenophyophores. Bottom trawling
+of most mounds a long, low "tail" of sediment is strewn with giant single-celled xenophyophores. The coral
+thickets are the reef itself and are part of the model; the animals (and every other living thing) are left to
+Offlined, which draws the marine life by itself. Bottom trawling
 broke up the coral on some mounds before they were protected (closed to trawling in 2003; a Special Area of
 Conservation). Here a group of fourteen mounds about 600 m across is drawn; their layout, the tails' direction and
 the trawl damage are approximate.
@@ -98,10 +100,10 @@ for k, (x, z, rad, h) in enumerate(mounds):
 pos_c = np.array(pos_c); pick = r.integers(len(bushes), size=len(pos_c))
 for k, b in enumerate(bushes):
     s = pick == k
-    INS.append((f"lophelia_{k}", b, "life", instances(pos_c[s], yaw=r.uniform(0, 6.28, s.sum()), scale=r.uniform(1.0, 3.0, s.sum()))))
+    INS.append((f"lophelia_{k}", b, "reef", instances(pos_c[s], yaw=r.uniform(0, 6.28, s.sum()), scale=r.uniform(1.0, 3.0, s.sum()))))
 if pos_r:
     pos_r = np.array(pos_r)
-    INS.append(("coral_rubble", rubble, "life", instances(pos_r, yaw=r.uniform(0, 6.28, len(pos_r)), scale=r.uniform(0.5, 1.8, len(pos_r)))))
+    INS.append(("coral_rubble", rubble, "reef", instances(pos_r, yaw=r.uniform(0, 6.28, len(pos_r)), scale=r.uniform(0.5, 1.8, len(pos_r)))))
 # xenophyophores on the tails, brittle stars and brisingid starfish about the corals, sponges, a few grenadiers
 xen = abyss.xeno(0.08)
 pts = abyss.sample_surface(ground, 6000, lambda fn: fn[:, 1] > 0.9, r)
@@ -123,5 +125,5 @@ INS.append(("grenadiers", fish, "life", instances(fp, yaw=r.uniform(0, 6.28, 14)
 
 out = ROOT / "models" / "item" / "Q632738" / "model.glb"
 out.parent.mkdir(parents=True, exist_ok=True)
-tris, size = write_model(out, [("sediment", ground, "ground")], {"ground": material(rough=1.0), "life": material(rough=0.6)}, instanced=INS)
+tris, size = write_model(out, [("sediment", ground, "ground")], {"ground": material(rough=1.0), "reef": material(rough=0.7)}, instanced=INS)
 print(f"{out}: {tris:,} triangles, {size / 2**20:.2f} MB")

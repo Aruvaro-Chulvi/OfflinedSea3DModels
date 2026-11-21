@@ -287,7 +287,7 @@ def lifeboat():
 
 
 def davit(x, y, z, s, bent=0.0):
-    pts = [(x, y, z), (x, y + 2.4, z), (x + s * (0.9 + bent), y + 3.0 - bent * 1.5, z)]
+    pts = [(x, y - 1.0, z), (x, y + 2.4, z), (x + s * (0.9 + bent), y + 3.0 - bent * 1.5, z)]     # its foot set into the deck
     return tube(pts, 0.12, GREY, seg=5)
 
 
@@ -296,7 +296,7 @@ def propeller(d, y, r=1.9):
     for k in range(4):
         a = 2 * math.pi * k / 4
         P.append(at(box(r, 0.16, 1.3, BRONZE, bottom=False).T(r / 2 + 0.3, 0, 0).R(0.45, 0, 0).R(0, 0, a), d - 0.4, y=y))
-    P.append(at(cyl(0.3, 0.3, 3.0, STEEL, seg=8).R(math.pi / 2, 0, 0), d - 3.0, y=y))     # shaft
+    P.append(at(cyl(0.3, 0.3, 10.0, STEEL, seg=8).R(math.pi / 2, 0, 0), d - 10.0, y=y))   # shaft, long enough to run into the hull
     return P
 
 
@@ -333,7 +333,7 @@ def place(m, d, x, y, yaw=0.0, tilt=(0.0, 0.0)):
 LEVEL_H = 2.5
 
 
-def ship_part(d0, d1, built, mast_left=None, funnel_state="stump", houses_damage=None):
+def ship_part(d0, d1, built, mast_left=None, funnel_state="stump", houses_damage=None, davits=True):
     """Everything between d0 and d1 from the bow. mast_left: heights left standing (None: stumps of 2 m).
     funnel_state: 'stand', 'stump' or 'gone' for the wreck."""
     inr = lambda a, b=None: (d0 <= a <= d1) if b is None else (a < d1 and b > d0)
@@ -388,22 +388,24 @@ def ship_part(d0, d1, built, mast_left=None, funnel_state="stump", houses_damage
             if hh > 0:
                 P += mast(d, hh, built)
     hs = []
-    for (a, b, wf, h, lv) in HOUSES:
-        if inr(a, b) and a >= d0 - 0.1 and b <= d1 + 0.1:
-            y0 = deck_y((a + b) / 2) + FC + LEVEL_H * lv
+    for (a0, b0, wf, h, lv) in HOUSES:
+        a, b = max(a0, d0), min(b0, d1)                                       # a house across a break: each part keeps its own piece
+        if b - a > 0.5:
+            y0 = deck_y((a0 + b0) / 2) + FC + LEVEL_H * lv
             hs.append(box(B * wf, h, b - a, SUPC).T(0, y0, zd((a + b) / 2)))
             for s in (-1, 1):
                 hs += [quad(s * B * wf / 2, y0 + h * 0.55, zd(dd), 0.8 if lv < 2 else 1.0, 0.7, "+x" if s > 0 else "-x", DARK) for dd in np.arange(a + 1.0, b - 0.8, 1.6)]
-            hs += [quad(x, y0 + h * 0.55, zd(a) + 0.02, 0.8, 0.7, "+z", DARK) for x in np.arange(-B * wf / 2 + 0.8, B * wf / 2 - 0.6, 1.4)]
+            if a == a0:
+                hs += [quad(x, y0 + h * 0.55, zd(a) + 0.02, 0.8, 0.7, "+z", DARK) for x in np.arange(-B * wf / 2 + 0.8, B * wf / 2 - 0.6, 1.4)]
     if hs:
         hm = merge(hs)
         if not built and houses_damage:
             houses_damage(hm)
         P.append(hm)
-    top = max([lv for (_, _, _, _, lv) in HOUSES], default=0)
     for (d, r, h, sx) in FUNNELS:
         if inr(d):
-            yb = deck_y(d) + FC + LEVEL_H * (top + 1)
+            under = [(lv, hh) for (a, b, _, hh, lv) in HOUSES if a <= d <= b]     # it stands on the roof of the house right under it
+            yb = deck_y(d) + FC + (LEVEL_H * max(under)[0] + max(under)[1] - 0.2 if under else 0.0)
             if built or funnel_state == "stand":
                 f = cyl(r, r * 0.97, h, FUNNELC, seg=20, sx=sx).R(-0.07, 0, 0)
                 f.c[f.v[:, 1] > h - 1.0] = BLACK
@@ -421,7 +423,8 @@ def ship_part(d0, d1, built, mast_left=None, funnel_state="stump", houses_damage
                 wf = BOAT_X
                 if built:
                     P.append(lifeboat().T(s * (B * wf + 1.1), y0 + 0.9, zd(d)))
-                P += [davit(s * (B * wf + 0.2), y0, zd(d + dd), s, bent=0.0 if built else rng.uniform(0.0, 0.6)) for dd in (-2.6, 2.6)]
+                if built or davits:
+                    P += [davit(s * (B * wf + 0.2), y0, zd(d + dd), s, bent=0.0 if built else rng.uniform(0.0, 0.6)) for dd in (-2.6, 2.6)]
     for (x, d, y, r) in SCREWS:
         if inr(d):
             P += [m.T(x, 0, 0) for m in propeller(d, y, r)]
@@ -507,7 +510,7 @@ def carrier_part(d0, d1, built, holes=0.0, seed=1):
         for (dl, ln, w, x) in C["lifts"]:
             if fa < dl < fb:
                 P.append(quad(x, fd_y(dl) + 0.03, zd(dl), w, ln, "+y", (0.22, 0.22, 0.23), eps=0.0))
-        for d in np.arange(fa + 3, fb - 3, 9.0):                                      # the centre line and deck markings
+        for d in (np.arange(fa + 3, fb - 3, 9.0) if built or not holes else []):      # the centre line and deck markings (not over bomb holes)
             P.append(quad(0, fd_y(d) + 0.035, zd(d), 0.5, 4.0, "+y", (0.75, 0.75, 0.72), eps=0.0))
     i0, i1, iw, lv = C["island"]
     if i0 < d1 and i1 > d0:
@@ -516,13 +519,14 @@ def carrier_part(d0, d1, built, holes=0.0, seed=1):
         isl = []
         for k in range(lv):
             sh = k * 0.06
-            isl.append(box(iw * (1 - sh), 2.6, (i1 - i0) * (1 - sh * 1.5), GREY).T(xi, y0 + 2.6 * k, zd((i0 + i1) / 2 + k * 0.3)))
+            dc, hl = (i0 + i1) / 2 + k * 0.3, (i1 - i0) * (1 - sh * 1.5) / 2          # each level a little smaller
+            isl.append(box(iw * (1 - sh), 2.6, 2 * hl, GREY).T(xi, y0 + 2.6 * k, zd(dc)))
             isl += [quad(xi + s * iw * (1 - sh) / 2, y0 + 2.6 * k + 1.5, zd(d), 0.6, 0.5, "+x" if s > 0 else "-x", DARK)
-                    for s in (-1, 1) for d in np.arange(i0 + 1.5, i1 - 1.0, 2.0)]
-        isl += [quad(xi, y0 + 2.6 * (lv - 1) + 1.5, zd(i0) + 0.02, 0.9, 0.7, "+z", DARK) for _ in range(1)]
+                    for s in (-1, 1) for d in np.arange(dc - hl + 1.0, dc + hl - 0.8, 2.0)]   # its windows on its own walls
+        isl += [quad(xi, y0 + 2.6 * (lv - 1) + 1.5, zd(dc - hl) + 0.02, 0.9, 0.7, "+z", DARK)]
         if C.get("funnel"):
             f0, f1, fh, fw = C["funnel"]
-            fun = box(fw, fh, f1 - f0, GREY).T(xi, y0 + 2.6 * lv * 0.5, zd((f0 + f1) / 2))
+            fun = box(fw, fh + 2.6 * lv * 0.5, f1 - f0, GREY).T(xi, y0, zd((f0 + f1) / 2))   # from the flight deck up (not hanging over it)
             fun.c[fun.v[:, 1] > y0 + 2.6 * lv * 0.5 + fh - 0.8] = BLACK
             isl.append(fun)
         dm, mh = C["mast"]

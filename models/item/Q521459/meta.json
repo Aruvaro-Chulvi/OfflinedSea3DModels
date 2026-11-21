@@ -30,6 +30,6 @@
       "url": "https://oceanexplorer.noaa.gov/explorations/05lostcity/welcome.html"
     }
   ],
-  "triangles": 40299,
-  "notes": "Built by code (model_sources/Q521459_lost_city.py, tools/meshkit.py, tools/scenekit.py) with AI assistance. The terrace on the top of the Atlantis Massif, about 300 m across, with Poseidon (about 60 m, a massive base with several spires) and some thirty other carbonate chimneys, from slender pinnacles a few metres high to towers of 35 m, with flanges growing from their sides; white and cream where active, grey where extinct; snails and amphipods on the active surfaces, bacterial films, a few fish. The place and shape of each chimney are approximate."
+  "triangles": 39951,
+  "notes": "Built by code (model_sources/Q521459_lost_city.py, tools/meshkit.py, tools/scenekit.py) with AI assistance. The terrace on the top of the Atlantis Massif, about 300 m across, with Poseidon (about 60 m, a massive base with several spires) and some thirty other carbonate chimneys, from slender pinnacles a few metres high to towers of 35 m, with flanges growing from their sides; white and cream where active, grey where extinct. The place and shape of each chimney are approximate. No marine life in the model: Offlined draws the living things itself."
 }

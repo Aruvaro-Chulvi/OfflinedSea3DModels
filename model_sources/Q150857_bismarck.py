@@ -405,9 +405,9 @@ def ship_part(d0, d1, built=False):
         U.append(at(cyl(0.35, 0.15, 12.0, DGREY, seg=8), TOWER_D + 0.5, y=38.0))
         U.append(tube([(-4.0, 46.0, zd(TOWER_D + 0.5)), (4.0, 46.0, zd(TOWER_D + 0.5))], 0.1, DGREY, seg=4))
     else:
-        stub = cyl(2.7, 2.6, 29.5 - S[2], GREY, seg=18, caps=False)
-        crumple(stub, 0.9, 0.5, 7, sstep(3.0, 6.5, stub.v[:, 1]))
-        U.append(at(stub, TOWER_D, y=S[2]))
+        stub = cyl(2.7, 2.6, 29.5 - S[1], GREY, seg=18, caps=False)
+        crumple(stub, 0.9, 0.5, 7, sstep(29.5 - S[1] - 3.5, 29.5 - S[1], stub.v[:, 1]))
+        U.append(at(stub, TOWER_D, y=S[1]))                                    # rising from the level below, so it stands on something
     for s in (-1, 1):
         U.append(at(director(), 98.5, x=s * 4.2, y=S[1]))
     # funnel with the searchlight platform and silver-grey cap

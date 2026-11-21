@@ -317,12 +317,22 @@ def instances(pos, normal=None, yaw=None, scale=None):
     return {"t": pos, "r": _quat_from_up(normal, yaw) if N else np.zeros((0, 4)), "s": sc}
 
 
+# Marine life (corals, anemones, sponges, starfish, fish…) is not part of a model: Offlined's Wiki Submarine draws the
+# living things itself, by depth and place, and moves them. Anything a model script still makes with the material key
+# "life" is left out here, so every model is only the wreck (or the place) itself.
+DROP_KEYS = {"life"}
+
+
 def write_model(path, parts, materials, instanced=(), generator="Offlined Sea 3D Models scenekit"):
     """parts: [(node name, Mesh, material key)] or [(node name, [(Mesh, material key), …])], optionally followed by
     {"translation", "rotation"} for a piece placed apart (an item can be (Mesh, key, child node name));
     instanced: [(node name, Mesh, material key, instances(...)[, parent part name])]; materials: {key: material(...)}.
     Each block of up to 65,535 vertices is a child node whose translation/scale undo the 16-bit positions,
     so the named nodes carry no transform themselves (Offlined moves them as pieces)."""
+    parts = [p for p in parts if isinstance(p[1], list) or p[2] not in DROP_KEYS]
+    parts = [(p[0], [it for it in p[1] if it[1] not in DROP_KEYS]) + tuple(p[2:]) if isinstance(p[1], list) else p for p in parts]
+    instanced = [e for e in instanced if e[2] not in DROP_KEYS]
+    materials = {k: v for k, v in materials.items() if k not in DROP_KEYS}
     binbuf = bytearray()
     views, accs, meshes, nodes, images, textures, mats = [], [], [], [], [], [], []
     mat_idx, used_ext = {}, {"KHR_mesh_quantization"}

@@ -30,6 +30,6 @@
       "url": "https://usa.oceana.org/blog/florida-officials-corals-our-bad/"
     }
   ],
-  "triangles": 3695,
-  "notes": "Built by code (model_sources/Q1272680_osborne_reef.py, tools/meshkit.py, tools/scenekit.py) with AI assistance. About 250 m of the tyre field at about 20 m: some 8,500 tyres drawn as a sample of the hundreds of thousands still there, loose and drifted, heaped up against the edge of the natural reef to the east, with a few bundles still tied and patches cleared by the removal work; the old concrete jacks at its heart; sponges and corals on the natural reef and the jacks, none on the tyres; fish. The layout and the number of tyres are approximate."
+  "triangles": 3203,
+  "notes": "Built by code (model_sources/Q1272680_osborne_reef.py, tools/meshkit.py, tools/scenekit.py) with AI assistance. About 250 m of the tyre field at about 20 m: some 8,500 tyres drawn as a sample of the hundreds of thousands still there, loose and drifted, heaped up against the edge of the natural reef to the east, with a few bundles still tied and patches cleared by the removal work; the old concrete jacks at its heart. The layout and the number of tyres are approximate. No marine life in the model: Offlined draws the living things itself."
 }

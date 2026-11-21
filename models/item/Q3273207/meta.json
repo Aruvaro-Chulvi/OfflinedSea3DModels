@@ -30,6 +30,6 @@
       "url": "https://numa.net/?p=1801"
     }
   ],
-  "triangles": 93004,
-  "notes": "Built by code (model_sources/Q3273207_bianca_c.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on her keel at about 50 m: the bow and the fire-gutted superstructure, partly fallen in, the funnel with the Costa C, the two pools on the after decks; most of the starboard side collapsed outwards onto the seabed; the fantail broken away and lying a little apart; the masts toppled; plates from the superstructure strewn about; corals and sponges. Heading (not published: 0), the colours and the extent of the collapse are approximate. model_built.glb: the liner as she sailed in 1961."
+  "triangles": 54135,
+  "notes": "Built by code (model_sources/Q3273207_bianca_c.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on her keel at about 50 m: the bow and the fire-gutted superstructure, partly fallen in, the funnel with the Costa C, the two pools on the after decks; most of the starboard side collapsed outwards onto the seabed; the fantail broken away and lying a little apart; the masts toppled; plates from the superstructure strewn about. Heading (not published: 0), the colours and the extent of the collapse are approximate. model_built.glb: the liner as she sailed in 1961. No marine life in the model: Offlined draws the living things itself."
 }

@@ -26,6 +26,6 @@
       "url": "https://en.wikipedia.org/wiki/SMS_Markgraf"
     }
   ],
-  "triangles": 51795,
-  "notes": "Built by code (model_sources/Q481485_sms_markgraf.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Almost upturned on her starboard side at about 45 m, resting on her superstructure (crushed into the bottom): the stem rising from the seabed with the salvors' V-cut, the anchor chain across the hull, the armour belt gone, the engine rooms blasted open, the casemate guns along the side, the bent foremast with its spotting top, the twin rudders and the stubs of the A-frames (no propellers). The exact angle and heading (not published: 0) are approximate. model_built.glb: the battleship as she sailed in 1918."
+  "triangles": 46465,
+  "notes": "Built by code (model_sources/Q481485_sms_markgraf.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Almost upturned on her starboard side at about 45 m, resting on her superstructure (crushed into the bottom): the stem rising from the seabed with the salvors' V-cut, the anchor chain across the hull, the armour belt gone, the engine rooms blasted open, the casemate guns along the side, the bent foremast with its spotting top, the twin rudders and the stubs of the A-frames (no propellers). The exact angle and heading (not published: 0) are approximate. model_built.glb: the battleship as she sailed in 1918. No marine life in the model: Offlined draws the living things itself."
 }
