@@ -81,6 +81,10 @@
       "note": "About 3,000-3,200 ft (some 1,000 m) on the slope off Kiska; the GEBCO cell gives 1,484 m.",
       "source": "https://www.sciencedaily.com/releases/2008/10/081003193648.htm"
     },
+    "Q6668666": { "depth": -2350,
+      "note": "The vent field lies at about 2,350 m; the GEBCO cell gives 2,196 m.",
+      "source": "https://www.nature.com/articles/ncomms1124"
+    },
     "Q708046": { "lat": -26.10889,
       "lon": 111.0725,
       "depth": -2560,

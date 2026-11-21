@@ -1,0 +1,35 @@
+{
+  "id": "Q6668666",
+  "kind": "item",
+  "name": "Loki's Castle",
+  "state": "intact",
+  "heading": 0,
+  "depth": -2350,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Pedersen et al. (2010), Discovery of a black smoker vent field and vent fauna at the Arctic Mid-Ocean Ridge, Nature Communications 1: four black smokers up to 13 m on sulphide mounds 150-200 m across, 310-320 °C, Sclerolinum tubeworm fields",
+      "url": "https://www.nature.com/articles/ncomms1124"
+    },
+    {
+      "title": "Loki's Castle — about 2,352 m, where the Mohns and Knipovich ridges meet",
+      "url": "https://en.wikipedia.org/wiki/Loki%27s_Castle"
+    },
+    {
+      "title": "Scientific Reports (2023) — the western and eastern mounds of the Loki's Castle vent field and their fauna",
+      "url": "https://link.springer.com/article/10.1038/s41598-023-46434-z"
+    },
+    {
+      "title": "Live Science — In photos: Norway's spooky seafloor vents (bacterial mats on the chimneys)",
+      "url": "https://www.livescience.com/38704-norway-seafloor-vents-photos.html"
+    }
+  ],
+  "triangles": 22408,
+  "notes": "Built by code (model_sources/Q6668666_lokis_castle.py, tools/meshkit.py, tools/scenekit.py) with AI assistance. One sulphide mound about 200 m across and 25 m high, black and rust-brown, with two vent sites: at each, two active black-smoker chimneys of 9-13 m with beehive ledges and white bacterial dusting near the top, and smaller extinct or diffuse chimneys about them; fields of thin tubeworms on top of the mound; bacterial mats; a few fish. The shape of the mound and of each chimney, and the distance between the vent sites, are approximate."
+}
