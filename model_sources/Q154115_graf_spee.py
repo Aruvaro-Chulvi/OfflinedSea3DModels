@@ -580,8 +580,10 @@ def tower():
 
 
 wreck = merge(bs_part(False))
-fc = wreck.v[wreck.f].mean(1)
-cut = fc[:, 1] > D + 7.5                                                       # broken up in 1942-43: the superstructure cut down
+# broken up in 1942-43: the superstructure cut down, and nothing left within 1.5 m of the surface (11 m of water, the
+# hull 3.5 m out of the mud): any face reaching above that goes, masts included (their tall faces have a low centre)
+TOP = D + 6.0
+cut = wreck.v[wreck.f][:, :, 1].max(axis=1) > TOP
 wreck.f = wreck.f[~cut]
 dfb = L / 2 - wreck.v[:, 2]
 crumple(wreck, 0.25, 0.1, 11)
@@ -590,7 +592,7 @@ wreck.v[:, 1] -= aft * sstep(4.0, D + 3, wreck.v[:, 1]) * 4.0
 crumple(wreck, 1.4, 0.2, 12, aft)
 fc = wreck.v[wreck.f].mean(1)
 wreck.f = wreck.f[~((aft[wreck.f].mean(1) > 0.5) & (fbm(fc, 0.12, 13) > 0.6))]
-stump = merge([box(5.0, 3.5, 6.0, SUPC).T(0, D + 6.5, zd(72))]); crumple(stump, 0.5, 0.5, 14)   # on what the scrappers left of the bridge
+stump = merge([box(5.0, 3.0, 6.0, SUPC).T(0, D + 2.6, zd(72))]); crumple(stump, 0.4, 0.5, 14)   # on what the scrappers left of the bridge (top 1.5 m under the surface)
 wreck = merge([wreck, stump])
 wreck.T(0, -(D - 3.5), 0)                                                       # settled upright deep into the soft bottom
 debris = merge(plates(40, 14, zd(140), 14, 100, cols=(HULLC, GREY_D)))

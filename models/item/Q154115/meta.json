@@ -30,6 +30,6 @@
       "url": "https://www.montevideo.com.uy/Noticias/-Por-que-el-Graf-Spee-sigue-hundido-frente-a-Montevideo-y-no-se-lo-rescata--uc981693"
     }
   ],
-  "triangles": 52427,
-  "notes": "Built by code (model_sources/Q154115_graf_spee.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright, deep in the soft bottom of the River Plate estuary at about 11 m, only the upper part of the hull showing: the two triple 28 cm turrets, the 15 cm guns, the superstructure cut down by the 1940s scrappers to its lower levels and the stump of the tower (its rangefinder raised in 2004), no funnel, the after part wrecked by the scuttling charges and the fire. The degree of burial, the heading (not published: 0) and what the scrappers took are approximate. model_built.glb: the Panzerschiff as she sailed in 1939, with the tower mast. No marine life in the model: Offlined draws the living things itself."
+  "triangles": 52339,
+  "notes": "Built by code (model_sources/Q154115_graf_spee.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright, deep in the soft bottom of the River Plate estuary at about 11 m, only the upper part of the hull showing: the two triple 28 cm turrets, the 15 cm guns, the superstructure cut down by the 1940s scrappers to its lower levels and the stump of the tower (its rangefinder raised in 2004), nothing within about 1.5 m of the surface, no funnel, the after part wrecked by the scuttling charges and the fire. The degree of burial, the heading (not published: 0) and what the scrappers took are approximate. model_built.glb: the Panzerschiff as she sailed in 1939, with the tower mast. No marine life in the model: Offlined draws the living things itself."
 }
