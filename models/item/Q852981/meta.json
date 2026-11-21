@@ -1,0 +1,35 @@
+{
+  "id": "Q852981",
+  "kind": "item",
+  "name": "USS Saratoga",
+  "state": "intact",
+  "heading": 0,
+  "depth": -52,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Naval History and Heritage Command — Sinking of the Saratoga (Operation Crossroads, Baker test, 25 July 1946): she rested upright on the bottom of the lagoon",
+      "url": "https://history.navy.mil/our-collections/art/exhibits/conflicts-and-operations/operation-crossroads-bikini-atoll/sinking-of-the-saratoga.html"
+    },
+    {
+      "title": "Master Liveaboards — Diving the Saratoga: bottom about 51 m, main deck at 27 m, shallowest 18 m; the unarmoured flight deck collapsed onto the hangar deck",
+      "url": "https://masterliveaboards.com/diving-the-saratoga/"
+    },
+    {
+      "title": "Scuba Diving — Marshall Islands, USS Saratoga: the flight deck at 90 ft, the bridge to within 40 ft of the surface",
+      "url": "https://www.scubadiving.com/marshall-islands-uss-saratoga"
+    },
+    {
+      "title": "USS Saratoga (CV-3) — Lexington-class carrier, 270.7 m",
+      "url": "https://en.wikipedia.org/wiki/USS_Saratoga_(CV-3)"
+    }
+  ],
+  "triangles": 119908,
+  "notes": "Built by code (model_sources/Q852981_uss_saratoga.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright at about 52 m: the enclosed hangar, the flight deck (its after part collapsed onto the hangar deck), the island and the great flat funnel, the twin 5-inch mounts, the lifts, four screws; Helldiver aircraft left in the hangar; plates on the bottom; corals and fish. The heading (not published: 0), the extent of the collapse, the state of the funnel and the aircraft are approximate. model_built.glb: the carrier as she was in 1946."
+}
