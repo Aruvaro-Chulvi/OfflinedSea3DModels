@@ -1,0 +1,35 @@
+{
+  "id": "Q1564906",
+  "kind": "item",
+  "name": "HMS Investigator",
+  "state": "buried",
+  "heading": 0,
+  "depth": -11,
+  "authors": [
+    {
+      "name": "Álvaro C. Chulvi",
+      "url": "https://github.com/Aruvaro-Chulvi"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "sources": [
+    {
+      "title": "Parks Canada — Discovery of HMS Investigator (2010, side-scan sonar), surveyed in 2011",
+      "url": "https://parks.canada.ca/pn-np/nt/aulavik/investigator/2010-investigator"
+    },
+    {
+      "title": "CBC — Abandoned 1854 ship found in Arctic: upright in about 11 m, bottom in the sediment, upper deck about 8 m down; the masts removed, probably by ice",
+      "url": "https://www.cbc.ca/news/science/abandoned-1854-ship-found-in-arctic-1.911131"
+    },
+    {
+      "title": "HMS Investigator (1848) — strengthened for the ice, abandoned in Mercy Bay in 1853",
+      "url": "https://en.wikipedia.org/wiki/HMS_Investigator_(1848)"
+    },
+    {
+      "title": "Archaeology — HMS Investigator, Banks Island, Canada",
+      "url": "https://archaeology.org/issues/online/features/hms-investigator-banks-island-canada/"
+    }
+  ],
+  "triangles": 48826,
+  "notes": "Built by code (model_sources/Q1564906_hms_investigator.py, tools/sailkit.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright in about 11 m, the hull deep in the silt with only some 3 m of her above it, the upper deck and its fittings intact, the masts sheared off by the ice, the stump of the bowsprit, a few spars half buried around her; cold Arctic water with little life. The heading (not published: 0), the depth of the silt and the deck fittings are approximate. model_built.glb: the ship under sail in 1850."
+}
