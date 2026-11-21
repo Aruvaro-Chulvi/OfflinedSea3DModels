@@ -85,6 +85,10 @@
       "note": "The vent field lies at about 2,350 m; the GEBCO cell gives 2,196 m.",
       "source": "https://www.nature.com/articles/ncomms1124"
     },
+    "Q1272680": { "depth": -20,
+      "note": "The tyre field lies in 60-70 ft (18-21 m) off Fort Lauderdale; the GEBCO cell gives 96 m.",
+      "source": "https://nova.edu/publications/horizons/horizons_fall_2007/32"
+    },
     "Q708046": { "lat": -26.10889,
       "lon": 111.0725,
       "depth": -2560,
