@@ -30,6 +30,6 @@
       "url": "https://divingalmanac.com/most-vertical-wreck"
     }
   ],
-  "triangles": 20920,
+  "triangles": 20741,
   "notes": "Built by code (model_sources/Q1502183_hms_victoria.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Standing nearly vertical off Tripoli, Lebanon: the bow and the first 30 m of the hull driven into the mud at about 140-150 m, the stern with its two screws and rudder rising to about 75 m, the funnels side by side, the single gun aft, the broadside guns, the damage of the ram on the starboard bow. A war grave (358 died). Her lean and heading (not published here: 0) are approximate. model_built.glb: the battleship as she was in 1893. No marine life in the model: Offlined draws the living things itself."
 }

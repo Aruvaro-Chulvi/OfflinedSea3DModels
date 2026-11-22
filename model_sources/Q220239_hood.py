@@ -31,6 +31,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from meshkit import Mesh, merge, box, cyl, lathe, grid, quad, tube, crumple, weather, sstep, fbm, write_glb  # noqa: E402
+from shipkit import install  # noqa: E402
 
 rng = np.random.default_rng(1920)
 
@@ -53,14 +54,6 @@ def fr(frame):          # frame number -> distance from the bow
 
 
 A_T, B_T, X_T, Y_T = 52.0, 70.0, 196.0, 214.0      # the 15-inch turrets (distance from the bow)
-
-
-def zd(d):              # distance from the bow (m) -> ship coordinate z (bow at +L/2)
-    return L / 2 - d
-
-
-def t_of(z):
-    return (z + L / 2) / L
 
 
 def w_of(t):            # half-beam factor: long fine entrance, short parallel middle body, rounded cruiser stern
@@ -94,21 +87,7 @@ def k_of(t):            # section fullness: boxy amidships (CM 0.97), V-shaped a
     return 1.8 + 10.0 * w_of(t) ** 4
 
 
-def hw(z, y):
-    t = t_of(z)
-    yb, yd, w, k = yb_of(t), yd_of(t), w_of(t), k_of(t)
-    if y >= yd:
-        return B / 2 * w
-    u = max(0.0, (y - yb) / max(0.1, yd - yb))
-    return B / 2 * w * (1 - (1 - u) ** k)
-
-
-def deck_y(d):
-    return yd_of(t_of(zd(d)))
-
-
-def at(m, d, x=0.0, y=0.0):
-    return m.T(x, y, zd(d))
+install(globals(), "zd t_of hw deck_y at")
 
 
 def outward(m):

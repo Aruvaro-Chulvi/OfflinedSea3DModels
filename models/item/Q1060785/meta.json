@@ -34,6 +34,6 @@
       "url": "https://en.wikipedia.org/wiki/HMS_Hampshire_(1903)"
     }
   ],
-  "triangles": 47036,
+  "triangles": 46622,
   "notes": "Built by code (model_sources/Q1060785_hms_hampshire.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 60-70 m off Marwick Head, her upperworks crushed into the bottom: the hull torn forward on the port side where the mine struck, the stern shattered, the rudder lying on the seabed beside it, the port bronze propeller still on its shaft (the starboard one was taken by illegal salvors between 1977 and 1983), the casemate guns along the side, a wide debris field of plating about the stern and the bow. The exact angle, extent of the damage and heading (not published here: 0) are approximate. A war grave. model_built.glb: the cruiser as she was in 1916. No marine life in the model: Offlined draws the living things itself."
 }

@@ -30,6 +30,6 @@
       "url": "https://www.nps.gov/parkhistory/online_books/npswapa/extContent/wapa/paradise/paradise8.htm"
     }
   ],
-  "triangles": 45718,
+  "triangles": 47390,
   "notes": "Built by code (model_sources/Q1473175_fujikawa_maru.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright at about 34 m; the two masts still standing (tops a few metres under the surface), the bridge and accommodation island, the funnel gone to a stump, the hatches open; the 6-inch gun on the forecastle and another on the poop; Zero fuselages, drop tanks and wing parts in hold 2, drums and crates in the other holds; a torpedo hole on the starboard side aft. Heading (not published: 0), the layout of the holds and superstructure, the place of the cargo and of the hole are approximate. model_built.glb: the ship as she sailed in 1943-44. No marine life in the model: Offlined draws the living things itself."
 }

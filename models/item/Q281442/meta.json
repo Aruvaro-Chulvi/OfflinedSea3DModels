@@ -34,6 +34,6 @@
       "url": "https://www.nationalgeographic.com/history/article/shipwrecks-wwii-guadalcanal-warships"
     }
   ],
-  "triangles": 41448,
+  "triangles": 41287,
   "notes": "Built by code (model_sources/Q281442_uss_atlanta.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her port side at about 130 m (430 ft) off Lunga Point in Ironbottom Sound: the hull whole, the eight twin 5-inch mounts, the bridge and the two funnels, the superstructure riddled by gunfire, the torpedo hole amidships, masts gone. A war grave (some 170 died, Rear Admiral Norman Scott among them). The damage and the heading (not published here: 0) are approximate. model_built.glb: the cruiser as she was in 1942. No marine life in the model: Offlined draws the living things itself."
 }

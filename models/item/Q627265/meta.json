@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/Rainbow_Warrior_(1955)"
     }
   ],
-  "triangles": 18818,
+  "triangles": 19579,
   "notes": "Built by code (model_sources/Q627265_rainbow_warrior.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Almost upright on the sand at about 26-27 m between Matauri Bay and the Cavalli Islands, with a slight list to starboard: the green hull with the rainbow and the dove at the bow, the high forecastle, the wheelhouse and accommodation amidships with the funnel, the masts removed (stumps only), the propeller and the rudder. The heading (not published here: 0) and the exact list are approximate. model_built.glb: the ship in her Greenpeace colours. No marine life in the model: Offlined draws the living things itself."
 }

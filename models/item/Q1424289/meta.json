@@ -26,6 +26,6 @@
       "url": "https://www.yongaladive.com.au/marine-life"
     }
   ],
-  "triangles": 35504,
+  "triangles": 36566,
   "notes": "Built by code (model_sources/Q1424289_yongala.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The hull whole, on her starboard side at 65° (published: 60-70°), bow on 347°; the saloon and boat-deck houses, bridge and davits still in place, the hatches open with general cargo (crates, casks, bales); the ventilators and railings collapsed onto the sand with some crates; single propeller and rudder. The funnel and the masts are not described in the sources: here they have fallen and lie on the sand. She is a protected site and the grave of 122 people. Colours and the exact layout of the superstructure are approximate. model_built.glb: the ship as she sailed (1903-1911). No marine life in the model: Offlined draws the living things itself."
 }

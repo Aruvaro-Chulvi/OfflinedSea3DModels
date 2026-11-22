@@ -71,7 +71,7 @@ def star(r, nrm):
     if nrm == "-y":
         m.R(math.pi, 0, 0)
     elif nrm in ("+x", "-x"):
-        m.R(0, 0, -math.pi / 2 if nrm == "+x" else math.pi / 2).R(0, math.pi / 2, 0)
+        m.R(0, 0, -math.pi / 2 if nrm == "+x" else math.pi / 2).R(math.pi / 2, 0, 0)    # facing sideways, a point up
     return m
 
 

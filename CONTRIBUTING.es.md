@@ -31,8 +31,9 @@
    botón *Descargar .glb* con su modelo genérico, ya con el tamaño, los ejes y el origen correctos: impórtalo en
    Blender y trabaja sobre él.
 3. Añade `models/<item|class|vehicle>/<Q…>/model.glb`, `meta.json` y, si puedes, `preview.jpg`.
-4. Ejecuta `python tools/validate.py models/item/Q…` (Python 3.10+, no hay que instalar nada) y arregla lo que
-   te diga.
+4. Ejecuta `python tools/validate.py models/item/Q…` (Python 3.10+, no hay que instalar nada) y
+   `python tools/geomcheck.py Q…` (necesita numpy: nada flotando, ninguna calcomanía despegada), y arregla lo que
+   digan.
 5. Abre un *pull request*. La misma comprobación se ejecuta sola; después alguien revisa el modelo en un visor.
 
 Al abrir el *pull request* confirmas lo que dice [NOTICE.md](NOTICE.md#contributing-a-model): es trabajo tuyo
@@ -59,7 +60,8 @@ Cualquiera puede hacer un Titanic mejor. Haz un *fork* del repositorio y cambia 
 
 Nada llega a Offlined sin pasar tres filtros:
 
-1. **La comprobación automática** (GitHub Actions, el mismo `tools/validate.py`): formato, límites de tamaño
+1. **La comprobación automática** (GitHub Actions, los mismos `tools/validate.py` y `tools/geomcheck.py`): nada
+   flotando ni calcomanías despegadas, formato, límites de tamaño
    y de triángulos, nada de archivos externos ni scripts, licencia, autores y fuentes en `meta.json`, un id
    de Wikidata real, y medidas que cuadran con el barco real (un `model_built.glb` que no mide más o menos lo
    que el barco no pasa).

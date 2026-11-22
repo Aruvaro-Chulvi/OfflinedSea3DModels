@@ -31,7 +31,8 @@ Thank you! There are many ways to help, and most of them need no 3D skills.
    *Download .glb* button with its generic model, already at the right size, axes and origin — import it in
    Blender and build on it.
 3. Add `models/<item|class|vehicle>/<Q…>/model.glb`, `meta.json` and, if you can, `preview.jpg`.
-4. Run `python tools/validate.py models/item/Q…` (Python 3.10+, nothing to install) and fix what it says.
+4. Run `python tools/validate.py models/item/Q…` (Python 3.10+, nothing to install) and
+   `python tools/geomcheck.py Q…` (needs numpy: nothing floating, no decal off its surface), and fix what they say.
 5. Open a pull request. The same check runs automatically; a maintainer then looks at the model in a viewer.
 
 By opening the pull request you confirm the points in [NOTICE.md](NOTICE.md#contributing-a-model): your own
@@ -59,7 +60,8 @@ Anyone can make a better Titanic. Fork the repository and change `models/item/Q2
 
 Nothing reaches Offlined without three filters:
 
-1. **The automatic check** (GitHub Actions, the same `tools/validate.py`): file format, size and triangle
+1. **The automatic check** (GitHub Actions, the same `tools/validate.py` and `tools/geomcheck.py`): nothing
+   floating and no decal off its surface, file format, size and triangle
    limits, no external files or scripts, licence, authors and sources in `meta.json`, a real Wikidata id, and
    sizes that match the real ship (a `model_built.glb` that is not about as long as the ship fails).
 2. **A maintainer looks at it** in the viewer before merging, with this list: it is the right wreck; it

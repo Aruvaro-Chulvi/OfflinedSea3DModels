@@ -29,6 +29,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from meshkit import Mesh, merge, box, cyl, lathe, tube, crumple, fbm  # noqa: E402
+from shipkit import install  # noqa: E402
 
 rng = np.random.default_rng(1989)
 L, R = 117.5, 5.35
@@ -44,8 +45,7 @@ def radius(u):
     return np.maximum(R * r, 0.4)
 
 
-def zu(u):
-    return (u - 0.5) * L
+install(globals(), "zu")
 
 
 def hull(u0=0.0, u1=1.0, n=110, seg=40):

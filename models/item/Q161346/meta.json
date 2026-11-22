@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/German_cruiser_Bl%C3%BCcher"
     }
   ],
-  "triangles": 57518,
+  "triangles": 57276,
   "notes": "Built by code (model_sources/Q161346_blucher.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 90 m on the bottom of the Oslofjord in the Drøbak Sound, rolled over to port: the keel uppermost, the upperworks (turrets, tower bridge, funnel, masts) crushed into the bottom under her, the holes of the two torpedoes from Oscarsborg in her port side amidships and shell holes along her sides, the three propellers and the rudder in place, plating fallen about her. The exact angle and heading (not published here: 0) are approximate; one of her Arado floatplanes was raised in 1994. model_built.glb: the cruiser as she sailed in April 1940. No marine life in the model: Offlined draws the living things itself."
 }

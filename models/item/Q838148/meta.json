@@ -34,6 +34,6 @@
       "url": "https://core.tdar.org/document/448990/the-2018-discovery-of-lady-lex-the-first-american-aircraft-carrier-casualty"
     }
   ],
-  "triangles": 108740,
+  "triangles": 108029,
   "notes": "Built by code (model_sources/Q838148_uss_lexington.py, tools/meshkit.py, tools/airkit.py, tools/dresskit.py) with AI assistance. At about 3,000 m in the Coral Sea, broken into three pieces resting together: the flight deck torn by bombs and the explosions, the island and the great flat funnel, the torpedo holes in both sides, and some of her aircraft on the bottom around her — Devastator torpedo bombers and a Wildcat fighter with their national stars. A war grave (216 died). The pieces, the damage, the aircraft and the heading (not published here: 0) are approximate. model_built.glb: the carrier as she was in 1942. No marine life in the model: Offlined draws the living things itself."
 }

@@ -26,6 +26,6 @@
       "url": "https://archeologie.culture.gouv.fr/archeo-sous-marine/en/heavy-gear-and-mahdia-shipwreck"
     }
   ],
-  "triangles": 24926,
+  "triangles": 24736,
   "notes": "Built by code (model_sources/Q3589083_mahdia_shipwreck.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The site at about 36-39 m some 5 km off Mahdia: the low sand mound over the buried hull with a few timbers and the ballast showing at its edges, the marble columns of the cargo still lying in rows across it as they were stowed and some slid off onto the sand, Ionic capitals and column bases, lead anchor stocks and amphorae, many broken. The sculptures and bronzes are in the Bardo Museum; the number and layout of the columns drawn are approximate. No model_built.glb (the ship's form is not known). No marine life in the model: Offlined draws the living things itself."
 }

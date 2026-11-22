@@ -30,6 +30,6 @@
       "url": "https://www.dawn.com/news/935834/divers-explore-sunken-ruins-of-cleopatras-palace"
     }
   ],
-  "triangles": 66543,
+  "triangles": 69492,
   "notes": "Built by code (model_sources/Q583052_antirhodos.py, tools/meshkit.py, tools/placekit.py) with AI assistance. In the eastern harbour of Alexandria, a few metres down: the lowest courses of the palace walls round its broken marble paving (about 90 by 30 m), granite columns standing broken or fallen and their bases in rows, the jetty, the fallen blocks of the island's edge, the remains of the temple of Isis, amphorae. The statues found here have been lifted for study and exhibition. The layout, the sizes and the depth are approximate. No marine life in the model: Offlined draws the living things itself."
 }

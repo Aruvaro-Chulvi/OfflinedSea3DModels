@@ -18,3 +18,7 @@ jobs:
           python-version: "3.12"
       - name: Check every model against docs/MODEL_SPEC.md
         run: python tools/validate.py
+      - name: Nothing floats, nothing stands off its surface (tools/geomcheck.py)
+        run: |
+          pip install "numpy>=1.26"
+          python tools/geomcheck.py

@@ -34,6 +34,6 @@
       "url": "https://www.cirkwi.com/en/point-interet/671428-sur-les-traces-du-lancastria"
     }
   ],
-  "triangles": 45644,
+  "triangles": 52380,
   "notes": "Built by code (model_sources/Q701654_lancastria.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. In about 24-26 m some 17 km south of Saint-Nazaire. She rolled over as she sank: the model lays her over on her port side, nearly keel up, the superstructure crushed under her, the bomb holes through the decks. The published sources do not describe her attitude on the bottom: attitude, collapse and heading (not published here: 0) are approximate. A war grave (at least 1,738 died): diving is not allowed. model_built.glb: the troopship as she was in 1940. No marine life in the model: Offlined draws the living things itself."
 }

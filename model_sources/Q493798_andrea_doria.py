@@ -34,6 +34,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from meshkit import Mesh, merge, box, cyl, lathe, grid, quad, tube, crumple, weather, sstep, fbm, write_glb  # noqa: E402
+from shipkit import install  # noqa: E402
 
 rng = np.random.default_rng(1956)
 
@@ -52,14 +53,6 @@ SUP = [(52, 172, 0.97), (56, 152, 0.86), (60, 140, 0.66)]     # promenade deck, 
 POOLS = [(146, 2, 8.0, 5.5), (161, 1, 9.0, 6.5), (182, 0, 10.0, 7.0)]   # first, cabin, tourist class: (d, level, l, w)
 BOATS = [66, 76, 86, 96, 106, 116, 126, 136]                    # 8 lifeboats a side
 FUNNEL_D, FORE_D, MAIN_D = 118, 71, 139
-
-
-def zd(d):            # distance from the bow (m) -> ship coordinate z (bow at +L/2)
-    return L / 2 - d
-
-
-def t_of(z):
-    return (z + L / 2) / L
 
 
 def w_of(t):          # half-beam factor along the ship
@@ -88,21 +81,11 @@ def k_of(t):          # section fullness
     return 2.4 + 6.0 * w_of(t) ** 3
 
 
-def hw(z, y):         # half-width of the hull at z and height y
-    t = t_of(z)
-    yb, yd, w, k = yb_of(t), yd_of(t), w_of(t), k_of(t)
-    if y >= yd:
-        return B / 2 * w
-    u = max(0.0, (y - yb) / max(0.1, yd - yb))
-    return B / 2 * w * (1 - (1 - u) ** k)
-
-
 def dy(d):
     return yd_of(t_of(zd(d)))
 
 
-def at(m, d, x=0.0, y=0.0):
-    return m.T(x, y, zd(d))
+install(globals(), "zd t_of hw at")
 
 
 def hull(d0, d1, NP=26, ds=1.2, deck=DECK):

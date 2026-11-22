@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/Soviet_submarine_K-278_Komsomolets"
     }
   ],
-  "triangles": 36549,
+  "triangles": 36069,
   "notes": "Built by code (model_sources/Q499298_k278_komsomolets.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the bottom at about 1,680 m with a slight list, her keel in the mud: the long low sail with the recess of the escape capsule empty (it came free and surfaced as she sank), the rubber anechoic tiles gone in patches and lying beside the hull, the outer hull torn about the torpedo compartment, the ventilation pipe aft of the sail where the leak was filmed in 2019, the cruciform tail with its pod and the propeller. The extent of the damage, the list and the heading (not published here: 0) are approximate. model_built.glb: the boat as commissioned in 1983. A war grave. No marine life in the model: Offlined draws the living things itself."
 }

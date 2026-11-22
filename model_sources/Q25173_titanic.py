@@ -24,6 +24,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from meshkit import Mesh, merge, box, cyl, lathe, grid, quad, tube, crumple, weather, sstep, fbm, write_glb  # noqa: E402
+from shipkit import install  # noqa: E402
 
 rng = np.random.default_rng(1912)
 RUN_STYLE = "quad"       # rust runs under the portholes: "quad" (this model) or "drip" (the diorama sets it)
@@ -38,14 +39,6 @@ WL = 10.5                # waterline (draught)
 BLACK, RED, WHITE = (0.07, 0.07, 0.08), (0.42, 0.11, 0.07), (0.6, 0.55, 0.47)      # white paint, stained after a century
 DECK, DARK, BUFF, RUST = (0.33, 0.28, 0.23), (0.025, 0.025, 0.03), (0.66, 0.5, 0.28), (0.4, 0.19, 0.08)
 GOLD, RUSTY, BRONZE = (0.72, 0.56, 0.22), (0.5, 0.24, 0.08), (0.55, 0.4, 0.2)
-
-
-def zd(d):            # distance from the bow (m) -> ship coordinate z (bow at +L/2)
-    return L / 2 - d
-
-
-def t_of(z):
-    return (z + L / 2) / L
 
 
 def w_of(t):          # half-beam factor along the ship
@@ -72,15 +65,6 @@ def yd_of(t):         # shelter deck with a little sheer
 
 def k_of(t):          # section fullness (boxy midships, fine at the ends)
     return 2.2 + 6.0 * w_of(t) ** 3
-
-
-def hw(z, y):         # half-width of the hull at z and height y
-    t = t_of(z)
-    yb, yd, w, k = yb_of(t), yd_of(t), w_of(t), k_of(t)
-    if y >= yd:
-        return B / 2 * w
-    u = max(0.0, (y - yb) / max(0.1, yd - yb))
-    return B / 2 * w * (1 - (1 - u) ** k)
 
 
 def hull(d0, d1, NP=28):
@@ -146,8 +130,7 @@ def band(d0, d1, y_extra, color=BLACK, top=DECK):
     return merge(parts)
 
 
-def at(m, d, x=0.0, y=0.0):
-    return m.T(x, y, zd(d))
+install(globals(), "zd t_of hw at")
 
 
 def in_range(d, d0, d1):

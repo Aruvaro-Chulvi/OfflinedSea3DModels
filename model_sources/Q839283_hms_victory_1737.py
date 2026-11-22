@@ -28,6 +28,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from meshkit import Mesh, merge, box, cyl, lathe, tube, crumple, fbm, sstep  # noqa: E402
+from shipkit import install  # noqa: E402
 from sailkit import Ship, Mast, solidify, frames, cannon  # noqa: E402
 
 rng = np.random.default_rng(1744)
@@ -44,11 +45,7 @@ def ship():
                 upper_col=(0.48, 0.36, 0.2), port_col=(0.55, 0.13, 0.08), lower_decks=[3.0, 5.2], trim_col=(0.72, 0.56, 0.2))
 
 
-def compact(m):
-    if not len(m.f):
-        return Mesh()
-    u, inv = np.unique(m.f, return_inverse=True)
-    return Mesh(m.v[u], inv.reshape(-1, 3), m.c[u])
+install(globals(), "compact")
 
 
 def anchor(size=1.0):

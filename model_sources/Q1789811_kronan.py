@@ -28,6 +28,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from meshkit import Mesh, merge, box, cyl, tube, crumple, fbm, sstep  # noqa: E402
+from shipkit import install  # noqa: E402
 from sailkit import Ship, Mast, solidify, frames, cannon, gun_carriage  # noqa: E402
 
 rng = np.random.default_rng(1676)
@@ -44,11 +45,7 @@ def ship():
                 trim_col=(0.66, 0.5, 0.18))
 
 
-def compact(m):
-    if not len(m.f):
-        return Mesh()
-    u, inv = np.unique(m.f, return_inverse=True)
-    return Mesh(m.v[u], inv.reshape(-1, 3), m.c[u])
+install(globals(), "compact")
 
 
 def pick(m, keep):

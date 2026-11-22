@@ -160,13 +160,31 @@ async function build(it) {
   scene.add(model);
   // A wreck in pieces (bow, stern, debris…): the camera frames the main piece, the seabed covers them all
   const all = new THREE.Box3().setFromObject(model);
-  let main = model.getObjectByName("main") || model, big = 0;
-  for (const o of model.children) {                         // the biggest of the pieces («…_section»)
+  // the box of what stands on the bottom (not the sediment, rocks, debris and growth round it)
+  const GROUND = /^(sediment|stones|reef|rock|mud|sand|seabed|floor|ground|debris|plates|tyres|rubble|rusticles|rust_runs|shell_casings|shoes|bottles|pots|cannonballs)/i;
+  const solidBox = o => {
+    const b = new THREE.Box3();
+    o.traverse(x => {
+      if (!x.isMesh) return;
+      for (let p = x; p && p !== o.parent; p = p.parent) if (p.name && GROUND.test(p.name)) return;
+      b.union(new THREE.Box3().setFromObject(x));
+    });
+    return b;
+  };
+  let main = model.getObjectByName("main") || model.getObjectByName("hull_section"), big = 0;
+  if (!main) for (const o of model.children) {              // the biggest of the pieces («…_section»)
     if (!/_section$/.test(o.name)) continue;
-    const s = new THREE.Box3().setFromObject(o).getSize(new THREE.Vector3()), v = s.x * s.z;
+    const s = solidBox(o).getSize(new THREE.Vector3()), v = s.x * s.z;
     if (v > big) { big = v; main = o; }
   }
-  const box = new THREE.Box3().setFromObject(main), size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
+  let box;
+  if (main) box = solidBox(main);
+  else {                                                     // a place: frame what stands on the bottom, not the bottom itself
+    box = new THREE.Box3();
+    for (const o of model.children) if (!GROUND.test(o.name || "")) box.union(solidBox(o));
+  }
+  if (box.isEmpty()) box.setFromObject(model);
+  const size = box.getSize(new THREE.Vector3()), c = box.getCenter(new THREE.Vector3());
   const R = Math.max(size.x, size.z, size.y, 4), allS = all.getSize(new THREE.Vector3());
   const S = Math.max(200, R * 5, (Math.max(allS.x, allS.z) + Math.max(Math.abs(all.min.z - c.z), Math.abs(all.max.z - c.z), Math.abs(all.min.x - c.x), Math.abs(all.max.x - c.x))) * 1.3);
   bed.position.set(c.x, 0, c.z);

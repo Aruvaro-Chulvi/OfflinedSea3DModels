@@ -30,6 +30,6 @@
       "url": "https://www.thestar.com.my/news/focus/2025/08/31/sunken-ships-and-stolen-history"
     }
   ],
-  "triangles": 67993,
+  "triangles": 67693,
   "notes": "Built by code (model_sources/Q724919_hms_prince_of_wales.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 68 m, a little over to starboard, resting on her deck edge with the bridge, funnels and turrets crushed down into the bottom; the bilge, the four shafts and screws and the rudder uppermost; the hull stove in aft on the port side (torpedoes) and plates torn away by the scrap thieves; shells and cordite charges strewn about. A war grave (327 men). The angle, the heading (not published: 0), the torpedo damage and the extent of the looting are approximate. model_built.glb: the battleship as she sailed in 1941. No marine life in the model: Offlined draws the living things itself."
 }

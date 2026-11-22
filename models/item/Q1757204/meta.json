@@ -30,6 +30,6 @@
       "url": "https://www.iusscaa.org/articles/brucerule/pdfs/why_the_scorpion_was_lost_updated_august_2018.pdf"
     }
   ],
-  "triangles": 102030,
+  "triangles": 100590,
   "notes": "Built by code (model_sources/Q1757204_scorpion.py; tools/meshkit.py, tools/dresskit.py) with AI assistance. The bow section (the torpedo room and the forward part, broken off ahead of the sail) half buried in its impact trench; the stern section (the reactor compartment, the machinery space and the engine room driven forward into it, with the cruciform rudders and planes and the propeller) in a second trench some 60 m away; the sail torn off, on its side, a fairwater plane standing up; between and mainly to the north, the debris field of the operations compartment: torn hull plating, battery cells, piping. Dressed with tools/dresskit.py: its own sediment and the mud thrown up round the trenches (painted by Offlined with the seabed colour), rust, textures and baked light. model_built.glb: the boat as commissioned, black, the teardrop hull of the class. Approximate: the headings and distances of the pieces and the extent of the debris field (published descriptions differ), the hull lines (from the class's general plans). No marine life in the model: Offlined draws the living things itself."
 }

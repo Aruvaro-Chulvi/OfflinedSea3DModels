@@ -25,7 +25,7 @@ import numpy as np
 
 import abyss
 from meshkit import Mesh, merge, weather, sstep, fbm, normals
-from scenekit import (material, steel_textures, rust_textures, planks_textures, bake_ao, instances, write_model)
+from scenekit import (DROP_KEYS, along_wall, material, steel_textures, rust_textures, planks_textures, bake_ao, instances, write_model)
 
 
 def zone_of(depth):
@@ -126,7 +126,7 @@ class Dresser:
         abyss.seed(seed)
         self.INS = []
 
-    def add(self, name, variants, mat, pos, nrm=None, yaw=None, scale=None, parent=None):
+    def add(self, name, variants, mat, pos, nrm=None, yaw=None, scale=None, parent=None, rot=None):
         r = self.r
         if pos is None or not len(pos):
             return
@@ -138,7 +138,8 @@ class Dresser:
         for k, base in enumerate(variants):
             s = pick == k
             if s.any():
-                self.INS.append((f"{name}_{k}{'_' + parent if parent else ''}", base, mat, instances(pos[s], nrm[s], yaw[s], scale[s]), parent))
+                self.INS.append((f"{name}_{k}{'_' + parent if parent else ''}", base, mat,
+                                 instances(pos[s], nrm[s], yaw[s], scale[s], None if rot is None else np.asarray(rot)[s]), parent))
 
     def on(self, m, n, cond):
         if n <= 0:
@@ -147,6 +148,29 @@ class Dresser:
         if not s:
             return np.zeros((0, 3)), np.zeros((0, 3))
         return np.array([p for p, _ in s]), np.array([q for _, q in s])
+
+
+def _runs_on_wall(m, p, nn, ln, tol=0.035):
+    """For runs of rust starting at p on walls of normal nn, running ln down the slope: True where the middle and the
+    end of the run are still within tol of the plating."""
+    from geomkit import Grid, closest
+    if not len(p):
+        return np.zeros(0, bool)
+    up = np.array([0.0, 1.0, 0.0])
+    u = up[None] - (nn @ up)[:, None] * nn
+    u /= np.maximum(np.linalg.norm(u, axis=1, keepdims=True), 1e-9)
+    T = m.v[m.f]
+    grid = Grid(m.v, m.f)
+    ok = np.ones(len(p), bool)
+    for i in range(len(p)):
+        for t in (0.5, 1.0):
+            q = p[i] - u[i] * ln[i] * t
+            cand = grid.query(q - tol * 2, q + tol * 2)
+            if cand is None or not len(cand):
+                ok[i] = False; break
+            if closest(q[None], T[cand, 0], T[cand, 1], T[cand, 2])[0].min() > tol:
+                ok[i] = False; break
+    return ok
 
 
 def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None, wood=False, life="normal", drift=1.0):
@@ -222,9 +246,12 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
             D.add("rusticles", ice, "rust", p, scale=np.stack([rad, ln, rad], 1), parent=parent)
         p, nn = D.on(m, min(2500, 40 * a_k * max(dens, 0.25)), lambda fn: np.abs(fn[:, 1]) < 0.3)
         if len(p):
-            ln = r.uniform(0.3, 1.0, len(p)) ** 1.5 * 3.2 + 0.3
+            ln = r.uniform(0.3, 1.0, len(p)) ** 1.5 * 1.4 + 0.3
             w = r.uniform(0.4, 1.1, len(p))
-            D.add("rust_runs", flows, "rust", p + nn * 0.02, yaw=np.arctan2(nn[:, 0], nn[:, 2]), scale=np.stack([w, ln, w], 1), parent=parent)
+            # set a little into the plating; keep only the runs whose whole length stays on it (not off a curve)
+            keep = _runs_on_wall(m, p, nn, ln)
+            p, nn, ln, w = p[keep], nn[keep], ln[keep], w[keep]
+            D.add("rust_runs", flows, "rust", p - nn * 0.03, scale=np.stack([w, ln, w], 1), parent=parent, rot=along_wall(nn))
     # ── life on the wreck ──
     wreck_all = merge(steel_m)
 
@@ -385,7 +412,7 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
         for g in range(5):
             c0 = free(0.9)
             if c0:
-                cp += [(c0[0] + r.normal(0, 2.5), 0.15, c0[1] + r.normal(0, 2.5)) for _ in range(int(r.integers(6, 16)))]
+                cp += [(c0[0] + r.normal(0, 2.5), 0.05, c0[1] + r.normal(0, 2.5)) for _ in range(int(r.integers(6, 16)))]   # lying, half in the sand
         if cp:
             cp = np.array(cp); a_ = r.uniform(0, 6.28, len(cp))
             objs.append(("shell_casings", cas, "artefact", cp, np.stack([np.cos(a_), r.uniform(-0.1, 0.1, len(cp)), np.sin(a_)], 1), None))
@@ -434,6 +461,9 @@ def dress_site(steel, muds, plain, zone, seed, kind, memorial=False, parent=None
         stones.v[:, 1] += hAt(stones.v[:, 0], stones.v[:, 2])
     for _, m, _ in plain:
         m.v[:, 1] += hAt(m.v[:, 0], m.v[:, 2]) * (m.v[:, 1] < 0.5)
+    if plain:                                 # small finds laid on the sediment: down onto it (or onto the wreck)
+        from fixkit import fix_meshes
+        fix_meshes([m for _, m, k in plain if k not in DROP_KEYS], [sediment] + steel_m + ([stones] if len(stones.f) else []), settle=True)
     # ── light: ambient occlusion of the big pieces, and the sediment open and flat = as bright as the seabed ──
     flat = lambda X, Z: np.zeros_like(X)
     occl = steel_m + ([stones] if len(stones.f) else []) + [sediment]
@@ -468,6 +498,11 @@ def dress_wreck(out, sites, depth, kind, seed, memorial=False, wood=False, life=
     drift: how much sediment piles against the wreck (1 = the usual for its depth; less where the hull lies exposed)."""
     zone = zone_of(depth)
     parts, INS = [], []
+    from fixkit import fix_meshes
+    for s in sites:                           # first nothing floats: rust, sediment and growth then go where things lie
+        # (the "mud" meshes only shape the sediment, they are not written: no support)
+        fix_meshes([e[1] for e in s["steel"]] + [m for _, m, k in s.get("plain", []) if k not in DROP_KEYS], [],
+                   settle=True, log=print)
     for k, s in enumerate(sites):
         piece = s.get("piece")
         sediment, stones, ins = dress_site(s["steel"], s.get("mud", []), s.get("plain", []), zone, seed + 1000 * k, kind,
@@ -485,7 +520,7 @@ def dress_wreck(out, sites, depth, kind, seed, memorial=False, wood=False, life=
             if len(stones.f):
                 parts.append(("stones", stones, "rock"))
             parts.append(("sediment", sediment, "sediment"))
-    tris, size = write_model(out, parts, _materials(wood), instanced=INS)
+    tris, size = write_model(out, parts, _materials(wood), instanced=INS, fix=False)
     print(f"{out}: {tris:,} triangles drawn ({len(INS)} instanced shapes), {size / 2**20:.2f} MB, zone {zone}")
     return tris, size
 

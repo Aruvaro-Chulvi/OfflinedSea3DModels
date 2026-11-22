@@ -1,3 +1,5 @@
 # Only build_catalog.py / gebco_depth.py need it (to read the GEBCO WebP tiles).
 # validate.py uses the standard library only.
+# numpy: building models (meshkit, scenekit, fixkit) and tools/geomcheck.py.
 Pillow>=10
+numpy>=1.26

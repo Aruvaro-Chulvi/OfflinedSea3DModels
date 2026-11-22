@@ -30,6 +30,6 @@
       "url": "https://dive.site/explore/site/maldive-victory-wreck-2vmj"
     }
   ],
-  "triangles": 28599,
+  "triangles": 30470,
   "notes": "Built by code (model_sources/Q1255918_maldive_victory.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright and slightly tilted at about 35 m off Hulhulé, parallel to the house reef: the forecastle, the three holds with their hatch coamings and the stumps of the derrick posts, the hull holed low on one side where she struck the reef, the accommodation block aft with its wheelhouse and upper cabins crushed by the anchors of the bridge works, the funnel, the propeller and the rudder. The exact tilt, the layout of the holds and the heading (not published here: 0) are approximate. model_built.glb: the ship as she sailed in 1981. No marine life in the model: Offlined draws the living things itself."
 }

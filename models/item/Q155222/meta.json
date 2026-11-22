@@ -22,6 +22,6 @@
       "url": "https://en.wikipedia.org/wiki/Battle_of_the_North_Cape"
     }
   ],
-  "triangles": 78526,
+  "triangles": 77518,
   "notes": "Built by code (model_sources/Q155222_scharnhorst.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down at about 290 m north of the North Cape: the keel uppermost, the upperworks crushed into the bottom, torpedo and shell holes along both sides, the bow torn off ahead of turret Anton and lying apart on its side some 60 m ahead of the hull, plating and wreckage spread about both. The layout, the distance to the bow, the angle and the heading (not published here: 0) are approximate. A war grave. model_built.glb: the battleship as she sailed in 1943. No marine life in the model: Offlined draws the living things itself."
 }

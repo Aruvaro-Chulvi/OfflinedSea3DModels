@@ -30,6 +30,6 @@
       "url": "https://divernet.com/scuba-diving/unraveling-the-mystery-the-sinking-of-ms-zenobia/"
     }
   ],
-  "triangles": 55853,
+  "triangles": 57861,
   "notes": "Built by code (model_sources/Q2603065_zenobia.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Whole on her port side at about 42 m, the starboard side some 16 m under the surface: the accommodation and bridge forward, the funnels aft, the stern ramp, articulated lorries still on the open vehicle deck (a few hanging askew from their chains) and others scattered on the seabed. Heading (not published: 0), the layout of the superstructure and the stowage of the lorries are approximate. model_built.glb: the ferry with her lorries as she sailed in 1980. No marine life in the model: Offlined draws the living things itself."
 }

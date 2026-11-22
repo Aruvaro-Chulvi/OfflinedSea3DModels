@@ -106,6 +106,23 @@ Cada carpeta lleva:
 El comprobador [`tools/validate.py`](../tools/validate.py) se ejecuta en cada *pull request* y te dice qué
 falla. Puedes lanzarlo tú: `python tools/validate.py`.
 
+## 5b. Nada flota, nada se despega de su superficie
+
+Cada pieza de un modelo tiene que tocar algo: el casco al que pertenece, otra pieza o el fondo. Las chapas sueltas
+de un pecio, una chimenea caída o una hélice arrancada descansan **sobre** el fondo o sobre el pecio, nunca unos
+centímetros por encima. Las marcas pintadas, ventanas, ojos de buey y letras van **sobre** su superficie (unos
+milímetros por fuera, para que no parpadeen) y siguen su curva: no vale un disco plano sobre un ala o un fuselaje
+curvos.
+
+[`tools/geomcheck.py`](../tools/geomcheck.py) comprueba las dos cosas (necesita numpy: `pip install numpy`) y se
+ejecuta en cada *pull request*. Suspende un modelo con una pieza a más de 5 cm de todo (y que no esté en el fondo)
+o una calcomanía a más de 2 cm de su superficie. Si algo cuelga libre de verdad (un cable hacia la superficie…),
+añádelo a `tools/geomcheck_allow.json` con el motivo.
+
+Los modelos hechos por código aquí lo tienen gratis: [`tools/fixkit.py`](../tools/fixkit.py) se ejecuta dentro de
+`scenekit.write_model()`, pega las calcomanías a su superficie y asienta las piezas sueltas sobre lo que tienen
+debajo.
+
 ## 6. Buenas prácticas
 
 - Modela lo que **se ve hoy**: el pecio, no el barco. Si además quieres el barco como era, añade

@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/Japanese_aircraft_carrier_Kaga"
     }
   ],
-  "triangles": 74657,
+  "triangles": 74137,
   "notes": "Built by code (model_sources/Q726146_kaga.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright at about 5,400 m north-west of Midway, twisted: most of the flight deck gone and the hangar sides buckled and torn where it fell in, the small island, the funnel trunked out along the starboard side, the 20 cm casemate guns low on her sides aft, the anti-aircraft sponsons, the four propellers and the rudder; wreckage spread about her. The damage, the extent of what is left of the flight deck and the heading (not published here: 0) are approximate. A war grave. model_built.glb: the carrier as she was in 1942. No marine life in the model: Offlined draws the living things itself."
 }

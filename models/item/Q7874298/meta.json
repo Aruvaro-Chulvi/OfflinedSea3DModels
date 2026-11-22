@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/USS_Spiegel_Grove"
     }
   ],
-  "triangles": 44253,
+  "triangles": 47098,
   "notes": "Built by code (model_sources/Q7874298_uss_spiegel_grove.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the bottom in about 40 m six miles off Key Largo, where Hurricane Dennis set her in 2005: the tall superstructure forward with the bridge and the mast stump, the two funnels side by side, the long well deck aft between its high wing walls, the two cranes on the walls, the stern gate, the propellers and the rudders. The heading (not published here: 0) and the state of the cranes are approximate. model_built.glb: the dock landing ship in service. No marine life in the model: Offlined draws the living things itself."
 }

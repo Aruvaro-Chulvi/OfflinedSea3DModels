@@ -33,6 +33,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from meshkit import Mesh, merge, box, cyl, lathe, grid, quad, tube, crumple, weather, sstep, fbm, write_glb  # noqa: E402
+from shipkit import install  # noqa: E402
 
 rng = np.random.default_rng(1915)
 
@@ -51,14 +52,6 @@ FRED, MAST, BRONZE = (0.78, 0.3, 0.12), (0.62, 0.48, 0.3), (0.55, 0.4, 0.2)
 WOOD = (0.55, 0.42, 0.28)
 FUNNELS = (76, 100, 124, 148)          # distance of each funnel from the bow (m), approximate
 SPLIT = 131.0                          # the split amidships, just aft of the third funnel
-
-
-def zd(d):            # distance from the bow (m) -> ship coordinate z (bow at +L/2)
-    return L / 2 - d
-
-
-def t_of(z):
-    return (z + L / 2) / L
 
 
 def w_of(t):          # half-beam factor along the ship: a long fine entrance (she was built for speed)
@@ -86,15 +79,6 @@ def yd_of(t):         # upper deck with a little sheer
 def k_of(t):          # section fullness (a fine, V-shaped run aft where the shafts come out)
     k = 2.0 + 5.5 * w_of(t) ** 3
     return 1.1 + (k - 1.1) * float(sstep(0.03, 0.22, t))
-
-
-def hw(z, y):         # half-width of the hull at z and height y
-    t = t_of(z)
-    yb, yd, w, k = yb_of(t), yd_of(t), w_of(t), k_of(t)
-    if y >= yd:
-        return B / 2 * w
-    u = max(0.0, (y - yb) / max(0.1, yd - yb))
-    return B / 2 * w * (1 - (1 - u) ** k)
 
 
 def hull(d0, d1, NP=26):
@@ -190,12 +174,7 @@ def inner_wall(d0, d1):
     return Mesh(v, f, INNER)
 
 
-def at(m, d, x=0.0, y=0.0):
-    return m.T(x, y, zd(d))
-
-
-def deck_y(d):        # the upper deck (well deck)
-    return yd_of(t_of(zd(d)))
+install(globals(), "zd t_of hw at deck_y")
 
 
 def top_y(d):         # the shelter deck (forecastle, main hull)

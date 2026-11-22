@@ -28,6 +28,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from meshkit import Mesh, merge, box, cyl, lathe, grid, quad, tube, crumple, weather, sstep, fbm, write_glb, yaw_quat  # noqa: E402
+from shipkit import install  # noqa: E402
 
 rng = np.random.default_rng(2002)
 
@@ -40,14 +41,6 @@ DECKC, PIPE, DARK = (0.4, 0.2, 0.15), (0.38, 0.42, 0.34), (0.025, 0.025, 0.03)
 ORANGE, STEEL, BRONZE, OIL = (0.9, 0.42, 0.1), (0.45, 0.45, 0.45), (0.55, 0.4, 0.2), (0.03, 0.025, 0.02)
 FUNNEL = (0.1, 0.1, 0.11)
 WL = 9.5                                   # top of the red bottom paint (boot-top)
-
-
-def zd(d):
-    return L / 2 - d
-
-
-def t_of(z):
-    return (z + L / 2) / L
 
 
 def w_of(t):                                # very full hull: short entrance, short run
@@ -74,15 +67,6 @@ def yd_of(t):
 
 def k_of(t):
     return 2.5 + 9.0 * w_of(t) ** 4
-
-
-def hw(z, y):
-    t = t_of(z)
-    yb, yd, w, k = yb_of(t), yd_of(t), w_of(t), k_of(t)
-    if y >= yd:
-        return B / 2 * w
-    u = max(0.0, (y - yb) / max(0.1, yd - yb))
-    return B / 2 * w * (1 - (1 - u) ** k)
 
 
 def hull(d0, d1, NP=26):
@@ -120,12 +104,7 @@ def hull(d0, d1, NP=26):
     return m
 
 
-def at(m, d, x=0.0, y=0.0):
-    return m.T(x, y, zd(d))
-
-
-def deck_y(d):
-    return yd_of(t_of(zd(d)))
+install(globals(), "zd t_of hw at deck_y")
 
 
 def bulb():
@@ -195,6 +174,8 @@ def ship_part(d0, d1, built=False):
         P.append(at(box(1.3, 0.15, b2 - a2, STEEL), (a2 + b2) / 2, y=yc((a2 + b2) / 2)))
         for s in (-1, 1):
             P.append(tube([(s * 0.65, yc(d) + 1.0, zd(d)) for d in np.arange(a2, b2 + 0.1, 6)], 0.04, STEEL, seg=4))
+            for d in np.arange(a2, b2 + 0.1, 3.0):                                          # its stanchions
+                P.append(at(box(0.05, 1.0, 0.05, STEEL), d, x=s * 0.65, y=yc(d)))
         for d in np.arange(a2 + 2, b2, 6.0):
             P.append(at(box(0.25, 2.6, 0.25, STEEL), d, y=deck_y(d)))
         for x in (-7.5, -5.5, 5.5, 7.5):
@@ -208,6 +189,8 @@ def ship_part(d0, d1, built=False):
                     P.append(at(cyl(0.22, 0.22, 7.5, PIPE, seg=6), d, x=s * 10.5, y=deck_y(d)))
         for s in (-1, 1):
             P.append(tube([(s * (B / 2 - 0.4), deck_y(d) + 1.05, zd(d)) for d in np.arange(max(22, d0), min(203, d1) + 0.1, 3.0)], 0.04, STEEL, seg=4))
+            for d in np.arange(max(22, d0), min(203, d1) + 0.1, 3.0):                       # the railing's stanchions
+                P.append(at(box(0.05, 1.05, 0.05, STEEL), d, x=s * (B / 2 - 0.4), y=deck_y(d)))
     # manifold amidships with its two hose cranes
     if inr(120, 3):
         for dz in (-1.2, 1.2):
@@ -249,6 +232,9 @@ def ship_part(d0, d1, built=False):
             boat.S(1, 0.95, 1)
             y0 = deck_y(224) + 2 * LV + 1.2
             P.append(boat.T(s * (B / 2 - 0.2), y0, zd(224)))
+            for dz in (-2.6, 2.6):                                                          # the gravity davit that holds it
+                hx = s * B * 0.37
+                P.append(tube([(hx, y0 - 1.2, zd(224) + dz), (hx + s * 0.4, y0 + 2.2, zd(224) + dz), (s * (B / 2 - 0.2), y0 + 1.6, zd(224) + dz)], 0.14, WHITE, seg=5))
             P.append(tube([(s * (B / 2 - 2.5), y0 - 1.4, zd(221.5)), (s * (B / 2 - 2.5), y0 + 2.2, zd(221.5)), (s * (B / 2 + 0.4), y0 + 2.6, zd(221.5))], 0.18, STEEL, seg=5))
             P.append(tube([(s * (B / 2 - 2.5), y0 - 1.4, zd(226.5)), (s * (B / 2 - 2.5), y0 + 2.2, zd(226.5)), (s * (B / 2 + 0.4), y0 + 2.6, zd(226.5))], 0.18, STEEL, seg=5))
     # stern mooring deck: winches and bollards
@@ -287,8 +273,10 @@ def lettering(text, d_start, side, y_top, px=0.3, along=+1, transom=False):
                 y = y_top - r_ * px
                 if transom:
                     x = (col + c_) * px - len(text) * 6 * px / 2
-                    z = zd(L) + 0.0
-                    out.append(quad(-x, y, z - 0.06, px * 0.95, px * 0.95, "-z", WHITE, eps=0.0))
+                    z = zd(L)
+                    while z < zd(L) + 8.0 and hw(z, y) < abs(x) + 0.1:              # on the plating of the stern, where it is
+                        z += 0.05
+                    out.append(quad(-x, y, z - 0.02, px * 0.95, px * 0.95, "-z", WHITE, eps=0.0))
                 else:
                     # reading from bow to stern on the starboard side, from stern to bow on port
                     dd = d_start + ((col + c_) * px if side > 0 else -(col + c_) * px) * along   # +X side reads aft, −X side reads forward
@@ -407,8 +395,8 @@ bow_site = merge([mud_around(BOW_END, B / 2, 1.6, 5), debris_near(0, -BOW_END / 
 
 # ── Stern section: from the break to the stern (about 127 m), at 3,565 m ────
 STERN_START = 116.5
-stern = merge(ship_part(STERN_START, L) + [rudder_prop()] + lettering("PRESTIGE", 0, 0, D - 0.8, px=0.32, transom=True)
-              + lettering("NASSAU", 0, 0, D - 3.6, px=0.26, transom=True) + cracks_and_patches((135, 160), 1, (8, 11), False)
+stern = merge(ship_part(STERN_START, L) + [rudder_prop()] + lettering("PRESTIGE", 0, 0, D - 1.5, px=0.32, transom=True)
+              + lettering("NASSAU", 0, 0, D - 4.2, px=0.26, transom=True) + cracks_and_patches((135, 160), 1, (8, 11), False)
               + cracks_and_patches((150,), -1, (10,), False) + extraction_fittings((128, 143, 158, 173, 188)))
 inner2 = box(B * 0.9, D * 0.85, 0.2, OIL).T(0, 1.0, zd(STERN_START + 3))
 crumple(inner2, 1.2, 0.2, 8)
@@ -429,7 +417,7 @@ stern_site = merge([stern, mud_around(L - STERN_START, B / 2, 1.2, 6),
 
 # ── The ship as built ────────────────────────────────────────────────────────
 ship = merge(ship_part(0, L, built=True) + [rudder_prop()] + name_plates(4, 1, D - 3.0) + name_plates(4, -1, D - 3.0)
-             + lettering("PRESTIGE", 0, 0, D - 0.8, px=0.32, transom=True) + lettering("NASSAU", 0, 0, D - 3.6, px=0.26, transom=True))
+             + lettering("PRESTIGE", 0, 0, D - 1.5, px=0.32, transom=True) + lettering("NASSAU", 0, 0, D - 4.2, px=0.26, transom=True))
 ship.c = np.clip(ship.c * (0.94 + 0.06 * fbm(ship.v, 0.05, 3)[:, None]), 0, 1)
 
 # ── Write ────────────────────────────────────────────────────────────────────

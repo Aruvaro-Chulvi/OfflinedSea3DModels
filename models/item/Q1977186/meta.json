@@ -52,6 +52,6 @@
       "url": "https://majorcadailybulletin.com/news/local/2002/12/10/6430/sub-finds-more-cracks-stern-sunken-tanker.html"
     }
   ],
-  "triangles": 150113,
+  "triangles": 152377,
   "notes": "Built by code (model_sources/Q1977186_prestige.py, tools/meshkit.py) with AI assistance. Two pieces a few kilometres apart on the slope of the Galicia Bank: the bow section (~112 m, 3,830 m) and the stern section (~127 m, 3,565 m, node 'stern_section', placed with 'pieces'). Torn ends with the inside of the tanks black with fuel, buckled deck, cracks with the patches fitted in 2003, the fittings used in 2004 to pump out the fuel, fuel residue on the hull and the sediment, debris near each break. model_built.glb: the tanker as she sailed. Headings, the length of each section and the layout of cracks, patches and fittings are approximate. No marine life in the model: Offlined draws the living things itself."
 }

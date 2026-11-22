@@ -307,24 +307,79 @@ def _quat_from_up(n, yaw):
                      w1 * z2 + x1 * y2 - y1 * x2 + z1 * w2, w1 * w2 - x1 * x2 - y1 * y2 - z1 * z2], 1)
 
 
-def instances(pos, normal=None, yaw=None, scale=None):
-    """(N,3) positions + optional normals (the copy's up axis), yaw (radians) and scale ((N,) or (N,3))."""
+def quat_from_axes(xa, ya, za):
+    """Quaternions (x, y, z, w) of the rotations that take the local x, y, z axes onto the (N,3) unit vectors given."""
+    M = np.stack([xa, ya, za], 2)                                         # columns: where each local axis goes
+    tr = M[:, 0, 0] + M[:, 1, 1] + M[:, 2, 2]
+    q = np.zeros((len(M), 4))
+    for i in range(len(M)):
+        m = M[i]
+        if tr[i] > 0:
+            s = math.sqrt(tr[i] + 1.0) * 2
+            q[i] = ((m[2, 1] - m[1, 2]) / s, (m[0, 2] - m[2, 0]) / s, (m[1, 0] - m[0, 1]) / s, 0.25 * s)
+        elif m[0, 0] > m[1, 1] and m[0, 0] > m[2, 2]:
+            s = math.sqrt(1.0 + m[0, 0] - m[1, 1] - m[2, 2]) * 2
+            q[i] = (0.25 * s, (m[0, 1] + m[1, 0]) / s, (m[0, 2] + m[2, 0]) / s, (m[2, 1] - m[1, 2]) / s)
+        elif m[1, 1] > m[2, 2]:
+            s = math.sqrt(1.0 + m[1, 1] - m[0, 0] - m[2, 2]) * 2
+            q[i] = ((m[0, 1] + m[1, 0]) / s, 0.25 * s, (m[1, 2] + m[2, 1]) / s, (m[0, 2] - m[2, 0]) / s)
+        else:
+            s = math.sqrt(1.0 + m[2, 2] - m[0, 0] - m[1, 1]) * 2
+            q[i] = ((m[0, 2] + m[2, 0]) / s, (m[1, 2] + m[2, 1]) / s, 0.25 * s, (m[1, 0] - m[0, 1]) / s)
+    return q / np.linalg.norm(q, axis=1, keepdims=True)
+
+
+def along_wall(n):
+    """For unit wall normals n: quaternions that put a copy's +z out of the wall and its -y down the wall's slope
+    (a run of rust, a drip: it follows a sloping or flared side instead of hanging plumb off it)."""
+    n = np.asarray(n, float); n = n / np.linalg.norm(n, axis=1, keepdims=True)
+    up = np.array([0.0, 1.0, 0.0])
+    u = up[None] - (n @ up)[:, None] * n
+    ln = np.linalg.norm(u, axis=1, keepdims=True)
+    u = np.where(ln > 1e-6, u / np.maximum(ln, 1e-9), np.array([[0.0, 0.0, 1.0]]))
+    x = np.cross(u, n)
+    return quat_from_axes(x, u, n)
+
+
+def instances(pos, normal=None, yaw=None, scale=None, rot=None):
+    """(N,3) positions + optional normals (the copy's up axis), yaw (radians) and scale ((N,) or (N,3));
+    rot: (N,4) quaternions instead of normal and yaw."""
     pos = np.asarray(pos, float).reshape(-1, 3); N = len(pos)
     normal = np.tile([0.0, 1.0, 0.0], (N, 1)) if normal is None else np.asarray(normal, float).reshape(-1, 3)
     yaw = np.zeros(N) if yaw is None else np.asarray(yaw, float)
     sc = np.ones((N, 3)) if scale is None else np.asarray(scale, float)
     if sc.ndim == 1:
         sc = np.repeat(sc[:, None], 3, 1)
-    return {"t": pos, "r": _quat_from_up(normal, yaw) if N else np.zeros((0, 4)), "s": sc}
+    r = np.asarray(rot, float).reshape(-1, 4) if rot is not None else (_quat_from_up(normal, yaw) if N else np.zeros((0, 4)))
+    return {"t": pos, "r": r, "s": sc}
 
 
 # Marine life (corals, anemones, sponges, starfish, fish…) is not part of a model: Offlined's Wiki Submarine draws the
 # living things itself, by depth and place, and moves them. Anything a model script still makes with the material key
 # "life" is left out here, so every model is only the wreck (or the place) itself.
 DROP_KEYS = {"life"}
+GROUND_KEYS = {"sediment", "rock", "mud"}
+GROUND_NAMES = ("sediment", "mud", "stones", "reef", "rock", "seabed", "floor", "sand", "ground")
 
 
-def write_model(path, parts, materials, instanced=(), generator="Offlined Sea 3D Models scenekit"):
+def fix_parts(parts):
+    """Run tools/fixkit.py over the parts of a model, frame by frame (a piece placed apart is its own frame, with its
+    own seabed). A model with a seabed (a wreck, a place) also has its loose pieces settled; a ship as built only
+    gets its decals laid on their surfaces."""
+    from fixkit import fix_meshes
+    frames = {}
+    for p in parts:
+        name, body = p[0], p[1]
+        fr = len(frames) + 1 if (len(p) > (2 if isinstance(body, list) else 3)) else 0
+        items = [(it[0], it[1]) for it in body] if isinstance(body, list) else [(body, p[2])]
+        for m, key in items:
+            gnd = key in GROUND_KEYS or name.lower().startswith(GROUND_NAMES)
+            frames.setdefault(fr, ([], []))[1 if gnd else 0].append(m)
+    for fr, (objs, gnd) in sorted(frames.items()):
+        fix_meshes(objs, gnd, settle=True if gnd else "near", log=print)
+
+
+def write_model(path, parts, materials, instanced=(), generator="Offlined Sea 3D Models scenekit", fix=True):
     """parts: [(node name, Mesh, material key)] or [(node name, [(Mesh, material key), …])], optionally followed by
     {"translation", "rotation"} for a piece placed apart (an item can be (Mesh, key, child node name));
     instanced: [(node name, Mesh, material key, instances(...)[, parent part name])]; materials: {key: material(...)}.
@@ -334,6 +389,8 @@ def write_model(path, parts, materials, instanced=(), generator="Offlined Sea 3D
     parts = [(p[0], [it for it in p[1] if it[1] not in DROP_KEYS]) + tuple(p[2:]) if isinstance(p[1], list) else p for p in parts]
     instanced = [e for e in instanced if e[2] not in DROP_KEYS]
     materials = {k: v for k, v in materials.items() if k not in DROP_KEYS}
+    if fix and os.environ.get("SEA3D_NO_FIX") != "1":    # decals on their surface, nothing floating (tools/fixkit.py)
+        fix_parts(parts)
     binbuf = bytearray()
     views, accs, meshes, nodes, images, textures, mats = [], [], [], [], [], [], []
     mat_idx, used_ext = {}, {"KHR_mesh_quantization"}

@@ -26,6 +26,6 @@
       "url": "https://en.wikipedia.org/wiki/USS_Kittiwake"
     }
   ],
-  "triangles": 22448,
+  "triangles": 24751,
   "notes": "Built by code (model_sources/Q7870825_uss_kittiwake.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her port side on the sand next to the reef off Seven Mile Beach, the sand at about 21 m (most of the dive at 15 m), where Tropical Storm Nate rolled her in October 2017: the long superstructure with its bridge, the funnel, the stump of the mast, the working deck aft with the A-frame of the rescue chamber and the winches, the propeller and the rudder. The heading (not published here: 0) is approximate; the catalog pin is moved a few hundred metres inshore of the Wikidata point, where the GEBCO cells give the real depth instead of the drop-off beyond the reef. model_built.glb: the rescue ship in service. No marine life in the model: Offlined draws the living things itself."
 }

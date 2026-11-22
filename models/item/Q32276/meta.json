@@ -39,6 +39,6 @@
       "url": "https://www.scubadiving.com/history-red-sea-thistlegorm-shipwreck"
     }
   ],
-  "triangles": 64308,
+  "triangles": 63738,
   "notes": "Built by code (model_sources/Q32276_thistlegorm.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Bow section (bow to just aft of the engine room) upright at about 30 m with holds 1-3 open: Bedford lorries, Norton/BSA motorcycles and Universal carriers in the lower hold and the 'tween deck, boots and crates in hold 1, the main deck fallen in on the port side of hold 1; the water wagons and coal tenders on deck by hatches 1 and 2; the midships superstructure torn (bridge level crumpled, wheelhouse and funnel lying off the port side), the engine room open at the break. Where hold 4 was: the bottom plating splayed open, torn plates, carriers (two upside down), wrecked lorries, shells and tyres. Stern section twisted onto its port side a few metres aft, with the anti-aircraft tub, the stern gun, the propeller and the rudder. The two LMS 8F locomotives off the port side (level with the blast) and the starboard side (level with hold 2). model_built.glb: the ship as she sailed in 1941, with the locomotives on deck by hatch 4. Heading (bow to the north, after dive guides), the angle of the stern, the place of each piece of cargo and of the debris are approximate. No marine life in the model: Offlined draws the living things itself."
 }

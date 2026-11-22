@@ -34,6 +34,6 @@
       "url": "https://www.scubadiving.com/scuba-diving-italys-sunken-city-baia"
     }
   ],
-  "triangles": 28559,
+  "triangles": 30020,
   "notes": "Built by code (model_sources/Q290097_baia.py, tools/meshkit.py, tools/placekit.py) with AI assistance. In the underwater archaeological park of Baia, at Punta Epitaffio, a few metres down: the Nymphaeum of Claudius — the hall with its apse, the pool, copies of the statues in their niches (the originals have been in the museum of the Castle of Baia since 1981) and its mosaic floor — and beside it a paved Roman road with the brick walls of rooms and their black-and-white mosaics, fallen columns and amphorae. The layout and the sizes are approximate. No marine life in the model: Offlined draws the living things itself."
 }

@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/USS_Hornet_(CV-8)"
     }
   ],
-  "triangles": 70218,
+  "triangles": 70163,
   "notes": "Built by code (model_sources/Q838125_uss_hornet_cv8.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the floor of the South Pacific at about 5,330-5,400 m near the Solomon Islands, largely intact: the island, the guns at the corners and edges of the flight deck, the open hangar with an aircraft tug still standing upright on its deck, bomb holes through the flight deck, the torpedo holes of the Japanese aircraft in her starboard side and of the US destroyers that tried to scuttle her in her port side, the four propellers and the rudder. The exact location is kept secret; the damage, list and heading (not published here: 0) are approximate. A war grave. model_built.glb: the carrier as she was in 1942. No marine life in the model: Offlined draws the living things itself."
 }

@@ -29,6 +29,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from meshkit import Mesh, merge, box, cyl, lathe, tube, crumple, fbm, sstep  # noqa: E402
+from shipkit import install  # noqa: E402
 
 rng = np.random.default_rng(1942 + 5)
 L, RP = 66.5, 2.35
@@ -36,8 +37,7 @@ HULLC, DECKC, DARK, BRONZE = (0.36, 0.37, 0.38), (0.3, 0.29, 0.27), (0.05, 0.05,
 CY = 2.6                                                    # height of the pressure hull's axis above the keel
 
 
-def zu(u):
-    return (u - 0.5) * L
+install(globals(), "zu")
 
 
 def pressure_hull():

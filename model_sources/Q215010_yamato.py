@@ -48,6 +48,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 from meshkit import Mesh, merge, box, cyl, lathe, grid, quad, tube, crumple, weather, sstep, fbm, normals, write_glb  # noqa: E402
+from shipkit import install  # noqa: E402
 
 rng = np.random.default_rng(1945)
 
@@ -65,14 +66,6 @@ T1, T2, T3 = 77.0, 97.5, 200.0             # main turrets (distance from the bow
 S1, S2 = 114.0, 183.0                      # 15.5 cm turrets
 RB = 7.1                                   # barbette radius of a main turret
 RAKE = 7.0                                 # the stem leans forward: the deck at the bow is ~7 m ahead of the forefoot
-
-
-def zd(d):
-    return L / 2 - d
-
-
-def t_of(z):
-    return (z + L / 2) / L
 
 
 def w_of(t):                                # beamy hull, fine entrance, broad cruiser stern
@@ -103,15 +96,6 @@ def yd_of(t):                               # upper deck: strong sheer forward, 
 
 def k_of(t):
     return 2.4 + 7.5 * w_of(t) ** 4
-
-
-def hw(z, y):
-    t = t_of(z)
-    yb, yd, w, k = yb_of(t), yd_of(t), w_of(t), k_of(t)
-    if y >= yd:
-        return B / 2 * w
-    u = max(0.0, (y - yb) / max(0.1, yd - yb))
-    return B / 2 * w * (1 - (1 - u) ** k)
 
 
 def hull(d0, d1, NP=24, step=1.5):
@@ -149,12 +133,7 @@ def hull(d0, d1, NP=24, step=1.5):
     return m
 
 
-def at(m, d, x=0.0, y=0.0):
-    return m.T(x, y, zd(d))
-
-
-def deck_y(d):
-    return yd_of(t_of(zd(d)))
+install(globals(), "zd t_of hw at deck_y")
 
 
 def hexa(P, c):

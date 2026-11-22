@@ -30,6 +30,6 @@
       "url": "https://divernet.com/scuba-news/divers-find-dinner-bell-on-deep-wreck/"
     }
   ],
-  "triangles": 46254,
+  "triangles": 47485,
   "notes": "Built by code (model_sources/Q700168_goya.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright at about 76 m in the Baltic: the hull whole from the forward hatches aft, the bridge house and the short funnel, the king posts, the torpedo holes, the bow broken off and twisted, lost fishing nets draped over her. A war grave (more than 6,000 died): diving is forbidden. The break, the nets, the side of the torpedo hits and the heading (not published here: 0) are approximate. model_built.glb: the transport as she was in 1945. No marine life in the model: Offlined draws the living things itself."
 }

@@ -26,6 +26,6 @@
       "url": "https://en.wikipedia.org/wiki/Soviet_hospital_ship_Armenia"
     }
   ],
-  "triangles": 41506,
+  "triangles": 45423,
   "notes": "Built by code (model_sources/Q683174_armenia.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On an even keel in one piece at about 1,500 m some 15 nautical miles off Yalta, sunk into the mud up to her bilges: the white hull and superstructure with the red crosses of a hospital ship on her sides and funnel, the funnel standing, the masts broken short, two zones of damage torn in her sides forward and aft, plating fallen beside them. The exact damage, the state of the masts and the heading (not published here: 0) are approximate. Some 5,000 or more people died with her: a war grave. model_built.glb: the ship as a hospital transport in 1941. No marine life in the model: Offlined draws the living things itself."
 }

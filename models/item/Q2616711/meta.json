@@ -34,6 +34,6 @@
       "url": "https://maritime-executive.com/article/archaeologists-find-more-treasures-from-the-antikythera-wreck"
     }
   ],
-  "triangles": 32064,
+  "triangles": 32021,
   "notes": "Built by code (model_sources/Q2616711_antikythera_wreck.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Off the east coast of Antikythera at some 45-55 m: the low mound of the buried hull with timbers at its edges, broken amphorae and fine pottery spilled around it, lead anchor stocks, bronze nails, marble statues still lying in the sand, and boulders fallen from the cliff over parts of the site. The model sets it on flat ground at about 50 m: the slope, the layout and the heading (not published here: 0) are approximate. No marine life in the model: Offlined draws the living things itself."
 }

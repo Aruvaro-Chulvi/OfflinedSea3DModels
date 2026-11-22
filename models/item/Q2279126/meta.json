@@ -30,6 +30,6 @@
       "url": "https://www.tracesofwar.com/sights/9272/Ship-Wreck-Shinkoku-Maru.htm"
     }
   ],
-  "triangles": 44488,
+  "triangles": 46633,
   "notes": "Built by code (model_sources/Q2279126_shinkoku_maru.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the bottom of Chuuk Lagoon at about 38-39 m, a slight list: the forecastle with its gun, the long tank deck with the tank lids, pipes and raised catwalk, the bridge island amidships with its masts, the poop aft with the funnel and the stern gun, the propeller and rudder. The soft corals and anemones that cover her are not in the model (Offlined draws the life). The list, the damage and the heading (not published here: 0) are approximate. model_built.glb: the fleet oiler as she was in 1944. No marine life in the model: Offlined draws the living things itself."
 }

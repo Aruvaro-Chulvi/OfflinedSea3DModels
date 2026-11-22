@@ -38,6 +38,6 @@
       "url": "https://en.wikipedia.org/wiki/Japanese_battleship_Yamato"
     }
   ],
-  "triangles": 138643,
+  "triangles": 137416,
   "notes": "Built by code (model_sources/Q1127368_musashi.py, which shares the ship with Q215010_yamato.py; tools/meshkit.py, tools/dresskit.py) with AI assistance. The file is laid out with +Z to 290° (the bow section's heading) and the origin under the bow section. Bow section (~70 m, sheared off ahead of turret No. 1) upright with a slight list, nose down in the mud, two torpedo holes low in the starboard bow. Stern section (~55 m, sheared off behind turret No. 3) upside down about 450 m east-south-east, one propeller missing. The middle of the ship destroyed: three big torn pieces of hull, four heaps of shattered structure (armour, boilers, gun mounts), the tower bridge on its side, the flattened funnel, the three main turrets (two upside down, one on its side) and two 15.5 cm turrets, both catapults and the torn-off propeller, spread over about 800 × 500 m with plates, beams and powder cans. Dressed with tools/dresskit.py: its own sediment (painted by Offlined with the seabed colour), rust, brass shell casings, textures and baked light. model_built.glb: the battleship as she sailed (the Yamato's 1945 anti-aircraft fit, a little heavier than the Musashi's of October 1944). Approximate: the heading, where each break is, and every position in the debris field (only its size and the state of the main pieces are published). No marine life in the model: Offlined draws the living things itself."
 }

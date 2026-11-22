@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/Kronan_(ship)"
     }
   ],
-  "triangles": 69264,
+  "triangles": 71398,
   "notes": "Built by code (model_sources/Q1789811_kronan.py, tools/meshkit.py, tools/sailkit.py, tools/dresskit.py) with AI assistance. The port side, two thirds of the ship's length from the stern forward, lying flat on the clay at 26 m with its outside to the bottom: the planking with its gunports and wales, the ribs and the stubs of the three gun decks upward, the edge ragged where the explosion tore the ship apart; around it timbers and planks, gun carriages, a mast, three anchors and some forty guns (most of them bronze). The layout of the scattered remains is approximate, and many of the guns and finds have been raised by the museum. model_built.glb: the ship under sail in 1676. No marine life in the model: Offlined draws the living things itself."
 }

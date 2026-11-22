@@ -34,6 +34,6 @@
     "r": 163,
     "floor": -125
   },
-  "triangles": 114984,
+  "triangles": 57529,
   "notes": "Built by code (model_sources/Q86486_great_blue_hole.py, tools/meshkit.py, tools/placekit.py) with AI assistance. In the lagoon of Lighthouse Reef, Belize: the sinkhole about 300 m across, its walls dropping almost sheer to the ledge of caverns at about 36-55 m with their stalactites, then sloping down to a floor of silt and fallen blocks at about 125 m; patches of reef rock round the rim. meta.json \"hole\" tells Offlined to open the seabed down to the floor. The profile, the ledge and the stalactites are approximate. No marine life in the model: Offlined draws the living things itself."
 }

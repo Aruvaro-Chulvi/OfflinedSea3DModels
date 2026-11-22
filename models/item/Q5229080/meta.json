@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/USS_Johnston_(DD-557)"
     }
   ],
-  "triangles": 30397,
+  "triangles": 29978,
   "notes": "Built by code (model_sources/Q5229080_uss_johnston.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The forward two thirds of the destroyer, upright and intact at 6,456 m in the Philippine Sea, where they slid down a cliff face: the bow with the hull number 557, the two forward 5-inch gun mounts, the bridge and the pole mast, both funnels, the anti-aircraft guns and the two quintuple torpedo-tube mounts, the hull peppered with shell holes, the ragged break abaft them; some plating about the break. The after third, broken up, lies apart up the slope and is not drawn. The exact damage and heading (not published here: 0) are approximate. A war grave. model_built.glb: the destroyer as she was in 1944. No marine life in the model: Offlined draws the living things itself."
 }

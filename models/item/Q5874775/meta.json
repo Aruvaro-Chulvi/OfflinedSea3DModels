@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/San_Jos%C3%A9_(ship)"
     }
   ],
-  "triangles": 56874,
+  "triangles": 56958,
   "notes": "Built by code (model_sources/Q5874775_san_jose.py, tools/meshkit.py, tools/sailkit.py, tools/dresskit.py) with AI assistance. The debris field at about 600 m off the Rosario Islands: the bottom of the hull, below the turn of the bilge, deep in the mud with its frames showing, the rest of the ship blown apart; about four dozen bronze guns half-buried in and around it, Chinese porcelain bowls, glass bottles, jars, gold coins and ingots, and timbers spread by the explosion. Colombia keeps the position secret: the catalog pin is moved some 15 km west of the Wikidata point, to where the GEBCO cells give the real depth of about 600 m (there they give 78 m). The layout of the remains is approximate. model_built.glb: the galleon under sail in 1708. No marine life in the model: Offlined draws the living things itself."
 }

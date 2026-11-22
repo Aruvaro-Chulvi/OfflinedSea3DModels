@@ -105,6 +105,21 @@ Each folder holds:
 The checker in [`tools/validate.py`](../tools/validate.py) runs on every pull request and tells you what is
 wrong. You can run it yourself: `python tools/validate.py`.
 
+## 5b. Nothing floats, nothing stands off its surface
+
+Every piece of a model must touch something: the hull it belongs to, another piece, or the seabed. A wreck's
+loose plates, a funnel that fell, a propeller torn off lie **on** the bottom or on the wreck, never a few
+centimetres over it. Painted markings, windows, portholes and letters lie **on** their surface (a few millimetres
+out, so they do not flicker), following its curve: a flat disc on a curved wing or fuselage is not allowed.
+
+[`tools/geomcheck.py`](../tools/geomcheck.py) checks both (it needs numpy: `pip install numpy`) and runs on every
+pull request. It fails a model with a piece more than 5 cm from everything (not on the seabed), or a decal more than
+2 cm off its surface. If something really hangs free (a cable to the surface…), add it to
+`tools/geomcheck_allow.json` with the reason.
+
+Models built by code here get this for free: [`tools/fixkit.py`](../tools/fixkit.py) runs inside
+`scenekit.write_model()` and lays decals on their surfaces and settles loose pieces on what is under them.
+
 ## 6. Good practice
 
 - Model what can be **seen today**: the wreck, not the ship. If you also want the ship as built, add
