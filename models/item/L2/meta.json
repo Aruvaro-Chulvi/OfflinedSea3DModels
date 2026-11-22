@@ -30,6 +30,6 @@
       "url": "https://www.duikersgids.nl/en/dive-spots/underwater-military-museum"
     }
   ],
-  "triangles": 63207,
+  "triangles": 63131,
   "notes": "Built by code (model_sources/L2_aqaba_military_museum.py, tools/meshkit.py, tools/placekit.py) with AI assistance. Off Aqaba's South Beach, Jordan, sunk in 2019 as an artificial reef: tanks, armoured troop carriers, anti-aircraft guns, two cranes, an ambulance and an attack helicopter laid out in a battle formation along the reef over some 140 m. The model sets them on flat ground at about 22 m (they lie at 15-28 m along the slope); the types, number and places of the vehicles are approximate. No marine life in the model: Offlined draws the living things itself. Rebuilt 2026-11 after the types: Chieftain tanks (sloped glacis, side skirts, the long turret with its 120 mm gun, searchlight box, cupola, bins), M113 troop carriers (ramp, cupola, trim vane), army trucks with cab, bonnet and windscreen (an ambulance with the Red Crescent, cranes with turntable, telescopic boom and outriggers), towed twin anti-aircraft guns and an AH-1 Cobra (stepped tandem canopy, chin turret, stub wings with rocket pods, two-blade rotor, skids)."
 }

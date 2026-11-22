@@ -34,6 +34,6 @@
       "url": "https://scienceillustrated.com.au/blog/technology/wreck-hunters-find-sunken-hospital-ship/"
     }
   ],
-  "triangles": 38279,
+  "triangles": 38273,
   "notes": "Built by code (model_sources/Q686392_centaur.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. At 2,059 m some 30 nautical miles east of Moreton Island: very badly damaged, the hull broken through forward where the torpedo struck but in one piece, the houses fallen in, the masts and funnel gone, the green band, the red crosses and the number 47 still on her sides. The published sources do not describe how she lies: attitude, damage and heading (not published here: 0) are approximate. A war grave (268 died). model_built.glb: the hospital ship as she was in 1943. No marine life in the model: Offlined draws the living things itself."
 }

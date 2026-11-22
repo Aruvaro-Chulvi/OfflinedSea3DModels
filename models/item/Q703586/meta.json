@@ -30,6 +30,6 @@
       "url": "https://tracesofwar.com/sights/103269/Ship-Wreck-SS-General-von-Steuben.htm"
     }
   ],
-  "triangles": 50039,
+  "triangles": 49842,
   "notes": "Built by code (model_sources/Q703586_steuben.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her port side at about 70 m off the Polish coast, the hull rising to about 50 m: the torpedo holes in the starboard bow below the bridge, the superstructure rotting through, the two funnels fallen beside her. A war grave (some 4,000 died). The collapse and the heading (not published here: 0) are approximate. model_built.glb: the liner as she was in 1945. No marine life in the model: Offlined draws the living things itself."
 }

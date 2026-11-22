@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/Port_Royal"
     }
   ],
-  "triangles": 47096,
+  "triangles": 46549,
   "notes": "Built by code (model_sources/Q685357_port_royal.py, tools/meshkit.py, tools/placekit.py) with AI assistance. In the shallow water of Kingston Harbour off Port Royal: a block of the town that sank in the earthquake of 7 June 1692, at the corner of Queen Street and High Street — brick buildings standing where they fell, their walls collapsed outwards in spreads of brick, the timbers of their floors and posts, bottles, pewter and clay pipes. An archaeological preserve: diving only with a permit. The layout and the depth are approximate. No marine life in the model: Offlined draws the living things itself."
 }

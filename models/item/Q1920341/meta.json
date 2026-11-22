@@ -34,6 +34,6 @@
       "url": "https://museum.maritimearchaeologytrust.org/2022/11/09/ss-mendi/"
     }
   ],
-  "triangles": 31459,
+  "triangles": 31508,
   "notes": "Built by code (model_sources/Q1920341_mendi.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her starboard side in about 40 m, roughly east-west with the bow to the west: the port side standing up from the bottom, the decks fallen in, the boilers showing through the broken plating, masts and funnel gone. A protected place (Protection of Military Remains Act): 646 died. The amount of collapse is approximate. model_built.glb: the steamer as she was in 1917. No marine life in the model: Offlined draws the living things itself."
 }

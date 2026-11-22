@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/MV_Wilhelm_Gustloff"
     }
   ],
-  "triangles": 65794,
+  "triangles": 65880,
   "notes": "Built by code (model_sources/Q155014_wilhelm_gustloff.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Broken in three parts at about 45-47 m north of Łeba, lying over on her port side, the side the torpedoes struck: the bow section with its forecastle and the stump of the foremast, a middle part broken down (the superstructure collapsed, plating torn away, the funnel gone), and the stern section with the mainmast stump, the propellers and the rudder; plating and lifeboats about them. The side she lies on, the gaps between the parts and the heading (not published here: 0) are approximate. A war grave. model_built.glb: the ship in her wartime grey. No marine life in the model: Offlined draws the living things itself."
 }

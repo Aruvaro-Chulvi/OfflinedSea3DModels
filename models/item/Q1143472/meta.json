@@ -30,6 +30,6 @@
       "url": "https://padi.com/dive-site/new-zealand/ms-mikhail-lermontov-wreck"
     }
   ],
-  "triangles": 56914,
+  "triangles": 56866,
   "notes": "Built by code (model_sources/Q1143472_mikhail_lermontov.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Whole, on her starboard side at about 36 m, the port side some 12 m under the surface: the long superstructure of five decks, the bridge and radar mast, the funnel with the red band and the hammer and sickle, the boat davits (a couple of boats on the bottom), twin screws. Heading (not published: 0), the colours and the exact layout of the decks are approximate. model_built.glb: the liner as she sailed in 1986. No marine life in the model: Offlined draws the living things itself."
 }

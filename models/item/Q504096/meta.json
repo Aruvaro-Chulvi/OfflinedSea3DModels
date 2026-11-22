@@ -30,6 +30,6 @@
       "url": "https://maritimequest.com/liners/carpathia_found.htm"
     }
   ],
-  "triangles": 50608,
+  "triangles": 50211,
   "notes": "Built by code (model_sources/Q504096_carpathia.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the bottom at about 150-160 m, some 120 miles west of Fastnet: the black hull whole, the forecastle and poop, the well decks with their hatches, the midship houses fallen in, the masts down to stumps (two lie beside her), the funnel fallen to port, the torpedo holes in her port side. The amount of collapse, the damage and the heading (not published here: 0) are approximate. model_built.glb: the liner as she was in 1912. No marine life in the model: Offlined draws the living things itself."
 }

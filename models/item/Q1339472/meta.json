@@ -30,6 +30,6 @@
       "url": "https://www.qc.dfo-mpo.gc.ca/en/infocean/empress-ireland-subject-evolving-hydrographic-technologies"
     }
   ],
-  "triangles": 49784,
+  "triangles": 49917,
   "notes": "Built by code (model_sources/Q1339472_empress_of_ireland.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The hull whole on her starboard side in about 40 m, the decks sagging and broken, the superstructure rusted down to low remains, the funnels and masts fallen and lying broken on the bottom, the 1914 salvage passage in the port side amidships, twin screws. A national historic site and the grave of 1,012 people. The list (here 70°), the heading (not published: 0), the extent of the collapse and the colours are approximate. model_built.glb: the liner as she sailed in 1914. No marine life in the model: Offlined draws the living things itself."
 }

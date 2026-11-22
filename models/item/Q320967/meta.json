@@ -30,6 +30,6 @@
       "url": "https://nautiluslive.org/blog/2023/09/14/exploring-iconic-shipwrecks-battle-midway-provide-never-seen-details"
     }
   ],
-  "triangles": 63020,
+  "triangles": 63067,
   "notes": "Built by code (model_sources/Q320967_akagi.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright at about 5,490 m north-west of Midway: the bow driven deep into the seabed with the chrysanthemum crest, the flight deck and the burnt-out hangar fallen in, the island on the port side, the funnel curving down over the starboard side, the 20 cm casemate guns aft, debris along the port side. A war grave (267 died). The damage and the heading (not published here: 0) are approximate. model_built.glb: the carrier as she was in 1942. No marine life in the model: Offlined draws the living things itself."
 }

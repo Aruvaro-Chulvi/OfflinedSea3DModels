@@ -118,8 +118,11 @@ def fix_meshes(objects, ground=(), settle=True, log=None, reach=None):
     drop_f = []
     grid = Grid(V, F)
     plan = []                                       # (comp, faces, normal, mean signed distance)
+    WATCH = __import__('os').environ.get('FIXKIT_WATCH')
+    WATCH = np.array([float(x) for x in WATCH.split(',')]) if WATCH else None
     for c, (fl, nrm, th) in thin.items():
         P = V[np.unique(F[fl])]
+        watch = WATCH is not None and np.linalg.norm(P.mean(0) - WATCH) < 1.5
         lo, hi = P.min(0) - DECAL_REACH, P.max(0) + DECAL_REACH
         cand = grid.query(lo, hi)
         if cand is None:
@@ -137,9 +140,19 @@ def fix_meshes(objects, ground=(), settle=True, log=None, reach=None):
         sn = _face_normals(T[cand[j]])
         par = np.abs((sn * nrm).sum(1))
         far = np.percentile(dmin, 90) > 1.5
-        if np.percentile(dmin, 90) > DECAL_REACH or np.median(par) < (0.7 if far else 0.5):   # no surface it lies along
+        qn = Q[np.arange(len(P)), j]
+        if watch:
+            print("  WATCH", np.round(P.mean(0), 2), "th", round(th, 3), "dmin", round(float(dmin.min()), 3), "p90", round(float(np.percentile(dmin, 90)), 3),
+                  "par", round(float(np.median(par)), 2), "sn.nrm", round(float(np.median((sn * nrm).sum(1))), 2),
+                  "front", round(float(np.median(((P - qn) * sn).sum(1))), 3), "dark", round(float((C[np.unique(F[fl])].mean(1) < 0.12).mean()), 2))
+        if (th < 0.03 and area[fl].sum() < 1.5 and (C[np.unique(F[fl])].mean(1) < 0.12).mean() >= 0.25
+                and np.median(((P - qn) * sn).sum(1)) > 0 and np.median((sn * nrm).sum(1)) < -0.5 and dmin.min() < 0.5):
+            drop_f.append(fl)                       # a window facing into the wall it lies on (a squashed house's far side): out
+            continue
+        close = np.percentile(dmin, 90) < 0.5       # right by a surface (a wall bent by a collapse): lay it on, as it is
+        if np.percentile(dmin, 90) > DECAL_REACH or np.median(par) < (0.7 if far else 0.2 if close else 0.5):   # no surface it lies along
             # a small dark one (a window, a porthole) with no plating behind it: a mistake of the layout, out
-            if th < 0.005 and area[fl].sum() < 1.0 and C[np.unique(F[fl])].mean() < 0.12 and dmin.min() > TOUCH:
+            if th < 0.03 and area[fl].sum() < 1.5 and (C[np.unique(F[fl])].mean(1) < 0.12).mean() >= 0.25 and dmin.min() > TOUCH:
                 drop_f.append(fl)
                 if DEBUG and len(drop_f) <= 12:
                     print("  removed", len(fl), "faces at", np.round(P.mean(0), 2), "size", np.round(np.ptp(P, 0), 2),
@@ -260,8 +273,12 @@ def fix_meshes(objects, ground=(), settle=True, log=None, reach=None):
         comps = [(c_, fl_) for c_, fl_ in enumerate(comps) if len(fl_) and c_ not in ride_comps]
         comps.sort(key=lambda cf: V[F[cf[1]]][..., 1].min())
         grid = Grid(V, F)
+        ybot = float(V[:, 1].min()) - 1.0                  # the lowest thing in the model: nothing to find under it
         moved = np.zeros(0, np.int64)
         gone_f, gone_c = [], set()
+        gone_m = np.zeros(len(F), bool)                 # faces taken out: no longer a support
+        csize = np.bincount(cid[cid >= 0], minlength=cid.max() + 1)
+        solid_c = (cid < 0) | (csize[np.maximum(cid, 0)] >= 24)       # pieces that can hold another (the ground, real pieces)
         for pass_ in range(4):                     # again until nothing moves (a support that moved leaves what
             n_before = rep["settled"]             # rested on it hanging)
             rep["floating"] = 0
@@ -280,18 +297,25 @@ def fix_meshes(objects, ground=(), settle=True, log=None, reach=None):
                     continue
                 own = np.zeros(len(F), bool); own[fl] = True
                 cand = np.union1d(cand, moved)
-                cand = cand[~own[cand]]
+                cand = cand[~own[cand] & ~gone_m[cand]]
                 gap, _ = piece_gap(V, F, T, fl, cand, rng)
+                if WATCH is not None and np.linalg.norm(P.mean(0) - WATCH) < 3:
+                    print("  WATCH-settle pass", pass_, np.round(P.mean(0), 2), np.round(np.ptp(P, 0), 2), "gap", gap, "faces", len(fl))
                 if gap <= TOUCH:
                     continue
-                if len(fl) <= 40 and area_of(T, fl) < 1.5 and (C[vi].mean(1) < 0.12).mean() >= 0.25 and thickness(P)[0] < 0.005:
-                    gone_f.append(fl)                       # a window or porthole with no wall left: out
+                if len(fl) <= 2:                            # a stray triangle left by a collapse: out
+                    gone_f.append(fl); gone_c.add(c_id); gone_m[fl] = True
+                    rep["removed"] += 1
+                    continue
+                if len(fl) <= 400 and area_of(T, fl) < 20.0 and (C[vi].mean(1) < 0.12).mean() >= 0.25 and thickness(P)[0] < 0.03:
+                    gone_f.append(fl)                       # a window (or a row of them) with no wall left: out
                     gone_c.add(c_id)
+                    gone_m[fl] = True
                     rep["removed"] += 1
                     continue
                 if len(cand) and (gap < near_reach or not np.isfinite(gap)):
                     # close to something (beside it, under an overhang): move it the short way until it touches
-                    mv = _nearest_move(V, F, T, fl, cand, rng, near_reach)
+                    mv = _nearest_move(V, F, T, fl, cand[solid_c[cand]], rng, near_reach)   # onto something solid
                     if mv is not None:
                         V[vi] += mv
                         if c_id in ridev:
@@ -305,12 +329,12 @@ def fix_meshes(objects, ground=(), settle=True, log=None, reach=None):
                     rep["floating"] += 1
                     continue
                 # straight down: what is under the piece's vertices, and what pokes up under its faces
-                allc = grid.query(np.array([lo[0], -1e3, lo[2]]), np.array([hi[0], hi[1], hi[2]]))
+                allc = grid.query(np.array([lo[0], ybot, lo[2]]), np.array([hi[0], hi[1], hi[2]]))
                 if allc is None:
                     rep["floating"] += 1
                     continue
                 allc = np.union1d(allc, moved)
-                allc = allc[~own[allc]]
+                allc = allc[~own[allc] & ~gone_m[allc]]
                 Pq = P if len(P) <= 600 else P[rng.choice(len(P), 600, replace=False)]
                 under = ray_down(Pq, T[allc, 0], T[allc, 1], T[allc, 2])
                 drop = float(np.min(Pq[:, 1] - np.maximum(under, 0.0)))

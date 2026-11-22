@@ -30,6 +30,6 @@
       "url": "https://www.peninsulaclarion.com/news/wreckage-of-ship-blown-apart-in-wwii-found-offering-closure/"
     }
   ],
-  "triangles": 60289,
+  "triangles": 60333,
   "notes": "Built by code (model_sources/Q2003934_uss_juneau.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. At about 4,200 m off the Solomon Islands, blown apart by the explosion of her forward magazine: the stern nearly upright, the bow on its side not far away, a piece of the middle upside down, 5-inch mounts and plating spread around (the real debris field runs for more than a mile). A war grave (687 died, the five Sullivan brothers among them). The pieces, their layout and the heading (not published here: 0) are approximate. model_built.glb: the cruiser as she was in 1942. No marine life in the model: Offlined draws the living things itself."
 }

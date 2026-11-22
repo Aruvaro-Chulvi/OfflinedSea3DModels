@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/SMS_Kronprinz"
     }
   ],
-  "triangles": 45945,
+  "triangles": 45913,
   "notes": "Built by code (model_sources/Q470400_sms_kronprinz_wilhelm.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down on her starboard side at about 34-43 m, resting on her superstructure (crushed into the bottom): the armour belt gone and the engine and boiler rooms blasted open by the salvors, the two stern turrets and the forward one still in place with their barrels reaching out under the overhanging side, the other two turrets lying upside down on the seabed beside the hull, the casemate guns along the side, the twin rudders (no propellers: salvaged). The exact angle and heading (not published: 0) are approximate. model_built.glb: the battleship as she was in 1918. No marine life in the model: Offlined draws the living things itself."
 }

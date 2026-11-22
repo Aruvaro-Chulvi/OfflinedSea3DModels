@@ -30,6 +30,6 @@
       "url": "https://world.dan.org/alert-diver/article/kwajaleins-shipwrecks/"
     }
   ],
-  "triangles": 38900,
+  "triangles": 38884,
   "notes": "Built by code (model_sources/Q155430_prinz_eugen.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upside down off Enubuj, Kwajalein Atoll: the stern up on the reef with the bottom of the hull and two of her three screws out of the water (the port one was removed and stands at Laboe), the bow deeper at about 35 m, the turrets and upperworks crushed under her. The model carries a rough slope of reef rock under the stern: the slope of the reef, the angle and the heading (not published here: 0) are approximate. model_built.glb: the cruiser as she was in 1945. No marine life in the model: Offlined draws the living things itself."
 }

@@ -51,6 +51,6 @@
       "url": "https://en.wikipedia.org/wiki/German_auxiliary_cruiser_Kormoran"
     }
   ],
-  "triangles": 115044,
+  "triangles": 115228,
   "notes": "Built by code (model_sources/Q708046_kormoran.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Node 'forward_section': the ship from the stem to just aft of the bridge (90 m), upright, with the flared forecastle and its two 15 cm guns (the starboard one with its flap down), hold 1 open, the 15 cm gun on its lift in hold 2 trained 135° to starboard, the front of the bridge superstructure torn aft, the raised 2 cm gun on the port side, the torpedo flaps. Node 'debris_field_1' (placed with 'pieces', 1.4 km NNE): a large piece of the after hull with the engine casing among hundreds of plates and frames, a jumble of wire, the starboard anchor in a piece of the ship's side. Node 'debris_field_2' (2.1 km N): the stern on its side and a few pieces. What the two after pieces really are is not known; their shapes, the spread of the debris (here a few hundred metres, really nearly 1 km) and the heading are approximate. A war grave. model_built.glb: the raider as she sailed in November 1941, disguised as a freighter. No marine life in the model: Offlined draws the living things itself."
 }

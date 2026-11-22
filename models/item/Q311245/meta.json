@@ -30,6 +30,6 @@
       "url": "https://en.wikipedia.org/wiki/USS_Yorktown_(CV-5)"
     }
   ],
-  "triangles": 69477,
+  "triangles": 69475,
   "notes": "Built by code (model_sources/Q311245_uss_yorktown.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. Upright on the bottom at about 5,100-5,200 m north of Midway, in remarkably good condition: the island with its bridge, funnel and tripod mast, the 5-inch and anti-aircraft guns at the corners and edges of the flight deck, the open hangar and lifts; bomb holes through the flight deck, the torpedo holes in her port side, the stern listing to starboard and the flight deck at the bow collapsing towards the starboard side; the four propellers and the rudder. The list, the size of the holes and the heading (not published here: 0) are approximate. A war grave. model_built.glb: the carrier as she was in 1942. No marine life in the model: Offlined draws the living things itself."
 }

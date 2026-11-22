@@ -30,6 +30,6 @@
       "url": "https://m.usni.org/magazines/proceedings/2019/may/thresher-freedom-information-act-request-yielding-results"
     }
   ],
-  "triangles": 103624,
+  "triangles": 103680,
   "notes": "Built by code (model_sources/Q2164015_uss_thresher.py, tools/meshkit.py, tools/sailkit.py, tools/dresskit.py) with AI assistance. At about 2,560 m some 220 miles east of Cape Cod: the six major sections of the broken hull — bow, sonar dome, operations spaces, engineering spaces, tail section with its rudders and propeller, and the sail lying upside down — in a debris field some 365 m across, the tail off to starboard, with plating, piping and battery cells around. A memorial: 129 died. The layout of the pieces and their headings are approximate. model_built.glb: the submarine as she was in 1963. No marine life in the model: Offlined draws the living things itself."
 }

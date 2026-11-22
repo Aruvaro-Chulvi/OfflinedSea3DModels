@@ -26,6 +26,6 @@
       "url": "https://en.wikipedia.org/wiki/USS_Indianapolis_(CA-35)"
     }
   ],
-  "triangles": 58884,
+  "triangles": 58882,
   "notes": "Built by code (model_sources/Q600180_uss_indianapolis.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. The heavy cruiser at about 5,500 m in the Philippine Sea: the hull upright with a list, the bow blown away by the first torpedo and lying apart on its side with the hull number 35, the hole of the second torpedo in her starboard side amidships, the after turret, tripod masts and funnels; about them a triple turret torn from its barbette, an anchor windlass, the remains of a floatplane, a spare-parts box and plating. The Navy keeps the location confidential and has not published the layout of the site: the positions of the pieces, the list and the heading (not published here: 0) are an approximation. A war grave. model_built.glb: the cruiser as she was in July 1945. No marine life in the model: Offlined draws the living things itself."
 }

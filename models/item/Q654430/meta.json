@@ -30,6 +30,6 @@
       "url": "https://billiken.lat/historia/sirio-el-titanic-italiano-que-naufrago-en-espana/"
     }
   ],
-  "triangles": 28411,
+  "triangles": 28397,
   "notes": "Built by code (model_sources/Q654430_sirio.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On the flanks of the Bajo de Fuera off Cabo de Palos (marine reserve of Cabo de Palos-Islas Hormigas), between about 40 and 70 m: the iron hull broken in two and beaten through, the forefoot torn open on the rocks, the houses gone, boilers on the bottom. The model sets the halves on flat ground at about 50 m: the slope, the break and the heading (not published here: 0) are approximate. Between 150 and more than 500 died. model_built.glb: the liner as she was in 1906. No marine life in the model: Offlined draws the living things itself."
 }

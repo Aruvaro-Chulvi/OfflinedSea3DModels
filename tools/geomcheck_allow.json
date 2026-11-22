@@ -21,12 +21,41 @@
    "why": "known small leftover from the 2026-11 review: pending"
   }
  ],
- "Q1094070/model.glb": [
+ "Q1127368/model.glb": [
   {
    "center": [
-    -11.18,
-    0.32,
-    -1.48
+    -9.07,
+    5.38,
+    -357.64
+   ],
+   "kind": "floating",
+   "why": "known small leftover from the 2026-11 review: pending"
+  },
+  {
+   "center": [
+    -5.99,
+    4.3,
+    -226.86
+   ],
+   "kind": "floating",
+   "why": "known small leftover from the 2026-11 review: pending"
+  },
+  {
+   "center": [
+    104.63,
+    5.03,
+    -361.89
+   ],
+   "kind": "floating",
+   "why": "known small leftover from the 2026-11 review: pending"
+  }
+ ],
+ "Q1127368/model_built.glb": [
+  {
+   "center": [
+    0.0,
+    33.0,
+    -39.5
    ],
    "kind": "floating",
    "why": "known small leftover from the 2026-11 review: pending"
@@ -35,83 +64,29 @@
  "Q1339472/model.glb": [
   {
    "center": [
-    -6.67,
-    8.26,
-    38.47
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -6.16,
-    9.18,
-    38.41
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -5.9,
-    10.09,
-    38.23
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -3.76,
-    16.08,
-    38.72
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -3.46,
-    16.94,
-    38.74
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -2.94,
-    17.69,
-    38.66
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -1.8,
-    20.23,
-    -11.47
+    -2.13,
+    16.29,
+    40.46
    ],
    "kind": "decal",
    "why": "known small leftover from the 2026-11 review: pending"
   }
  ],
- "Q155014/model.glb": [
+ "Q150857/model_built.glb": [
   {
    "center": [
-    6.34,
-    19.0,
-    -14.27
+    -6.15,
+    26.04,
+    -32.75
    ],
-   "kind": "decal",
+   "kind": "floating",
    "why": "known small leftover from the 2026-11 review: pending"
   },
   {
    "center": [
-    6.37,
-    19.0,
-    -12.78
+    -6.15,
+    37.06,
+    32.25
    ],
    "kind": "floating",
    "why": "known small leftover from the 2026-11 review: pending"
@@ -120,27 +95,9 @@
  "Q1789811/model.glb": [
   {
    "center": [
-    2.86,
-    1.12,
-    -7.44
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
     2.19,
     0.87,
     1.99
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    2.22,
-    0.84,
-    2.0
    ],
    "kind": "decal",
    "why": "known small leftover from the 2026-11 review: pending"
@@ -176,15 +133,6 @@
   },
   {
    "center": [
-    -0.48,
-    6.3,
-    -98.29
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
     -0.07,
     6.59,
     -96.67
@@ -200,127 +148,6 @@
    ],
    "kind": "floating",
    "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    2.08,
-    6.42,
-    -96.22
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  }
- ],
- "Q1977186/model.glb": [
-  {
-   "center": [
-    -1355.42,
-    23.87,
-    3695.38
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -1336.1,
-    9.77,
-    3658.87
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -1335.72,
-    9.72,
-    3659.18
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -1335.49,
-    9.69,
-    3659.37
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -1334.99,
-    9.63,
-    3659.8
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -1334.76,
-    9.6,
-    3660.0
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  }
- ],
- "Q1977186/model_built.glb": [
-  {
-   "center": [
-    -1.26,
-    17.2,
-    -121.77
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -0.81,
-    17.2,
-    -121.77
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -0.3,
-    17.2,
-    -121.77
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    0.0,
-    17.2,
-    -121.77
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    0.81,
-    17.2,
-    -121.77
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    1.26,
-    17.2,
-    -121.77
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
   }
  ],
  "Q20181784/model.glb": [
@@ -329,6 +156,17 @@
     12.17,
     0.28,
     -0.07
+   ],
+   "kind": "floating",
+   "why": "known small leftover from the 2026-11 review: pending"
+  }
+ ],
+ "Q215010/model_built.glb": [
+  {
+   "center": [
+    0.0,
+    33.0,
+    -39.5
    ],
    "kind": "floating",
    "why": "known small leftover from the 2026-11 review: pending"
@@ -345,12 +183,23 @@
    "why": "known small leftover from the 2026-11 review: pending"
   }
  ],
+ "Q220239/model_built.glb": [
+  {
+   "center": [
+    -5.4,
+    29.55,
+    45.15
+   ],
+   "kind": "floating",
+   "why": "known small leftover from the 2026-11 review: pending"
+  }
+ ],
  "Q2468064/model.glb": [
   {
    "center": [
-    -0.23,
-    16.98,
-    7.08
+    -2.17,
+    3.86,
+    7.56
    ],
    "kind": "decal",
    "why": "known small leftover from the 2026-11 review: pending"
@@ -362,15 +211,6 @@
     -8.97,
     6.73,
     33.9
-   ],
-   "kind": "decal",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -5.97,
-    13.71,
-    -60.07
    ],
    "kind": "decal",
    "why": "known small leftover from the 2026-11 review: pending"
@@ -387,23 +227,12 @@
    "why": "known small leftover from the 2026-11 review: pending"
   }
  ],
- "Q32276/model.glb": [
-  {
-   "center": [
-    -5.48,
-    6.42,
-    1.92
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  }
- ],
  "Q3273207/model.glb": [
   {
    "center": [
-    -1.57,
-    29.65,
-    -9.02
+    -1.56,
+    31.14,
+    -9.11
    ],
    "kind": "floating",
    "why": "known small leftover from the 2026-11 review: pending"
@@ -419,9 +248,9 @@
   },
   {
    "center": [
-    7.03,
-    24.02,
-    38.84
+    7.06,
+    23.55,
+    35.96
    ],
    "kind": "decal",
    "why": "known small leftover from the 2026-11 review: pending"
@@ -442,10 +271,73 @@
   {
    "center": [
     0.0,
+    19.8,
+    -65.1
+   ],
+   "kind": "floating",
+   "why": "known small leftover from the 2026-11 review: pending"
+  },
+  {
+   "center": [
+    0.0,
+    18.83,
+    -5.1
+   ],
+   "kind": "decal",
+   "why": "known small leftover from the 2026-11 review: pending"
+  },
+  {
+   "center": [
+    0.0,
+    22.6,
+    -45.1
+   ],
+   "kind": "floating",
+   "why": "known small leftover from the 2026-11 review: pending"
+  },
+  {
+   "center": [
+    0.0,
     24.43,
     6.9
    ],
    "kind": "decal",
+   "why": "known small leftover from the 2026-11 review: pending"
+  },
+  {
+   "center": [
+    -4.75,
+    19.7,
+    -54.1
+   ],
+   "kind": "floating",
+   "why": "known small leftover from the 2026-11 review: pending"
+  },
+  {
+   "center": [
+    -4.25,
+    22.5,
+    -39.1
+   ],
+   "kind": "floating",
+   "why": "known small leftover from the 2026-11 review: pending"
+  },
+  {
+   "center": [
+    4.25,
+    22.5,
+    -39.1
+   ],
+   "kind": "floating",
+   "why": "known small leftover from the 2026-11 review: pending"
+  },
+  {
+   "center": [
+    4.75,
+    19.7,
+    -54.1
+   ],
+   "kind": "floating",
    "why": "known small leftover from the 2026-11 review: pending"
   }
  ],
@@ -468,317 +360,7 @@
     -0.69
    ],
    "kind": "decal",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    -6.5,
-    15.15,
-    -20.51
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    -6.48,
-    14.88,
-    -25.63
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    -6.46,
-    15.07,
-    -13.41
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    -6.45,
-    15.07,
-    -23.84
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    -6.46,
-    15.04,
-    -24.76
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    -6.42,
-    15.04,
-    -18.18
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    -6.42,
-    15.01,
-    -14.39
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    -6.39,
-    15.01,
-    -17.23
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    -5.62,
-    16.37,
-    -14.87
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    1.24,
-    15.32,
-    28.27
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    -5.6,
-    16.38,
-    -15.85
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    1.21,
-    17.0,
-    26.31
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    -3.37,
-    17.6,
-    25.75
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    -2.92,
-    17.66,
-    26.33
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    2.81,
-    17.23,
-    26.37
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    3.54,
-    15.62,
-    28.3
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    4.15,
-    17.19,
-    26.35
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    4.93,
-    15.58,
-    28.28
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    5.73,
-    14.01,
-    32.2
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.37,
-    15.52,
-    28.26
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.14,
-    17.03,
-    25.73
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.69,
-    14.08,
-    32.24
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    8.1,
-    15.44,
-    24.94
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    8.11,
-    15.43,
-    27.77
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    8.52,
-    13.84,
-    -24.65
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    8.57,
-    13.74,
-    -25.57
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    8.62,
-    13.88,
-    -29.33
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    8.65,
-    13.79,
-    -28.38
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    8.79,
-    13.93,
-    23.21
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    8.79,
-    13.8,
-    22.23
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    8.82,
-    13.91,
-    24.14
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  }
- ],
- "Q600180/model.glb": [
-  {
-   "center": [
-    99.12,
-    0.3,
-    37.18
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  }
- ],
- "Q6147254/model.glb": [
-  {
-   "center": [
-    8.91,
-    2.33,
-    61.88
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    9.29,
-    2.45,
-    62.31
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
+   "why": "the collapsed roof resting on what is left of its walls and stanchions: correct"
   }
  ],
  "Q654430/model.glb": [
@@ -802,9 +384,9 @@
   },
   {
    "center": [
-    -1.27,
-    7.69,
-    10.38
+    -2.57,
+    9.84,
+    16.92
    ],
    "kind": "floating",
    "why": "known small leftover from the 2026-11 review: pending"
@@ -817,172 +399,6 @@
    ],
    "kind": "floating",
    "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    -0.67,
-    11.22,
-    16.81
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  }
- ],
- "Q701654/model.glb": [
-  {
-   "center": [
-    5.23,
-    5.97,
-    45.97
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  },
-  {
-   "center": [
-    6.36,
-    6.09,
-    46.01
-   ],
-   "kind": "floating",
-   "why": "known small leftover from the 2026-11 review: pending"
-  }
- ],
- "Q703586/model.glb": [
-  {
-   "center": [
-    5.95,
-    17.48,
-    -13.89
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.01,
-    17.43,
-    -44.96
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.04,
-    17.42,
-    -45.86
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    5.98,
-    17.51,
-    -12.89
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.09,
-    17.5,
-    -8.06
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.1,
-    17.57,
-    17.25
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.06,
-    17.54,
-    -8.96
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.11,
-    17.57,
-    18.21
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.08,
-    17.56,
-    19.19
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.09,
-    17.54,
-    22.08
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.13,
-    16.32,
-    40.2
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.11,
-    17.56,
-    -9.91
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.49,
-    6.78,
-    40.07
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.53,
-    5.84,
-    40.09
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
-  },
-  {
-   "center": [
-    6.48,
-    7.78,
-    40.09
-   ],
-   "kind": "floating",
-   "why": "windows of the collapsed superstructure lying on its fallen roof (collapse model): pending"
   }
  ],
  "Q726146/model.glb": [

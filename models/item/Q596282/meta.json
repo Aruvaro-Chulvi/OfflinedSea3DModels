@@ -35,6 +35,6 @@
       "url": "https://shipwrecks.navy.lk/view-journal.php?id=19"
     }
   ],
-  "triangles": 44099,
+  "triangles": 44113,
   "notes": "Built by code (model_sources/Q596282_hms_hermes.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. On her port side at about 52 m, largely intact: the enclosed bow, the hangar, the flight deck torn and holed by the bombs, the island with its tripod and funnel, the 5.5-inch guns in their sponsons, twin screws; plates from the flight deck on the bottom. A war grave (307 men). The list, the heading (not published: 0), the bomb damage in detail and the colours are approximate. model_built.glb: the carrier as she sailed in 1942. No marine life in the model: Offlined draws the living things itself."
 }

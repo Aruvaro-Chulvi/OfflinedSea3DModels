@@ -30,6 +30,6 @@
       "url": "https://scubadiverlife.com/preserving-americas-underwater-battlefield-u-85/"
     }
   ],
-  "triangles": 22418,
+  "triangles": 22336,
   "notes": "Built by code (model_sources/Q571310_u85.py, tools/meshkit.py, tools/dresskit.py) with AI assistance. In about 30 m off Bodie Island, North Carolina, on the sand off the Bodie Island lighthouse: largely intact, the conning tower with the shell damage of the Roper's gunfire behind it, the deck gun, the outer casing rotted in places over the frames, the bow cracked showing the torpedo tubes. A war grave: all 46 men died. The list, the rot of the casing and the heading (not published here: 0) are approximate. model_built.glb: the U-boat as she was in 1942. No marine life in the model: Offlined draws the living things itself."
 }
