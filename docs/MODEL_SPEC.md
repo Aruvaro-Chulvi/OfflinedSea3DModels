@@ -35,9 +35,11 @@ Each folder holds:
 
 - **glTF 2.0 binary** (`.glb`), one file with everything inside (no external `.bin` or textures).
 - Extensions allowed: `KHR_mesh_quantization`, `KHR_texture_transform`, `EXT_mesh_gpu_instancing`,
-  `KHR_materials_emissive_strength`, `EXT_texture_webp`. **Not allowed:** Draco, meshopt and KTX2/Basis compression
-  (they need extra decoders that Offlined does not ship). Every release also carries each model gzipped (`.glb.gz`):
-  Offlined downloads and keeps that one.
+  `KHR_materials_emissive_strength`, `EXT_texture_webp`. **Not allowed in the repository:** Draco, meshopt and
+  KTX2/Basis compression (contributed models stay plain and easy to open). Every release also carries each model
+  gzipped (`.glb.gz`, "gz" in the manifest) and, made by `tools/build_release.py` with `tools/meshopt/compress.mjs`,
+  a meshopt copy (`.mo.glb.gz`, "mo": `EXT_meshopt_compression` over the same quantized data, lossless, about a third
+  smaller). Offlined 4.x downloads "mo"; older Offlined keeps downloading "gz".
 - **Make it light**: 16-bit positions and texture coordinates and 8-bit normals (`KHR_mesh_quantization`), and
   **instancing** (`EXT_mesh_gpu_instancing`) for anything repeated — rusticles, anemones, plates, rivets…: the shape
   is stored once, plus where each copy goes. [`tools/scenekit.py`](../tools/scenekit.py) `write_model()` does both.

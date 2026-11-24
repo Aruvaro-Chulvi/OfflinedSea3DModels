@@ -1,0 +1,13 @@
+{
+  "name": "offlined-sea3d-meshopt",
+  "private": true,
+  "description": "Release step: a meshopt-compressed copy of every model (EXT_meshopt_compression, lossless, no requantization).",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "@gltf-transform/core": "4.5.1",
+    "@gltf-transform/extensions": "4.5.1",
+    "@gltf-transform/functions": "4.5.1",
+    "meshoptimizer": "0.22.0"
+  }
+}
